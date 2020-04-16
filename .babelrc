@@ -1,6 +1,4 @@
 {
-  "presets": [
-    "babel-preset-gatsby",
-    "@babel/preset-typescript"
-  ]
+  "plugins": [["babel-plugin-styled-components"]],
+  "presets": ["babel-preset-gatsby", "@babel/preset-typescript"]
 }

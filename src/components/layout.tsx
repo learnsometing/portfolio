@@ -5,13 +5,13 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React, { ReactNode } from "react"
-import Helmet from "react-helmet"
-import PropTypes from "prop-types"
-import "../css/base.css"
+import React, { ReactNode } from 'react';
+import Helmet from 'react-helmet';
+import PropTypes from 'prop-types';
+import '../css/base.css';
 
 interface Props {
-  children: ReactNode
+  children: ReactNode;
 }
 
 const Layout: React.FC<Props> = ({ children }) => {
@@ -33,11 +33,11 @@ const Layout: React.FC<Props> = ({ children }) => {
         <main>{children}</main>
       </div>
     </>
-  )
-}
+  );
+};
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
-export default Layout
+export default Layout;
