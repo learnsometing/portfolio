@@ -13,13 +13,21 @@ const Brand = styled(FluidTypography).attrs(() => ({
   margin-bottom: 0;
 `;
 
-const LinkText = styled(FluidTypography).attrs(() => ({
+export const NavLink = styled(FluidTypography).attrs(() => ({
   minFontSize: '16px',
   maxFontSize: '18px',
-  minViewportWidth: '320px',
-  maxViewportWidth: '960px',
+  minViewportWidth: '768px',
+  maxViewportWidth: '1350px',
 }))`
   color: #f95738 !important;
+  font-family: mr-eaves-xl-modern;
+  font-weight: bold;
+  margin: 0.5rem 0;
+
+  &:hover {
+    color: #1b065e !important;
+    text-decoration: none;
+  }
 `;
 
 const NavBar = styled(Navbar)`
@@ -47,22 +55,22 @@ const Navigation: React.FC = () => (
     <Nav navbar>
       <Nav.Item>
         <Nav.Link href="/">
-          <LinkText as="span">Home</LinkText>
+          <NavLink as="span">Home</NavLink>
         </Nav.Link>
       </Nav.Item>
       <Nav.Item>
         <Nav.Link href="/portfolio">
-          <LinkText as="span">Portfolio</LinkText>
+          <NavLink as="span">Portfolio</NavLink>
         </Nav.Link>
       </Nav.Item>
       <Nav.Item>
         <Nav.Link href="/about">
-          <LinkText as="span">About</LinkText>
+          <NavLink as="span">About</NavLink>
         </Nav.Link>
       </Nav.Item>
       <Nav.Item>
         <Nav.Link href="/contact">
-          <LinkText as="span">Contact</LinkText>
+          <NavLink as="span">Contact</NavLink>
         </Nav.Link>
       </Nav.Item>
     </Nav>

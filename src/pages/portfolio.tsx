@@ -5,6 +5,7 @@ import { Container, Row } from 'react-bootstrap';
 import Layout from '../App/Layout/Layout';
 import PortfolioCard, { Project } from './portfolio/PortfolioCard';
 import Navigation from '../shared/Navigation';
+import CollapsedNavigation from '../shared/CollapsedNavigation';
 
 interface PortfolioProps {
   data: Project[];
@@ -14,6 +15,7 @@ export const PurePortfolio: React.FC<PortfolioProps> = ({ data }) => {
   return (
     <Layout>
       <Navigation />
+      <CollapsedNavigation />
       <Container fluid>
         <h1>Portfolio</h1>
         <Row xs="1" sm="1" md="2" lg="2" xl="3">
