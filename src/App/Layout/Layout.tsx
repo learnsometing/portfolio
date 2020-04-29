@@ -9,14 +9,11 @@ import React, { ReactNode } from 'react';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './Layout.css';
-import FlexContainer from '../../shared/FlexContainer';
 
-const LayoutContainer = styled(FlexContainer)`
+const LayoutContainer = styled.main`
   margin: 0 auto;
-  max-width: 960px;
-  padding: 0 1.0875rem 1.45rem;
+  max-width: 1350px;
 `;
 
 interface Props {
@@ -27,10 +24,7 @@ const Layout: React.FC<Props> = ({ children }) => {
   return (
     <>
       <Helmet>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Source+Code+Pro:wght@500;900&display=swap"
-          rel="stylesheet"
-        />
+        <link rel="stylesheet" href="https://use.typekit.net/ari5qhg.css" />
         <link
           rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -38,9 +32,7 @@ const Layout: React.FC<Props> = ({ children }) => {
           crossOrigin="anonymous"
         />
       </Helmet>
-      <LayoutContainer flexDirection={'column'} alignItems={'center'}>
-        <main>{children}</main>
-      </LayoutContainer>
+      <LayoutContainer>{children}</LayoutContainer>
     </>
   );
 };
