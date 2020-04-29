@@ -1,17 +1,12 @@
 import React from 'react';
-
 import Layout from '../App/Layout/Layout';
 import SEO from '../App/SEO/SEO';
-import Introduction from '../App/Intro/Introduction';
-import Navigation from '../App/Navigation/Navigation';
-import Portfolio from '../App/Portfolio/Portfolio';
+import Header from '../App/Header/Header';
 
 const IndexPage: React.FC = () => (
   <Layout>
     <SEO title="Home" />
-    <Introduction />
-    <Navigation />
-    <Portfolio />
+    <Header />
   </Layout>
 );
 
