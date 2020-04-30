@@ -8,8 +8,6 @@
 
 const path = require('path');
 
-const { createFilePath } = require('gatsby-source-filesystem');
-
 const slugify = (str) => {
   // Slugify a string
   str = str.replace(/^\s+|\s+$/g, '');
@@ -40,8 +38,7 @@ const slugify = (str) => {
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
   if (node.internal.type === 'PortfolioJson') {
-    const slug = createFilePath({ node, getNode });
-    const url = `${slug}${slugify(node.title)}/`;
+    const url = `${slugify(node.title)}/`;
     createNodeField({
       node,
       name: 'slug',
