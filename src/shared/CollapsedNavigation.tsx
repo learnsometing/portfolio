@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
 import { Navbar } from 'react-bootstrap';
 import Hamburger from 'hamburger-react';
-import FluidTypography from './FluidTypography';
+import { NavLink, LinkText } from './Navigation';
 
 const NavBar = styled(Navbar)`
   margin-bottom: 0.5rem;
@@ -32,7 +31,7 @@ interface MenuProps {
 
 const Menu = styled.nav<MenuProps>`
   display: flex;
-  position: absolute;
+  position: fixed;
   visibility: hidden;
   background-color: #fdfde8;
   ${({ isMenuOpen, isMenuClosing }): string | undefined => {
@@ -148,31 +147,21 @@ const MenuGrid = styled.div<MenuProps>`
   z-index: 1050;
 `;
 
-const MenuLink = styled(Link)`
+const MenuLink = styled(NavLink)`
+  display: flex;
   width: 100%;
   height: 100%;
-  display: flex;
+  padding: 0;
   justify-content: center;
   align-items: center;
-  color: #f95738 !important;
 `;
 
-const NavLink = styled(FluidTypography).attrs(() => ({
+const MenuLinkText = styled(LinkText).attrs(() => ({
   minFontSize: '24px',
   maxFontSize: '32px',
   minViewportWidth: '320px',
   maxViewportWidth: '767px',
-}))`
-  color: #f95738 !important;
-  font-family: mr-eaves-xl-modern;
-  font-weight: bold;
-  margin: 0.5rem 0;
-
-  &:hover {
-    color: #1b065e !important;
-    text-decoration: none;
-  }
-`;
+}))``;
 
 const CollapsedNavigation: React.FC = () => {
   const [isMenuOpen, setisMenuOpen] = useState(false);
@@ -199,16 +188,16 @@ const CollapsedNavigation: React.FC = () => {
       <Menu isMenuOpen={isMenuOpen} isMenuClosing={isMenuClosing}>
         <MenuGrid isMenuOpen={isMenuOpen} isMenuClosing={isMenuClosing}>
           <MenuLink to="/">
-            <NavLink as="span">Home</NavLink>
+            <MenuLinkText as="span">Home</MenuLinkText>
           </MenuLink>
           <MenuLink to="/portfolio">
-            <NavLink as="span">Portfolio</NavLink>
+            <MenuLinkText as="span">Portfolio</MenuLinkText>
           </MenuLink>
           <MenuLink to="/about">
-            <NavLink as="span">About</NavLink>
+            <MenuLinkText as="span">About</MenuLinkText>
           </MenuLink>
           <MenuLink to="/contact">
-            <NavLink as="span">Contact</NavLink>
+            <MenuLinkText as="span">Contact</MenuLinkText>
           </MenuLink>
         </MenuGrid>
       </Menu>

@@ -1,80 +1,79 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Link } from 'gatsby';
+import Grid from '@material-ui/core/Grid';
 import FluidTypography from './FluidTypography';
 
 const Brand = styled(FluidTypography).attrs(() => ({
-  minFontSize: '20px',
-  maxFontSize: '28px',
-  minViewportWidth: '320px',
-  maxViewportWidth: '960px',
-}))`
-  color: #0d3b66;
-  margin-bottom: 0;
-`;
-
-export const NavLink = styled(FluidTypography).attrs(() => ({
-  minFontSize: '16px',
-  maxFontSize: '18px',
+  minFontSize: '32px',
+  maxFontSize: '36px',
   minViewportWidth: '768px',
   maxViewportWidth: '1350px',
 }))`
-  color: #f95738 !important;
+  padding: 0.5rem 0;
+  margin: 0 1rem;
+  color: #0d3b66;
+`;
+
+export const NavLink = styled(Link)`
+  margin: auto 0;
+  padding: 0.5rem 0.5rem;
+  color: #f95738;
   font-family: mr-eaves-xl-modern;
   font-weight: bold;
-  margin: 0.5rem 0;
 
   &:hover {
-    color: #1b065e !important;
+    color: #1b065e;
     text-decoration: none;
   }
 `;
 
-const NavBar = styled(Navbar)`
-  width: 100%;
+export const LinkText = styled(FluidTypography).attrs(() => ({
+  minFontSize: '18px',
+  maxFontSize: '20px',
+  minViewportWidth: '768px',
+  maxViewportWidth: '1350px',
+}))``;
+
+const Navbar = styled(Grid).attrs(() => ({
+  container: true,
+  component: 'nav',
+}))`
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  background-color: #f4d35e !important;
-  box-shadow: 0px 3px 5px rgba(0%, 0%, 0%, 0.5);
+  background-color: #f4d35e;
+  box-shadow: 0px 3px 5px rgba(0%, 0%, 0%, 0.2);
 
   @media screen and (max-width: 767px) {
-    display: none !important;
+    display: none;
   }
   @media screen and (min-width: 768px) {
-    position: sticky !important;
+    position: sticky;
     top: 0;
     z-index: 1020;
   }
 `;
 
 const Navigation: React.FC = () => (
-  <NavBar expand="sm">
-    <Navbar.Brand href="/">
+  <Navbar>
+    {/* Brand */}
+    <Link to="/">
       <Brand as="h1">BRIAN MONACCIO</Brand>
-    </Navbar.Brand>
-    <Nav navbar>
-      <Nav.Item>
-        <Nav.Link href="/">
-          <NavLink as="span">Home</NavLink>
-        </Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link href="/portfolio">
-          <NavLink as="span">Portfolio</NavLink>
-        </Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link href="/about">
-          <NavLink as="span">About</NavLink>
-        </Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link href="/contact">
-          <NavLink as="span">Contact</NavLink>
-        </Nav.Link>
-      </Nav.Item>
-    </Nav>
-  </NavBar>
+    </Link>
+    {/* Links */}
+    <NavLink to="/">
+      <LinkText as="span">Home</LinkText>
+    </NavLink>
+    <NavLink to="/portfolio">
+      <LinkText as="span">Portfolio</LinkText>
+    </NavLink>
+    <NavLink to="/about">
+      <LinkText as="span">About</LinkText>
+    </NavLink>
+    <NavLink to="/contact">
+      <LinkText as="span">Contact</LinkText>
+    </NavLink>
+  </Navbar>
 );
 
 export default Navigation;

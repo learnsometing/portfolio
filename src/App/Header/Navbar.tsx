@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import FluidTypography from '../../shared/FluidTypography';
+import { NavLink, LinkText } from '../../shared/Navigation';
 
 const Nav = styled.nav`
   display: flex;
@@ -12,21 +12,15 @@ const Nav = styled.nav`
   }
 `;
 
-const NavLink = styled(FluidTypography).attrs(() => ({
-  minFontSize: '16px',
-  maxFontSize: '20px',
-  minViewportWidth: '320px',
-  maxViewportWidth: '960px',
-}))`
-  color: #f95738 !important;
-  font-family: mr-eaves-xl-modern;
-  font-weight: bold;
-  margin: 0.5rem 0;
-
+const HeaderNavLink = styled(NavLink)`
+  padding: 0;
+  margin: 0;
   &:hover {
-    color: #1b065e !important;
-    animation: indent 0.5s ease-in-out 1 forwards;
-    text-decoration: none;
+    animation: indent 0.5s ease-in-out alternate infinite forwards;
+    &:after {
+      content: ' >';
+      font-weight: bold;
+    }
   }
 
   @keyframes indent {
@@ -46,17 +40,24 @@ const NavLink = styled(FluidTypography).attrs(() => ({
   }
 `;
 
+const HeaderLinkText = styled(LinkText).attrs(() => ({
+  minFontSize: '16px',
+  maxFontSize: '24px',
+  minViewportWidth: '320px',
+  maxViewportWidth: '1920px',
+}))``;
+
 const Navbar: React.FC = () => (
   <Nav>
-    <NavLink as="a" href="/portfolio">
-      Portfolio
-    </NavLink>
-    <NavLink as="a" href="/about">
-      About
-    </NavLink>
-    <NavLink as="a" href="/contact">
-      Contact
-    </NavLink>
+    <HeaderNavLink to="/portfolio">
+      <HeaderLinkText as="span">Portfolio</HeaderLinkText>
+    </HeaderNavLink>
+    <HeaderNavLink to="/about">
+      <HeaderLinkText as="span">About</HeaderLinkText>
+    </HeaderNavLink>
+    <HeaderNavLink to="/contact">
+      <HeaderLinkText as="span">Contact</HeaderLinkText>
+    </HeaderNavLink>
   </Nav>
 );
 
