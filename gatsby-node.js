@@ -38,7 +38,7 @@ const slugify = (str) => {
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
   if (node.internal.type === 'PortfolioJson') {
-    const url = `${slugify(node.title)}/`;
+    const url = `/${slugify(node.title)}/`;
     createNodeField({
       node,
       name: 'slug',
