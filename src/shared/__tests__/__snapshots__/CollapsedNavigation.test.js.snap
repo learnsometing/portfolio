@@ -149,6 +149,10 @@ Array [
   text-decoration: none;
 }
 
+.c2:active {
+  color: #1b065e;
+}
+
 .c3 {
   font-size: calc( 24px + ( 32 - 24 ) * ( (100vw - 320px) / ( 767 - 320 ) ) );
 }
