@@ -9,9 +9,9 @@ interface Props {
 }
 
 export function stripUnits(fontSize: string): string {
+  // returning fontSize will cause the rule to be invalid
   if (!fontSize.match(/[0-9]/g)) return fontSize;
   const fontSizeStripped = fontSize.replace(/[^0-9.]/g, '');
-  // returning fontSize will cause the rule to be invalid
   return fontSizeStripped;
 }
 
