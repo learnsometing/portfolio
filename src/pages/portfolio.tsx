@@ -1,17 +1,23 @@
 import React from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import { Container, Row } from 'react-bootstrap';
 import Layout from '../App/Layout/Layout';
-import PortfolioCard, { Project } from './portfolio/PortfolioCard';
+import PortfolioCard, { Project } from '../App/PortfolioCard/PortfolioCard';
 import Navigation from '../shared/Navigation';
 import CollapsedNavigation from '../shared/CollapsedNavigation';
 
 interface PortfolioProps {
-  data: Project[];
+  data: {
+    allPortfolioJson: {
+      nodes: Project[];
+    };
+  };
 }
 
-export const PurePortfolio: React.FC<PortfolioProps> = ({ data }) => {
+export const Portfolio: React.FC<PortfolioProps> = ({ data }) => {
+  const { nodes } = data.allPortfolioJson;
+
   return (
     <Layout>
       <Navigation />
@@ -19,7 +25,7 @@ export const PurePortfolio: React.FC<PortfolioProps> = ({ data }) => {
       <Container fluid>
         <h1>Portfolio</h1>
         <Row xs="1" sm="1" md="2" lg="2" xl="3">
-          {data.map((project) => (
+          {nodes.map((project) => (
             <PortfolioCard key={project.title} project={project} />
           ))}
         </Row>
@@ -28,35 +34,35 @@ export const PurePortfolio: React.FC<PortfolioProps> = ({ data }) => {
   );
 };
 
-PurePortfolio.propTypes = {
-  data: PropTypes.array.isRequired,
+Portfolio.propTypes = {
+  data: PropTypes.shape({
+    allPortfolioJson: PropTypes.shape({
+      nodes: PropTypes.array.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
-const Portfolio: React.FC = () => {
-  const { allPortfolioJson } = useStaticQuery(graphql`
-    query {
-      allPortfolioJson {
-        nodes {
-          title
-          cardPhoto {
-            altText
-            src {
-              childImageSharp {
-                fluid(maxWidth: 1920) {
-                  ...GatsbyImageSharpFluid
-                }
+export const portfolioCardQuery = graphql`
+  query {
+    allPortfolioJson {
+      nodes {
+        title
+        cardPhoto {
+          altText
+          src {
+            childImageSharp {
+              fluid(maxWidth: 1920) {
+                ...GatsbyImageSharpFluid
               }
             }
           }
-          fields {
-            slug
-          }
+        }
+        fields {
+          slug
         }
       }
     }
-  `);
-
-  return <PurePortfolio data={allPortfolioJson.nodes} />;
-};
+  }
+`;
 
 export default Portfolio;

@@ -4,6 +4,7 @@ import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import { Card, Col } from 'react-bootstrap';
+import { ChildImageSharp } from '../../shared/ChildImageSharp';
 
 const ProjectLink = styled(Link)`
   position: relative;
@@ -20,18 +21,6 @@ const MainPhoto = styled(Img)`
   margin-bottom: 0;
 `;
 
-interface ChildImageSharp {
-  childImageSharp: {
-    fluid: {
-      base64: string;
-      aspectRatio: number;
-      src: string;
-      srcSet: string;
-      sizes: string;
-    };
-  };
-}
-
 interface Image {
   src: ChildImageSharp;
   altText: string;
@@ -39,7 +28,6 @@ interface Image {
 
 export interface Project {
   title: string;
-  shortDescription: string;
   cardPhoto: Image;
   fields: {
     slug: string;
@@ -69,7 +57,6 @@ const PortfolioCard: React.FC<CardProps> = ({ project }) => {
 PortfolioCard.propTypes = {
   project: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    shortDescription: PropTypes.string.isRequired,
     cardPhoto: PropTypes.shape({
       src: PropTypes.shape({
         childImageSharp: PropTypes.shape({
