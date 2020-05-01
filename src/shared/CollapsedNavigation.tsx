@@ -1,27 +1,27 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Navbar } from 'react-bootstrap';
 import Hamburger from 'hamburger-react';
 import { NavLink, LinkText } from './Navigation';
-
-const NavBar = styled(Navbar)`
-  margin-bottom: 0.5rem;
-  z-index: 1060 !important;
-
-  @media screen and (min-width: 768px) {
-    display: none !important;
-  }
-`;
 
 const Toggle = styled.div`
   width: 60px;
   height: 60px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 1060;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50% !important;
   background-color: #f4d35e !important;
   box-shadow: 0px 3px 5px rgba(0%, 0%, 0%, 0.5);
+
+  @media only screen and (min-width: 768px) {
+    display: none;
+  }
 `;
 
 interface MenuProps {
@@ -36,10 +36,10 @@ const Menu = styled.nav<MenuProps>`
   background-color: #fdfde8;
   ${({ isMenuOpen, isMenuClosing }): string | undefined => {
     if (isMenuOpen) {
-      return 'animation: slide-in .25s ease-in-out 1 forwards';
+      return 'animation: slide-in .2s ease-in-out 1 forwards';
     }
     if (isMenuClosing) {
-      return 'animation: slide-out .25s ease-in-out 1 forwards';
+      return 'animation: slide-out .2s ease-in-out 1 forwards';
     }
   }};
   z-index: 1050;
@@ -79,69 +79,31 @@ const MenuGrid = styled.div<MenuProps>`
   width: 100vw;
   grid-template-rows: repeat(4, 1fr);
   grid-template-columns: auto;
+
   ${({ isMenuOpen, isMenuClosing }): string | undefined => {
     if (isMenuOpen) {
-      return 'animation: slide-in .25s ease-in-out 1 forwards';
+      return 'animation: fade-in .50s ease-in-out 1 forwards';
     }
     if (isMenuClosing) {
-      return 'animation: slide-out .25s ease-in-out 1 forwards';
+      return 'animation: fade-out .1s ease-in-out 1 forwards';
     }
   }};
 
-  @keyframes slide-in {
+  @keyframes fade-in {
     from {
-      height: 0;
-      width: 100vw;
-      visibility: hidden;
+      opacity: 0;
     }
-
     to {
-      height: 100vh;
-      width: 100vw;
-      visibility: visible;
+      opacity: 1;
     }
   }
 
-  @keyframes slide-out {
+  @keyframes fade-out {
     from {
-      height: 100vh;
-      width: 100vw;
-      visibility: visible;
+      opacity: 1;
     }
-
     to {
-      height: 0;
-      width: 100vw;
-      visibility: hidden;
-    }
-  }
-
-  &:nth-child(n) {
-    ${({ isMenuOpen, isMenuClosing }): string | undefined => {
-      if (isMenuOpen) {
-        return 'animation: fade-in .2s ease-in-out 1 forwards';
-      }
-      if (isMenuClosing) {
-        return 'animation: fade-out .2s ease-in-out 1 forwards';
-      }
-    }};
-
-    @keyframes fade-in {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-
-    @keyframes fade-out {
-      from {
-        opacity: 1;
-      }
-      to {
-        opacity: 0;
-      }
+      opacity: 0;
     }
   }
   z-index: 1050;
@@ -170,21 +132,17 @@ const CollapsedNavigation: React.FC = () => {
   const toggleModal = (): void => {
     if (isMenuOpen) {
       setIsMenuClosing(true);
+    } else {
+      setIsMenuClosing(false);
     }
     setisMenuOpen(!isMenuOpen);
   };
 
   return (
     <>
-      <NavBar fixed="bottom">
-        <Toggle className={'ml-auto'}>
-          <Hamburger
-            color="#0d3b66"
-            toggled={isMenuOpen}
-            toggle={toggleModal}
-          />
-        </Toggle>
-      </NavBar>
+      <Toggle>
+        <Hamburger color="#0d3b66" toggled={isMenuOpen} toggle={toggleModal} />
+      </Toggle>
       <Menu isMenuOpen={isMenuOpen} isMenuClosing={isMenuClosing}>
         <MenuGrid isMenuOpen={isMenuOpen} isMenuClosing={isMenuClosing}>
           <MenuLink to="/">
