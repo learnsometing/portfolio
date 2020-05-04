@@ -2,7 +2,10 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import PropTypes from 'prop-types';
-import { Carousel, Nav, Container, Row } from 'react-bootstrap';
+import { Carousel } from 'react-bootstrap';
+import Grid from '@material-ui/core/Grid';
+import Link from '@material-ui/core/Link';
+import Button from '@material-ui/core/Button';
 import styled from 'styled-components';
 import { TiArrowForward } from 'react-icons/ti';
 import { FaGithub } from 'react-icons/fa';
@@ -46,7 +49,7 @@ interface Props {
   data: Data;
 }
 
-const Grid = styled.div`
+const Content = styled.div`
   width: 100%;
   display: grid;
   grid-template-rows: auto;
@@ -64,12 +67,11 @@ const PageHeading = styled(FluidTypography).attrs(() => ({
   margin-top: 0.5rem;
 `;
 
-const PortfolioLinks = styled(Nav)`
+const PortfolioLinks = styled(Grid).attrs({
+  component: 'nav',
+})`
   grid-column: 3/7;
-`;
-
-const NavLinkText = styled.span`
-  margin: 0 5px;
+  margin: 0.5rem 0;
 `;
 
 const CarouselWrapper = styled.div`
@@ -146,7 +148,7 @@ const PortfolioPage: React.FC<Props> = ({ data }) => {
       <SEO title={project.title} />
       <Navigation />
       <CollapsedNavigation />
-      <Grid>
+      <Content>
         <PageHeading
           as="h1"
           minFontSize={'24px'}
@@ -156,32 +158,29 @@ const PortfolioPage: React.FC<Props> = ({ data }) => {
         >
           {project.title}
         </PageHeading>
-        <PortfolioLinks className={'justify-content-center'}>
-          <Nav.Item>
-            <Nav.Link
+        <PortfolioLinks container justify={'center'} spacing={2}>
+          <Grid item>
+            <Link
               href={project.websiteURL}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Container className="container">
-                <Row className={'justify-content-center align-items-center'}>
-                  <NavLinkText>Visit</NavLinkText>
-                  <TiArrowForward />
-                </Row>
-              </Container>
-            </Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link
+              <Button color={'primary'} endIcon={<TiArrowForward />}>
+                Visit
+              </Button>
+            </Link>
+          </Grid>
+          <Grid item>
+            <Link
               href={project.githubURL}
               target="_blank"
               rel="noopener noreferrer"
             >
-              {' '}
-              <NavLinkText>Github Repo</NavLinkText>
-              <FaGithub />
-            </Nav.Link>
-          </Nav.Item>
+              <Button color={'primary'} endIcon={<FaGithub />}>
+                Github
+              </Button>
+            </Link>
+          </Grid>
         </PortfolioLinks>
         <CarouselWrapper>
           <CustomCarousel controls={disabled}>
@@ -203,7 +202,7 @@ const PortfolioPage: React.FC<Props> = ({ data }) => {
             ))}
           </CustomCarousel>
         </CarouselWrapper>
-      </Grid>
+      </Content>
     </Layout>
   );
 };

@@ -8,13 +8,8 @@
 import React, { ReactNode } from 'react';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import Container from '@material-ui/core/Container';
 import './Layout.css';
-
-const LayoutContainer = styled.main`
-  margin: 0 auto;
-  max-width: 1350px;
-`;
 
 interface Props {
   children: ReactNode;
@@ -32,7 +27,9 @@ const Layout: React.FC<Props> = ({ children }) => {
           crossOrigin="anonymous"
         />
       </Helmet>
-      <LayoutContainer>{children}</LayoutContainer>
+      <Container component={'main'} maxWidth={'lg'}>
+        {children}
+      </Container>
     </>
   );
 };
