@@ -2,95 +2,107 @@
 
 exports[`PortfolioCard should match the snapshot 1`] = `
 <article
-  className="col"
+  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-6 MuiGrid-grid-lg-4 MuiGrid-grid-xl-4"
 >
   <a
-    className="PortfolioCard__ProjectLink-o19g6j-0 cwsxkS"
+    className="PortfolioCard__ProjectLink-o19g6j-0 cFBxQd"
     href="/cash-pawn-jewelry-website/"
   >
     <div
-      className="card"
+      className="MuiPaper-root MuiCard-root MuiPaper-elevation8 MuiPaper-rounded"
     >
-      <div
-        className="PortfolioCard__CardHeader-o19g6j-1 ljCdif card-header"
-      >
-        Cash Pawn & Jewelry Website
-      </div>
-      <div
-        className="PortfolioCard__MainPhoto-o19g6j-2 cKTzQN gatsby-image-wrapper"
-        style={
-          Object {
-            "overflow": "hidden",
-            "position": "relative",
-          }
-        }
+      <button
+        className="MuiButtonBase-root MuiCardActionArea-root"
+        disabled={false}
+        onBlur={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
       >
         <div
-          aria-hidden={true}
+          className=" gatsby-image-wrapper"
           style={
             Object {
-              "paddingBottom": "57.708333333333336%",
-              "width": "100%",
+              "overflow": "hidden",
+              "position": "relative",
             }
           }
-        />
-        <img
-          alt=""
-          aria-hidden={true}
-          src="data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAMABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAQFA//EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/aAAwDAQACEAMQAAABfn1McHAI/8QAGhAAAQUBAAAAAAAAAAAAAAAAAAECAwQSEf/aAAgBAQABBQKw7MNaR6yD1NL0/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAGBABAAMBAAAAAAAAAAAAAAAAAQACISD/2gAIAQEABj8CsmTbLz//xAAcEAEAAQQDAAAAAAAAAAAAAAABEQAQITFhcYH/2gAIAQEAAT8hZ1IjNMgSNNkEMQ8UAIg86t//2gAMAwEAAgADAAAAEDQf/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFhEBAQEAAAAAAAAAAAAAAAAAARAh/9oACAECAQE/EByf/8QAHBABAAEEAwAAAAAAAAAAAAAAASEAEBExQWHR/9oACAEBAAE/EMUGYHZNMgzReybGoQSIeSjQZkIJt9Nv/9k="
-          style={
-            Object {
-              "height": "100%",
-              "left": 0,
-              "objectFit": "cover",
-              "objectPosition": "center",
-              "opacity": 1,
-              "position": "absolute",
-              "top": 0,
-              "transitionDelay": "500ms",
-              "width": "100%",
+        >
+          <div
+            aria-hidden={true}
+            style={
+              Object {
+                "paddingBottom": "57.708333333333336%",
+                "width": "100%",
+              }
             }
-          }
-        />
-        <picture>
-          <source
-            sizes="(max-width: 1920px) 100vw, 1920px"
-            srcSet="/static/56d0aba06cc4aae5197224cac0f73af4/9104c/cash-pawn_1.jpg 480w,
-/static/56d0aba06cc4aae5197224cac0f73af4/a6352/cash-pawn_1.jpg 960w,
-/static/56d0aba06cc4aae5197224cac0f73af4/d8255/cash-pawn_1.jpg 1920w,
-/static/56d0aba06cc4aae5197224cac0f73af4/af56c/cash-pawn_1.jpg 2880w,
-/static/56d0aba06cc4aae5197224cac0f73af4/4ee3c/cash-pawn_1.jpg 3554w"
           />
           <img
-            alt="First slide"
-            loading="lazy"
-            onLoad={[Function]}
-            sizes="(max-width: 1920px) 100vw, 1920px"
-            src="/static/56d0aba06cc4aae5197224cac0f73af4/d8255/cash-pawn_1.jpg"
-            srcSet="/static/56d0aba06cc4aae5197224cac0f73af4/9104c/cash-pawn_1.jpg 480w,
-/static/56d0aba06cc4aae5197224cac0f73af4/a6352/cash-pawn_1.jpg 960w,
-/static/56d0aba06cc4aae5197224cac0f73af4/d8255/cash-pawn_1.jpg 1920w,
-/static/56d0aba06cc4aae5197224cac0f73af4/af56c/cash-pawn_1.jpg 2880w,
-/static/56d0aba06cc4aae5197224cac0f73af4/4ee3c/cash-pawn_1.jpg 3554w"
+            alt=""
+            aria-hidden={true}
+            src="data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAMABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAQFA//EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/aAAwDAQACEAMQAAABfn1McHAI/8QAGhAAAQUBAAAAAAAAAAAAAAAAAAECAwQSEf/aAAgBAQABBQKw7MNaR6yD1NL0/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAGBABAAMBAAAAAAAAAAAAAAAAAQACISD/2gAIAQEABj8CsmTbLz//xAAcEAEAAQQDAAAAAAAAAAAAAAABEQAQITFhcYH/2gAIAQEAAT8hZ1IjNMgSNNkEMQ8UAIg86t//2gAMAwEAAgADAAAAEDQf/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFhEBAQEAAAAAAAAAAAAAAAAAARAh/9oACAECAQE/EByf/8QAHBABAAEEAwAAAAAAAAAAAAAAASEAEBExQWHR/9oACAEBAAE/EMUGYHZNMgzReybGoQSIeSjQZkIJt9Nv/9k="
             style={
               Object {
                 "height": "100%",
                 "left": 0,
                 "objectFit": "cover",
                 "objectPosition": "center",
-                "opacity": 0,
+                "opacity": 1,
                 "position": "absolute",
                 "top": 0,
-                "transition": "opacity 500ms",
+                "transitionDelay": "500ms",
                 "width": "100%",
               }
             }
           />
-        </picture>
-        <noscript
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": "<picture><source srcset=\\"/static/56d0aba06cc4aae5197224cac0f73af4/9104c/cash-pawn_1.jpg 480w,
+          <picture>
+            <source
+              sizes="(max-width: 1920px) 100vw, 1920px"
+              srcSet="/static/56d0aba06cc4aae5197224cac0f73af4/9104c/cash-pawn_1.jpg 480w,
+/static/56d0aba06cc4aae5197224cac0f73af4/a6352/cash-pawn_1.jpg 960w,
+/static/56d0aba06cc4aae5197224cac0f73af4/d8255/cash-pawn_1.jpg 1920w,
+/static/56d0aba06cc4aae5197224cac0f73af4/af56c/cash-pawn_1.jpg 2880w,
+/static/56d0aba06cc4aae5197224cac0f73af4/4ee3c/cash-pawn_1.jpg 3554w"
+            />
+            <img
+              alt="First slide"
+              loading="lazy"
+              onLoad={[Function]}
+              sizes="(max-width: 1920px) 100vw, 1920px"
+              src="/static/56d0aba06cc4aae5197224cac0f73af4/d8255/cash-pawn_1.jpg"
+              srcSet="/static/56d0aba06cc4aae5197224cac0f73af4/9104c/cash-pawn_1.jpg 480w,
+/static/56d0aba06cc4aae5197224cac0f73af4/a6352/cash-pawn_1.jpg 960w,
+/static/56d0aba06cc4aae5197224cac0f73af4/d8255/cash-pawn_1.jpg 1920w,
+/static/56d0aba06cc4aae5197224cac0f73af4/af56c/cash-pawn_1.jpg 2880w,
+/static/56d0aba06cc4aae5197224cac0f73af4/4ee3c/cash-pawn_1.jpg 3554w"
+              style={
+                Object {
+                  "height": "100%",
+                  "left": 0,
+                  "objectFit": "cover",
+                  "objectPosition": "center",
+                  "opacity": 0,
+                  "position": "absolute",
+                  "top": 0,
+                  "transition": "opacity 500ms",
+                  "width": "100%",
+                }
+              }
+            />
+          </picture>
+          <noscript
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<picture><source srcset=\\"/static/56d0aba06cc4aae5197224cac0f73af4/9104c/cash-pawn_1.jpg 480w,
 /static/56d0aba06cc4aae5197224cac0f73af4/a6352/cash-pawn_1.jpg 960w,
 /static/56d0aba06cc4aae5197224cac0f73af4/d8255/cash-pawn_1.jpg 1920w,
 /static/56d0aba06cc4aae5197224cac0f73af4/af56c/cash-pawn_1.jpg 2880w,
@@ -99,10 +111,31 @@ exports[`PortfolioCard should match the snapshot 1`] = `
 /static/56d0aba06cc4aae5197224cac0f73af4/d8255/cash-pawn_1.jpg 1920w,
 /static/56d0aba06cc4aae5197224cac0f73af4/af56c/cash-pawn_1.jpg 2880w,
 /static/56d0aba06cc4aae5197224cac0f73af4/4ee3c/cash-pawn_1.jpg 3554w\\" src=\\"/static/56d0aba06cc4aae5197224cac0f73af4/d8255/cash-pawn_1.jpg\\" alt=\\"First slide\\" style=\\"position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center\\"/></picture>",
+              }
             }
-          }
+          />
+        </div>
+        <div
+          className="MuiCardContent-root"
+        >
+          <div
+            className="MuiCardHeader-root"
+          >
+            <div
+              className="MuiCardHeader-content"
+            >
+              <span
+                className="MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock"
+              >
+                Cash Pawn & Jewelry Website
+              </span>
+            </div>
+          </div>
+        </div>
+        <span
+          className="MuiCardActionArea-focusHighlight"
         />
-      </div>
+      </button>
     </div>
   </a>
 </article>

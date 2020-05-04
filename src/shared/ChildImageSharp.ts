@@ -1,4 +1,4 @@
-export interface ChildImageSharp {
+export default interface ChildImageSharp {
   childImageSharp: {
     fluid: {
       base64: string;

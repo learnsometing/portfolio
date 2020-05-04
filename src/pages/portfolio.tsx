@@ -1,16 +1,16 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
-import { Container, Row } from 'react-bootstrap';
+import Grid from '@material-ui/core/Grid';
 import Layout from '../App/Layout/Layout';
-import PortfolioCard, { Project } from '../App/PortfolioCard/PortfolioCard';
+import PortfolioCard, { ProjectCard } from '../App/PortfolioCard/PortfolioCard';
 import Navigation from '../shared/Navigation';
 import CollapsedNavigation from '../shared/CollapsedNavigation';
 
 interface PortfolioProps {
   data: {
     allPortfolioJson: {
-      nodes: Project[];
+      nodes: ProjectCard[];
     };
   };
 }
@@ -22,14 +22,12 @@ export const Portfolio: React.FC<PortfolioProps> = ({ data }) => {
     <Layout>
       <Navigation />
       <CollapsedNavigation />
-      <Container fluid>
-        <h1>Portfolio</h1>
-        <Row xs="1" sm="1" md="2" lg="2" xl="3">
-          {nodes.map((project) => (
-            <PortfolioCard key={project.title} project={project} />
-          ))}
-        </Row>
-      </Container>
+      <h1>Portfolio</h1>
+      <Grid container spacing={2}>
+        {nodes.map((project) => (
+          <PortfolioCard key={project.title} project={project} />
+        ))}
+      </Grid>
     </Layout>
   );
 };
@@ -42,7 +40,7 @@ Portfolio.propTypes = {
   }).isRequired,
 };
 
-export const portfolioCardQuery = graphql`
+export const portfolioCards = graphql`
   query {
     allPortfolioJson {
       nodes {

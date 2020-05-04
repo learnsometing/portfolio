@@ -3,30 +3,19 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
-import { Card, Col } from 'react-bootstrap';
-import { ChildImageSharp } from '../../shared/ChildImageSharp';
-
-const ProjectLink = styled(Link)`
-  position: relative;
-  display: block;
-  margin: 15px 0;
-  color: black;
-`;
-
-const CardHeader = styled(Card.Header)`
-  font-weight: 700;
-`;
-
-const MainPhoto = styled(Img)`
-  margin-bottom: 0;
-`;
+import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardContent from '@material-ui/core/CardContent';
+import ChildImageSharp from '../../shared/ChildImageSharp';
 
 interface Image {
   src: ChildImageSharp;
   altText: string;
 }
 
-export interface Project {
+export interface ProjectCard {
   title: string;
   cardPhoto: Image;
   fields: {
@@ -35,22 +24,30 @@ export interface Project {
 }
 
 interface CardProps {
-  project: Project;
+  project: ProjectCard;
 }
+
+const ProjectLink = styled(Link)`
+  text-decoration: none;
+`;
 
 const PortfolioCard: React.FC<CardProps> = ({ project }) => {
   return (
-    <Col as={'article'}>
+    <Grid item component={'article'} xl={4} lg={4} md={6} sm={6} xs={12}>
       <ProjectLink to={project.fields.slug}>
-        <Card>
-          <CardHeader>{project.title}</CardHeader>
-          <MainPhoto
-            fluid={project.cardPhoto.src.childImageSharp.fluid}
-            alt="First slide"
-          />
+        <Card raised>
+          <CardActionArea>
+            <Img
+              fluid={project.cardPhoto.src.childImageSharp.fluid}
+              alt="First slide"
+            />
+            <CardContent>
+              <CardHeader title={project.title} />
+            </CardContent>
+          </CardActionArea>
         </Card>
       </ProjectLink>
-    </Col>
+    </Grid>
   );
 };
 

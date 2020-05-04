@@ -1,28 +1,27 @@
 import React from 'react';
-import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
 import PropTypes from 'prop-types';
-import { Carousel, Nav, Container, Row } from 'react-bootstrap';
+import { graphql } from 'gatsby';
 import styled from 'styled-components';
+
+// Material-UI Imports
+import Grid from '@material-ui/core/Grid';
+import Link from '@material-ui/core/Link';
+import Button from '@material-ui/core/Button';
+
+// Icons
 import { TiArrowForward } from 'react-icons/ti';
 import { FaGithub } from 'react-icons/fa';
+
+// Components
 import Layout from '../App/Layout/Layout';
 import SEO from '../App/SEO/SEO';
 import FluidTypography from '../shared/FluidTypography';
 import Navigation from '../shared/Navigation';
 import CollapsedNavigation from '../shared/CollapsedNavigation';
+import Carousel from '../App/Carousel/Carousel';
 
-interface ChildImageSharp {
-  childImageSharp: {
-    fluid: {
-      base64: string;
-      aspectRatio: number;
-      src: string;
-      srcSet: string;
-      sizes: string;
-    };
-  };
-}
+// Interfaces
+import ChildImageSharp from '../shared/ChildImageSharp';
 
 interface Image {
   src: ChildImageSharp;
@@ -46,7 +45,7 @@ interface Props {
   data: Data;
 }
 
-const Grid = styled.div`
+const Content = styled.div`
   width: 100%;
   display: grid;
   grid-template-rows: auto;
@@ -64,89 +63,27 @@ const PageHeading = styled(FluidTypography).attrs(() => ({
   margin-top: 0.5rem;
 `;
 
-const PortfolioLinks = styled(Nav)`
+const PortfolioLinks = styled(Grid).attrs({
+  component: 'nav',
+})`
   grid-column: 3/7;
+  margin: 0.5rem 0;
 `;
 
-const NavLinkText = styled.span`
-  margin: 0 5px;
-`;
-
-const CarouselWrapper = styled.div`
+const CarouselWrapper = styled(Grid)`
   grid-row: 3/4;
   grid-column: 1/9;
-  display: flex;
-  justify-content: center;
-`;
-
-const CustomCarousel = styled(Carousel)`
-  width: 90%;
-
-  /* indicators */
-  ol {
-    display: none;
-  }
-
-  /* queries to keep the carousel on screen as aspect ratio increases */
-  @media screen and (min-width: 1350px) {
-    width: 100%;
-  }
-  @media screen and (min-aspect-ratio: 17/9) and (max-aspect-ratio: 18/9) {
-    max-width: 80%;
-  }
-  @media screen and (min-aspect-ratio: 18/9) and (max-aspect-ratio: 19/9) {
-    max-width: 75%;
-  }
-  @media screen and (min-aspect-ratio: 19/9) and (max-aspect-ratio: 20/9) {
-    max-width: 72.5%;
-  }
-  @media screen and (min-aspect-ratio: 20/9) and (max-aspect-ratio: 21/9) {
-    max-width: 70%;
-  }
-  @media screen and (min-aspect-ratio: 21/9) and (max-aspect-ratio: 22/9) {
-    max-width: 67.5%;
-  }
-
-  @media only screen and (min-width: 760px) {
-    ol {
-      display: flex;
-    }
-  }
-`;
-
-const Caption = styled(FluidTypography)`
-  display: none;
-
-  @media only screen and (min-width: 760px) {
-    display: block;
-  }
-`;
-
-const CaptionOverlay = styled.div`
-  position: absolute;
-  top: 0;
-  display: block;
-  height: 100%;
-  width: 100%;
-  background: rgb(0, 0, 0);
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0) 15%,
-    rgba(0, 0, 0, 0.3) 100%
-  );
-  border: 1px solid #bbc7ce;
 `;
 
 const PortfolioPage: React.FC<Props> = ({ data }) => {
   const project = data.portfolioJson;
-  const disabled = project.carouselPhotos.length > 1;
 
   return (
     <Layout>
       <SEO title={project.title} />
       <Navigation />
       <CollapsedNavigation />
-      <Grid>
+      <Content>
         <PageHeading
           as="h1"
           minFontSize={'24px'}
@@ -156,54 +93,34 @@ const PortfolioPage: React.FC<Props> = ({ data }) => {
         >
           {project.title}
         </PageHeading>
-        <PortfolioLinks className={'justify-content-center'}>
-          <Nav.Item>
-            <Nav.Link
+        <PortfolioLinks container justify={'center'} spacing={2}>
+          <Grid item>
+            <Link
               href={project.websiteURL}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Container className="container">
-                <Row className={'justify-content-center align-items-center'}>
-                  <NavLinkText>Visit</NavLinkText>
-                  <TiArrowForward />
-                </Row>
-              </Container>
-            </Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link
+              <Button color={'primary'} endIcon={<TiArrowForward />}>
+                Visit
+              </Button>
+            </Link>
+          </Grid>
+          <Grid item>
+            <Link
               href={project.githubURL}
               target="_blank"
               rel="noopener noreferrer"
             >
-              {' '}
-              <NavLinkText>Github Repo</NavLinkText>
-              <FaGithub />
-            </Nav.Link>
-          </Nav.Item>
+              <Button color={'primary'} endIcon={<FaGithub />}>
+                Github
+              </Button>
+            </Link>
+          </Grid>
         </PortfolioLinks>
-        <CarouselWrapper>
-          <CustomCarousel controls={disabled}>
-            {project.carouselPhotos.map((photoNode) => (
-              <Carousel.Item key={photoNode.altText}>
-                <Img fluid={photoNode.src.childImageSharp.fluid} />
-                <CaptionOverlay />
-                <Carousel.Caption>
-                  <Caption
-                    minFontSize={'16px'}
-                    maxFontSize={'24px'}
-                    minViewportWidth={'320px'}
-                    maxViewportWidth={'1920px'}
-                  >
-                    {photoNode.caption}
-                  </Caption>
-                </Carousel.Caption>
-              </Carousel.Item>
-            ))}
-          </CustomCarousel>
+        <CarouselWrapper container justify={'center'}>
+          <Carousel slides={project.carouselPhotos} />
         </CarouselWrapper>
-      </Grid>
+      </Content>
     </Layout>
   );
 };
