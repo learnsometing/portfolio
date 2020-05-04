@@ -25,6 +25,10 @@ export const NavLink = styled(Link)`
     color: #1b065e;
     text-decoration: none;
   }
+
+  &:active {
+    color: #1b065e;
+  }
 `;
 
 export const LinkText = styled(FluidTypography).attrs(() => ({
