@@ -32,6 +32,7 @@ const Name = styled(FluidTypography).attrs(() => ({
   grid-column: 1/4;
   color: #0d3b66;
   border-bottom: 5px solid #0d3b66;
+  margin-bottom: 0;
   @media only screen and (min-width: 768px) {
     text-align: end;
     grid-column: 2/3;

@@ -13,7 +13,7 @@ const Nav = styled.nav`
 `;
 
 const HeaderNavLink = styled(NavLink)`
-  padding: 0;
+  padding: 0.5rem 0;
   margin: 0;
   &:hover {
     animation: indent 0.5s ease-in-out alternate infinite forwards;
@@ -31,7 +31,7 @@ const HeaderNavLink = styled(NavLink)`
 
   @media only screen and (min-width: 768px) {
     writing-mode: vertical-lr;
-    margin: 0 0.25rem;
+    margin: 0 0.5rem;
     @keyframes indent {
       to {
         transform: translateY(16px);

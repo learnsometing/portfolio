@@ -10,7 +10,6 @@ const Brand = styled(FluidTypography).attrs(() => ({
   minViewportWidth: '768px',
   maxViewportWidth: '1350px',
 }))`
-  padding: 0.5rem 0;
   margin: 0 1rem;
   color: #0d3b66;
 `;
@@ -21,7 +20,7 @@ export const NavLink = styled(Link)`
   color: #f95738;
   font-family: mr-eaves-xl-modern;
   font-weight: bold;
-
+  text-decoration: none;
   &:hover {
     color: #1b065e;
     text-decoration: none;
@@ -57,9 +56,9 @@ const Navbar = styled(Grid).attrs(() => ({
 const Navigation: React.FC = () => (
   <Navbar>
     {/* Brand */}
-    <Link to="/">
+    <NavLink to="/">
       <Brand as="h1">BRIAN MONACCIO</Brand>
-    </Link>
+    </NavLink>
     {/* Links */}
     <NavLink to="/">
       <LinkText as="span">Home</LinkText>

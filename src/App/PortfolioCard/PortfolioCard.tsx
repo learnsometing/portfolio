@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
+import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -26,10 +27,14 @@ interface CardProps {
   project: ProjectCard;
 }
 
+const ProjectLink = styled(Link)`
+  text-decoration: none;
+`;
+
 const PortfolioCard: React.FC<CardProps> = ({ project }) => {
   return (
     <Grid item component={'article'} xl={4} lg={4} md={6} sm={6} xs={12}>
-      <Link to={project.fields.slug}>
+      <ProjectLink to={project.fields.slug}>
         <Card raised>
           <CardActionArea>
             <Img
@@ -41,7 +46,7 @@ const PortfolioCard: React.FC<CardProps> = ({ project }) => {
             </CardContent>
           </CardActionArea>
         </Card>
-      </Link>
+      </ProjectLink>
     </Grid>
   );
 };
