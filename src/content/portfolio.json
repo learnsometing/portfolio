@@ -1,7 +1,6 @@
 [
   {
     "title": "Cash Pawn & Jewelry Website",
-    "shortDescription": "JAMstack site built using Gatsby and React.js",
     "websiteURL": "https://veropawn.net/",
     "githubURL": "https://github.com/learnsometing/veropawn.com",
     "cardPhoto": {
@@ -35,23 +34,28 @@
         "caption": "Item page with full screen carousel"
       }
     ],
+    "shortDescription": "JAMstack site built using Gatsby and React.js",
     "fullDescription": "I developed veropawn.net independently for Cash Pawn & Jewelry, a pawn shop located in Vero Beach, FL. The website is a React web application built on the Gatsby static site generator framework. During this project, I employed responsive and UX friendly designs to implement an online catalog of the shop’s inventory. My main challenge while building this website was my experience level; I had no prior React or Gatsby experience at the beginning of this project and learned both frameworks during development. It was also challenging to retrieve and process the shop’s inventory data I used the shop’s inventory data to programmatically build thousands of shopping pages and item pages and dynamically generate navigation. The resulting website increased overall sales and customer satisfaction and bolstered the company’s limited web presence.",
-    "techSpecs": [
-      "css",
-      "css-modules",
-      "gatsby",
-      "graphql",
-      "javascript",
-      "jest",
-      "nodejs",
-      "postcss",
-      "react",
-      "react-testing-library"
-    ]
+    "tags": [
+      "CSS",
+      "CSS Modules",
+      "E-Commerce",
+      "Gatsby",
+      "GraphQl",
+      "Integration Tests",
+      "JavaScript",
+      "Jest",
+      "Node.js",
+      "Post CSS",
+      "React",
+      "React Testing Library",
+      "Responsive Design",
+      "Unit Tests"
+    ],
+    "dateCompleted": "2020-02-25"
   },
   {
     "title": "Responsive Design Study",
-    "shortDescription": "",
     "websiteURL": "https://learnsometing.github.io/responsive-design/",
     "githubURL": "https://github.com/learnsometing/responsive-design",
     "cardPhoto": {
@@ -65,12 +69,13 @@
         "caption": "A mock of The Next Web's website."
       }
     ],
-    "fullDescription": "",
-    "techSpecs": []
+    "shortDescription": "A mock of The Next Web's website featuring a responsive layout.",
+    "fullDescription": "It's necessary for all web developers to have a solid grasp on responsive design. To develop and apply my understanding of responsive design principles, I mocked the home page of The Next Web's website. I constructed the webpage first using HTML, studied how The Next Web's website responded to changes in the viewport width, and finally used CSS media queries and flexbox to implement the responsive behaviors.",
+    "tags": ["CSS", "HTML", "Responsive Design"],
+    "dateCompleted": "2019-09-17"
   },
   {
-    "title": "OpenWeatherMap API React App",
-    "shortDescription": "",
+    "title": "React Weather App",
     "websiteURL": "https://learnsometing.github.io/JS-weather-api-app/",
     "githubURL": "https://github.com/learnsometing/JS-weather-api-app",
     "cardPhoto": {
@@ -84,12 +89,22 @@
         "caption": "Weather for Beacon, US."
       }
     ],
-    "fullDescription": "",
-    "techSpecs": []
+    "shortDescription": "A React weather app that shows the current forecast in a searchable area.",
+    "fullDescription": "Data-driven applications rely on APIs to retrieve and mutate data in a convenient and efficient manner. Making asynchronous calls to third-party APIs can be tricky though. I built this project to practice both asynchronous JavaScript and using fetch to make REST API calls. It displays the current forecast for the area the user chooses to search. I chose to build it using React instead of vanilla JS for more React practice also.",
+    "tags": [
+      "CSS",
+      "CSS Modules",
+      "JavaScript",
+      "Jest",
+      "React",
+      "React Testing Library",
+      "Third-Party APIs",
+      "Unit Tests"
+    ],
+    "dateCompleted": "2020-01-07"
   },
   {
     "title": "Dev Communities Social App",
-    "shortDescription": "",
     "websiteURL": "https://dev-communities.herokuapp.com/",
     "githubURL": "https://github.com/learnsometing/dev-communities",
     "cardPhoto": {
@@ -188,12 +203,68 @@
         "caption": "Notifications are generated through posts and friend requests."
       }
     ],
-    "fullDescription": "",
-    "techSpecs": []
+    "shortDescription": "A Ruby on Rails social media app for developers.",
+    "fullDescription": "Dev Communities is my final project in the Odin Project Ruby on Rails curriculum. It was inspired by Facebook, Meetup, and Stack Overflow. I wanted Dev Communities to enable developers to discover each other and form communities they could engage in. In the end, I had to cut some of the features to have the app in a working state in time for it to be presented to my local development community, so it resembles Facebook more than anything. I struggled the most with developing a notifications system for the application, but I thouroughly enjoyed modeling the data relationships that power its main features.",
+    "tags": [
+      "AWS S3",
+      "Bootstrap",
+      "CSS",
+      "HTML",
+      "Integration Tests",
+      "Minitest",
+      "MVC Architecture",
+      "PostgreSQL",
+      "Public Presentations",
+      "RESTful Services",
+      "Ruby",
+      "Ruby on Rails",
+      "Third-Party APIs",
+      "Unit Tests"
+    ],
+    "dateCompleted": "2019-08-16"
   },
   {
-    "title": "Rails Private Events",
-    "shortDescription": "",
+    "title": "Rails Flight Booker",
+    "websiteURL": "https://learnsometing-flight-booker.herokuapp.com/",
+    "githubURL": "https://github.com/learnsometing/rails-flight_booker",
+    "cardPhoto": {
+      "src": "../images/work-experience/rails-flight-booker/home.jpg",
+      "altText": "The home page of the rails flight booker app, displaying a menu with flight choices."
+    },
+    "carouselPhotos": [
+      {
+        "src": "../images/work-experience/rails-flight-booker/home.jpg",
+        "altText": "The home page of the rails flight booker app, displaying a menu with flight choices.",
+        "caption": "Easily pick a flight from the home screen."
+      },
+      {
+        "src": "../images/work-experience/rails-flight-booker/check-in.jpg",
+        "altText": "A form that takes the names and emails of each passenger.",
+        "caption": "Enter the names and emails of each passenger to confirm."
+      },
+      {
+        "src": "../images/work-experience/rails-flight-booker/itinerary-confirmation.jpg",
+        "altText": "A confirmation screen for the flight the user picked.",
+        "caption": "Get confirmation of your flight after sign up."
+      }
+    ],
+    "shortDescription": "The typical airline booking flow in a Rails App.",
+    "fullDescription": "Forms are used on even the simplest websites to gather information from the user. This app was an exercise in building forms in Ruby on Rails. Users pick their desired departure and arrival destinations and enter the number of passengers, then pick the desired flight, and finally enter information on each passenger. Rails provides convenient methods to associate form fields with model fields that simplify submitting user data to the database.",
+    "tags": [
+      "Bootstrap",
+      "CSS",
+      "HTML5 Forms",
+      "HTML",
+      "MVC Architecture",
+      "RESTful Services",
+      "Ruby on Rails",
+      "Ruby",
+      "Unit Tests"
+    ],
+    "dateCompleted": "2019-07-01"
+  },
+  {
+    "title": "Hostr",
     "websiteURL": "https://learnsometing-private-events.herokuapp.com/",
     "githubURL": "https://github.com/learnsometing/rails-private_events",
     "cardPhoto": {
@@ -247,41 +318,21 @@
         "caption": "Browse upcoming events."
       }
     ],
-    "fullDescription": "",
-    "techSpecs": []
-  },
-  {
-    "title": "Rails Flight Booker",
-    "shortDescription": "",
-    "websiteURL": "https://learnsometing-flight-booker.herokuapp.com/",
-    "githubURL": "https://github.com/learnsometing/rails-flight_booker",
-    "cardPhoto": {
-      "src": "../images/work-experience/rails-flight-booker/home.jpg",
-      "altText": "The home page of the rails flight booker app, displaying a menu with flight choices."
-    },
-    "carouselPhotos": [
-      {
-        "src": "../images/work-experience/rails-flight-booker/home.jpg",
-        "altText": "The home page of the rails flight booker app, displaying a menu with flight choices.",
-        "caption": "Easily pick a flight from the home screen."
-      },
-      {
-        "src": "../images/work-experience/rails-flight-booker/check-in.jpg",
-        "altText": "A form that takes the names and emails of each passenger.",
-        "caption": "Enter the names and emails of each passenger to confirm."
-      },
-      {
-        "src": "../images/work-experience/rails-flight-booker/itinerary-confirmation.jpg",
-        "altText": "A confirmation screen for the flight the user picked.",
-        "caption": "Get confirmation of your flight after sign up."
-      }
+    "shortDescription": "A Ruby on Rails event hosting app.",
+    "fullDescription": "Relational databases provide a means to relate datasets to each other through foreign key associations. Under the hood, Rails uses the ActiveRecord ORM to implement database relations through ActiveRecord associations. Hostr is an eventbrite inspired app that was developed to practice using ActiveRecord associations. Users can sign up with their name, create events, and invite other users to their own events. All previous and upcoming events can be browsed as well.",
+    "tags": [
+      "Bootstrap",
+      "CSS",
+      "HTML",
+      "MVC Architecture",
+      "RESTful Services",
+      "Ruby",
+      "Ruby on Rails"
     ],
-    "fullDescription": "",
-    "techSpecs": []
+    "dateCompleted": "2019-06-10"
   },
   {
-    "title": "Pomodoro Timer Pair Programming Exercise",
-    "shortDescription": "",
+    "title": "Pomodoro Timer",
     "websiteURL": "https://learnsometing.github.io/pomodoro-timer/",
     "githubURL": "https://github.com/learnsometing/pomodoro-timer",
     "cardPhoto": {
@@ -305,13 +356,13 @@
         "caption": "A five minute short break."
       }
     ],
-    "fullDescription": "",
-    "techSpecs": [],
-    "yearCompleted": "2018"
+    "shortDescription": "A pomodoro timer created as a pair programming exercise.",
+    "fullDescription": "Pomodoro is a time management and endurance technique. Work is broken down into 25 minute intervals, followed by a short five minute break. After 4 Pomodoros, the break time is expanded to ten minutes. This project was an exercise in using the pomodoro technique in pair programming. It was challenging to work with someone that I'd never worked with before, but it was a valuable exercise in communication and patience.",
+    "tags": ["Collaboration", "CSS", "HTML", "JavaScript", "Pair Programming"],
+    "dateCompleted": "2019-01-31"
   },
   {
     "title": "Web Calculator",
-    "shortDescription": "",
     "websiteURL": "https://learnsometing.github.io/odin-project-calculator/",
     "githubURL": "https://github.com/learnsometing/odin-project-calculator",
     "cardPhoto": {
@@ -330,13 +381,13 @@
         "caption": "The calculator works!"
       }
     ],
-    "fullDescription": "",
-    "techSpecs": [],
-    "yearCompleted": "2018"
+    "shortDescription": "A JavaScript calculator that uses the shunting-yard algorithm to implement order of operations.",
+    "fullDescription": "The web relies on JavaScript to add rich, dynamic features that aren't otherwise possible with HTML and CSS alone. This project was an exercise in using JavaScript to perform calculations on user input. It tokenizes the user input then leverages the shunting-yard algorithm to perform order of operations. It was challenging to decide how to track changes to the user input and to perform the calculations in the correct order. After completing the project on my own, I learned about JavaScript's eval() function, which could have been used instead of the shunting-yard algorithm.",
+    "tags": ["Algorithms", "CSS", "CSS Grid", "HTML", "JavaScript"],
+    "dateCompleted": "2019-01-28"
   },
   {
     "title": "Etch-a-sketch",
-    "shortDescription": "",
     "websiteURL": "https://learnsometing.github.io/etchASketch/",
     "githubURL": "https://github.com/learnsometing/etchASketch",
     "cardPhoto": {
@@ -350,13 +401,13 @@
         "caption": "An Etch-a-Sketch drawing."
       }
     ],
-    "fullDescription": "",
-    "techSpecs": [],
-    "yearCompleted": "2018"
+    "shortDescription": "An HTML5, CSS, and JavaScript Etch-a-Sketch.",
+    "fullDescription": "Unleash your inner artist in my JavaScript recreation of the Etch-a-Sketch! JS is used to build a grid with a user-defined number of cells, then onMouseOver events are used to toggle a class on each cell to implement the drawing effect.",
+    "tags": ["CSS", "HTML", "JavaScript"],
+    "dateCompleted": "2018-11-06"
   },
   {
     "title": "Google Homepage",
-    "shortDescription": "",
     "websiteURL": "https://learnsometing.github.io/google_homepage/",
     "githubURL": "https://github.com/learnsometing/google_homepage",
     "cardPhoto": {
@@ -370,8 +421,9 @@
         "caption": "Mock Google home page."
       }
     ],
-    "fullDescription": "",
-    "techSpecs": [],
-    "yearCompleted": "2018"
+    "shortDescription": "My first webpage; a recreation of the Google home page.",
+    "fullDescription": "I recreated the Google home page after learning some basic HTML and CSS. I struggled with the most with layout in this project.",
+    "tags": ["CSS", "HTML"],
+    "dateCompleted": "2018-10-02"
   }
 ]
