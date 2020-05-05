@@ -45,6 +45,7 @@ export const portfolioCards = graphql`
     allPortfolioJson {
       nodes {
         title
+        shortDescription
         cardPhoto {
           altText
           src {
