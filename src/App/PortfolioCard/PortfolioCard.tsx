@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
+
+// Material-UI
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 import ChildImageSharp from '../../shared/ChildImageSharp';
 
 interface Image {
@@ -17,6 +19,7 @@ interface Image {
 
 export interface ProjectCard {
   title: string;
+  shortDescription: string;
   cardPhoto: Image;
   fields: {
     slug: string;
@@ -42,7 +45,12 @@ const PortfolioCard: React.FC<CardProps> = ({ project }) => {
               alt="First slide"
             />
             <CardContent>
-              <CardHeader title={project.title} />
+              <Typography gutterBottom variant={'h6'} component={'h2'}>
+                {project.title}
+              </Typography>
+              <Typography variant={'body2'}>
+                {project.shortDescription}
+              </Typography>
             </CardContent>
           </CardActionArea>
         </Card>
@@ -54,6 +62,7 @@ const PortfolioCard: React.FC<CardProps> = ({ project }) => {
 PortfolioCard.propTypes = {
   project: PropTypes.shape({
     title: PropTypes.string.isRequired,
+    shortDescription: PropTypes.string.isRequired,
     cardPhoto: PropTypes.shape({
       src: PropTypes.shape({
         childImageSharp: PropTypes.shape({

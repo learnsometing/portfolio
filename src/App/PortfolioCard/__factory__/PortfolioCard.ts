@@ -1,6 +1,6 @@
-import { Project } from '../PortfolioCard';
+import { ProjectCard } from '../PortfolioCard';
 
-const project = (): Project => {
+const project = (): ProjectCard => {
   return {
     title: 'Cash Pawn & Jewelry Website',
     cardPhoto: {
@@ -20,6 +20,8 @@ const project = (): Project => {
         },
       },
     },
+    shortDescription:
+      'A professional website built for Cash Pawn & Jewelry using Gatsby and React.js.',
     fields: {
       slug: '/cash-pawn-jewelry-website/',
     },
