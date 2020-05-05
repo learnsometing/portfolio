@@ -17,40 +17,40 @@ interface Image {
   altText: string;
 }
 
-export interface ProjectCard {
-  title: string;
-  shortDescription: string;
-  cardPhoto: Image;
-  fields: {
-    slug: string;
+export interface ProjectCardContent {
+  frontmatter: {
+    title: string;
+    path: string;
+    cardText: string;
+    cardPhoto: Image;
   };
 }
 
 interface CardProps {
-  project: ProjectCard;
+  project: ProjectCardContent;
 }
 
 const ProjectLink = styled(Link)`
   text-decoration: none;
 `;
 
-const PortfolioCard: React.FC<CardProps> = ({ project }) => {
+const ProjectCard: React.FC<CardProps> = ({ project }) => {
+  const { frontmatter } = project;
+
   return (
     <Grid item component={'article'} xl={4} lg={4} md={6} sm={6} xs={12}>
-      <ProjectLink to={project.fields.slug}>
+      <ProjectLink to={frontmatter.path}>
         <Card raised>
           <CardActionArea>
             <Img
-              fluid={project.cardPhoto.src.childImageSharp.fluid}
+              fluid={frontmatter.cardPhoto.src.childImageSharp.fluid}
               alt="First slide"
             />
             <CardContent>
               <Typography gutterBottom variant={'h6'} component={'h2'}>
-                {project.title}
+                {frontmatter.title}
               </Typography>
-              <Typography variant={'body2'}>
-                {project.shortDescription}
-              </Typography>
+              <Typography variant={'body2'}>{frontmatter.cardText}</Typography>
             </CardContent>
           </CardActionArea>
         </Card>
@@ -59,28 +59,28 @@ const PortfolioCard: React.FC<CardProps> = ({ project }) => {
   );
 };
 
-PortfolioCard.propTypes = {
+ProjectCard.propTypes = {
   project: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    shortDescription: PropTypes.string.isRequired,
-    cardPhoto: PropTypes.shape({
-      src: PropTypes.shape({
-        childImageSharp: PropTypes.shape({
-          fluid: PropTypes.shape({
-            base64: PropTypes.string.isRequired,
-            aspectRatio: PropTypes.number.isRequired,
-            src: PropTypes.string.isRequired,
-            srcSet: PropTypes.string.isRequired,
-            sizes: PropTypes.string.isRequired,
+    frontmatter: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      path: PropTypes.string.isRequired,
+      cardText: PropTypes.string.isRequired,
+      cardPhoto: PropTypes.shape({
+        src: PropTypes.shape({
+          childImageSharp: PropTypes.shape({
+            fluid: PropTypes.shape({
+              base64: PropTypes.string.isRequired,
+              aspectRatio: PropTypes.number.isRequired,
+              src: PropTypes.string.isRequired,
+              srcSet: PropTypes.string.isRequired,
+              sizes: PropTypes.string.isRequired,
+            }).isRequired,
           }).isRequired,
         }).isRequired,
+        altText: PropTypes.string.isRequired,
       }).isRequired,
-      altText: PropTypes.string.isRequired,
-    }).isRequired,
-    fields: PropTypes.shape({
-      slug: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
 };
 
-export default PortfolioCard;
+export default ProjectCard;

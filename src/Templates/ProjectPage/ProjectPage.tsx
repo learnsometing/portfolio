@@ -25,19 +25,21 @@ import Technologies from './Technologies';
 // Interfaces
 import { Slide } from '../../App/Carousel/Carousel';
 
-interface Data {
-  portfolioJson: {
-    title: string;
-    websiteURL: string;
-    githubURL: string;
-    carouselPhotos: Slide[];
-    fullDescription: string;
-    technologies: string[];
+interface Mdx {
+  mdx: {
+    frontmatter: {
+      title: string;
+      websiteURL: string;
+      githubURL: string;
+      carouselPhotos: Slide[];
+      technologies: string[];
+    };
+    body: string;
   };
 }
 
 interface Props {
-  data: Data;
+  data: Mdx;
 }
 
 const PageHeader = styled(Grid).attrs({
@@ -69,23 +71,23 @@ const Section = styled(Grid).attrs({
   color: #fdfde8;
 `;
 
-const PortfolioPage: React.FC<Props> = ({ data }) => {
-  const project = data.portfolioJson;
+const PortfolioPage: React.FC<Props> = ({ data: { mdx } }) => {
+  const { frontmatter } = mdx;
 
   return (
     <Layout>
-      <SEO title={project.title} />
+      <SEO title={frontmatter.title} />
       <Navigation />
       <CollapsedNavigation />
       <PageHeader container justify={'space-between'} alignItems={'center'}>
         <Grid item>
-          <Typography variant={'h1'}>{project.title}</Typography>
+          <Typography variant={'h1'}>{frontmatter.title}</Typography>
         </Grid>
         <Grid item>
           <Grid container spacing={2}>
             <Grid item>
               <Link
-                href={project.websiteURL}
+                href={frontmatter.websiteURL}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -96,7 +98,7 @@ const PortfolioPage: React.FC<Props> = ({ data }) => {
             </Grid>
             <Grid item>
               <Link
-                href={project.githubURL}
+                href={frontmatter.githubURL}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -111,7 +113,7 @@ const PortfolioPage: React.FC<Props> = ({ data }) => {
 
       <Grid container justify={'center'}>
         <CarouselRoot item xs={12} sm={12} md={8} lg={8} xl={8}>
-          <Carousel slides={project.carouselPhotos} />
+          <Carousel slides={frontmatter.carouselPhotos} />
         </CarouselRoot>
 
         <Aside
@@ -124,11 +126,11 @@ const PortfolioPage: React.FC<Props> = ({ data }) => {
           container
           direction={'column'}
         >
-          <Technologies technologies={project.technologies} />
+          <Technologies technologies={frontmatter.technologies} />
         </Aside>
 
         <Section item xs={12} sm={12} md={12} lg={12} xl={12}>
-          <Description description={project.fullDescription} />
+          <Description description={mdx.body} />
         </Section>
       </Grid>
     </Layout>
@@ -137,29 +139,31 @@ const PortfolioPage: React.FC<Props> = ({ data }) => {
 
 PortfolioPage.propTypes = {
   data: PropTypes.shape({
-    portfolioJson: PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      websiteURL: PropTypes.string.isRequired,
-      githubURL: PropTypes.string.isRequired,
-      carouselPhotos: PropTypes.arrayOf(
-        PropTypes.shape({
-          src: PropTypes.shape({
-            childImageSharp: PropTypes.shape({
-              fluid: PropTypes.shape({
-                base64: PropTypes.string.isRequired,
-                aspectRatio: PropTypes.number.isRequired,
-                src: PropTypes.string.isRequired,
-                srcSet: PropTypes.string.isRequired,
-                sizes: PropTypes.string.isRequired,
+    mdx: PropTypes.shape({
+      frontmatter: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        websiteURL: PropTypes.string.isRequired,
+        githubURL: PropTypes.string.isRequired,
+        carouselPhotos: PropTypes.arrayOf(
+          PropTypes.shape({
+            src: PropTypes.shape({
+              childImageSharp: PropTypes.shape({
+                fluid: PropTypes.shape({
+                  base64: PropTypes.string.isRequired,
+                  aspectRatio: PropTypes.number.isRequired,
+                  src: PropTypes.string.isRequired,
+                  srcSet: PropTypes.string.isRequired,
+                  sizes: PropTypes.string.isRequired,
+                }).isRequired,
               }).isRequired,
             }).isRequired,
-          }).isRequired,
-          altText: PropTypes.string.isRequired,
-          caption: PropTypes.string,
-        }).isRequired
-      ).isRequired,
-      fullDescription: PropTypes.string.isRequired,
-      technologies: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+            altText: PropTypes.string.isRequired,
+            caption: PropTypes.string,
+          }).isRequired
+        ).isRequired,
+        technologies: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+      }).isRequired,
+      body: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
 };
@@ -168,23 +172,25 @@ export default PortfolioPage;
 
 export const query = graphql`
   query($slug: String!) {
-    portfolioJson(fields: { slug: { eq: $slug } }) {
-      title
-      githubURL
-      websiteURL
-      carouselPhotos {
-        altText
-        src {
-          childImageSharp {
-            fluid(maxWidth: 1920) {
-              ...GatsbyImageSharpFluid
+    mdx(frontmatter: { path: { eq: $slug } }) {
+      frontmatter {
+        title
+        githubURL
+        websiteURL
+        carouselPhotos {
+          altText
+          src {
+            childImageSharp {
+              fluid(maxWidth: 1920) {
+                ...GatsbyImageSharpFluid
+              }
             }
           }
+          caption
         }
-        caption
+        technologies
       }
-      fullDescription
-      technologies
+      body
     }
   }
 `;

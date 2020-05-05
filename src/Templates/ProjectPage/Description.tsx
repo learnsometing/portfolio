@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 // Material-UI
 import Typography from '@material-ui/core/Typography';
@@ -13,9 +14,7 @@ const Description: React.FC<Props> = ({ description }) => (
     <Typography variant={'h2'} gutterBottom>
       Description
     </Typography>
-    <Typography variant={'body1'} gutterBottom>
-      {description}
-    </Typography>
+    <MDXRenderer>{description}</MDXRenderer>
   </>
 );
 
