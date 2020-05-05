@@ -65,7 +65,7 @@ exports.createPages = async ({graphql, actions }) => {
   data.allPortfolioPages.nodes.forEach(node => {
     createPage({
       path: node.fields.slug,
-      component: path.resolve(`./src/Templates/PortfolioPage.tsx`),
+      component: path.resolve(`./src/Templates/PortfolioPage/PortfolioPage.tsx`),
       context: {
         // Data passed to context is available in page queries as GraphQL variables.
         slug: node.fields.slug,
