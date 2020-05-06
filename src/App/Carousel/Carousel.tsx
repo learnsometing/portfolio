@@ -8,11 +8,9 @@ import MobileStepper from '@material-ui/core/MobileStepper';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
 
 // SwipeableViews
 import SwipeableViews from 'react-swipeable-views';
-import { autoPlay } from 'react-swipeable-views-utils';
 
 //Icons
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from 'react-icons/md';
@@ -20,7 +18,7 @@ import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from 'react-icons/md';
 // Interfaces
 import ChildImageSharp from '../../shared/ChildImageSharp';
 
-interface Slide {
+export interface Slide {
   src: ChildImageSharp;
   altText: string;
   caption?: string;
@@ -30,33 +28,40 @@ interface Props {
   slides: Slide[];
 }
 
-const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
-
-const CarouselRoot = styled(Grid)`
-  /* queries to keep the carousel on screen as aspect ratio increases */
-  @media screen and (min-aspect-ratio: 17/9) and (max-aspect-ratio: 18/9) {
-    max-width: 80%;
-  }
-  @media screen and (min-aspect-ratio: 18/9) and (max-aspect-ratio: 19/9) {
-    max-width: 75%;
-  }
-  @media screen and (min-aspect-ratio: 19/9) and (max-aspect-ratio: 20/9) {
-    max-width: 72.5%;
-  }
-  @media screen and (min-aspect-ratio: 20/9) and (max-aspect-ratio: 21/9) {
-    max-width: 70%;
-  }
-  @media screen and (min-aspect-ratio: 21/9) and (max-aspect-ratio: 22/9) {
-    max-width: 67.5%;
-  }
-`;
-
 const CarouselHeader = styled(Paper)`
   display: flex;
   align-items: center;
   height: 50px;
-  padding-left: ${({ theme }): string => theme.spacing(4)}px;
+  padding-left: ${({ theme }): string => theme.spacing(1)}px;
   background-color: ${({ theme }): string => theme.palette.background.default};
+`;
+
+const Screen = styled(Paper)`
+  padding: 1.5rem 1rem;
+  background-color: black;
+  border: 1px solid silver;
+  border-radius: 15px;
+`;
+
+const ScreenInner = styled.div`
+  height: 100%;
+  background-color: #fafafa;
+`;
+
+interface CircleProps {
+  backgroundColor: string;
+}
+
+const Circle = styled.div<CircleProps>`
+  width: 0.667rem;
+  height: 0.667rem;
+  margin: auto 0.25rem;
+  border-radius: 50%;
+  background-color: ${(props): string => props.backgroundColor || 'black'};
+`;
+
+const Caption = styled(Typography)`
+  margin-left: 0.5rem;
 `;
 
 function SwipeableTextMobileStepper({ slides }: Props): ReactElement {
@@ -77,12 +82,15 @@ function SwipeableTextMobileStepper({ slides }: Props): ReactElement {
   };
 
   return (
-    <Grid container justify={'center'}>
-      <CarouselRoot item xs={12} sm={12} md={12} lg={12} xl={12}>
+    <Screen elevation={10}>
+      <ScreenInner>
         <CarouselHeader square elevation={0} theme={theme}>
-          <Typography>{slides[activeStep].caption}</Typography>
+          <Circle backgroundColor={'#ED626D'} />
+          <Circle backgroundColor={'#FFDE32'} />
+          <Circle backgroundColor={'#7DD181'} />
+          <Caption>{slides[activeStep].caption}</Caption>
         </CarouselHeader>
-        <AutoPlaySwipeableViews
+        <SwipeableViews
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
           index={activeStep}
           onChangeIndex={handleStepChange}
@@ -98,7 +106,7 @@ function SwipeableTextMobileStepper({ slides }: Props): ReactElement {
               ) : null}
             </div>
           ))}
-        </AutoPlaySwipeableViews>
+        </SwipeableViews>
         <MobileStepper
           steps={maxSteps}
           position="static"
@@ -133,8 +141,8 @@ function SwipeableTextMobileStepper({ slides }: Props): ReactElement {
             </Button>
           }
         />
-      </CarouselRoot>
-    </Grid>
+      </ScreenInner>
+    </Screen>
   );
 }
 

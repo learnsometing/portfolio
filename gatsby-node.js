@@ -8,67 +8,56 @@
 
 const path = require('path');
 
-const slugify = (str) => {
-  // Slugify a string
-  str = str.replace(/^\s+|\s+$/g, '');
+// const slugify = (str) => {
+//   // Slugify a string
+//   str = str.replace(/^\s+|\s+$/g, '');
 
-  // Make the string lowercase
-  str = str.toLowerCase();
+//   // Make the string lowercase
+//   str = str.toLowerCase();
 
-  // Remove accents, swap ñ for n, etc
-  const from =
-    'ÁÄÂÀÃÅČÇĆĎÉĚËÈÊẼĔȆÍÌÎÏŇÑÓÖÒÔÕØŘŔŠŤÚŮÜÙÛÝŸŽáäâàãåčçćďéěëèêẽĕȇíìîïňñóöòôõøðřŕšťúůüùûýÿžþÞĐđßÆa·/_,:;';
-  const to =
-    'AAAAAACCCDEEEEEEEEIIIINNOOOOOORRSTUUUUUYYZaaaaaacccdeeeeeeeeiiiinnooooooorrstuuuuuyyzbBDdBAa------';
-  for (let i = 0, l = from.length; i < l; i++) {
-    str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
-  }
+//   // Remove accents, swap ñ for n, etc
+//   const from =
+//     'ÁÄÂÀÃÅČÇĆĎÉĚËÈÊẼĔȆÍÌÎÏŇÑÓÖÒÔÕØŘŔŠŤÚŮÜÙÛÝŸŽáäâàãåčçćďéěëèêẽĕȇíìîïňñóöòôõøðřŕšťúůüùûýÿžþÞĐđßÆa·/_,:;';
+//   const to =
+//     'AAAAAACCCDEEEEEEEEIIIINNOOOOOORRSTUUUUUYYZaaaaaacccdeeeeeeeeiiiinnooooooorrstuuuuuyyzbBDdBAa------';
+//   for (let i = 0, l = from.length; i < l; i++) {
+//     str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+//   }
 
-  // Remove invalid chars
-  str = str
-    .replace(/[^a-z0-9 -]/g, '')
-    // Collapse whitespace and replace by -
-    .replace(/\s+/g, '-')
-    // Collapse dashes
-    .replace(/-+/g, '-');
+//   // Remove invalid chars
+//   str = str
+//     .replace(/[^a-z0-9 -]/g, '')
+//     // Collapse whitespace and replace by -
+//     .replace(/\s+/g, '-')
+//     // Collapse dashes
+//     .replace(/-+/g, '-');
 
-  return str;
-};
-
-exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions;
-  if (node.internal.type === 'PortfolioJson') {
-    const url = `/${slugify(node.title)}/`;
-    createNodeField({
-      node,
-      name: 'slug',
-      value: url,
-    });
-  }
-};
+//   return str;
+// };
 
 exports.createPages = async ({graphql, actions }) => {
   const {createPage} = actions;
   const { data } = await graphql(`
     query {
-      allPortfolioPages: allPortfolioJson {
+      projects: allMdx(filter: { fileAbsolutePath: { regex: "/projects/" } }) {
         nodes {
-          fields {
-            slug
+          frontmatter {
+            path
           }
         }
       }
     }
   `);
 
-  // Create a page for each subcategory of item
-  data.allPortfolioPages.nodes.forEach(node => {
+  // Create a page for each project
+  data.projects.nodes.forEach(node => {
+    const slug = node.frontmatter.path;
     createPage({
-      path: node.fields.slug,
-      component: path.resolve(`./src/Templates/PortfolioPage.tsx`),
+      path: slug,
+      component: path.resolve(`./src/Templates/ProjectPage/ProjectPage.tsx`),
       context: {
         // Data passed to context is available in page queries as GraphQL variables.
-        slug: node.fields.slug,
+        slug
       }
     });
   });

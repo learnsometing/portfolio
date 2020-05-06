@@ -14,16 +14,19 @@ const Brand = styled(FluidTypography).attrs(() => ({
   color: #0d3b66;
 `;
 
-export const NavLink = styled(Link)`
-  margin: auto 0;
-  padding: 0.5rem 0.5rem;
-  color: #f95738;
+export const StyledGatsbyLink = styled(Link)`
   font-family: mr-eaves-xl-modern;
   font-weight: bold;
   text-decoration: none;
+`;
+
+export const NavLink = styled(StyledGatsbyLink)`
+  margin: auto 0;
+  padding: 0.5rem 0.5rem;
+  color: #f95738;
+
   &:hover {
     color: #1b065e;
-    text-decoration: none;
   }
 
   &:active {

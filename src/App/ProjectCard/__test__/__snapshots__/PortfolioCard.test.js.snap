@@ -5,7 +5,7 @@ exports[`PortfolioCard should match the snapshot 1`] = `
   className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-6 MuiGrid-grid-lg-4 MuiGrid-grid-xl-4"
 >
   <a
-    className="PortfolioCard__ProjectLink-o19g6j-0 cFBxQd"
+    className="ProjectCard__ProjectLink-efz3d-0 gIHIEU"
     href="/cash-pawn-jewelry-website/"
   >
     <div
@@ -118,19 +118,16 @@ exports[`PortfolioCard should match the snapshot 1`] = `
         <div
           className="MuiCardContent-root"
         >
-          <div
-            className="MuiCardHeader-root"
+          <h2
+            className="MuiTypography-root MuiTypography-h6 MuiTypography-gutterBottom"
           >
-            <div
-              className="MuiCardHeader-content"
-            >
-              <span
-                className="MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock"
-              >
-                Cash Pawn & Jewelry Website
-              </span>
-            </div>
-          </div>
+            Cash Pawn & Jewelry Website
+          </h2>
+          <p
+            className="MuiTypography-root MuiTypography-body2"
+          >
+            A professional website built for Cash Pawn & Jewelry using Gatsby and React.js.
+          </p>
         </div>
         <span
           className="MuiCardActionArea-focusHighlight"
