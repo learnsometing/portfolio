@@ -1,7 +1,10 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
+
 import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
+
 import Layout from '../App/Layout/Layout';
 import PortfolioCard, {
   ProjectCardContent,
@@ -20,16 +23,23 @@ interface PortfolioProps {
 export const Portfolio: React.FC<PortfolioProps> = ({ data: { allMdx } }) => {
   const { nodes } = allMdx;
   return (
-    <Layout>
+    <>
       <Navigation />
       <CollapsedNavigation />
-      <h1>Portfolio</h1>
-      <Grid container spacing={2}>
-        {nodes.map((project) => (
-          <PortfolioCard key={project.frontmatter.title} project={project} />
-        ))}
-      </Grid>
-    </Layout>
+      <Layout>
+        <Container maxWidth={'lg'}>
+          <h1>Portfolio</h1>
+          <Grid container spacing={4}>
+            {nodes.map((project) => (
+              <PortfolioCard
+                key={project.frontmatter.title}
+                project={project}
+              />
+            ))}
+          </Grid>
+        </Container>
+      </Layout>
+    </>
   );
 };
 
