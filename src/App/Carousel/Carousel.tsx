@@ -32,7 +32,7 @@ const CarouselHeader = styled(Paper)`
   display: flex;
   align-items: center;
   height: 50px;
-  padding-left: ${({ theme }): string => theme.spacing(2)}px;
+  padding-left: ${({ theme }): string => theme.spacing(1)}px;
   background-color: ${({ theme }): string => theme.palette.background.default};
 `;
 
@@ -55,7 +55,7 @@ interface CircleProps {
 const Circle = styled.div<CircleProps>`
   width: 0.667rem;
   height: 0.667rem;
-  margin: auto 0.5rem;
+  margin: auto 0.25rem;
   border-radius: 50%;
   background-color: ${(props): string => props.backgroundColor || 'black'};
 `;
