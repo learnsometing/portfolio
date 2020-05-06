@@ -34,6 +34,7 @@ const Toggle = styled(Paper)`
 const Menu = styled(List)`
   height: 100vh;
   width: 100vw;
+  background-color: #fdfde8;
 `;
 
 const MenuItem = styled(ListItem).attrs({
@@ -41,7 +42,6 @@ const MenuItem = styled(ListItem).attrs({
 })`
   height: 25%;
   margin: 0;
-  background-color: #fdfde8;
 `;
 
 const MenuLink = styled(NavLink)`
@@ -73,7 +73,7 @@ const CollapsedNavigation: React.FC = () => {
         <Menu>
           <MenuItem>
             <MenuLink to="/">
-              <Typography variant={'body1'} component="span">
+              <Typography variant={'h2'} component="span">
                 Home
               </Typography>
             </MenuLink>
@@ -81,7 +81,7 @@ const CollapsedNavigation: React.FC = () => {
           <Divider component={'li'} />
           <MenuItem>
             <MenuLink to="/portfolio">
-              <Typography variant={'body1'} component="span">
+              <Typography variant={'h2'} component="span">
                 Portfolio
               </Typography>
             </MenuLink>
@@ -89,7 +89,7 @@ const CollapsedNavigation: React.FC = () => {
           <Divider component={'li'} />
           <MenuItem>
             <MenuLink to="/about">
-              <Typography variant={'body1'} component="span">
+              <Typography variant={'h2'} component="span">
                 About
               </Typography>
             </MenuLink>
@@ -98,7 +98,7 @@ const CollapsedNavigation: React.FC = () => {
 
           <MenuItem>
             <MenuLink to="/contact">
-              <Typography variant={'body1'} component="span">
+              <Typography variant={'h2'} component="span">
                 Contact
               </Typography>
             </MenuLink>
