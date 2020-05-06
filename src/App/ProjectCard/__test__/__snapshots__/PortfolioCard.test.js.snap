@@ -119,12 +119,12 @@ exports[`PortfolioCard should match the snapshot 1`] = `
           className="MuiCardContent-root"
         >
           <h2
-            className="MuiTypography-root MuiTypography-h6 MuiTypography-gutterBottom"
+            className="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
           >
             Cash Pawn & Jewelry Website
           </h2>
           <p
-            className="MuiTypography-root MuiTypography-body2"
+            className="MuiTypography-root MuiTypography-body1"
           >
             A professional website built for Cash Pawn & Jewelry using Gatsby and React.js.
           </p>
