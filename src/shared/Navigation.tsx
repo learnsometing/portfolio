@@ -61,22 +61,22 @@ const Navigation: React.FC = () => (
         </NavLink>
         {/* Links */}
         <NavLink to="/">
-          <Typography variant={'body1'} component="span">
+          <Typography variant={'h5'} component="span">
             Home
           </Typography>
         </NavLink>
         <NavLink to="/portfolio">
-          <Typography variant={'body1'} component="span">
+          <Typography variant={'h5'} component="span">
             Portfolio
           </Typography>
         </NavLink>
         <NavLink to="/about">
-          <Typography variant={'body1'} component="span">
+          <Typography variant={'h5'} component="span">
             About
           </Typography>
         </NavLink>
         <NavLink to="/contact">
-          <Typography variant={'body1'} component="span">
+          <Typography variant={'h5'} component="span">
             Contact
           </Typography>
         </NavLink>
