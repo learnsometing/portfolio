@@ -7,7 +7,7 @@ exports[`CollapsedNavigation should match the snapshot 1`] = `
   position: fixed;
   bottom: 0;
   right: 0;
-  z-index: 1060;
+  z-index: 2;
   margin-bottom: 1rem;
   margin-right: 1rem;
   display: -webkit-box;
@@ -22,9 +22,8 @@ exports[`CollapsedNavigation should match the snapshot 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  border-radius: 50% !important;
-  background-color: #f4d35e !important;
-  box-shadow: 0px 3px 5px rgba(0%,0%,0%,0.5);
+  border-radius: 50%;
+  background-color: #fdfde8;
 }
 
 @media only screen and (min-width:768px) {
@@ -34,7 +33,7 @@ exports[`CollapsedNavigation should match the snapshot 1`] = `
 }
 
 <div
-  className="c0"
+  className="MuiPaper-root c0 MuiPaper-elevation2 MuiPaper-rounded"
 >
   <div
     className="hamburger-react"
@@ -58,7 +57,7 @@ exports[`CollapsedNavigation should match the snapshot 1`] = `
     <div
       style={
         Object {
-          "background": "#0d3b66",
+          "background": "#f95738",
           "height": "3px",
           "left": "8px",
           "position": "absolute",
@@ -72,7 +71,7 @@ exports[`CollapsedNavigation should match the snapshot 1`] = `
     <div
       style={
         Object {
-          "background": "#0d3b66",
+          "background": "#f95738",
           "height": "3px",
           "left": "8px",
           "position": "absolute",
@@ -86,7 +85,7 @@ exports[`CollapsedNavigation should match the snapshot 1`] = `
     <div
       style={
         Object {
-          "background": "#0d3b66",
+          "background": "#f95738",
           "height": "3px",
           "left": "8px",
           "position": "absolute",

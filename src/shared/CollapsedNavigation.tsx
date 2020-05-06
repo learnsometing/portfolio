@@ -7,23 +7,24 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
+import Paper from '@material-ui/core/Paper';
+
 import { NavLink } from './Navigation';
 
-const Toggle = styled.div`
+const Toggle = styled(Paper)`
   width: 60px;
   height: 60px;
   position: fixed;
   bottom: 0;
   right: 0;
-  z-index: 1060;
+  z-index: 2;
   margin-bottom: 1rem;
   margin-right: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 50% !important;
-  background-color: #f4d35e !important;
-  box-shadow: 0px 3px 5px rgba(0%, 0%, 0%, 0.5);
+  border-radius: 50%;
+  background-color: #fdfde8;
 
   @media only screen and (min-width: 768px) {
     display: none;
@@ -40,6 +41,7 @@ const MenuItem = styled(ListItem).attrs({
 })`
   height: 25%;
   margin: 0;
+  background-color: #fdfde8;
 `;
 
 const MenuLink = styled(NavLink)`
@@ -60,9 +62,9 @@ const CollapsedNavigation: React.FC = () => {
 
   return (
     <>
-      <Toggle>
+      <Toggle elevation={2}>
         <Hamburger
-          color="#0d3b66"
+          color="#f95738"
           toggled={isDrawerOpen}
           toggle={toggleDrawer}
         />
@@ -102,9 +104,9 @@ const CollapsedNavigation: React.FC = () => {
             </MenuLink>
           </MenuItem>
 
-          <Toggle>
+          <Toggle elevation={2}>
             <Hamburger
-              color="#0d3b66"
+              color="#f95738"
               toggled={isDrawerOpen}
               toggle={toggleDrawer}
             />
