@@ -1,112 +1,47 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Hamburger from 'hamburger-react';
-import { NavLink, LinkText } from './Navigation';
 
-const Toggle = styled.div`
+import Typography from '@material-ui/core/Typography';
+import Drawer from '@material-ui/core/Drawer';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import Divider from '@material-ui/core/Divider';
+import Paper from '@material-ui/core/Paper';
+
+import { NavLink } from './Navigation';
+
+const Toggle = styled(Paper)`
   width: 60px;
   height: 60px;
   position: fixed;
   bottom: 0;
   right: 0;
-  z-index: 1060;
+  z-index: 2;
   margin-bottom: 1rem;
   margin-right: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 50% !important;
-  background-color: #f4d35e !important;
-  box-shadow: 0px 3px 5px rgba(0%, 0%, 0%, 0.5);
+  border-radius: 50%;
+  background-color: #fdfde8;
 
   @media only screen and (min-width: 768px) {
     display: none;
   }
 `;
 
-interface MenuProps {
-  isMenuOpen: boolean;
-  isMenuClosing: boolean;
-}
-
-const Menu = styled.nav<MenuProps>`
-  display: flex;
-  position: fixed;
-  visibility: hidden;
-  background-color: #fdfde8;
-  ${({ isMenuOpen, isMenuClosing }): string | undefined => {
-    if (isMenuOpen) {
-      return 'animation: slide-in .2s ease-in-out 1 forwards';
-    }
-    if (isMenuClosing) {
-      return 'animation: slide-out .2s ease-in-out 1 forwards';
-    }
-  }};
-  z-index: 1050;
-
-  @keyframes slide-in {
-    from {
-      height: 0;
-      width: 100vw;
-      visibility: hidden;
-    }
-
-    to {
-      height: 100vh;
-      width: 100vw;
-      visibility: visible;
-    }
-  }
-
-  @keyframes slide-out {
-    from {
-      height: 100vh;
-      width: 100vw;
-      visibility: visible;
-    }
-
-    to {
-      height: 0;
-      width: 100vw;
-      visibility: hidden;
-    }
-  }
-`;
-
-const MenuGrid = styled.div<MenuProps>`
-  display: grid;
+const Menu = styled(List)`
   height: 100vh;
   width: 100vw;
-  grid-template-rows: repeat(4, 1fr);
-  grid-template-columns: auto;
+`;
 
-  ${({ isMenuOpen, isMenuClosing }): string | undefined => {
-    if (isMenuOpen) {
-      return 'animation: fade-in .50s ease-in-out 1 forwards';
-    }
-    if (isMenuClosing) {
-      return 'animation: fade-out .1s ease-in-out 1 forwards';
-    }
-  }};
-
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes fade-out {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
-  }
-  z-index: 1050;
+const MenuItem = styled(ListItem).attrs({
+  button: undefined,
+})`
+  height: 25%;
+  margin: 0;
+  background-color: #fdfde8;
 `;
 
 const MenuLink = styled(NavLink)`
@@ -118,47 +53,66 @@ const MenuLink = styled(NavLink)`
   align-items: center;
 `;
 
-const MenuLinkText = styled(LinkText).attrs(() => ({
-  minFontSize: '24px',
-  maxFontSize: '32px',
-  minViewportWidth: '320px',
-  maxViewportWidth: '767px',
-}))``;
-
 const CollapsedNavigation: React.FC = () => {
-  const [isMenuOpen, setisMenuOpen] = useState(false);
-  const [isMenuClosing, setIsMenuClosing] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const toggleModal = (): void => {
-    if (isMenuOpen) {
-      setIsMenuClosing(true);
-    } else {
-      setIsMenuClosing(false);
-    }
-    setisMenuOpen(!isMenuOpen);
+  const toggleDrawer = (): void => {
+    setIsDrawerOpen(!isDrawerOpen);
   };
 
   return (
     <>
-      <Toggle>
-        <Hamburger color="#0d3b66" toggled={isMenuOpen} toggle={toggleModal} />
+      <Toggle elevation={2}>
+        <Hamburger
+          color="#f95738"
+          toggled={isDrawerOpen}
+          toggle={toggleDrawer}
+        />
       </Toggle>
-      <Menu isMenuOpen={isMenuOpen} isMenuClosing={isMenuClosing}>
-        <MenuGrid isMenuOpen={isMenuOpen} isMenuClosing={isMenuClosing}>
-          <MenuLink to="/">
-            <MenuLinkText as="span">Home</MenuLinkText>
-          </MenuLink>
-          <MenuLink to="/portfolio">
-            <MenuLinkText as="span">Portfolio</MenuLinkText>
-          </MenuLink>
-          <MenuLink to="/about">
-            <MenuLinkText as="span">About</MenuLinkText>
-          </MenuLink>
-          <MenuLink to="/contact">
-            <MenuLinkText as="span">Contact</MenuLinkText>
-          </MenuLink>
-        </MenuGrid>
-      </Menu>
+      <Drawer anchor={'top'} open={isDrawerOpen}>
+        <Menu>
+          <MenuItem>
+            <MenuLink to="/">
+              <Typography variant={'body1'} component="span">
+                Home
+              </Typography>
+            </MenuLink>
+          </MenuItem>
+          <Divider component={'li'} />
+          <MenuItem>
+            <MenuLink to="/portfolio">
+              <Typography variant={'body1'} component="span">
+                Portfolio
+              </Typography>
+            </MenuLink>
+          </MenuItem>
+          <Divider component={'li'} />
+          <MenuItem>
+            <MenuLink to="/about">
+              <Typography variant={'body1'} component="span">
+                About
+              </Typography>
+            </MenuLink>
+          </MenuItem>
+          <Divider component={'li'} />
+
+          <MenuItem>
+            <MenuLink to="/contact">
+              <Typography variant={'body1'} component="span">
+                Contact
+              </Typography>
+            </MenuLink>
+          </MenuItem>
+
+          <Toggle elevation={2}>
+            <Hamburger
+              color="#f95738"
+              toggled={isDrawerOpen}
+              toggle={toggleDrawer}
+            />
+          </Toggle>
+        </Menu>
+      </Drawer>
     </>
   );
 };

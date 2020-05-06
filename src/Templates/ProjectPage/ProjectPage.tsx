@@ -79,72 +79,74 @@ const PortfolioPage: React.FC<Props> = ({ data: { mdx } }) => {
   const { frontmatter } = mdx;
 
   return (
-    <Layout>
-      <SEO title={frontmatter.title} />
+    <>
       <Navigation />
       <CollapsedNavigation />
-      <Grid container justify={'center'}>
-        <PageHeader container justify={'space-between'} alignItems={'center'}>
-          <Grid item>
-            <Typography variant={'h1'}>{frontmatter.title}</Typography>
-          </Grid>
-          <Grid item>
-            <Grid container spacing={2}>
-              <Grid item>
-                <Link
-                  href={frontmatter.websiteURL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button color={'primary'} endIcon={<TiArrowForward />}>
-                    Visit
-                  </Button>
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link
-                  href={frontmatter.githubURL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button color={'primary'} endIcon={<FaGithub />}>
-                    Github
-                  </Button>
-                </Link>
+      <Layout>
+        <SEO title={frontmatter.title} />
+        <Grid container justify={'center'}>
+          <PageHeader container justify={'space-between'} alignItems={'center'}>
+            <Grid item>
+              <Typography variant={'h1'}>{frontmatter.title}</Typography>
+            </Grid>
+            <Grid item>
+              <Grid container spacing={2}>
+                <Grid item>
+                  <Link
+                    href={frontmatter.websiteURL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button color={'primary'} endIcon={<TiArrowForward />}>
+                      Visit
+                    </Button>
+                  </Link>
+                </Grid>
+                <Grid item>
+                  <Link
+                    href={frontmatter.githubURL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button color={'primary'} endIcon={<FaGithub />}>
+                      Github
+                    </Button>
+                  </Link>
+                </Grid>
               </Grid>
             </Grid>
-          </Grid>
-        </PageHeader>
+          </PageHeader>
 
-        <DescriptionSection
-          item
-          xs={12}
-          sm={12}
-          md={12}
-          lg={12}
-          xl={12}
-          container
-          direction={'column'}
-          justify={'center'}
-          alignItems={'flex-start'}
-        >
-          <MDXProvider components={shortcodes}>
-            <Description description={mdx.body} />
-          </MDXProvider>
-        </DescriptionSection>
+          <DescriptionSection
+            item
+            xs={12}
+            sm={12}
+            md={12}
+            lg={12}
+            xl={12}
+            container
+            direction={'column'}
+            justify={'center'}
+            alignItems={'flex-start'}
+          >
+            <MDXProvider components={shortcodes}>
+              <Description description={mdx.body} />
+            </MDXProvider>
+          </DescriptionSection>
 
-        <CarouselRoot item xs={12} sm={12} md={8} lg={8} xl={8}>
-          <Typography variant={'h2'} gutterBottom>
-            Gallery
-          </Typography>
-          <Carousel slides={frontmatter.carouselPhotos} />
-        </CarouselRoot>
+          <CarouselRoot item xs={12} sm={12} md={8} lg={8} xl={8}>
+            <Typography variant={'h2'} gutterBottom>
+              Gallery
+            </Typography>
+            <Carousel slides={frontmatter.carouselPhotos} />
+          </CarouselRoot>
 
-        <TechTags item xs={12} sm={12} md={4} lg={4} xl={4}>
-          <Tags tags={frontmatter.technologies} />
-        </TechTags>
-      </Grid>
-    </Layout>
+          <TechTags item xs={12} sm={12} md={4} lg={4} xl={4}>
+            <Tags tags={frontmatter.technologies} />
+          </TechTags>
+        </Grid>
+      </Layout>
+    </>
   );
 };
 

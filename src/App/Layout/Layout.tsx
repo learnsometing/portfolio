@@ -21,7 +21,7 @@ const Layout: React.FC<Props> = ({ children }) => {
       <Helmet>
         <link rel="stylesheet" href="https://use.typekit.net/ari5qhg.css" />
       </Helmet>
-      <Container component={'main'} maxWidth={'lg'}>
+      <Container component={'main'} maxWidth={'lg'} disableGutters>
         {children}
       </Container>
     </>
