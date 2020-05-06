@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
+import { MDXProvider } from '@mdx-js/react';
 import styled from 'styled-components';
 
 // Material-UI Imports
@@ -20,7 +21,7 @@ import Navigation from '../../shared/Navigation';
 import CollapsedNavigation from '../../shared/CollapsedNavigation';
 import Carousel from '../../App/Carousel/Carousel';
 import Description from './Description';
-import Technologies from './Technologies';
+import Tags from './Tags';
 
 // Interfaces
 import { Slide } from '../../App/Carousel/Carousel';
@@ -71,6 +72,8 @@ const TechTags = styled(Grid).attrs({
   color: #fdfde8;
   padding: 1.5rem;
 `;
+
+const shortcodes = { Typography, Grid };
 
 const PortfolioPage: React.FC<Props> = ({ data: { mdx } }) => {
   const { frontmatter } = mdx;
@@ -125,7 +128,9 @@ const PortfolioPage: React.FC<Props> = ({ data: { mdx } }) => {
           justify={'center'}
           alignItems={'flex-start'}
         >
-          <Description description={mdx.body} />
+          <MDXProvider components={shortcodes}>
+            <Description description={mdx.body} />
+          </MDXProvider>
         </DescriptionSection>
 
         <CarouselRoot item xs={12} sm={12} md={8} lg={8} xl={8}>
@@ -136,7 +141,7 @@ const PortfolioPage: React.FC<Props> = ({ data: { mdx } }) => {
         </CarouselRoot>
 
         <TechTags item xs={12} sm={12} md={4} lg={4} xl={4}>
-          <Technologies technologies={frontmatter.technologies} />
+          <Tags tags={frontmatter.technologies} />
         </TechTags>
       </Grid>
     </Layout>

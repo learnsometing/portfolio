@@ -7,18 +7,18 @@ import Typography from '@material-ui/core/Typography';
 import Tag from '../../shared/Tag';
 
 interface Props {
-  technologies: string[];
+  tags: string[];
 }
 
-const Technologies: React.FC<Props> = ({ technologies }) => (
+const Tags: React.FC<Props> = ({ tags }) => (
   <>
     <Grid item>
-      <Typography variant={'h3'} component={'h2'} gutterBottom align={'center'}>
-        Technologies
+      <Typography variant={'h2'} gutterBottom>
+        Tags
       </Typography>
     </Grid>
     <Grid item container spacing={1}>
-      {technologies.map((tag) => (
+      {tags.map((tag) => (
         <Grid key={tag} item>
           <Tag text={tag} highlightColor="#0d3b66" textColor={'#fdfde8'} />
         </Grid>
@@ -27,8 +27,8 @@ const Technologies: React.FC<Props> = ({ technologies }) => (
   </>
 );
 
-Technologies.propTypes = {
-  technologies: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+Tags.propTypes = {
+  tags: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
 };
 
-export default Technologies;
+export default Tags;
