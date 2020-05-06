@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
+import Tag from '../../shared/Tag';
+
 interface Props {
   technologies: string[];
 }
@@ -18,9 +20,7 @@ const Technologies: React.FC<Props> = ({ technologies }) => (
     <Grid item container spacing={1}>
       {technologies.map((tag) => (
         <Grid key={tag} item>
-          <Typography variant={'body1'} component={'span'}>
-            {tag}
-          </Typography>
+          <Tag text={tag} color="white" />
         </Grid>
       ))}
     </Grid>
