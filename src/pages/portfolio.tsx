@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
+import { ThemeProvider } from '@material-ui/core';
+import theme from '../shared/MUITheme';
 
 import Layout from '../App/Layout/Layout';
 import PortfolioCard, {
@@ -23,7 +25,7 @@ interface PortfolioProps {
 export const Portfolio: React.FC<PortfolioProps> = ({ data: { allMdx } }) => {
   const { nodes } = allMdx;
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <Navigation />
       <CollapsedNavigation />
       <Layout>
@@ -39,7 +41,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ data: { allMdx } }) => {
           </Grid>
         </Container>
       </Layout>
-    </>
+    </ThemeProvider>
   );
 };
 
