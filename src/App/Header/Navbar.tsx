@@ -23,7 +23,7 @@ const HeaderNavLink = styled(NavLink)`
     animation: indent 0.5s ease-in-out alternate infinite forwards;
     &:after {
       content: ' >';
-      font-weight: bold;
+      font-size: 1.5rem;
     }
   }
 
@@ -48,13 +48,19 @@ const HeaderNavLink = styled(NavLink)`
 const Navbar: React.FC = () => (
   <Nav>
     <HeaderNavLink to="/portfolio">
-      <Typography component="span">Portfolio</Typography>
+      <Typography variant={'h5'} component="span">
+        Portfolio
+      </Typography>
     </HeaderNavLink>
     <HeaderNavLink to="/about">
-      <Typography component="span">About</Typography>
+      <Typography variant={'h5'} component="span">
+        About
+      </Typography>
     </HeaderNavLink>
     <HeaderNavLink to="/contact">
-      <Typography component="span">Contact</Typography>
+      <Typography variant={'h5'} component="span">
+        Contact
+      </Typography>
     </HeaderNavLink>
   </Nav>
 );
