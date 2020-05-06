@@ -1,8 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CollapsedNavigation should match the snapshot 1`] = `
-Array [
-  .c0 {
+.c0 {
   width: 60px;
   height: 60px;
   position: fixed;
@@ -35,179 +34,69 @@ Array [
 }
 
 <div
-    className="c0"
+  className="c0"
+>
+  <div
+    className="hamburger-react"
+    onClick={[Function]}
+    onKeyUp={[Function]}
+    role="button"
+    style={
+      Object {
+        "cursor": "pointer",
+        "height": "48px",
+        "outline": "none",
+        "position": "relative",
+        "transform": "none",
+        "transition": "0.4s cubic-bezier(0, 0, 0, 1)",
+        "userSelect": "none",
+        "width": "48px",
+      }
+    }
+    tabIndex={0}
   >
     <div
-      className="hamburger-react"
-      onClick={[Function]}
-      onKeyUp={[Function]}
-      role="button"
       style={
         Object {
-          "cursor": "pointer",
-          "height": "48px",
-          "outline": "none",
-          "position": "relative",
+          "background": "#0d3b66",
+          "height": "3px",
+          "left": "8px",
+          "position": "absolute",
+          "top": "13px",
           "transform": "none",
           "transition": "0.4s cubic-bezier(0, 0, 0, 1)",
-          "userSelect": "none",
-          "width": "48px",
+          "width": "32px",
         }
       }
-      tabIndex={0}
-    >
-      <div
-        style={
-          Object {
-            "background": "#0d3b66",
-            "height": "3px",
-            "left": "8px",
-            "position": "absolute",
-            "top": "13px",
-            "transform": "none",
-            "transition": "0.4s cubic-bezier(0, 0, 0, 1)",
-            "width": "32px",
-          }
-        }
-      />
-      <div
-        style={
-          Object {
-            "background": "#0d3b66",
-            "height": "3px",
-            "left": "8px",
-            "position": "absolute",
-            "top": "23px",
-            "transform": "none",
-            "transition": "0.4s cubic-bezier(0, 0, 0, 1)",
-            "width": "32px",
-          }
-        }
-      />
-      <div
-        style={
-          Object {
-            "background": "#0d3b66",
-            "height": "3px",
-            "left": "8px",
-            "position": "absolute",
-            "top": "33px",
-            "transform": "none",
-            "transition": "0.4s cubic-bezier(0, 0, 0, 1)",
-            "width": "32px",
-          }
-        }
-      />
-    </div>
-  </div>,
-  .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  position: fixed;
-  visibility: hidden;
-  background-color: #fdfde8;
-  z-index: 1050;
-}
-
-.c1 {
-  display: grid;
-  height: 100vh;
-  width: 100vw;
-  grid-template-rows: repeat(4,1fr);
-  grid-template-columns: auto;
-  z-index: 1050;
-}
-
-.c2 {
-  font-family: mr-eaves-xl-modern;
-  font-weight: bold;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  margin: auto 0;
-  padding: 0.5rem 0.5rem;
-  color: #f95738;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c2:hover {
-  color: #1b065e;
-}
-
-.c2:active {
-  color: #1b065e;
-}
-
-.c3 {
-  font-size: calc( 24px + ( 32 - 24 ) * ( (100vw - 320px) / ( 767 - 320 ) ) );
-}
-
-@media only screen and (min-width:768px) {
-
-}
-
-<nav
-    className="c0"
-  >
+    />
     <div
-      className="c1"
-    >
-      <a
-        className="Navigation__StyledGatsbyLink-hrtymb-1 Navigation__NavLink-hrtymb-2 c2"
-        href="/"
-      >
-        <span
-          className="FluidTypography-j5dukp-0 Navigation__LinkText-hrtymb-3 c3"
-        >
-          Home
-        </span>
-      </a>
-      <a
-        className="Navigation__StyledGatsbyLink-hrtymb-1 Navigation__NavLink-hrtymb-2 c2"
-        href="/portfolio"
-      >
-        <span
-          className="FluidTypography-j5dukp-0 Navigation__LinkText-hrtymb-3 c3"
-        >
-          Portfolio
-        </span>
-      </a>
-      <a
-        className="Navigation__StyledGatsbyLink-hrtymb-1 Navigation__NavLink-hrtymb-2 c2"
-        href="/about"
-      >
-        <span
-          className="FluidTypography-j5dukp-0 Navigation__LinkText-hrtymb-3 c3"
-        >
-          About
-        </span>
-      </a>
-      <a
-        className="Navigation__StyledGatsbyLink-hrtymb-1 Navigation__NavLink-hrtymb-2 c2"
-        href="/contact"
-      >
-        <span
-          className="FluidTypography-j5dukp-0 Navigation__LinkText-hrtymb-3 c3"
-        >
-          Contact
-        </span>
-      </a>
-    </div>
-  </nav>,
-]
+      style={
+        Object {
+          "background": "#0d3b66",
+          "height": "3px",
+          "left": "8px",
+          "position": "absolute",
+          "top": "23px",
+          "transform": "none",
+          "transition": "0.4s cubic-bezier(0, 0, 0, 1)",
+          "width": "32px",
+        }
+      }
+    />
+    <div
+      style={
+        Object {
+          "background": "#0d3b66",
+          "height": "3px",
+          "left": "8px",
+          "position": "absolute",
+          "top": "33px",
+          "transform": "none",
+          "transition": "0.4s cubic-bezier(0, 0, 0, 1)",
+          "width": "32px",
+        }
+      }
+    />
+  </div>
+</div>
 `;
