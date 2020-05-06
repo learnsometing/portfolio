@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-import Grid from '@material-ui/core/Grid';
-import FluidTypography from './FluidTypography';
 
-const Brand = styled(FluidTypography).attrs(() => ({
-  minFontSize: '32px',
-  maxFontSize: '36px',
-  minViewportWidth: '768px',
-  maxViewportWidth: '1350px',
-}))`
+import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+
+const Brand = styled(Typography).attrs({
+  component: 'span',
+})`
   margin: 0 1rem;
   color: #0d3b66;
 `;
@@ -34,22 +34,9 @@ export const NavLink = styled(StyledGatsbyLink)`
   }
 `;
 
-export const LinkText = styled(FluidTypography).attrs(() => ({
-  minFontSize: '18px',
-  maxFontSize: '20px',
-  minViewportWidth: '768px',
-  maxViewportWidth: '1350px',
-}))``;
-
-const Navbar = styled(Grid).attrs(() => ({
-  container: true,
-  component: 'nav',
-}))`
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  background-color: #f4d35e;
-  box-shadow: 0px 3px 5px rgba(0%, 0%, 0%, 0.2);
-
+const Navbar = styled(Paper)`
+  background-color: #fdfde8;
+  border-radius: 0;
   @media screen and (max-width: 767px) {
     display: none;
   }
@@ -60,25 +47,41 @@ const Navbar = styled(Grid).attrs(() => ({
   }
 `;
 
+const Nav = styled(Grid).attrs(() => ({
+  component: 'nav',
+}))``;
+
 const Navigation: React.FC = () => (
-  <Navbar>
-    {/* Brand */}
-    <NavLink to="/">
-      <Brand as="h1">BRIAN MONACCIO</Brand>
-    </NavLink>
-    {/* Links */}
-    <NavLink to="/">
-      <LinkText as="span">Home</LinkText>
-    </NavLink>
-    <NavLink to="/portfolio">
-      <LinkText as="span">Portfolio</LinkText>
-    </NavLink>
-    <NavLink to="/about">
-      <LinkText as="span">About</LinkText>
-    </NavLink>
-    <NavLink to="/contact">
-      <LinkText as="span">Contact</LinkText>
-    </NavLink>
+  <Navbar elevation={2}>
+    <Container maxWidth={'lg'}>
+      <Nav container>
+        {/* Brand */}
+        <NavLink to="/">
+          <Brand variant={'h2'}>BRIAN MONACCIO</Brand>
+        </NavLink>
+        {/* Links */}
+        <NavLink to="/">
+          <Typography variant={'body1'} component="span">
+            Home
+          </Typography>
+        </NavLink>
+        <NavLink to="/portfolio">
+          <Typography variant={'body1'} component="span">
+            Portfolio
+          </Typography>
+        </NavLink>
+        <NavLink to="/about">
+          <Typography variant={'body1'} component="span">
+            About
+          </Typography>
+        </NavLink>
+        <NavLink to="/contact">
+          <Typography variant={'body1'} component="span">
+            Contact
+          </Typography>
+        </NavLink>
+      </Nav>
+    </Container>
   </Navbar>
 );
 
