@@ -4,6 +4,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 // Material-UI
 import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 
 interface Props {
   description: string;
@@ -11,9 +12,11 @@ interface Props {
 
 const Description: React.FC<Props> = ({ description }) => (
   <>
-    <Typography variant={'h2'} gutterBottom>
-      Description
-    </Typography>
+    <Grid item>
+      <Typography variant={'h2'} gutterBottom>
+        Description
+      </Typography>
+    </Grid>
     <MDXRenderer>{description}</MDXRenderer>
   </>
 );
