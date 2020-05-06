@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { NavLink, LinkText } from '../../shared/Navigation';
+
+import Typography from '@material-ui/core/Typography';
+
+import { NavLink } from '../../shared/Navigation';
 
 const Nav = styled.nav`
   display: flex;
@@ -42,23 +45,16 @@ const HeaderNavLink = styled(NavLink)`
   }
 `;
 
-const HeaderLinkText = styled(LinkText).attrs(() => ({
-  minFontSize: '16px',
-  maxFontSize: '24px',
-  minViewportWidth: '320px',
-  maxViewportWidth: '1920px',
-}))``;
-
 const Navbar: React.FC = () => (
   <Nav>
     <HeaderNavLink to="/portfolio">
-      <HeaderLinkText as="span">Portfolio</HeaderLinkText>
+      <Typography component="span">Portfolio</Typography>
     </HeaderNavLink>
     <HeaderNavLink to="/about">
-      <HeaderLinkText as="span">About</HeaderLinkText>
+      <Typography component="span">About</Typography>
     </HeaderNavLink>
     <HeaderNavLink to="/contact">
-      <HeaderLinkText as="span">Contact</HeaderLinkText>
+      <Typography component="span">Contact</Typography>
     </HeaderNavLink>
   </Nav>
 );
