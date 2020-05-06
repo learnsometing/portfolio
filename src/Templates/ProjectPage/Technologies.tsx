@@ -20,7 +20,7 @@ const Technologies: React.FC<Props> = ({ technologies }) => (
     <Grid item container spacing={1}>
       {technologies.map((tag) => (
         <Grid key={tag} item>
-          <Tag text={tag} color="white" />
+          <Tag text={tag} highlightColor="white" textColor={'black'} />
         </Grid>
       ))}
     </Grid>

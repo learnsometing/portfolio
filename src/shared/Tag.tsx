@@ -1,13 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
 import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
+import { StyledGatsbyLink } from './Navigation';
 
 interface Props {
   text: string;
+  highlightColor: string;
+  textColor: string;
+}
+
+interface TagLink {
   color: string;
 }
+
+const TagLink = styled(StyledGatsbyLink)<TagLink>`
+  color: ${(props): string => props.color || '#000'};
+
+  &:hover,
+  &:active {
+    color: ${(props): string => props.color || '#000'};
+  }
+`;
 
 interface Highlight {
   highlightColor: string;
@@ -53,17 +67,18 @@ const TagText = styled(Typography).attrs({
   padding-bottom: 0;
 `;
 
-const Tag: React.FC<Props> = ({ text, color }) => (
-  <Link to="/">
-    <Highlight highlightColor={color} className={'highlight'}>
+const Tag: React.FC<Props> = ({ text, highlightColor, textColor }) => (
+  <TagLink to="/" color={textColor}>
+    <Highlight highlightColor={highlightColor} className={'highlight'}>
       <TagText variant={'body1'}>{text}</TagText>
     </Highlight>
-  </Link>
+  </TagLink>
 );
 
 Tag.propTypes = {
   text: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
+  highlightColor: PropTypes.string.isRequired,
+  textColor: PropTypes.string.isRequired,
 };
 
 export default Tag;

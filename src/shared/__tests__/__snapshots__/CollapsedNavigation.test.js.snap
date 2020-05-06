@@ -121,13 +121,13 @@ Array [
 }
 
 .c2 {
-  margin: auto 0;
-  padding: 0.5rem 0.5rem;
-  color: #f95738;
   font-family: mr-eaves-xl-modern;
   font-weight: bold;
   -webkit-text-decoration: none;
   text-decoration: none;
+  margin: auto 0;
+  padding: 0.5rem 0.5rem;
+  color: #f95738;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -147,8 +147,6 @@ Array [
 
 .c2:hover {
   color: #1b065e;
-  -webkit-text-decoration: none;
-  text-decoration: none;
 }
 
 .c2:active {
@@ -170,41 +168,41 @@ Array [
       className="c1"
     >
       <a
-        className="Navigation__NavLink-hrtymb-1 c2"
+        className="Navigation__StyledGatsbyLink-hrtymb-1 Navigation__NavLink-hrtymb-2 c2"
         href="/"
       >
         <span
-          className="FluidTypography-j5dukp-0 Navigation__LinkText-hrtymb-2 c3"
+          className="FluidTypography-j5dukp-0 Navigation__LinkText-hrtymb-3 c3"
         >
           Home
         </span>
       </a>
       <a
-        className="Navigation__NavLink-hrtymb-1 c2"
+        className="Navigation__StyledGatsbyLink-hrtymb-1 Navigation__NavLink-hrtymb-2 c2"
         href="/portfolio"
       >
         <span
-          className="FluidTypography-j5dukp-0 Navigation__LinkText-hrtymb-2 c3"
+          className="FluidTypography-j5dukp-0 Navigation__LinkText-hrtymb-3 c3"
         >
           Portfolio
         </span>
       </a>
       <a
-        className="Navigation__NavLink-hrtymb-1 c2"
+        className="Navigation__StyledGatsbyLink-hrtymb-1 Navigation__NavLink-hrtymb-2 c2"
         href="/about"
       >
         <span
-          className="FluidTypography-j5dukp-0 Navigation__LinkText-hrtymb-2 c3"
+          className="FluidTypography-j5dukp-0 Navigation__LinkText-hrtymb-3 c3"
         >
           About
         </span>
       </a>
       <a
-        className="Navigation__NavLink-hrtymb-1 c2"
+        className="Navigation__StyledGatsbyLink-hrtymb-1 Navigation__NavLink-hrtymb-2 c2"
         href="/contact"
       >
         <span
-          className="FluidTypography-j5dukp-0 Navigation__LinkText-hrtymb-2 c3"
+          className="FluidTypography-j5dukp-0 Navigation__LinkText-hrtymb-3 c3"
         >
           Contact
         </span>
