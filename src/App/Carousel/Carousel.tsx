@@ -11,7 +11,6 @@ import Button from '@material-ui/core/Button';
 
 // SwipeableViews
 import SwipeableViews from 'react-swipeable-views';
-import { autoPlay } from 'react-swipeable-views-utils';
 
 //Icons
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from 'react-icons/md';
@@ -29,14 +28,40 @@ interface Props {
   slides: Slide[];
 }
 
-const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
-
 const CarouselHeader = styled(Paper)`
   display: flex;
   align-items: center;
   height: 50px;
-  padding-left: ${({ theme }): string => theme.spacing(4)}px;
+  padding-left: ${({ theme }): string => theme.spacing(2)}px;
   background-color: ${({ theme }): string => theme.palette.background.default};
+`;
+
+const Screen = styled(Paper)`
+  padding: 1.5rem 1rem;
+  background-color: black;
+  border: 1px solid silver;
+  border-radius: 15px;
+`;
+
+const ScreenInner = styled.div`
+  height: 100%;
+  background-color: #fafafa;
+`;
+
+interface CircleProps {
+  backgroundColor: string;
+}
+
+const Circle = styled.div<CircleProps>`
+  width: 0.667rem;
+  height: 0.667rem;
+  margin: auto 0.5rem;
+  border-radius: 50%;
+  background-color: ${(props): string => props.backgroundColor || 'black'};
+`;
+
+const Caption = styled(Typography)`
+  margin-left: 0.5rem;
 `;
 
 function SwipeableTextMobileStepper({ slides }: Props): ReactElement {
@@ -57,58 +82,67 @@ function SwipeableTextMobileStepper({ slides }: Props): ReactElement {
   };
 
   return (
-    <>
-      <CarouselHeader square elevation={0} theme={theme}>
-        <Typography>{slides[activeStep].caption}</Typography>
-      </CarouselHeader>
-      <AutoPlaySwipeableViews
-        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-        index={activeStep}
-        onChangeIndex={handleStepChange}
-        enableMouseEvents
-      >
-        {slides.map((slide, index) => (
-          <div key={slide.caption}>
-            {Math.abs(activeStep - index) <= 2 ? (
-              <Img
-                fluid={slide.src.childImageSharp.fluid}
-                alt={slide.altText}
-              />
-            ) : null}
-          </div>
-        ))}
-      </AutoPlaySwipeableViews>
-      <MobileStepper
-        steps={maxSteps}
-        position="static"
-        variant="text"
-        activeStep={activeStep}
-        nextButton={
-          <Button
-            size="small"
-            onClick={handleNext}
-            disabled={activeStep === maxSteps - 1}
-          >
-            Next
-            {theme.direction === 'rtl' ? (
-              <MdKeyboardArrowLeft />
-            ) : (
-              <MdKeyboardArrowRight />
-            )}
-          </Button>
-        }
-        backButton={
-          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-            {theme.direction === 'rtl' ? (
-              <MdKeyboardArrowRight />
-            ) : (
-              <MdKeyboardArrowLeft />
-            )}
-            Back
-          </Button>
-        }
-      />
-    </>
+    <Screen elevation={10}>
+      <ScreenInner>
+        <CarouselHeader square elevation={0} theme={theme}>
+          <Circle backgroundColor={'#ED626D'} />
+          <Circle backgroundColor={'#FFDE32'} />
+          <Circle backgroundColor={'#7DD181'} />
+          <Caption>{slides[activeStep].caption}</Caption>
+        </CarouselHeader>
+        <SwipeableViews
+          axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+          index={activeStep}
+          onChangeIndex={handleStepChange}
+          enableMouseEvents
+        >
+          {slides.map((slide, index) => (
+            <div key={slide.caption}>
+              {Math.abs(activeStep - index) <= 2 ? (
+                <Img
+                  fluid={slide.src.childImageSharp.fluid}
+                  alt={slide.altText}
+                />
+              ) : null}
+            </div>
+          ))}
+        </SwipeableViews>
+        <MobileStepper
+          steps={maxSteps}
+          position="static"
+          variant="text"
+          activeStep={activeStep}
+          nextButton={
+            <Button
+              size="small"
+              onClick={handleNext}
+              disabled={activeStep === maxSteps - 1}
+            >
+              Next
+              {theme.direction === 'rtl' ? (
+                <MdKeyboardArrowLeft />
+              ) : (
+                <MdKeyboardArrowRight />
+              )}
+            </Button>
+          }
+          backButton={
+            <Button
+              size="small"
+              onClick={handleBack}
+              disabled={activeStep === 0}
+            >
+              {theme.direction === 'rtl' ? (
+                <MdKeyboardArrowRight />
+              ) : (
+                <MdKeyboardArrowLeft />
+              )}
+              Back
+            </Button>
+          }
+        />
+      </ScreenInner>
+    </Screen>
   );
 }
 
