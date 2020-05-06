@@ -45,30 +45,31 @@ interface Props {
 const PageHeader = styled(Grid).attrs({
   component: 'header',
 })`
-  margin: 1.5rem 0;
-`;
-
-const CarouselRoot = styled(Grid)``;
-
-const Aside = styled(Grid).attrs({
-  component: 'aside',
-})`
-  background-color: #f49097;
-  color: #000;
   padding: 1.5rem;
-  order: 2;
-
-  @media only screen and (min-width: 960px) {
-    order: 0;
-  }
+  color: #000;
+  background-color: #f49097;
 `;
 
-const Section = styled(Grid).attrs({
+const DescriptionSection = styled(Grid).attrs({
   component: 'section',
 })`
-  background-color: #0d3b66;
+  padding: 1.5rem;
+  color: #000;
+  background-color: #f49097;
+`;
+
+const CarouselRoot = styled(Grid)`
   padding: 1.5rem;
   color: #fdfde8;
+  background-color: #0d3b66;
+`;
+
+const TechTags = styled(Grid).attrs({
+  component: 'section',
+})`
+  background-color: #00916e;
+  color: #fdfde8;
+  padding: 1.5rem;
 `;
 
 const PortfolioPage: React.FC<Props> = ({ data: { mdx } }) => {
@@ -79,59 +80,64 @@ const PortfolioPage: React.FC<Props> = ({ data: { mdx } }) => {
       <SEO title={frontmatter.title} />
       <Navigation />
       <CollapsedNavigation />
-      <PageHeader container justify={'space-between'} alignItems={'center'}>
-        <Grid item>
-          <Typography variant={'h1'}>{frontmatter.title}</Typography>
-        </Grid>
-        <Grid item>
-          <Grid container spacing={2}>
-            <Grid item>
-              <Link
-                href={frontmatter.websiteURL}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button color={'primary'} endIcon={<TiArrowForward />}>
-                  Visit
-                </Button>
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link
-                href={frontmatter.githubURL}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button color={'primary'} endIcon={<FaGithub />}>
-                  Github
-                </Button>
-              </Link>
+      <Grid container justify={'center'}>
+        <PageHeader container justify={'space-between'} alignItems={'center'}>
+          <Grid item>
+            <Typography variant={'h1'}>{frontmatter.title}</Typography>
+          </Grid>
+          <Grid item>
+            <Grid container spacing={2}>
+              <Grid item>
+                <Link
+                  href={frontmatter.websiteURL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button color={'primary'} endIcon={<TiArrowForward />}>
+                    Visit
+                  </Button>
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link
+                  href={frontmatter.githubURL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button color={'primary'} endIcon={<FaGithub />}>
+                    Github
+                  </Button>
+                </Link>
+              </Grid>
             </Grid>
           </Grid>
-        </Grid>
-      </PageHeader>
+        </PageHeader>
 
-      <Grid container justify={'center'}>
-        <CarouselRoot item xs={12} sm={12} md={8} lg={8} xl={8}>
-          <Carousel slides={frontmatter.carouselPhotos} />
-        </CarouselRoot>
-
-        <Aside
+        <DescriptionSection
           item
           xs={12}
           sm={12}
-          md={4}
-          lg={4}
-          xl={4}
+          md={12}
+          lg={12}
+          xl={12}
           container
           direction={'column'}
+          justify={'center'}
+          alignItems={'flex-start'}
         >
-          <Technologies technologies={frontmatter.technologies} />
-        </Aside>
-
-        <Section item xs={12} sm={12} md={12} lg={12} xl={12}>
           <Description description={mdx.body} />
-        </Section>
+        </DescriptionSection>
+
+        <CarouselRoot item xs={12} sm={12} md={8} lg={8} xl={8}>
+          <Typography variant={'h2'} gutterBottom>
+            Gallery
+          </Typography>
+          <Carousel slides={frontmatter.carouselPhotos} />
+        </CarouselRoot>
+
+        <TechTags item xs={12} sm={12} md={4} lg={4} xl={4}>
+          <Technologies technologies={frontmatter.technologies} />
+        </TechTags>
       </Grid>
     </Layout>
   );
