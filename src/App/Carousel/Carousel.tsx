@@ -88,7 +88,7 @@ function SwipeableTextMobileStepper({ slides }: Props): ReactElement {
           <Circle backgroundColor={'#ED626D'} />
           <Circle backgroundColor={'#FFDE32'} />
           <Circle backgroundColor={'#7DD181'} />
-          <Caption>{slides[activeStep].caption}</Caption>
+          <Caption variant={'caption'}>{slides[activeStep].caption}</Caption>
         </CarouselHeader>
         <SwipeableViews
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}

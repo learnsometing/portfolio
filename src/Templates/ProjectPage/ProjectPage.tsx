@@ -9,6 +9,8 @@ import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { ThemeProvider } from '@material-ui/core';
+import theme from '../../shared/MUITheme';
 
 // Icons
 import { TiArrowForward } from 'react-icons/ti';
@@ -79,7 +81,7 @@ const PortfolioPage: React.FC<Props> = ({ data: { mdx } }) => {
   const { frontmatter } = mdx;
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <Navigation />
       <CollapsedNavigation />
       <Layout>
@@ -146,7 +148,7 @@ const PortfolioPage: React.FC<Props> = ({ data: { mdx } }) => {
           </TechTags>
         </Grid>
       </Layout>
-    </>
+    </ThemeProvider>
   );
 };
 

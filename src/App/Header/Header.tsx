@@ -1,6 +1,8 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
-import FluidTypography from '../../shared/FluidTypography';
+
+import Typography from '@material-ui/core/Typography';
+
 import Navbar from './Navbar';
 
 const Wrapper = styled.header`
@@ -22,17 +24,11 @@ const Grid = styled.div`
   }
 `;
 
-const Name = styled(FluidTypography).attrs(() => ({
-  minFontSize: '24px',
-  maxFontSize: '40px',
-  minViewportWidth: '320px',
-  maxViewportWidth: '960px',
-}))`
+const Name = styled(Typography)`
   grid-row: 1/2;
   grid-column: 1/4;
   color: #0d3b66;
   border-bottom: 5px solid #0d3b66;
-  margin-bottom: 0;
   @media only screen and (min-width: 768px) {
     text-align: end;
     grid-column: 2/3;
@@ -54,14 +50,11 @@ const TitleContainer = styled.div`
   }
 `;
 
-const Title = styled(FluidTypography).attrs(() => ({
-  minFontSize: '20px',
-  maxFontSize: '30px',
-  minViewportWidth: '320px',
-  maxViewportWidth: '960px',
-}))`
+const Title = styled(Typography)`
   color: #f4d35e;
+  margin-bottom: 0.35em;
   @media only screen and (min-width: 768px) {
+    margin-bottom: 0;
     border-left: 5px solid #f4d35e;
     writing-mode: vertical-lr;
   }
@@ -71,9 +64,9 @@ export default function Header(): ReactElement {
   return (
     <Wrapper>
       <Grid>
-        <Name as="h1">BRIAN MONACCIO</Name>
+        <Name variant={'h1'}>BRIAN MONACCIO</Name>
         <TitleContainer>
-          <Title as="h1">FRONTEND DEVELOPER</Title>
+          <Title variant={'h2'}>FRONTEND DEVELOPER</Title>
           <Navbar />
         </TitleContainer>
       </Grid>
