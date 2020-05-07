@@ -19,6 +19,7 @@ interface PortfolioProps {
   data: {
     allMdx: {
       nodes: ProjectCardContent[];
+      distinct: string[];
     };
   };
 }
@@ -28,7 +29,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ data: { allMdx } }) => {
   return (
     <ThemeProvider theme={theme}>
       <Navigation />
-      <BottomNavigation />
+      <BottomNavigation filters={allMdx.distinct} />
       <Layout>
         <Container maxWidth={'lg'}>
           <Typography variant={'h1'} gutterBottom>
@@ -52,6 +53,7 @@ Portfolio.propTypes = {
   data: PropTypes.shape({
     allMdx: PropTypes.shape({
       nodes: PropTypes.array.isRequired,
+      distinct: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
     }).isRequired,
   }).isRequired,
 };
@@ -76,6 +78,8 @@ export const portfolioCards = graphql`
           cardText
         }
       }
+
+      distinct(field: frontmatter___technologies)
     }
   }
 `;

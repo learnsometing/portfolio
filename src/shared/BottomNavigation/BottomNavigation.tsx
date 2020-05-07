@@ -45,15 +45,16 @@ export const ActionLabel = styled(Typography).attrs({
 `;
 
 interface Props {
-  disableFiltration?: boolean;
+  filters?: string[];
 }
 
 const iconStyles = { size: '32px', color: '#f95738' };
 
-const BottomNavigationBar: React.FC<Props> = ({ disableFiltration }) => {
+const BottomNavigationBar: React.FC<Props> = ({ filters }) => {
   const [value, setValue] = useState(0);
   const [isNavDrawerOpen, setIsNavDrawerOpen] = useState(false);
   const [isFiltersDrawerOpen, setIsFiltersDrawerOpen] = useState(false);
+  console.log(`bottom: ${filters}`);
 
   const toggleNavDrawer = (): void => {
     setIsNavDrawerOpen(!isNavDrawerOpen);
@@ -82,36 +83,41 @@ const BottomNavigationBar: React.FC<Props> = ({ disableFiltration }) => {
         value={value}
         showLabels
         onChange={(event, newValue): void => setValue(newValue)}
-        isFiltrationDisabled={disableFiltration}
+        isFiltrationDisabled={filters && filters.length ? false : true}
       >
-        {disableFiltration ? null : (
-          <BottomNavigationAction
-            label={<ActionLabel>Filter</ActionLabel>}
-            icon={filterIcon}
-            onClick={toggleFiltersDrawer}
-          />
-        )}
+        {filters && filters.length ? (
+          <>
+            <BottomNavigationAction
+              label={<ActionLabel>Filter</ActionLabel>}
+              showLabel
+              icon={filterIcon}
+              onClick={toggleFiltersDrawer}
+            />
+            <FiltersDrawer
+              isOpen={isFiltersDrawerOpen}
+              toggle={toggleFiltersDrawer}
+              filters={filters}
+            />
+          </>
+        ) : null}
         <BottomNavigationAction
           label={<ActionLabel>Menu</ActionLabel>}
+          showLabel
           icon={menuIcon}
           onClick={toggleNavDrawer}
         />
       </BottomNavigation>
       <NavigationDrawer isOpen={isNavDrawerOpen} toggle={toggleNavDrawer} />
-      <FiltersDrawer
-        isOpen={isFiltersDrawerOpen}
-        toggle={toggleFiltersDrawer}
-      />
     </>
   );
 };
 
 BottomNavigationBar.propTypes = {
-  disableFiltration: PropTypes.bool,
+  filters: PropTypes.arrayOf(PropTypes.string.isRequired),
 };
 
 BottomNavigationBar.defaultProps = {
-  disableFiltration: false,
+  filters: [],
 };
 
 export default BottomNavigationBar;

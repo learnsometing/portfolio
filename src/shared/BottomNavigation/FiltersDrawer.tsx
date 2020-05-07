@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 
 import DrawerBase from './DrawerBase';
+import FiltersForm from './FiltersForm';
 
 const FilterDrawerHeader = styled(Typography).attrs({
   variant: 'h2',
@@ -16,13 +17,19 @@ const FilterDrawerHeader = styled(Typography).attrs({
 interface FiltersDrawerProps {
   isOpen: boolean;
   toggle: () => void;
+  filters: string[];
 }
 
-const FiltersDrawer: React.FC<FiltersDrawerProps> = ({ isOpen, toggle }) => {
+const FiltersDrawer: React.FC<FiltersDrawerProps> = ({
+  isOpen,
+  toggle,
+  filters,
+}) => {
   return (
     <DrawerBase isOpen={isOpen} toggle={toggle}>
       <FilterDrawerHeader>Filters</FilterDrawerHeader>
       <Divider />
+      <FiltersForm filters={filters} />
     </DrawerBase>
   );
 };
@@ -30,6 +37,7 @@ const FiltersDrawer: React.FC<FiltersDrawerProps> = ({ isOpen, toggle }) => {
 FiltersDrawer.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   toggle: PropTypes.func.isRequired,
+  filters: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
 };
 
 export default FiltersDrawer;
