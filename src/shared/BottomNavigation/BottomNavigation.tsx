@@ -9,6 +9,7 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import Typography from '@material-ui/core/Typography';
 
 import NavigationDrawer from './NavigationDrawer';
+import FiltersDrawer from './FiltersDrawer';
 
 interface NavbarProps {
   isFiltrationDisabled: boolean;
@@ -52,9 +53,14 @@ const iconStyles = { size: '32px', color: '#f95738' };
 const BottomNavigationBar: React.FC<Props> = ({ disableFiltration }) => {
   const [value, setValue] = useState(0);
   const [isNavDrawerOpen, setIsNavDrawerOpen] = useState(false);
+  const [isFiltersDrawerOpen, setIsFiltersDrawerOpen] = useState(false);
 
-  const toggleDrawer = (): void => {
+  const toggleNavDrawer = (): void => {
     setIsNavDrawerOpen(!isNavDrawerOpen);
+  };
+
+  const toggleFiltersDrawer = (): void => {
+    setIsFiltersDrawerOpen(!isFiltersDrawerOpen);
   };
 
   const filterIcon = (
@@ -82,16 +88,20 @@ const BottomNavigationBar: React.FC<Props> = ({ disableFiltration }) => {
           <BottomNavigationAction
             label={<ActionLabel>Filter</ActionLabel>}
             icon={filterIcon}
-            onClick={toggleDrawer}
+            onClick={toggleFiltersDrawer}
           />
         )}
         <BottomNavigationAction
           label={<ActionLabel>Menu</ActionLabel>}
           icon={menuIcon}
-          onClick={toggleDrawer}
+          onClick={toggleNavDrawer}
         />
       </BottomNavigation>
-      <NavigationDrawer isOpen={isNavDrawerOpen} toggle={toggleDrawer} />
+      <NavigationDrawer isOpen={isNavDrawerOpen} toggle={toggleNavDrawer} />
+      <FiltersDrawer
+        isOpen={isFiltersDrawerOpen}
+        toggle={toggleFiltersDrawer}
+      />
     </>
   );
 };
