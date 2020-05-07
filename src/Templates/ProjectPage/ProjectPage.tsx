@@ -83,7 +83,7 @@ const PortfolioPage: React.FC<Props> = ({ data: { mdx } }) => {
   return (
     <ThemeProvider theme={theme}>
       <Navigation />
-      <BottomNavigation />
+      <BottomNavigation disableFiltration={true} />
       <Layout>
         <SEO title={frontmatter.title} />
         <Grid container justify={'center'}>
