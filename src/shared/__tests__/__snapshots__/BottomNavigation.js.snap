@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BottomNavigation should match the snapshot 1`] = `
+.c0 {
+  position: fixed;
+  bottom: 0;
+  height: 80px;
+  width: 100%;
+  z-index: 2;
+  background-color: #fdfde8;
+}
+
+.c1 {
+  color: #f95738;
+}
+
+@media only screen and (min-width:768px) {
+  .c0 {
+    display: none;
+  }
+}
+
+<div
+  className="MuiPaper-root c0 MuiBottomNavigation-root MuiPaper-elevation2"
+>
+  <button
+    className="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected"
+    disabled={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onDragLeave={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex={0}
+    type="button"
+  >
+    <span
+      className="MuiBottomNavigationAction-wrapper"
+    >
+      <div
+        className="hamburger-react"
+        onClick={[Function]}
+        onKeyUp={[Function]}
+        role="button"
+        style={
+          Object {
+            "cursor": "pointer",
+            "height": "48px",
+            "outline": "none",
+            "position": "relative",
+            "transform": "none",
+            "transition": "0.4s cubic-bezier(0, 0, 0, 1)",
+            "userSelect": "none",
+            "width": "48px",
+          }
+        }
+        tabIndex={0}
+      >
+        <div
+          style={
+            Object {
+              "background": "#f95738",
+              "height": "3px",
+              "left": "8px",
+              "position": "absolute",
+              "top": "13px",
+              "transform": "none",
+              "transition": "0.4s cubic-bezier(0, 0, 0, 1)",
+              "width": "32px",
+            }
+          }
+        />
+        <div
+          style={
+            Object {
+              "background": "#f95738",
+              "height": "3px",
+              "left": "8px",
+              "position": "absolute",
+              "top": "23px",
+              "transform": "none",
+              "transition": "0.4s cubic-bezier(0, 0, 0, 1)",
+              "width": "32px",
+            }
+          }
+        />
+        <div
+          style={
+            Object {
+              "background": "#f95738",
+              "height": "3px",
+              "left": "8px",
+              "position": "absolute",
+              "top": "33px",
+              "transform": "none",
+              "transition": "0.4s cubic-bezier(0, 0, 0, 1)",
+              "width": "32px",
+            }
+          }
+        />
+      </div>
+      <span
+        className="MuiBottomNavigationAction-label Mui-selected"
+      >
+        <span
+          className="MuiTypography-root c1 MuiTypography-h6"
+        >
+          Menu
+        </span>
+      </span>
+    </span>
+  </button>
+</div>
+`;
