@@ -1,34 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { IconContext } from 'react-icons';
-import { MdClose } from 'react-icons/md';
 
-import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Typography from '@material-ui/core/Typography';
+import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 
+import DrawerBase from './DrawerBase';
 import { NavLink } from '../Navigation';
-
-const MenuDrawer = styled(Drawer)`
-  height: 100vh;
-`;
-
-const Menu = styled(List)`
-  height: 100vh;
-  width: 100vw;
-  background-color: #fdfde8;
-`;
 
 const MenuItem = styled(ListItem).attrs({
   button: undefined,
 })`
-  height: 20%;
+  height: calc((100vh - 4px - (3rem + 4vh)) / 4);
   margin: 0;
 `;
 
+const Menu = styled(List)`
+  width: 100vw;
+  padding: 0;
+  background-color: #fdfde8;
+`;
 const MenuLink = styled(NavLink)`
   display: flex;
   width: 100%;
@@ -38,30 +31,17 @@ const MenuLink = styled(NavLink)`
   align-items: center;
 `;
 
-const Close = styled(MenuItem)`
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 2rem;
-  cursor: pointer;
-`;
-
 interface NavigationDrawerProps {
   isOpen: boolean;
   toggle: () => void;
 }
-
-const closeIcon = (
-  <IconContext.Provider value={{ size: '3rem', color: '#f95738' }}>
-    <MdClose />
-  </IconContext.Provider>
-);
 
 const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
   isOpen,
   toggle,
 }) => {
   return (
-    <MenuDrawer anchor={'top'} open={isOpen} elevation={2}>
+    <DrawerBase isOpen={isOpen} toggle={toggle}>
       <Menu>
         <MenuItem>
           <MenuLink to="/">
@@ -95,9 +75,8 @@ const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
           </MenuLink>
         </MenuItem>
         <Divider component={'li'} />
-        <Close onClick={toggle}>{closeIcon}</Close>
       </Menu>
-    </MenuDrawer>
+    </DrawerBase>
   );
 };
 
