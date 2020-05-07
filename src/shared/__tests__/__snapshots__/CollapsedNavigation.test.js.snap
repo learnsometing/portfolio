@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CollapsedNavigation should match the snapshot 1`] = `
+exports[`BottomNavigation should match the snapshot 1`] = `
 .c0 {
   width: 60px;
   height: 60px;

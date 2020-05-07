@@ -13,7 +13,7 @@ import PortfolioCard, {
   ProjectCardContent,
 } from '../App/ProjectCard/ProjectCard';
 import Navigation from '../shared/Navigation';
-import CollapsedNavigation from '../shared/CollapsedNavigation';
+import BottomNavigation from '../shared/BottomNavigation/BottomNavigation';
 
 interface PortfolioProps {
   data: {
@@ -28,7 +28,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ data: { allMdx } }) => {
   return (
     <ThemeProvider theme={theme}>
       <Navigation />
-      <CollapsedNavigation />
+      <BottomNavigation />
       <Layout>
         <Container maxWidth={'lg'}>
           <Typography variant={'h1'} gutterBottom>

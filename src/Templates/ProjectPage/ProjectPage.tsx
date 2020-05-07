@@ -20,7 +20,7 @@ import { FaGithub } from 'react-icons/fa';
 import Layout from '../../App/Layout/Layout';
 import SEO from '../../App/SEO/SEO';
 import Navigation from '../../shared/Navigation';
-import CollapsedNavigation from '../../shared/CollapsedNavigation';
+import BottomNavigation from '../../shared/BottomNavigation/BottomNavigation';
 import Carousel from '../../App/Carousel/Carousel';
 import Description from './Description';
 import Tags from './Tags';
@@ -83,7 +83,7 @@ const PortfolioPage: React.FC<Props> = ({ data: { mdx } }) => {
   return (
     <ThemeProvider theme={theme}>
       <Navigation />
-      <CollapsedNavigation />
+      <BottomNavigation />
       <Layout>
         <SEO title={frontmatter.title} />
         <Grid container justify={'center'}>
