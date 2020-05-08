@@ -32,8 +32,8 @@ interface Mdx {
   mdx: {
     frontmatter: {
       title: string;
-      websiteURL: string;
-      githubURL: string;
+      websiteUrl: string;
+      githubUrl: string;
       carouselPhotos: Slide[];
       technologies: string[];
     };
@@ -83,7 +83,7 @@ const PortfolioPage: React.FC<Props> = ({ data: { mdx } }) => {
   return (
     <ThemeProvider theme={theme}>
       <Navigation />
-      <BottomNavigation disableFiltration={true} />
+      <BottomNavigation />
       <Layout>
         <SEO title={frontmatter.title} />
         <Grid container justify={'center'}>
@@ -95,7 +95,7 @@ const PortfolioPage: React.FC<Props> = ({ data: { mdx } }) => {
               <Grid container spacing={2}>
                 <Grid item>
                   <Link
-                    href={frontmatter.websiteURL}
+                    href={frontmatter.websiteUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -106,7 +106,7 @@ const PortfolioPage: React.FC<Props> = ({ data: { mdx } }) => {
                 </Grid>
                 <Grid item>
                   <Link
-                    href={frontmatter.githubURL}
+                    href={frontmatter.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -157,8 +157,8 @@ PortfolioPage.propTypes = {
     mdx: PropTypes.shape({
       frontmatter: PropTypes.shape({
         title: PropTypes.string.isRequired,
-        websiteURL: PropTypes.string.isRequired,
-        githubURL: PropTypes.string.isRequired,
+        websiteUrl: PropTypes.string.isRequired,
+        githubUrl: PropTypes.string.isRequired,
         carouselPhotos: PropTypes.arrayOf(
           PropTypes.shape({
             src: PropTypes.shape({
@@ -190,8 +190,8 @@ export const query = graphql`
     mdx(frontmatter: { path: { eq: $slug } }) {
       frontmatter {
         title
-        githubURL
-        websiteURL
+        githubUrl
+        websiteUrl
         carouselPhotos {
           altText
           src {

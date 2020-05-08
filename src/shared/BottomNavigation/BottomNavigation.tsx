@@ -22,19 +22,22 @@ const Navbar = styled(Paper).attrs({
   position: fixed;
   bottom: 0;
   right: 0;
-  height: ${({ isFiltrationDisabled }): string =>
-    isFiltrationDisabled ? '80px' : '80px'};
-  width: ${({ isFiltrationDisabled }): string =>
-    isFiltrationDisabled ? '80px' : '100%'};
-  border-radius: ${({ isFiltrationDisabled }): string | undefined =>
-    isFiltrationDisabled ? '50%' : '0'};
-  margin: ${({ isFiltrationDisabled }): string | undefined =>
-    isFiltrationDisabled ? '1rem' : '0'};
+  height: 80px;
+  width: 100%;
   z-index: 2;
   background-color: #fdfde8;
   @media only screen and (min-width: 768px) {
     display: none;
   }
+`;
+
+const CondensedNavbar = styled(Navbar).attrs({
+  elevation: 2,
+  square: true,
+})<NavbarProps>`
+  width: 80px;
+  border-radius: 50%;
+  margin: 1rem;
 `;
 
 export const ActionLabel = styled(Typography).attrs({
@@ -51,7 +54,6 @@ interface Props {
 const iconStyles = { size: '32px', color: '#f95738' };
 
 const BottomNavigationBar: React.FC<Props> = ({ filters }) => {
-  const [value, setValue] = useState(0);
   const [isNavDrawerOpen, setIsNavDrawerOpen] = useState(false);
   const [isFiltersDrawerOpen, setIsFiltersDrawerOpen] = useState(false);
   console.log(`bottom: ${filters}`);
@@ -76,39 +78,37 @@ const BottomNavigationBar: React.FC<Props> = ({ filters }) => {
     </IconContext.Provider>
   );
 
-  return (
-    <>
-      <BottomNavigation
-        component={Navbar}
-        value={value}
-        showLabels
-        onChange={(event, newValue): void => setValue(newValue)}
-        isFiltrationDisabled={filters && filters.length ? false : true}
-      >
-        {filters && filters.length ? (
-          <>
-            <BottomNavigationAction
-              label={<ActionLabel>Filter</ActionLabel>}
-              showLabel
-              icon={filterIcon}
-              onClick={toggleFiltersDrawer}
-            />
-            <FiltersDrawer
-              isOpen={isFiltersDrawerOpen}
-              toggle={toggleFiltersDrawer}
-              filters={filters}
-            />
-          </>
-        ) : null}
-        <BottomNavigationAction
-          label={<ActionLabel>Menu</ActionLabel>}
-          showLabel
-          icon={menuIcon}
-          onClick={toggleNavDrawer}
-        />
-      </BottomNavigation>
+  return filters && filters.length ? (
+    <BottomNavigation component={Navbar} showLabels>
+      <BottomNavigationAction
+        label={<ActionLabel>Filter</ActionLabel>}
+        showLabel
+        icon={filterIcon}
+        onClick={toggleFiltersDrawer}
+      />
+      <FiltersDrawer
+        isOpen={isFiltersDrawerOpen}
+        toggle={toggleFiltersDrawer}
+        filters={filters}
+      />
+      <BottomNavigationAction
+        label={<ActionLabel>Menu</ActionLabel>}
+        showLabel
+        icon={menuIcon}
+        onClick={toggleNavDrawer}
+      />
       <NavigationDrawer isOpen={isNavDrawerOpen} toggle={toggleNavDrawer} />
-    </>
+    </BottomNavigation>
+  ) : (
+    <BottomNavigation component={CondensedNavbar} showLabels>
+      <BottomNavigationAction
+        label={<ActionLabel>Menu</ActionLabel>}
+        showLabel
+        icon={menuIcon}
+        onClick={toggleNavDrawer}
+      />
+      <NavigationDrawer isOpen={isNavDrawerOpen} toggle={toggleNavDrawer} />
+    </BottomNavigation>
   );
 };
 
