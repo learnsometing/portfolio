@@ -77,7 +77,7 @@ const TechTags = styled(Grid).attrs({
 
 const shortcodes = { Typography, Grid };
 
-const PortfolioPage: React.FC<Props> = ({ data: { mdx } }) => {
+const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
   const { frontmatter } = mdx;
 
   return (
@@ -152,7 +152,7 @@ const PortfolioPage: React.FC<Props> = ({ data: { mdx } }) => {
   );
 };
 
-PortfolioPage.propTypes = {
+ProjectPage.propTypes = {
   data: PropTypes.shape({
     mdx: PropTypes.shape({
       frontmatter: PropTypes.shape({
@@ -183,7 +183,7 @@ PortfolioPage.propTypes = {
   }).isRequired,
 };
 
-export default PortfolioPage;
+export default ProjectPage;
 
 export const query = graphql`
   query($slug: String!) {
