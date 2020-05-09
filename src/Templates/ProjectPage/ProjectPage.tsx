@@ -20,7 +20,7 @@ import { FaGithub } from 'react-icons/fa';
 import Layout from '../../App/Layout/Layout';
 import SEO from '../../App/SEO/SEO';
 import Navigation from '../../shared/Navigation';
-import CollapsedNavigation from '../../shared/CollapsedNavigation';
+import BottomNavigation from '../../shared/BottomNavigation/BottomNavigation';
 import Carousel from '../../App/Carousel/Carousel';
 import Description from './Description';
 import Tags from './Tags';
@@ -32,10 +32,10 @@ interface Mdx {
   mdx: {
     frontmatter: {
       title: string;
-      websiteURL: string;
-      githubURL: string;
+      websiteUrl: string;
+      githubUrl: string;
       carouselPhotos: Slide[];
-      technologies: string[];
+      tags: string[];
     };
     body: string;
   };
@@ -77,13 +77,13 @@ const TechTags = styled(Grid).attrs({
 
 const shortcodes = { Typography, Grid };
 
-const PortfolioPage: React.FC<Props> = ({ data: { mdx } }) => {
+const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
   const { frontmatter } = mdx;
 
   return (
     <ThemeProvider theme={theme}>
       <Navigation />
-      <CollapsedNavigation />
+      <BottomNavigation />
       <Layout>
         <SEO title={frontmatter.title} />
         <Grid container justify={'center'}>
@@ -95,7 +95,7 @@ const PortfolioPage: React.FC<Props> = ({ data: { mdx } }) => {
               <Grid container spacing={2}>
                 <Grid item>
                   <Link
-                    href={frontmatter.websiteURL}
+                    href={frontmatter.websiteUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -106,7 +106,7 @@ const PortfolioPage: React.FC<Props> = ({ data: { mdx } }) => {
                 </Grid>
                 <Grid item>
                   <Link
-                    href={frontmatter.githubURL}
+                    href={frontmatter.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -144,7 +144,7 @@ const PortfolioPage: React.FC<Props> = ({ data: { mdx } }) => {
           </CarouselRoot>
 
           <TechTags item xs={12} sm={12} md={4} lg={4} xl={4}>
-            <Tags tags={frontmatter.technologies} />
+            <Tags tags={frontmatter.tags} />
           </TechTags>
         </Grid>
       </Layout>
@@ -152,13 +152,13 @@ const PortfolioPage: React.FC<Props> = ({ data: { mdx } }) => {
   );
 };
 
-PortfolioPage.propTypes = {
+ProjectPage.propTypes = {
   data: PropTypes.shape({
     mdx: PropTypes.shape({
       frontmatter: PropTypes.shape({
         title: PropTypes.string.isRequired,
-        websiteURL: PropTypes.string.isRequired,
-        githubURL: PropTypes.string.isRequired,
+        websiteUrl: PropTypes.string.isRequired,
+        githubUrl: PropTypes.string.isRequired,
         carouselPhotos: PropTypes.arrayOf(
           PropTypes.shape({
             src: PropTypes.shape({
@@ -176,22 +176,22 @@ PortfolioPage.propTypes = {
             caption: PropTypes.string,
           }).isRequired
         ).isRequired,
-        technologies: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        tags: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
       }).isRequired,
       body: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
 };
 
-export default PortfolioPage;
+export default ProjectPage;
 
 export const query = graphql`
   query($slug: String!) {
     mdx(frontmatter: { path: { eq: $slug } }) {
       frontmatter {
         title
-        githubURL
-        websiteURL
+        githubUrl
+        websiteUrl
         carouselPhotos {
           altText
           src {
@@ -203,7 +203,7 @@ export const query = graphql`
           }
           caption
         }
-        technologies
+        tags
       }
       body
     }

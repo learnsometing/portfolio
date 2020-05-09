@@ -18,39 +18,37 @@ interface Image {
 }
 
 export interface ProjectCardContent {
-  frontmatter: {
-    title: string;
-    path: string;
-    cardText: string;
-    cardPhoto: Image;
-  };
+  title: string;
+  path: string;
+  cardText: string;
+  cardPhoto: Image;
 }
 
-interface CardProps {
-  project: ProjectCardContent;
+interface ProjectCardProps {
+  content: ProjectCardContent;
 }
 
 const ProjectLink = styled(Link)`
   text-decoration: none;
 `;
 
-const ProjectCard: React.FC<CardProps> = ({ project }) => {
-  const { frontmatter } = project;
+const ProjectCard: React.FC<ProjectCardProps> = ({ content }) => {
+  const { title, path, cardText, cardPhoto } = content;
 
   return (
     <Grid item component={'article'} xl={4} lg={4} md={6} sm={6} xs={12}>
-      <ProjectLink to={frontmatter.path}>
+      <ProjectLink to={path}>
         <Card raised>
           <CardActionArea>
             <Img
-              fluid={frontmatter.cardPhoto.src.childImageSharp.fluid}
+              fluid={cardPhoto.src.childImageSharp.fluid}
               alt="First slide"
             />
             <CardContent>
               <Typography gutterBottom variant={'h5'} component={'h2'}>
-                {frontmatter.title}
+                {title}
               </Typography>
-              <Typography variant={'body1'}>{frontmatter.cardText}</Typography>
+              <Typography variant={'body1'}>{cardText}</Typography>
             </CardContent>
           </CardActionArea>
         </Card>
@@ -59,26 +57,26 @@ const ProjectCard: React.FC<CardProps> = ({ project }) => {
   );
 };
 
+const ChildImageSharpPropType = PropTypes.shape({
+  fluid: PropTypes.shape({
+    base64: PropTypes.string.isRequired,
+    aspectRatio: PropTypes.number.isRequired,
+    src: PropTypes.string.isRequired,
+    srcSet: PropTypes.string.isRequired,
+    sizes: PropTypes.string.isRequired,
+  }).isRequired,
+}).isRequired;
+
 ProjectCard.propTypes = {
-  project: PropTypes.shape({
-    frontmatter: PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      path: PropTypes.string.isRequired,
-      cardText: PropTypes.string.isRequired,
-      cardPhoto: PropTypes.shape({
-        src: PropTypes.shape({
-          childImageSharp: PropTypes.shape({
-            fluid: PropTypes.shape({
-              base64: PropTypes.string.isRequired,
-              aspectRatio: PropTypes.number.isRequired,
-              src: PropTypes.string.isRequired,
-              srcSet: PropTypes.string.isRequired,
-              sizes: PropTypes.string.isRequired,
-            }).isRequired,
-          }).isRequired,
-        }).isRequired,
-        altText: PropTypes.string.isRequired,
+  content: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    path: PropTypes.string.isRequired,
+    cardText: PropTypes.string.isRequired,
+    cardPhoto: PropTypes.shape({
+      src: PropTypes.shape({
+        childImageSharp: ChildImageSharpPropType,
       }).isRequired,
+      altText: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
 };

@@ -4,10 +4,16 @@ import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
 import { StyledGatsbyLink } from './Navigation';
 
+// Redux
+import { connect } from 'react-redux';
+import { clearFilters, applyFilters } from '../state/actions';
+
 interface Props {
   text: string;
   highlightColor: string;
   textColor: string;
+  applyFilters: (filters: string[]) => void;
+  clearFilters: () => void;
 }
 
 interface TagLink {
@@ -67,8 +73,21 @@ const TagText = styled(Typography).attrs({
   padding-bottom: 0;
 `;
 
-const Tag: React.FC<Props> = ({ text, highlightColor, textColor }) => (
-  <TagLink to="/" color={textColor}>
+const Tag: React.FC<Props> = ({
+  text,
+  highlightColor,
+  textColor,
+  applyFilters,
+  clearFilters,
+}) => (
+  <TagLink
+    to="/portfolio"
+    color={textColor}
+    onClick={(): void => {
+      clearFilters();
+      applyFilters([text]);
+    }}
+  >
     <Highlight highlightColor={highlightColor} className={'highlight'}>
       <TagText variant={'body1'}>{text}</TagText>
     </Highlight>
@@ -79,6 +98,8 @@ Tag.propTypes = {
   text: PropTypes.string.isRequired,
   highlightColor: PropTypes.string.isRequired,
   textColor: PropTypes.string.isRequired,
+  applyFilters: PropTypes.func.isRequired,
+  clearFilters: PropTypes.func.isRequired,
 };
 
-export default Tag;
+export default connect(null, { clearFilters, applyFilters })(Tag);

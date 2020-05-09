@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BottomNavigation should match the snapshot 1`] = `
+.c0 {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  height: 80px;
+  width: 100%;
+  z-index: 2;
+  background-color: #fdfde8;
+  width: 80px;
+  border-radius: 50%;
+  margin: 1rem;
+}
+
+.c1 {
+  color: #f95738;
+}
+
+@media only screen and (min-width:768px) {
+  .c0 {
+    display: none;
+  }
+}
+
+<div
+  className="MuiPaper-root BottomNavigation__Navbar-sc-1qy0eks-0 c0 MuiBottomNavigation-root MuiPaper-elevation2"
+>
+  <button
+    className="MuiButtonBase-root MuiBottomNavigationAction-root"
+    disabled={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onDragLeave={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex={0}
+    type="button"
+  >
+    <span
+      className="MuiBottomNavigationAction-wrapper"
+    >
+      <svg
+        fill="currentColor"
+        height="32px"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          Object {
+            "color": "#f95738",
+          }
+        }
+        viewBox="0 0 24 24"
+        width="32px"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+        />
+      </svg>
+      <span
+        className="MuiBottomNavigationAction-label"
+      >
+        <span
+          className="MuiTypography-root c1 MuiTypography-h6"
+        >
+          Menu
+        </span>
+      </span>
+    </span>
+  </button>
+</div>
+`;
