@@ -1,13 +1,11 @@
 import { createStore, combineReducers } from 'redux';
-import { reducer as formReducer } from 'redux-form';
+import { portfolioReducer } from './reducers';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 const rootReducer = combineReducers({
-  // ...your other reducers here
-  // you have to pass formReducer under 'form' key,
-  // for custom keys look up the docs for 'getFormState'
-  form: formReducer,
+  portfolioReducer,
 });
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, composeWithDevTools());
 
 export default store;
