@@ -48,7 +48,7 @@ export const ActionLabel = styled(Typography).attrs({
 `;
 
 interface Props {
-  filters?: string[];
+  filters?: string[][];
 }
 
 const iconStyles = { size: '32px', color: '#f95738' };
@@ -56,7 +56,6 @@ const iconStyles = { size: '32px', color: '#f95738' };
 const BottomNavigationBar: React.FC<Props> = ({ filters }) => {
   const [isNavDrawerOpen, setIsNavDrawerOpen] = useState(false);
   const [isFiltersDrawerOpen, setIsFiltersDrawerOpen] = useState(false);
-  console.log(`bottom: ${filters}`);
 
   const toggleNavDrawer = (): void => {
     setIsNavDrawerOpen(!isNavDrawerOpen);
@@ -113,7 +112,9 @@ const BottomNavigationBar: React.FC<Props> = ({ filters }) => {
 };
 
 BottomNavigationBar.propTypes = {
-  filters: PropTypes.arrayOf(PropTypes.string.isRequired),
+  filters: PropTypes.arrayOf(
+    PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+  ),
 };
 
 BottomNavigationBar.defaultProps = {

@@ -15,32 +15,49 @@ import PortfolioCard, {
 import Navigation from '../shared/Navigation';
 import BottomNavigation from '../shared/BottomNavigation/BottomNavigation';
 
+interface TaggedProjectCard extends ProjectCardContent {
+  tags: string[];
+}
+
+interface Frontmatter {
+  frontmatter: TaggedProjectCard;
+}
+
 interface PortfolioProps {
   data: {
     allMdx: {
-      nodes: ProjectCardContent[];
-      distinct: string[];
+      nodes: Frontmatter[];
     };
   };
 }
 
 export const Portfolio: React.FC<PortfolioProps> = ({ data: { allMdx } }) => {
   const { nodes } = allMdx;
+
+  // separate the content of each card from its tech tags
+  const projectCards = nodes.map(
+    ({ frontmatter: { title, path, cardText, cardPhoto } }) => ({
+      title,
+      path,
+      cardText,
+      cardPhoto,
+    })
+  );
+
+  // create an array of Sets of filters from the technology tags
+  const filters = nodes.map(({ frontmatter }) => frontmatter.tags);
   return (
     <ThemeProvider theme={theme}>
       <Navigation />
-      <BottomNavigation filters={allMdx.distinct} />
+      <BottomNavigation filters={filters} />
       <Layout>
         <Container maxWidth={'lg'}>
           <Typography variant={'h1'} gutterBottom>
             Portfolio
           </Typography>
           <Grid container spacing={4}>
-            {nodes.map((project) => (
-              <PortfolioCard
-                key={project.frontmatter.title}
-                project={project}
-              />
+            {projectCards.map((card) => (
+              <PortfolioCard key={card.title} content={card} />
             ))}
           </Grid>
         </Container>
@@ -53,7 +70,6 @@ Portfolio.propTypes = {
   data: PropTypes.shape({
     allMdx: PropTypes.shape({
       nodes: PropTypes.array.isRequired,
-      distinct: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
     }).isRequired,
   }).isRequired,
 };
@@ -76,10 +92,9 @@ export const portfolioCards = graphql`
             }
           }
           cardText
+          tags
         }
       }
-
-      distinct(field: frontmatter___technologies)
     }
   }
 `;

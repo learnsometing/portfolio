@@ -9,6 +9,7 @@ import Divider from '@material-ui/core/Divider';
 
 import DrawerBase from './DrawerBase';
 import { NavLink } from '../Navigation';
+import CloseButton from '../CloseButton';
 
 const MenuItem = styled(ListItem).attrs({
   button: undefined,
@@ -22,6 +23,7 @@ const Menu = styled(List)`
   padding: 0;
   background-color: #fdfde8;
 `;
+
 const MenuLink = styled(NavLink)`
   display: flex;
   width: 100%;
@@ -29,6 +31,16 @@ const MenuLink = styled(NavLink)`
   padding: 0;
   justify-content: center;
   align-items: center;
+`;
+
+const Close = styled.div`
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  background-color: #fdfde8;
+  cursor: pointer;
 `;
 
 interface NavigationDrawerProps {
@@ -41,7 +53,7 @@ const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
   toggle,
 }) => {
   return (
-    <DrawerBase isOpen={isOpen} toggle={toggle}>
+    <DrawerBase isOpen={isOpen}>
       <Menu>
         <MenuItem>
           <MenuLink to="/">
@@ -74,7 +86,10 @@ const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
             </Typography>
           </MenuLink>
         </MenuItem>
-        <Divider component={'li'} />
+        <Divider />
+        <Close>
+          <CloseButton onClick={toggle} />
+        </Close>
       </Menu>
     </DrawerBase>
   );

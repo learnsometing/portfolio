@@ -35,7 +35,7 @@ interface Mdx {
       websiteUrl: string;
       githubUrl: string;
       carouselPhotos: Slide[];
-      technologies: string[];
+      tags: string[];
     };
     body: string;
   };
@@ -144,7 +144,7 @@ const PortfolioPage: React.FC<Props> = ({ data: { mdx } }) => {
           </CarouselRoot>
 
           <TechTags item xs={12} sm={12} md={4} lg={4} xl={4}>
-            <Tags tags={frontmatter.technologies} />
+            <Tags tags={frontmatter.tags} />
           </TechTags>
         </Grid>
       </Layout>
@@ -176,7 +176,7 @@ PortfolioPage.propTypes = {
             caption: PropTypes.string,
           }).isRequired
         ).isRequired,
-        technologies: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+        tags: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
       }).isRequired,
       body: PropTypes.string.isRequired,
     }).isRequired,
@@ -203,7 +203,7 @@ export const query = graphql`
           }
           caption
         }
-        technologies
+        tags
       }
       body
     }

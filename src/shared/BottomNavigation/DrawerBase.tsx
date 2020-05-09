@@ -1,53 +1,40 @@
 import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { IconContext } from 'react-icons';
-import { MdClose } from 'react-icons/md';
 
 import Drawer from '@material-ui/core/Drawer';
+import Paper from '@material-ui/core/Paper';
 
-const FulllHeightDrawer = styled(Drawer)`
+const FullHeightDrawer = styled(Drawer)`
   height: 100vh;
 `;
 
-const Close = styled.div`
-  padding-top: 2vh;
-  padding-bottom: 2vh;
-  margin: 0;
-  display: flex;
-  justify-content: center;
+const DrawerBG = styled(Paper)`
+  overflow-y: auto;
   background-color: #fdfde8;
-  cursor: pointer;
+  min-height: 100vh;
 `;
-
-const closeIcon = (
-  <IconContext.Provider value={{ size: '3rem', color: '#f95738' }}>
-    <MdClose />
-  </IconContext.Provider>
-);
 
 interface DrawerBaseProps {
   isOpen: boolean;
-  toggle: () => void;
   children: ReactNode;
 }
 
-const DrawerBase: React.FC<DrawerBaseProps> = ({
-  isOpen,
-  toggle,
-  children,
-}) => {
+const DrawerBase: React.FC<DrawerBaseProps> = ({ isOpen, children }) => {
   return (
-    <FulllHeightDrawer anchor={'top'} open={isOpen} elevation={2}>
+    <FullHeightDrawer
+      anchor={'top'}
+      open={isOpen}
+      elevation={2}
+      PaperProps={{ component: DrawerBG }}
+    >
       {children}
-      <Close onClick={toggle}>{closeIcon}</Close>
-    </FulllHeightDrawer>
+    </FullHeightDrawer>
   );
 };
 
 DrawerBase.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  toggle: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
 };
 
