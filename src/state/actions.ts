@@ -1,4 +1,9 @@
-import { ADD_FILTERS, APPLY_FILTERS, CLEAR_FILTERS } from './actionTypes';
+import {
+  ADD_FILTERS,
+  APPLY_FILTERS,
+  CLEAR_FILTERS,
+  REMOVE_FILTER,
+} from './actionTypes';
 
 interface Action {
   type: string;
@@ -33,6 +38,15 @@ export function clearFilters(): Filters {
     type: CLEAR_FILTERS,
     payload: {
       filters: [],
+    },
+  };
+}
+
+export function removeFilter(filter: string): Filters {
+  return {
+    type: REMOVE_FILTER,
+    payload: {
+      filter,
     },
   };
 }

@@ -13,6 +13,10 @@ import Typography from '@material-ui/core/Typography';
 
 import getTagCounts from '../../helpers/getTagCounts';
 
+import { connect } from 'react-redux';
+import { applyFilters, clearFilters } from '../../state/actions';
+import { getAppliedFilters } from '../../state/selectors';
+
 const FormLabel = styled(FormControlLabel)`
   margin-right: auto;
   margin-left: 1rem;
@@ -25,10 +29,6 @@ const Buttons = styled(Grid)`
   bottom: 0;
   background-color: #fdfde8;
   border-top: 1px solid rgba(0, 0, 0, 0.12);
-`;
-
-const StyledForm = styled(Form)`
-  margin-bottom: 0;
 `;
 
 const StyledFormGroup = styled(FormGroup)`
@@ -49,13 +49,12 @@ interface FiltersFormValues {
 }
 
 interface Errors {
-  appliedFilters: string;
+  appliedFilters?: string;
 }
 
-const validate = (values: FiltersFormValues): Errors => {
-  const errors = {
-    appliedFilters: '',
-  };
+const validate = (values: FiltersFormValues): {} | Errors => {
+  const errors: Errors = {};
+
   if (!values.appliedFilters.length) {
     errors.appliedFilters = 'At least one filter must be selected.';
   }
@@ -144,38 +143,53 @@ Fields.propTypes = {
 
 interface FiltersFormProps {
   filters: string[][];
+  applyFilters: (appliedFilters: string[]) => void;
+  clearFilters: () => void;
+  appliedFilters: string[];
+  onSubmitCallback: () => void;
 }
 
-const FiltersForm: React.FC<FiltersFormProps> = ({ filters }) => {
+const FiltersForm: React.FC<FiltersFormProps> = ({
+  filters,
+  applyFilters,
+  clearFilters,
+  appliedFilters,
+  onSubmitCallback,
+}) => {
   return (
     <Formik
       enableReinitialize={true}
       initialValues={{
-        appliedFilters: [],
+        appliedFilters: appliedFilters,
       }}
       validate={validate}
-      onSubmit={(values: FiltersFormValues): void =>
-        alert(JSON.stringify(values, null, 2))
-      }
+      onSubmit={(values, actions): void => {
+        applyFilters(values.appliedFilters);
+        actions.setSubmitting(false);
+        onSubmitCallback();
+      }}
     >
       {(props: FormikProps<any>): ReactElement => (
-        <StyledForm>
+        <Form>
           <StyledFormGroup>
             <Fields filters={filters} />
-            {props.touched.appliedFilters && props.errors.appliedFilters ? (
-              <FormHelperText error>
-                {props.errors.appliedFilters}
-              </FormHelperText>
-            ) : null}
           </StyledFormGroup>
 
           <Buttons container direction={'row'} spacing={1} justify={'center'}>
+            {props.touched.appliedFilters && props.errors.appliedFilters ? (
+              <Grid container item xs={12} sm={12} justify={'center'}>
+                <FormHelperText error>
+                  {props.errors.appliedFilters}
+                </FormHelperText>
+              </Grid>
+            ) : null}
             <Grid item>
               <Button
                 type="reset"
                 variant={'contained'}
                 color={'primary'}
                 size={'small'}
+                onClick={(): void => clearFilters()}
               >
                 Clear
               </Button>
@@ -191,7 +205,7 @@ const FiltersForm: React.FC<FiltersFormProps> = ({ filters }) => {
               </Button>
             </Grid>
           </Buttons>
-        </StyledForm>
+        </Form>
       )}
     </Formik>
   );
@@ -201,6 +215,10 @@ FiltersForm.propTypes = {
   filters: PropTypes.arrayOf(
     PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
   ).isRequired,
+  onSubmitCallback: PropTypes.func.isRequired,
 };
 
-export default FiltersForm;
+export default connect(
+  (state) => ({ appliedFilters: getAppliedFilters(state) }),
+  { applyFilters, clearFilters }
+)(FiltersForm);

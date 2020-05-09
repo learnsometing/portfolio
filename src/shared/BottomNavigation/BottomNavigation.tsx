@@ -53,6 +53,18 @@ interface Props {
 
 const iconStyles = { size: '32px', color: '#f95738' };
 
+const filterIcon = (
+  <IconContext.Provider value={iconStyles}>
+    <MdFilterList />
+  </IconContext.Provider>
+);
+
+const menuIcon = (
+  <IconContext.Provider value={iconStyles}>
+    <MdMenu />
+  </IconContext.Provider>
+);
+
 const BottomNavigationBar: React.FC<Props> = ({ filters }) => {
   const [isNavDrawerOpen, setIsNavDrawerOpen] = useState(false);
   const [isFiltersDrawerOpen, setIsFiltersDrawerOpen] = useState(false);
@@ -61,21 +73,13 @@ const BottomNavigationBar: React.FC<Props> = ({ filters }) => {
     setIsNavDrawerOpen(!isNavDrawerOpen);
   };
 
-  const toggleFiltersDrawer = (): void => {
-    setIsFiltersDrawerOpen(!isFiltersDrawerOpen);
+  const openFiltersDrawer = (): void => {
+    setIsFiltersDrawerOpen(true);
   };
 
-  const filterIcon = (
-    <IconContext.Provider value={iconStyles}>
-      <MdFilterList />
-    </IconContext.Provider>
-  );
-
-  const menuIcon = (
-    <IconContext.Provider value={iconStyles}>
-      <MdMenu />
-    </IconContext.Provider>
-  );
+  const closeFiltersDrawer = (): void => {
+    setIsFiltersDrawerOpen(false);
+  };
 
   return filters && filters.length ? (
     <BottomNavigation component={Navbar} showLabels>
@@ -83,11 +87,11 @@ const BottomNavigationBar: React.FC<Props> = ({ filters }) => {
         label={<ActionLabel>Filter</ActionLabel>}
         showLabel
         icon={filterIcon}
-        onClick={toggleFiltersDrawer}
+        onClick={openFiltersDrawer}
       />
       <FiltersDrawer
         isOpen={isFiltersDrawerOpen}
-        toggle={toggleFiltersDrawer}
+        closeFiltersDrawer={closeFiltersDrawer}
         filters={filters}
       />
       <BottomNavigationAction

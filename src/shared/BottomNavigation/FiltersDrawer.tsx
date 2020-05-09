@@ -24,29 +24,32 @@ const FilterDrawerHeading = styled(Typography).attrs({
 
 interface FiltersDrawerProps {
   isOpen: boolean;
-  toggle: () => void;
   filters: string[][];
+  closeFiltersDrawer: () => void;
 }
 
 const FiltersDrawer: React.FC<FiltersDrawerProps> = ({
   isOpen,
-  toggle,
+  closeFiltersDrawer,
   filters,
 }) => {
   return (
     <DrawerBase isOpen={isOpen}>
       <Header container justify={'space-between'} alignItems={'center'}>
         <FilterDrawerHeading>Filters</FilterDrawerHeading>
-        <CloseButton aria-label="Close Filter Drawer" onClick={toggle} />
+        <CloseButton
+          aria-label="Close Filter Drawer"
+          onClick={closeFiltersDrawer}
+        />
       </Header>
-      <FiltersForm filters={filters} />
+      <FiltersForm filters={filters} onSubmitCallback={closeFiltersDrawer} />
     </DrawerBase>
   );
 };
 
 FiltersDrawer.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  toggle: PropTypes.func.isRequired,
+  closeFiltersDrawer: PropTypes.func.isRequired,
   filters: PropTypes.arrayOf(
     PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
   ).isRequired,

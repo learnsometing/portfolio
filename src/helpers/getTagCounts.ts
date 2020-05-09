@@ -1,5 +1,9 @@
 function flatten(tags: string[][]): string[] {
-  return tags.reduce((acc, curr) => [...acc, ...curr]).sort();
+  if (tags) {
+    return tags.reduce((acc, curr) => [...acc, ...curr]).sort();
+  }
+
+  return tags;
 }
 
 function countTags(

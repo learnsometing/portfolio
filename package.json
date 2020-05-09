@@ -34,7 +34,6 @@
     "react-swipeable-views": "^0.13.9",
     "react-swipeable-views-utils": "^0.13.9",
     "redux": "^4.0.5",
-    "redux-form": "^8.3.5",
     "styled-components": "^5.1.0"
   },
   "devDependencies": {
@@ -48,6 +47,7 @@
     "@types/node": "^13.11.1",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
+    "@types/react-redux": "^7.1.8",
     "@types/react-swipeable-views": "^0.13.0",
     "@types/react-swipeable-views-utils": "^0.13.2",
     "@types/redux-form": "^8.2.5",
@@ -67,6 +67,7 @@
     "jest-styled-components": "^7.0.2",
     "prettier": "^1.19.1",
     "react-test-renderer": "^16.13.1",
+    "redux-devtools-extension": "^2.13.8",
     "stylelint": "^13.3.2",
     "stylelint-config-prettier": "^8.0.1",
     "stylelint-config-styled-components": "^0.1.1",
