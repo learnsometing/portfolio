@@ -7,12 +7,7 @@ describe('getTagCounts', () => {
       ['CSS', 'HTML', 'JavaScript'],
     ];
 
-    const result = new Map([
-      ['CSS', 2],
-      ['React', 1],
-      ['HTML', 2],
-      ['JavaScript', 1],
-    ]);
+    const result = { CSS: 2, HTML: 2, JavaScript: 1, React: 1 };
 
     expect(getTagCounts(tags)).toEqual(result);
   });

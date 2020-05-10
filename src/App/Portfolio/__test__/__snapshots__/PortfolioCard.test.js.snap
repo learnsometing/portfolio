@@ -5,7 +5,7 @@ exports[`PortfolioCard should match the snapshot 1`] = `
   className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-6 MuiGrid-grid-lg-4 MuiGrid-grid-xl-4"
 >
   <a
-    className="ProjectCard__ProjectLink-efz3d-0 gIHIEU"
+    className="ProjectCard__ProjectLink-sc-1gbw476-0 bvhyJN"
     href="/cash-pawn-jewelry-website/"
   >
     <div

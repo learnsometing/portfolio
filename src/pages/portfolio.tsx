@@ -13,7 +13,7 @@ import theme from '../shared/MUITheme';
 import Layout from '../App/Layout/Layout';
 import PortfolioCard, {
   ProjectCardContent,
-} from '../App/ProjectCard/ProjectCard';
+} from '../App/Portfolio/ProjectCard';
 import Navigation from '../shared/Navigation';
 import BottomNavigation from '../shared/BottomNavigation/BottomNavigation';
 import { MdClose } from 'react-icons/md';
