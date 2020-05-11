@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -11,136 +11,112 @@ import { ThemeProvider } from '@material-ui/core';
 import theme from '../shared/MUITheme';
 
 import Layout from '../App/Layout/Layout';
-import PortfolioCard, {
-  ProjectCardContent,
-} from '../App/Portfolio/ProjectCard';
 import Navigation from '../shared/Navigation';
 import BottomNavigation from '../shared/BottomNavigation/BottomNavigation';
 import { MdClose } from 'react-icons/md';
+import SortMenu from '../App/Portfolio/SortMenu';
+import Projects, { Frontmatter } from '../App/Portfolio/Projects';
 
 import { connect } from 'react-redux';
-import { removeFilter } from '../state/actions';
-import { getAppliedFilters } from '../state/selectors';
+import { removeFilter } from '../state/portfolio/actions';
+import {
+  getAppliedFilters,
+  getSortingOrder,
+} from '../state/portfolio/selectors';
+import { RootState } from '../state/createStore';
 
-const PageHeader = styled(Typography)`
+const SectionHeading = styled(Typography)`
   margin-top: 0.35em;
 `;
 
-const Filters = styled(Grid).attrs({
-  component: 'section',
-})``;
-
-const Projects = styled(Grid)`
-  &:last-child {
-    margin-bottom: 80px;
-  }
+const Filters = styled(Grid)`
+  padding: 1rem 0;
 `;
-
-export interface TaggedProjectCard extends ProjectCardContent {
-  tags: string[];
-}
-
-interface Frontmatter {
-  frontmatter: TaggedProjectCard;
-}
 
 interface PortfolioProps {
   data: {
-    allMdx: {
+    allProjectCards: {
       nodes: Frontmatter[];
     };
   };
-  appliedFilters: string[];
   removeFilter: (filter: string) => void;
-}
-
-function getProjectCardContent(
-  taggedProjectCards: TaggedProjectCard[]
-): ProjectCardContent[] {
-  return taggedProjectCards.map(({ title, path, cardText, cardPhoto }) => ({
-    title,
-    path,
-    cardText,
-    cardPhoto,
-  }));
+  appliedFilters: string[];
+  order: string;
 }
 
 export const Portfolio: React.FC<PortfolioProps> = ({
-  data: { allMdx },
-  appliedFilters,
+  data: {
+    allProjectCards: { nodes },
+  },
   removeFilter,
+  appliedFilters,
+  order,
 }) => {
-  const { nodes } = allMdx;
-
-  // separate the content of each card from its tech tags
+  // Map out the frontmatter properties
   const projectCards = nodes.map(
-    ({ frontmatter: { title, path, cardText, cardPhoto, tags } }) => ({
+    ({ frontmatter: { title, path, cardText, cardPhoto, tags, date } }) => ({
       title,
       path,
       cardText,
       cardPhoto,
       tags,
+      date,
     })
   );
-  // create an array of Sets of filters from the technology tags
-  const filters = nodes.map(({ frontmatter }) => frontmatter.tags);
 
-  const [displayedProjectCards, setDisplayedProjectCards] = useState(
-    getProjectCardContent(projectCards)
-  );
+  const [displayedProjects, setDisplayedProjectCards] = useState(projectCards);
+  const projectCount = displayedProjects.length;
 
   useEffect(() => {
     const filteredProjects = projectCards.filter((project) =>
       appliedFilters.every((val) => project.tags.includes(val))
     );
 
-    setDisplayedProjectCards(getProjectCardContent(filteredProjects));
+    setDisplayedProjectCards(filteredProjects);
   }, [appliedFilters]);
+
+  // create an array of tag arrays from the technology tags
+  const tags = nodes.map(({ frontmatter }) => frontmatter.tags);
 
   return (
     <ThemeProvider theme={theme}>
       <Navigation />
       <Layout>
-        <Container maxWidth={'lg'}>
-          <PageHeader variant={'h1'} gutterBottom align={'center'}>
+        <Container maxWidth={'lg'} component={'section'}>
+          <SectionHeading variant={'h1'} gutterBottom align={'center'}>
             Portfolio
-          </PageHeader>
+          </SectionHeading>
 
+          {/* Mobile Filters List */}
+          <SortMenu />
+          <Typography variant={'h4'} component={'h2'} gutterBottom>
+            {projectCount
+              ? `${projectCount} 
+                  ${projectCount > 1 ? 'projects' : 'project'}
+                `
+              : null}
+          </Typography>
           {appliedFilters.length ? (
-            <>
-              <Typography variant={'h2'} gutterBottom>
-                Selected Filters
-              </Typography>
-              <Filters container spacing={2}>
-                {appliedFilters.map((filter) => (
-                  <Grid key={`${filter}-selected`} item>
-                    <Button
-                      type="button"
-                      variant={'contained'}
-                      color={'primary'}
-                      endIcon={<MdClose />}
-                      onClick={(): void => removeFilter(filter)}
-                    >
-                      {filter}
-                    </Button>
-                  </Grid>
-                ))}
-              </Filters>
-            </>
-          ) : (
-            <div>
-              <Typography variant={'h2'} gutterBottom>
-                All projects
-              </Typography>
-            </div>
-          )}
-          <Projects container spacing={4}>
-            {displayedProjectCards.map((card) => (
-              <PortfolioCard key={card.title} content={card} />
-            ))}
-          </Projects>
+            <Filters container spacing={2}>
+              {appliedFilters.map((filter) => (
+                <Grid key={`${filter}-selected`} item>
+                  <Button
+                    type="button"
+                    variant={'contained'}
+                    color={'primary'}
+                    endIcon={<MdClose />}
+                    onClick={(): void => removeFilter(filter)}
+                  >
+                    {filter}
+                  </Button>
+                </Grid>
+              ))}
+            </Filters>
+          ) : null}
+
+          <Projects projects={displayedProjects} order={order} />
         </Container>
-        <BottomNavigation filters={filters} />
+        <BottomNavigation filters={tags} />
       </Layout>
     </ThemeProvider>
   );
@@ -148,17 +124,21 @@ export const Portfolio: React.FC<PortfolioProps> = ({
 
 Portfolio.propTypes = {
   data: PropTypes.shape({
-    allMdx: PropTypes.shape({
+    allProjectCards: PropTypes.shape({
       nodes: PropTypes.array.isRequired,
     }).isRequired,
   }).isRequired,
-  appliedFilters: PropTypes.array.isRequired,
   removeFilter: PropTypes.func.isRequired,
+  appliedFilters: PropTypes.array.isRequired,
+  order: PropTypes.string.isRequired,
 };
 
 export const portfolioCards = graphql`
   query {
-    allMdx(filter: { fileAbsolutePath: { regex: "/projects/" } }) {
+    allProjectCards: allMdx(
+      filter: { fileAbsolutePath: { regex: "/projects/" } }
+      sort: { fields: frontmatter___date, order: DESC }
+    ) {
       nodes {
         frontmatter {
           title
@@ -175,6 +155,7 @@ export const portfolioCards = graphql`
           }
           cardText
           tags
+          date
         }
       }
     }
@@ -182,6 +163,9 @@ export const portfolioCards = graphql`
 `;
 
 export default connect(
-  (state) => ({ appliedFilters: getAppliedFilters(state) }),
+  (state: RootState) => ({
+    appliedFilters: getAppliedFilters(state),
+    order: getSortingOrder(state),
+  }),
   { removeFilter }
 )(Portfolio);

@@ -11,9 +11,11 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import Grid from '@material-ui/core/Grid';
 
 import Fields from './Fields';
+
 import { connect } from 'react-redux';
-import { applyFilters, clearFilters } from '../../state/actions';
-import { getAppliedFilters } from '../../state/selectors';
+import { applyFilters, clearFilters } from '../../state/portfolio/actions';
+import { getAppliedFilters } from '../../state/portfolio/selectors';
+import { RootState } from '../../state/createStore';
 
 const Buttons = styled(Grid)`
   max-width: 100%;
@@ -119,6 +121,6 @@ FiltersForm.propTypes = {
 };
 
 export default connect(
-  (state) => ({ appliedFilters: getAppliedFilters(state) }),
+  (state: RootState) => ({ appliedFilters: getAppliedFilters(state) }),
   { applyFilters, clearFilters }
 )(FiltersForm);

@@ -24,6 +24,11 @@ export interface ProjectCardContent {
   cardPhoto: Image;
 }
 
+export interface Project extends ProjectCardContent {
+  tags: string[];
+  date: string;
+}
+
 interface ProjectCardProps {
   content: ProjectCardContent;
 }
