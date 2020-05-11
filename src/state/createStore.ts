@@ -1,11 +1,13 @@
 import { createStore, combineReducers } from 'redux';
-import { portfolioReducer } from './reducers';
+import { portfolioReducer } from './portfolio/reducers';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 const rootReducer = combineReducers({
-  portfolioReducer,
+  portfolio: portfolioReducer,
 });
 
 const store = createStore(rootReducer, composeWithDevTools());
 
 export default store;
+
+export type RootState = ReturnType<typeof rootReducer>;
