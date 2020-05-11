@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+// Material-UI
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
@@ -75,8 +76,8 @@ export const Portfolio: React.FC<PortfolioProps> = ({
     setDisplayedProjectCards(filteredProjects);
   }, [appliedFilters]);
 
-  // create an array of tag arrays from the technology tags
-  const tags = nodes.map(({ frontmatter }) => frontmatter.tags);
+  // Count the number of projects associated with each tag
+  const allProjectTags = nodes.map(({ frontmatter }) => frontmatter.tags);
 
   return (
     <ThemeProvider theme={theme}>
@@ -116,7 +117,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({
 
           <Projects projects={displayedProjects} order={order} />
         </Container>
-        <BottomNavigation filters={tags} />
+        <BottomNavigation allProjectTags={allProjectTags} />
       </Layout>
     </ThemeProvider>
   );

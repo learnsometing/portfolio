@@ -43,7 +43,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ content }) => {
   return (
     <Grid item component={'article'} xl={4} lg={4} md={6} sm={6} xs={12}>
       <ProjectLink to={path}>
-        <Card raised>
+        <Card>
           <CardActionArea>
             <Img
               fluid={cardPhoto.src.childImageSharp.fluid}

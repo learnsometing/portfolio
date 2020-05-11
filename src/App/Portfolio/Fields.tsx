@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState, useRef } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Field, useFormikContext, FormikValues } from 'formik';
 
@@ -13,22 +13,22 @@ import getFilteredTags from './helpers/getFilteredTags';
 import LabelText from './Label';
 
 interface FieldsProps {
-  filters: string[][];
+  allProjectTags: string[][];
 }
 
-const Fields = ({ filters }: FieldsProps): ReactElement => {
+const Fields = ({ allProjectTags }: FieldsProps): ReactElement => {
   const { values }: FormikValues = useFormikContext();
-  const ogTagCounts = useRef(getTagCounts(filters));
-  const [currentTags, setCurrentTags] = useState(ogTagCounts.current);
+  const ogTagCounts = getTagCounts(allProjectTags);
+  const [currentTags, setCurrentTags] = useState(ogTagCounts);
 
   useEffect(() => {
     if (values.appliedFilters && values.appliedFilters.length) {
       const { appliedFilters } = values;
-      const filteredTags = getFilteredTags(appliedFilters, filters);
+      const filteredTags = getFilteredTags(appliedFilters, allProjectTags);
       const filteredTagCounts = getTagCounts(filteredTags);
       setCurrentTags(filteredTagCounts);
     } else {
-      setCurrentTags(ogTagCounts.current);
+      setCurrentTags(ogTagCounts);
     }
   }, [values.appliedFilters]);
 
@@ -49,7 +49,7 @@ const Fields = ({ filters }: FieldsProps): ReactElement => {
 };
 
 Fields.propTypes = {
-  filters: PropTypes.arrayOf(
+  allProjectTags: PropTypes.arrayOf(
     PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
   ).isRequired,
 };

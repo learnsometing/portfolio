@@ -48,7 +48,7 @@ const validate = (values: FormikValues): FormikErrors<FormikValues> => {
 };
 
 interface FiltersFormProps {
-  filters: string[][];
+  allProjectTags: string[][];
   applyFilters: (appliedFilters: string[]) => void;
   clearFilters: () => void;
   appliedFilters: string[];
@@ -56,7 +56,7 @@ interface FiltersFormProps {
 }
 
 const FiltersForm: React.FC<FiltersFormProps> = ({
-  filters,
+  allProjectTags,
   applyFilters,
   clearFilters,
   appliedFilters,
@@ -79,7 +79,7 @@ const FiltersForm: React.FC<FiltersFormProps> = ({
         <Form>
           <StyledFormGroup>
             <FormControl component={FieldSet}>
-              <Fields filters={filters} />
+              <Fields allProjectTags={allProjectTags} />
             </FormControl>
           </StyledFormGroup>
 
@@ -114,7 +114,7 @@ const FiltersForm: React.FC<FiltersFormProps> = ({
 };
 
 FiltersForm.propTypes = {
-  filters: PropTypes.arrayOf(
+  allProjectTags: PropTypes.arrayOf(
     PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
   ).isRequired,
   onSubmitCallback: PropTypes.func.isRequired,

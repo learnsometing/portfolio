@@ -48,7 +48,7 @@ export const ActionLabel = styled(Typography).attrs({
 `;
 
 interface Props {
-  filters?: string[][];
+  allProjectTags?: string[][];
 }
 
 const iconStyles = { size: '32px', color: '#f95738' };
@@ -65,7 +65,7 @@ const menuIcon = (
   </IconContext.Provider>
 );
 
-const BottomNavigationBar: React.FC<Props> = ({ filters }) => {
+const BottomNavigationBar: React.FC<Props> = ({ allProjectTags }) => {
   const [isNavDrawerOpen, setIsNavDrawerOpen] = useState(false);
   const [isFiltersDrawerOpen, setIsFiltersDrawerOpen] = useState(false);
 
@@ -81,7 +81,7 @@ const BottomNavigationBar: React.FC<Props> = ({ filters }) => {
     setIsFiltersDrawerOpen(false);
   };
 
-  return filters && filters.length ? (
+  return allProjectTags && allProjectTags.length ? (
     <BottomNavigation component={Navbar} showLabels>
       <BottomNavigationAction
         label={<ActionLabel>Filter</ActionLabel>}
@@ -92,7 +92,7 @@ const BottomNavigationBar: React.FC<Props> = ({ filters }) => {
       <FiltersDrawer
         isOpen={isFiltersDrawerOpen}
         closeFiltersDrawer={closeFiltersDrawer}
-        filters={filters}
+        allProjectTags={allProjectTags}
       />
       <BottomNavigationAction
         label={<ActionLabel>Menu</ActionLabel>}
@@ -116,13 +116,13 @@ const BottomNavigationBar: React.FC<Props> = ({ filters }) => {
 };
 
 BottomNavigationBar.propTypes = {
-  filters: PropTypes.arrayOf(
+  allProjectTags: PropTypes.arrayOf(
     PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
   ),
 };
 
 BottomNavigationBar.defaultProps = {
-  filters: [],
+  allProjectTags: [],
 };
 
 export default BottomNavigationBar;

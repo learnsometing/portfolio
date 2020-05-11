@@ -24,14 +24,14 @@ const FilterDrawerHeading = styled(Typography).attrs({
 
 interface FiltersDrawerProps {
   isOpen: boolean;
-  filters: string[][];
+  allProjectTags: string[][];
   closeFiltersDrawer: () => void;
 }
 
 const FiltersDrawer: React.FC<FiltersDrawerProps> = ({
   isOpen,
   closeFiltersDrawer,
-  filters,
+  allProjectTags,
 }) => {
   return (
     <DrawerBase isOpen={isOpen}>
@@ -42,7 +42,10 @@ const FiltersDrawer: React.FC<FiltersDrawerProps> = ({
           onClick={closeFiltersDrawer}
         />
       </Header>
-      <FiltersForm filters={filters} onSubmitCallback={closeFiltersDrawer} />
+      <FiltersForm
+        allProjectTags={allProjectTags}
+        onSubmitCallback={closeFiltersDrawer}
+      />
     </DrawerBase>
   );
 };
@@ -50,7 +53,7 @@ const FiltersDrawer: React.FC<FiltersDrawerProps> = ({
 FiltersDrawer.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   closeFiltersDrawer: PropTypes.func.isRequired,
-  filters: PropTypes.arrayOf(
+  allProjectTags: PropTypes.arrayOf(
     PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
   ).isRequired,
 };
