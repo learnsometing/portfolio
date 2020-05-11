@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import DrawerBase from './DrawerBase';
 import FiltersForm from '../../App/Portfolio/FiltersForm';
 
-import CloseButton from '../CloseButton';
+import { CloseButton } from '../CloseButton';
 
 const Header = styled(Grid)`
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
