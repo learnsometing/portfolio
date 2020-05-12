@@ -2,7 +2,7 @@
 
 exports[`PortfolioCard should match the snapshot 1`] = `
 <article
-  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-6 MuiGrid-grid-lg-4 MuiGrid-grid-xl-4"
+  className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-6 MuiGrid-grid-lg-6 MuiGrid-grid-xl-6"
 >
   <a
     className="ProjectCard__ProjectLink-sc-1gbw476-0 bvhyJN"

@@ -26,7 +26,7 @@ const Navbar = styled(Paper).attrs({
   width: 100%;
   z-index: 2;
   background-color: #fdfde8;
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 1280px) {
     display: none;
   }
 `;

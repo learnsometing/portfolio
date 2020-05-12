@@ -41,7 +41,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ content }) => {
   const { title, path, cardText, cardPhoto } = content;
 
   return (
-    <Grid item component={'article'} xl={4} lg={4} md={6} sm={6} xs={12}>
+    <Grid item component={'article'} xl={6} lg={6} md={6} sm={6} xs={12}>
       <ProjectLink to={path}>
         <Card>
           <CardActionArea>
