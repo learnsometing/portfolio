@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 // Material-UI
-import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
@@ -14,12 +13,12 @@ import theme from '../shared/MUITheme';
 import Layout from '../App/Layout/Layout';
 import Navigation from '../shared/Navigation';
 import BottomNavigation from '../shared/BottomNavigation/BottomNavigation';
-import { MdClose } from 'react-icons/md';
-import SortMenu from '../App/Portfolio/SortMenu';
 import Projects, { Frontmatter } from '../App/Portfolio/Projects';
+import AppliedFilters from '../App/Portfolio/AppliedFilters';
+import FiltersSidebar from '../App/Portfolio/FiltersSidebar';
 
 import { connect } from 'react-redux';
-import { removeFilter } from '../state/portfolio/actions';
+import { addFilter, removeFilter } from '../state/portfolio/actions';
 import {
   getAppliedFilters,
   getSortingOrder,
@@ -30,8 +29,10 @@ const SectionHeading = styled(Typography)`
   margin-top: 0.35em;
 `;
 
-const Filters = styled(Grid)`
-  padding: 1rem 0;
+const MobileWrapper = styled.div`
+  @media only screen and (min-width: 1280px) {
+    display: none;
+  }
 `;
 
 interface PortfolioProps {
@@ -40,6 +41,7 @@ interface PortfolioProps {
       nodes: Frontmatter[];
     };
   };
+  addFilter: (filter: string) => void;
   removeFilter: (filter: string) => void;
   appliedFilters: string[];
   order: string;
@@ -49,6 +51,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({
   data: {
     allProjectCards: { nodes },
   },
+  addFilter,
   removeFilter,
   appliedFilters,
   order,
@@ -88,34 +91,26 @@ export const Portfolio: React.FC<PortfolioProps> = ({
             Portfolio
           </SectionHeading>
 
-          {/* Mobile Filters List */}
-          <SortMenu />
-          <Typography variant={'h4'} component={'h2'} gutterBottom>
-            {projectCount
-              ? `${projectCount} 
-                  ${projectCount > 1 ? 'projects' : 'project'}
-                `
-              : null}
-          </Typography>
-          {appliedFilters.length ? (
-            <Filters container spacing={2}>
-              {appliedFilters.map((filter) => (
-                <Grid key={`${filter}-selected`} item>
-                  <Button
-                    type="button"
-                    variant={'contained'}
-                    color={'primary'}
-                    endIcon={<MdClose />}
-                    onClick={(): void => removeFilter(filter)}
-                  >
-                    {filter}
-                  </Button>
-                </Grid>
-              ))}
-            </Filters>
-          ) : null}
+          {/* */}
+          <MobileWrapper>
+            <AppliedFilters
+              projectCount={projectCount}
+              appliedFilters={appliedFilters}
+              removeFilter={removeFilter}
+            />
+          </MobileWrapper>
 
-          <Projects projects={displayedProjects} order={order} />
+          {/* Projects */}
+          <Grid container justify={'center'}>
+            <FiltersSidebar
+              addFilter={addFilter}
+              allProjectTags={allProjectTags}
+              appliedFilters={appliedFilters}
+              projectCount={projectCount}
+              removeFilter={removeFilter}
+            />
+            <Projects projects={displayedProjects} order={order} />
+          </Grid>
         </Container>
         <BottomNavigation allProjectTags={allProjectTags} />
       </Layout>
@@ -129,6 +124,7 @@ Portfolio.propTypes = {
       nodes: PropTypes.array.isRequired,
     }).isRequired,
   }).isRequired,
+  addFilter: PropTypes.func.isRequired,
   removeFilter: PropTypes.func.isRequired,
   appliedFilters: PropTypes.array.isRequired,
   order: PropTypes.string.isRequired,
@@ -168,5 +164,5 @@ export default connect(
     appliedFilters: getAppliedFilters(state),
     order: getSortingOrder(state),
   }),
-  { removeFilter }
+  { addFilter, removeFilter }
 )(Portfolio);

@@ -1,5 +1,5 @@
 import {
-  ADD_FILTERS,
+  ADD_FILTER,
   APPLY_FILTERS,
   CLEAR_FILTERS,
   REMOVE_FILTER,
@@ -8,10 +8,10 @@ import {
   SortingActionTypes,
 } from './actionTypes';
 
-export function addFilters(filters: string[]): FilterActionTypes {
+export function addFilter(filter: string): FilterActionTypes {
   return {
-    type: ADD_FILTERS,
-    payload: filters,
+    type: ADD_FILTER,
+    payload: filter,
   };
 }
 

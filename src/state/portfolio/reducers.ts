@@ -1,5 +1,5 @@
 import {
-  ADD_FILTERS,
+  ADD_FILTER,
   APPLY_FILTERS,
   CLEAR_FILTERS,
   REMOVE_FILTER,
@@ -14,11 +14,12 @@ const initialState: PortfolioState = {
   order: 'DESC',
 };
 
-function addNewFilters(stateFilters: string[], newFilters: string[]): string[] {
-  const uniqueNewFilters = newFilters.filter(
-    (filter: string) => !stateFilters.includes(filter)
-  );
-  return [...stateFilters, ...uniqueNewFilters];
+function addFilter(state: string[], filter: string): string[] {
+  if (!state.includes(filter)) {
+    return [...state, filter];
+  }
+
+  return state;
 }
 
 function removeFilter(stateFilters: string[], filter: string): string[] {
@@ -31,8 +32,8 @@ function removeFilter(stateFilters: string[], filter: string): string[] {
 
 function getFilters(state: string[] = [], action: FilterActionTypes): string[] {
   switch (action.type) {
-    case ADD_FILTERS:
-      return addNewFilters(state, action.payload);
+    case ADD_FILTER:
+      return addFilter(state, action.payload);
     case APPLY_FILTERS:
       return [...action.payload];
     case CLEAR_FILTERS:
@@ -49,7 +50,7 @@ export function portfolioReducer(
   action: PortfolioActionTypes
 ): PortfolioState {
   switch (action.type) {
-    case ADD_FILTERS:
+    case ADD_FILTER:
       return Object.assign({}, state, {
         appliedFilters: getFilters(state.appliedFilters, action),
       });

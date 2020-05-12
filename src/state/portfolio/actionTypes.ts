@@ -1,4 +1,4 @@
-export const ADD_FILTERS = 'ADD_FILTERS';
+export const ADD_FILTER = 'ADD_FILTER';
 export const APPLY_FILTERS = 'APPLY_FILTERS';
 export const CLEAR_FILTERS = 'CLEAR_FILTERS';
 export const REMOVE_FILTER = 'REMOVE_FILTER';
@@ -8,9 +8,9 @@ interface ApplyFiltersAction {
   payload: string[];
 }
 
-interface AddFiltersAction {
-  type: typeof ADD_FILTERS;
-  payload: string[];
+interface AddFilterAction {
+  type: typeof ADD_FILTER;
+  payload: string;
 }
 
 interface ClearFiltersAction {
@@ -37,7 +37,7 @@ interface ChangeSortingOrderAction {
 
 export type FilterActionTypes =
   | ApplyFiltersAction
-  | AddFiltersAction
+  | AddFilterAction
   | ClearFiltersAction
   | RemoveFilterAction;
 
