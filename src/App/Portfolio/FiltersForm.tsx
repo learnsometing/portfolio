@@ -98,12 +98,12 @@ const FiltersForm: React.FC<FiltersFormProps> = ({
                 color={'primary'}
                 onClick={(): void => clearFilters()}
               >
-                Clear
+                Clear filters
               </Button>
             </Grid>
             <Grid item>
               <Button type="submit" variant={'contained'} color={'primary'}>
-                Apply
+                Apply filters
               </Button>
             </Grid>
           </Buttons>

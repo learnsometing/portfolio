@@ -42,6 +42,7 @@ const Fields = ({ allProjectTags }: FieldsProps): ReactElement => {
           name="appliedFilters"
           Label={{ label: <LabelText filter={filter} count={count} /> }}
           value={filter}
+          color={'primary'}
         />
       ))}
     </>
