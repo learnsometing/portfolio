@@ -11,9 +11,11 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import Grid from '@material-ui/core/Grid';
 
 import Fields from './Fields';
+
 import { connect } from 'react-redux';
-import { applyFilters, clearFilters } from '../../state/actions';
-import { getAppliedFilters } from '../../state/selectors';
+import { applyFilters, clearFilters } from '../../state/portfolio/actions';
+import { getAppliedFilters } from '../../state/portfolio/selectors';
+import { RootState } from '../../state/createStore';
 
 const Buttons = styled(Grid)`
   max-width: 100%;
@@ -46,7 +48,7 @@ const validate = (values: FormikValues): FormikErrors<FormikValues> => {
 };
 
 interface FiltersFormProps {
-  filters: string[][];
+  allProjectTags: string[][];
   applyFilters: (appliedFilters: string[]) => void;
   clearFilters: () => void;
   appliedFilters: string[];
@@ -54,7 +56,7 @@ interface FiltersFormProps {
 }
 
 const FiltersForm: React.FC<FiltersFormProps> = ({
-  filters,
+  allProjectTags,
   applyFilters,
   clearFilters,
   appliedFilters,
@@ -77,7 +79,7 @@ const FiltersForm: React.FC<FiltersFormProps> = ({
         <Form>
           <StyledFormGroup>
             <FormControl component={FieldSet}>
-              <Fields filters={filters} />
+              <Fields allProjectTags={allProjectTags} />
             </FormControl>
           </StyledFormGroup>
 
@@ -96,12 +98,12 @@ const FiltersForm: React.FC<FiltersFormProps> = ({
                 color={'primary'}
                 onClick={(): void => clearFilters()}
               >
-                Clear
+                Clear filters
               </Button>
             </Grid>
             <Grid item>
               <Button type="submit" variant={'contained'} color={'primary'}>
-                Apply
+                Apply filters
               </Button>
             </Grid>
           </Buttons>
@@ -112,13 +114,13 @@ const FiltersForm: React.FC<FiltersFormProps> = ({
 };
 
 FiltersForm.propTypes = {
-  filters: PropTypes.arrayOf(
+  allProjectTags: PropTypes.arrayOf(
     PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
   ).isRequired,
   onSubmitCallback: PropTypes.func.isRequired,
 };
 
 export default connect(
-  (state) => ({ appliedFilters: getAppliedFilters(state) }),
+  (state: RootState) => ({ appliedFilters: getAppliedFilters(state) }),
   { applyFilters, clearFilters }
 )(FiltersForm);

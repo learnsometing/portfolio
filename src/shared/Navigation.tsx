@@ -37,10 +37,10 @@ export const NavLink = styled(StyledGatsbyLink)`
 const Navbar = styled(Paper)`
   background-color: #fdfde8;
   border-radius: 0;
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 1279px) {
     display: none;
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1280px) {
     position: sticky;
     top: 0;
     z-index: 1020;

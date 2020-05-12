@@ -24,6 +24,11 @@ export interface ProjectCardContent {
   cardPhoto: Image;
 }
 
+export interface Project extends ProjectCardContent {
+  tags: string[];
+  date: string;
+}
+
 interface ProjectCardProps {
   content: ProjectCardContent;
 }
@@ -36,9 +41,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ content }) => {
   const { title, path, cardText, cardPhoto } = content;
 
   return (
-    <Grid item component={'article'} xl={4} lg={4} md={6} sm={6} xs={12}>
+    <Grid item component={'article'} xl={6} lg={6} md={6} sm={6} xs={12}>
       <ProjectLink to={path}>
-        <Card raised>
+        <Card>
           <CardActionArea>
             <Img
               fluid={cardPhoto.src.childImageSharp.fluid}

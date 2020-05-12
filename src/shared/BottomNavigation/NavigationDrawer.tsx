@@ -9,7 +9,7 @@ import Divider from '@material-ui/core/Divider';
 
 import DrawerBase from './DrawerBase';
 import { NavLink } from '../Navigation';
-import CloseButton from '../CloseButton';
+import { MenuCloseButton } from '../CloseButton';
 
 const MenuItem = styled(ListItem).attrs({
   button: undefined,
@@ -31,16 +31,6 @@ const MenuLink = styled(NavLink)`
   padding: 0;
   justify-content: center;
   align-items: center;
-`;
-
-const Close = styled.div`
-  padding-top: 2vh;
-  padding-bottom: 2vh;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  background-color: #fdfde8;
-  cursor: pointer;
 `;
 
 interface NavigationDrawerProps {
@@ -87,9 +77,7 @@ const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
           </MenuLink>
         </MenuItem>
         <Divider />
-        <Close>
-          <CloseButton onClick={toggle} />
-        </Close>
+        <MenuCloseButton onClick={toggle} />
       </Menu>
     </DrawerBase>
   );

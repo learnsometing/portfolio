@@ -26,6 +26,7 @@ const DrawerBase: React.FC<DrawerBaseProps> = ({ isOpen, children }) => {
       anchor={'top'}
       open={isOpen}
       elevation={2}
+      transitionDuration={400}
       PaperProps={{ component: DrawerBG }}
     >
       {children}
