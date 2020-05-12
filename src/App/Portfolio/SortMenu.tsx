@@ -34,8 +34,8 @@ const DESC = 'DESC';
 
 const SortMenu: React.FC<Props> = ({ changeSortingOrder, projectCount }) => {
   const handleChange: (event: any) => void = (event) =>
-    event.currentTarget && event.currentTarget.value
-      ? changeSortingOrder(event.currentTarget.value)
+    event.target && event.target.value
+      ? changeSortingOrder(event.target.value)
       : undefined;
 
   return (
