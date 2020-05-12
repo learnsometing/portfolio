@@ -19,6 +19,10 @@ const SortControl = styled(FormControl)`
   min-width: 150px;
 `;
 
+const Item = styled(MenuItem)`
+  padding: 1rem;
+`;
+
 interface Props {
   changeSortingOrder: (order: string) => void;
 }
@@ -32,7 +36,7 @@ const SortMenu: React.FC<Props> = ({ changeSortingOrder }) => {
       ? changeSortingOrder(event.target.value)
       : undefined;
   return (
-    <SortContainer container justify={'flex-end'}>
+    <SortContainer container justify={'flex-end'} item>
       <SortControl variant="outlined">
         <InputLabel id="sort-order">Sort By</InputLabel>
         <Select
@@ -42,8 +46,8 @@ const SortMenu: React.FC<Props> = ({ changeSortingOrder }) => {
           onChange={handleChange}
           label="Sort By"
         >
-          <MenuItem value={DESC}>Most Recent</MenuItem>
-          <MenuItem value={ASC}>Most Dated</MenuItem>
+          <Item value={DESC}>Most Recent</Item>
+          <Item value={ASC}>Most Dated</Item>
         </Select>
       </SortControl>
     </SortContainer>

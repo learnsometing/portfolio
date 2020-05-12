@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+import SortMenu from './SortMenu';
+
 // interfaces
 import ProjectCard, { Project } from './ProjectCard';
 
@@ -12,8 +14,10 @@ import Grid from '@material-ui/core/Grid';
 import { sortByDateASC, sortByDateDESC } from './helpers/sortProjectsByDate';
 
 const ProjectCards = styled(Grid)`
-  &:last-child {
-    margin-bottom: 80px;
+  @media screen and (max-width: 1279px) {
+    &:last-child {
+      margin-bottom: calc(80px + 1rem);
+    }
   }
 `;
 
@@ -28,15 +32,20 @@ interface Props {
 
 const Projects: React.FC<Props> = ({ projects, order }) => {
   return (
-    <ProjectCards container spacing={4}>
-      {order == 'DESC'
-        ? projects
-            .sort((a, b) => sortByDateDESC(a.date, b.date))
-            .map((card) => <ProjectCard key={card.title} content={card} />)
-        : projects
-            .sort((a, b) => sortByDateASC(a.date, b.date))
-            .map((card) => <ProjectCard key={card.title} content={card} />)}
-    </ProjectCards>
+    <>
+      <ProjectCards spacing={4} item xs={12} sm={12} md={12} lg={9}>
+        <SortMenu />
+        <Grid container spacing={3}>
+          {order == 'DESC'
+            ? projects
+                .sort((a, b) => sortByDateDESC(a.date, b.date))
+                .map((card) => <ProjectCard key={card.title} content={card} />)
+            : projects
+                .sort((a, b) => sortByDateASC(a.date, b.date))
+                .map((card) => <ProjectCard key={card.title} content={card} />)}
+        </Grid>
+      </ProjectCards>
+    </>
   );
 };
 
