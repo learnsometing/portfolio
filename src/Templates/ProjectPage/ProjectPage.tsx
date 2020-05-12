@@ -83,7 +83,6 @@ const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
   return (
     <ThemeProvider theme={theme}>
       <Navigation />
-      <BottomNavigation />
       <Layout>
         <SEO title={frontmatter.title} />
         <Grid container justify={'center'}>
@@ -147,6 +146,7 @@ const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
             <Tags tags={frontmatter.tags} />
           </TechTags>
         </Grid>
+        <BottomNavigation />
       </Layout>
     </ThemeProvider>
   );

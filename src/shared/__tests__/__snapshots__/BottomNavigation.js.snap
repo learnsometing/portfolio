@@ -10,9 +10,11 @@ exports[`BottomNavigation should match the snapshot 1`] = `
   width: 100%;
   z-index: 2;
   background-color: #fdfde8;
+  position: fixed;
   width: 80px;
   border-radius: 50%;
-  margin: 1rem;
+  bottom: 1rem;
+  right: 1rem;
 }
 
 .c1 {
