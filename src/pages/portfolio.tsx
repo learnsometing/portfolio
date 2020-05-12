@@ -18,7 +18,11 @@ import AppliedFilters from '../App/Portfolio/AppliedFilters';
 import FiltersSidebar from '../App/Portfolio/FiltersSidebar';
 
 import { connect } from 'react-redux';
-import { addFilter, removeFilter } from '../state/portfolio/actions';
+import {
+  addFilter,
+  removeFilter,
+  clearFilters,
+} from '../state/portfolio/actions';
 import {
   getAppliedFilters,
   getSortingOrder,
@@ -43,6 +47,7 @@ interface PortfolioProps {
   };
   addFilter: (filter: string) => void;
   removeFilter: (filter: string) => void;
+  clearFilters: () => void;
   appliedFilters: string[];
   order: string;
 }
@@ -53,6 +58,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({
   },
   addFilter,
   removeFilter,
+  clearFilters,
   appliedFilters,
   order,
 }) => {
@@ -69,7 +75,6 @@ export const Portfolio: React.FC<PortfolioProps> = ({
   );
 
   const [displayedProjects, setDisplayedProjectCards] = useState(projectCards);
-  const projectCount = displayedProjects.length;
 
   useEffect(() => {
     const filteredProjects = projectCards.filter((project) =>
@@ -94,9 +99,9 @@ export const Portfolio: React.FC<PortfolioProps> = ({
           {/* */}
           <MobileWrapper>
             <AppliedFilters
-              projectCount={projectCount}
               appliedFilters={appliedFilters}
               removeFilter={removeFilter}
+              clearFilters={clearFilters}
             />
           </MobileWrapper>
 
@@ -106,8 +111,8 @@ export const Portfolio: React.FC<PortfolioProps> = ({
               addFilter={addFilter}
               allProjectTags={allProjectTags}
               appliedFilters={appliedFilters}
-              projectCount={projectCount}
               removeFilter={removeFilter}
+              clearFilters={clearFilters}
             />
             <Projects projects={displayedProjects} order={order} />
           </Grid>
@@ -126,6 +131,7 @@ Portfolio.propTypes = {
   }).isRequired,
   addFilter: PropTypes.func.isRequired,
   removeFilter: PropTypes.func.isRequired,
+  clearFilters: PropTypes.func.isRequired,
   appliedFilters: PropTypes.array.isRequired,
   order: PropTypes.string.isRequired,
 };
@@ -164,5 +170,5 @@ export default connect(
     appliedFilters: getAppliedFilters(state),
     order: getSortingOrder(state),
   }),
-  { addFilter, removeFilter }
+  { addFilter, removeFilter, clearFilters }
 )(Portfolio);

@@ -30,24 +30,20 @@ interface Props {
   order: string;
 }
 
-const Projects: React.FC<Props> = ({ projects, order }) => {
-  return (
-    <>
-      <ProjectCards spacing={4} item xs={12} sm={12} md={12} lg={9}>
-        <SortMenu />
-        <Grid container spacing={3}>
-          {order == 'DESC'
-            ? projects
-                .sort((a, b) => sortByDateDESC(a.date, b.date))
-                .map((card) => <ProjectCard key={card.title} content={card} />)
-            : projects
-                .sort((a, b) => sortByDateASC(a.date, b.date))
-                .map((card) => <ProjectCard key={card.title} content={card} />)}
-        </Grid>
-      </ProjectCards>
-    </>
-  );
-};
+const Projects: React.FC<Props> = ({ projects, order }) => (
+  <Grid item xs={12} sm={12} md={12} lg={9}>
+    <SortMenu projectCount={projects.length} />
+    <ProjectCards container spacing={3}>
+      {order == 'DESC'
+        ? projects
+            .sort((a, b) => sortByDateDESC(a.date, b.date))
+            .map((card) => <ProjectCard key={card.title} content={card} />)
+        : projects
+            .sort((a, b) => sortByDateASC(a.date, b.date))
+            .map((card) => <ProjectCard key={card.title} content={card} />)}
+    </ProjectCards>
+  </Grid>
+);
 
 Projects.propTypes = {
   projects: PropTypes.array.isRequired,

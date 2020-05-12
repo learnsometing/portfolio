@@ -5,59 +5,70 @@ import styled from 'styled-components';
 // Material-UI
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 
 import { MdClose } from 'react-icons/md';
 
-const Filters = styled(Grid)`
+const FiltersWrapper = styled.div`
+  border-top: 1px solid #74746a;
   border-bottom: 1px solid #74746a;
-  padding-bottom: 0.35em;
-  margin-bottom: 0.35em;
+`;
+
+const Filters = styled.div`
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
+`;
+
+const ClearButton = styled(Button)`
+  margin-top: 1rem;
 `;
 
 interface Props {
-  projectCount: number;
   appliedFilters: string[];
   removeFilter: (filter: string) => void;
+  clearFilters: () => void;
 }
 
 const AppliedFilters: React.FC<Props> = ({
-  projectCount,
   appliedFilters,
   removeFilter,
+  clearFilters,
 }) => (
-  <>
-    <Typography variant={'h4'} component={'h2'} gutterBottom>
-      {projectCount
-        ? `${projectCount} 
-                  ${projectCount > 1 ? 'projects' : 'project'}
-                `
-        : null}
-    </Typography>
+  <FiltersWrapper>
     {appliedFilters && appliedFilters.length ? (
-      <Filters container spacing={2}>
-        {appliedFilters.map((filter) => (
-          <Grid key={`${filter}-selected`} item>
-            <Button
-              type="button"
-              variant={'contained'}
-              color={'primary'}
-              endIcon={<MdClose />}
-              onClick={(): void => removeFilter(filter)}
-            >
-              {filter}
-            </Button>
-          </Grid>
-        ))}
+      <Filters>
+        <Grid container spacing={3}>
+          {appliedFilters.map((filter) => (
+            <Grid key={`${filter}-selected`} item>
+              <Button
+                type="button"
+                variant={'contained'}
+                color={'primary'}
+                endIcon={<MdClose />}
+                onClick={(): void => removeFilter(filter)}
+              >
+                {filter}
+              </Button>
+            </Grid>
+          ))}
+        </Grid>
+        <ClearButton
+          type="button"
+          variant={'text'}
+          color={'primary'}
+          fullWidth
+          onClick={(): void => clearFilters()}
+        >
+          Clear filters
+        </ClearButton>
       </Filters>
     ) : null}
-  </>
+  </FiltersWrapper>
 );
 
 AppliedFilters.propTypes = {
-  projectCount: PropTypes.number.isRequired,
   appliedFilters: PropTypes.array.isRequired,
   removeFilter: PropTypes.func.isRequired,
+  clearFilters: PropTypes.func.isRequired,
 };
 
 export default AppliedFilters;

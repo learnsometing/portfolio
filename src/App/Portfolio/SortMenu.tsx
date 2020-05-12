@@ -7,12 +7,13 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import Typography from '@material-ui/core/Typography';
 
 import { connect } from 'react-redux';
 import { changeSortingOrder } from '../../state/portfolio/actions';
 
 const SortContainer = styled(Grid)`
-  padding: 1rem 0;
+  margin: 1rem 0;
 `;
 
 const SortControl = styled(FormControl)`
@@ -25,18 +26,32 @@ const Item = styled(MenuItem)`
 
 interface Props {
   changeSortingOrder: (order: string) => void;
+  projectCount: number;
 }
 
 const ASC = 'ASC';
 const DESC = 'DESC';
 
-const SortMenu: React.FC<Props> = ({ changeSortingOrder }) => {
+const SortMenu: React.FC<Props> = ({ changeSortingOrder, projectCount }) => {
   const handleChange: (event: any) => void = (event) =>
-    event.target && event.target.value
-      ? changeSortingOrder(event.target.value)
+    event.currentTarget && event.currentTarget.value
+      ? changeSortingOrder(event.currentTarget.value)
       : undefined;
+
   return (
-    <SortContainer container justify={'flex-end'} item>
+    <SortContainer
+      container
+      justify={'space-between'}
+      alignItems={'center'}
+      item
+    >
+      <Typography variant={'h4'} component={'h2'}>
+        {projectCount
+          ? `${projectCount} 
+        ${projectCount > 1 ? 'projects' : 'project'}
+        `
+          : null}
+      </Typography>
       <SortControl variant="outlined">
         <InputLabel id="sort-order">Sort By</InputLabel>
         <Select
@@ -56,6 +71,7 @@ const SortMenu: React.FC<Props> = ({ changeSortingOrder }) => {
 
 SortMenu.propTypes = {
   changeSortingOrder: PropTypes.func.isRequired,
+  projectCount: PropTypes.number.isRequired,
 };
 
 export default connect(null, { changeSortingOrder })(SortMenu);
