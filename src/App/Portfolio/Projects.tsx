@@ -16,7 +16,7 @@ import { sortByDateASC, sortByDateDESC } from './helpers/sortProjectsByDate';
 const ProjectCards = styled(Grid)`
   @media screen and (max-width: 1279px) {
     &:last-child {
-      margin-bottom: calc(80px + 1rem);
+      margin-bottom: 1rem;
     }
   }
 `;

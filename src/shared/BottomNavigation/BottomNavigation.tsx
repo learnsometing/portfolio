@@ -19,7 +19,7 @@ const Navbar = styled(Paper).attrs({
   elevation: 2,
   square: true,
 })<NavbarProps>`
-  position: fixed;
+  position: sticky;
   bottom: 0;
   right: 0;
   height: 80px;
@@ -35,9 +35,11 @@ const CondensedNavbar = styled(Navbar).attrs({
   elevation: 2,
   square: true,
 })<NavbarProps>`
+  position: fixed;
   width: 80px;
   border-radius: 50%;
-  margin: 1rem;
+  bottom: 1rem;
+  right: 1rem;
 `;
 
 export const ActionLabel = styled(Typography).attrs({

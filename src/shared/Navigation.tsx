@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
+import { AnchorLink } from 'gatsby-plugin-anchor-links';
 
+// Material-ui
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
@@ -20,7 +22,13 @@ export const StyledGatsbyLink = styled(Link)`
   text-decoration: none;
 `;
 
-export const NavLink = styled(StyledGatsbyLink)`
+const AnchorLinkWithFont = styled(AnchorLink)`
+  font-family: mr-eaves-xl-modern;
+  font-weight: bold;
+  text-decoration: none;
+`;
+
+export const AnchoredNavLink = styled(AnchorLinkWithFont)`
   margin: auto 0;
   padding: 0.5rem 0.5rem;
   color: #f95738;
@@ -55,31 +63,24 @@ const Navigation: React.FC = () => (
   <Navbar elevation={2}>
     <Container maxWidth={'lg'}>
       <Nav container>
-        {/* Brand */}
-        <NavLink to="/">
+        <AnchoredNavLink to="/#header">
           <Brand variant={'h2'}>BRIAN MONACCIO</Brand>
-        </NavLink>
-        {/* Links */}
-        <NavLink to="/">
-          <Typography variant={'h5'} component="span">
-            Home
-          </Typography>
-        </NavLink>
-        <NavLink to="/portfolio">
+        </AnchoredNavLink>
+        <AnchoredNavLink to="/#portfolio">
           <Typography variant={'h5'} component="span">
             Portfolio
           </Typography>
-        </NavLink>
-        <NavLink to="/about">
+        </AnchoredNavLink>
+        <AnchoredNavLink to="/#about">
           <Typography variant={'h5'} component="span">
             About
           </Typography>
-        </NavLink>
-        <NavLink to="/contact">
+        </AnchoredNavLink>
+        <AnchoredNavLink to="/#contact">
           <Typography variant={'h5'} component="span">
             Contact
           </Typography>
-        </NavLink>
+        </AnchoredNavLink>
       </Nav>
     </Container>
   </Navbar>

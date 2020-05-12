@@ -8,7 +8,7 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 
 import DrawerBase from './DrawerBase';
-import { NavLink } from '../Navigation';
+import { AnchoredNavLink } from '../Navigation';
 import { MenuCloseButton } from '../CloseButton';
 
 const MenuItem = styled(ListItem).attrs({
@@ -24,7 +24,7 @@ const Menu = styled(List)`
   background-color: #fdfde8;
 `;
 
-const MenuLink = styled(NavLink)`
+const MenuLink = styled(AnchoredNavLink)`
   display: flex;
   width: 100%;
   height: 100%;
@@ -45,32 +45,32 @@ const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
   return (
     <DrawerBase isOpen={isOpen}>
       <Menu>
-        <MenuItem>
-          <MenuLink to="/">
+        <MenuItem onClick={toggle}>
+          <MenuLink to="/#header">
             <Typography variant={'h3'} component="span">
               Home
             </Typography>
           </MenuLink>
         </MenuItem>
         <Divider component={'li'} />
-        <MenuItem>
-          <MenuLink to="/portfolio">
+        <MenuItem onClick={toggle}>
+          <MenuLink to="/#portfolio">
             <Typography variant={'h3'} component="span">
               Portfolio
             </Typography>
           </MenuLink>
         </MenuItem>
         <Divider component={'li'} />
-        <MenuItem>
-          <MenuLink to="/about">
+        <MenuItem onClick={toggle}>
+          <MenuLink to="/#about">
             <Typography variant={'h3'} component="span">
               About
             </Typography>
           </MenuLink>
         </MenuItem>
         <Divider component={'li'} />
-        <MenuItem>
-          <MenuLink to="/contact">
+        <MenuItem onClick={toggle}>
+          <MenuLink to="/#contact">
             <Typography variant={'h3'} component="span">
               Contact
             </Typography>

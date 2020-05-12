@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { graphql } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -8,26 +8,26 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import { ThemeProvider } from '@material-ui/core';
-import theme from '../shared/MUITheme';
+import theme from '../../shared/MUITheme';
 
-import Layout from '../App/Layout/Layout';
-import Navigation from '../shared/Navigation';
-import BottomNavigation from '../shared/BottomNavigation/BottomNavigation';
-import Projects, { Frontmatter } from '../App/Portfolio/Projects';
-import AppliedFilters from '../App/Portfolio/AppliedFilters';
-import FiltersSidebar from '../App/Portfolio/FiltersSidebar';
+import Layout from '../Layout/Layout';
+import Navigation from '../../shared/Navigation';
+import BottomNavigation from '../../shared/BottomNavigation/BottomNavigation';
+import Projects, { Frontmatter } from './Projects';
+import AppliedFilters from './AppliedFilters';
+import FiltersSidebar from './FiltersSidebar';
 
 import { connect } from 'react-redux';
 import {
   addFilter,
   removeFilter,
   clearFilters,
-} from '../state/portfolio/actions';
+} from '../../state/portfolio/actions';
 import {
   getAppliedFilters,
   getSortingOrder,
-} from '../state/portfolio/selectors';
-import { RootState } from '../state/createStore';
+} from '../../state/portfolio/selectors';
+import { RootState } from '../../state/createStore';
 
 const SectionHeading = styled(Typography)`
   margin-top: 0.35em;
@@ -39,11 +39,9 @@ const MobileWrapper = styled.div`
   }
 `;
 
-interface PortfolioProps {
+interface PurePortfolioProps {
   data: {
-    allProjectCards: {
-      nodes: Frontmatter[];
-    };
+    nodes: Frontmatter[];
   };
   addFilter: (filter: string) => void;
   removeFilter: (filter: string) => void;
@@ -52,10 +50,8 @@ interface PortfolioProps {
   order: string;
 }
 
-export const Portfolio: React.FC<PortfolioProps> = ({
-  data: {
-    allProjectCards: { nodes },
-  },
+const PurePortfolio: React.FC<PurePortfolioProps> = ({
+  data: { nodes },
   addFilter,
   removeFilter,
   clearFilters,
@@ -91,7 +87,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({
     <ThemeProvider theme={theme}>
       <Navigation />
       <Layout>
-        <Container maxWidth={'lg'} component={'section'}>
+        <Container maxWidth={'lg'} component={'section'} id="portfolio">
           <SectionHeading variant={'h1'} gutterBottom align={'center'}>
             Portfolio
           </SectionHeading>
@@ -123,11 +119,9 @@ export const Portfolio: React.FC<PortfolioProps> = ({
   );
 };
 
-Portfolio.propTypes = {
+PurePortfolio.propTypes = {
   data: PropTypes.shape({
-    allProjectCards: PropTypes.shape({
-      nodes: PropTypes.array.isRequired,
-    }).isRequired,
+    nodes: PropTypes.array.isRequired,
   }).isRequired,
   addFilter: PropTypes.func.isRequired,
   removeFilter: PropTypes.func.isRequired,
@@ -136,34 +130,69 @@ Portfolio.propTypes = {
   order: PropTypes.string.isRequired,
 };
 
-export const portfolioCards = graphql`
-  query {
-    allProjectCards: allMdx(
-      filter: { fileAbsolutePath: { regex: "/projects/" } }
-      sort: { fields: frontmatter___date, order: DESC }
-    ) {
-      nodes {
-        frontmatter {
-          title
-          path
-          cardPhoto {
-            altText
-            src {
-              childImageSharp {
-                fluid(maxWidth: 1920) {
-                  ...GatsbyImageSharpFluid
+interface PortfolioProps {
+  addFilter: (filter: string) => void;
+  removeFilter: (filter: string) => void;
+  clearFilters: () => void;
+  appliedFilters: string[];
+  order: string;
+}
+
+const Portfolio: React.FC<PortfolioProps> = ({
+  addFilter,
+  removeFilter,
+  clearFilters,
+  appliedFilters,
+  order,
+}) => {
+  const { allProjects } = useStaticQuery(graphql`
+    query {
+      allProjects: allMdx(
+        filter: { fileAbsolutePath: { regex: "/projects/" } }
+        sort: { fields: frontmatter___date, order: DESC }
+      ) {
+        nodes {
+          frontmatter {
+            title
+            path
+            cardPhoto {
+              altText
+              src {
+                childImageSharp {
+                  fluid(maxWidth: 1920) {
+                    ...GatsbyImageSharpFluid
+                  }
                 }
               }
             }
+            cardText
+            tags
+            date
           }
-          cardText
-          tags
-          date
         }
       }
     }
-  }
-`;
+  `);
+
+  return (
+    <PurePortfolio
+      data={allProjects}
+      addFilter={addFilter}
+      removeFilter={removeFilter}
+      clearFilters={clearFilters}
+      appliedFilters={appliedFilters}
+      order={order}
+    />
+  );
+};
+
+Portfolio.propTypes = {
+  addFilter: PropTypes.func.isRequired,
+  removeFilter: PropTypes.func.isRequired,
+  clearFilters: PropTypes.func.isRequired,
+  appliedFilters: PropTypes.array.isRequired,
+  order: PropTypes.string.isRequired,
+};
 
 export default connect(
   (state: RootState) => ({

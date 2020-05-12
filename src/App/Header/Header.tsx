@@ -62,7 +62,7 @@ const Title = styled(Typography)`
 
 export default function Header(): ReactElement {
   return (
-    <Wrapper>
+    <Wrapper id="header">
       <Grid>
         <Name variant={'h1'}>BRIAN MONACCIO</Name>
         <TitleContainer>
