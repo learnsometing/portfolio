@@ -19,7 +19,7 @@ const Navbar = styled(Paper).attrs({
   elevation: 2,
   square: true,
 })<NavbarProps>`
-  position: fixed;
+  position: sticky;
   bottom: 0;
   right: 0;
   height: 80px;

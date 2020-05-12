@@ -47,7 +47,7 @@ const HeaderNavLink = styled(NavLink)`
 
 const Navbar: React.FC = () => (
   <Nav>
-    <HeaderNavLink to="/portfolio">
+    <HeaderNavLink to="/#portfolio">
       <Typography variant={'h5'} component="span">
         Portfolio
       </Typography>
