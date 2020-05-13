@@ -45,7 +45,7 @@ const SortMenu: React.FC<Props> = ({ changeSortingOrder, projectCount }) => {
       alignItems={'center'}
       item
     >
-      <Typography variant={'h4'} component={'h2'}>
+      <Typography variant={'h2'} component={'h2'}>
         {projectCount
           ? `${projectCount} 
         ${projectCount > 1 ? 'projects' : 'project'}

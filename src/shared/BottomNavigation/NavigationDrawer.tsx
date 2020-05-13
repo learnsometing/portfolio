@@ -54,6 +54,13 @@ const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
         </MenuItem>
         <Divider component={'li'} />
         <MenuItem onClick={toggle}>
+          <MenuLink to="/#about">
+            <Typography variant={'h3'} component="span">
+              About
+            </Typography>
+          </MenuLink>
+        </MenuItem>
+        <MenuItem onClick={toggle}>
           <MenuLink to="/#portfolio">
             <Typography variant={'h3'} component="span">
               Portfolio
@@ -61,13 +68,6 @@ const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
           </MenuLink>
         </MenuItem>
         <Divider component={'li'} />
-        <MenuItem onClick={toggle}>
-          <MenuLink to="/#about">
-            <Typography variant={'h3'} component="span">
-              About
-            </Typography>
-          </MenuLink>
-        </MenuItem>
         <Divider component={'li'} />
         <MenuItem onClick={toggle}>
           <MenuLink to="/#contact">

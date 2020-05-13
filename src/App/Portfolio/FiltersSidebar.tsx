@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ChangeEvent } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -84,7 +84,7 @@ const FiltersSidebar: React.FC<Props> = ({
   return (
     <Sidebar justify={'flex-start'} item lg={3}>
       <SidebarContentWrapper>
-        <SidebarHeading variant={'h2'} align={'center'}>
+        <SidebarHeading variant={'h3'} align={'center'}>
           Filter
         </SidebarHeading>
         <AppliedFilters

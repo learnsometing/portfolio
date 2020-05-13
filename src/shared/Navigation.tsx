@@ -66,14 +66,14 @@ const Navigation: React.FC = () => (
         <AnchoredNavLink to="/#header">
           <Brand variant={'h2'}>BRIAN MONACCIO</Brand>
         </AnchoredNavLink>
-        <AnchoredNavLink to="/#portfolio">
-          <Typography variant={'h5'} component="span">
-            Portfolio
-          </Typography>
-        </AnchoredNavLink>
         <AnchoredNavLink to="/#about">
           <Typography variant={'h5'} component="span">
             About
+          </Typography>
+        </AnchoredNavLink>
+        <AnchoredNavLink to="/#portfolio">
+          <Typography variant={'h5'} component="span">
+            Portfolio
           </Typography>
         </AnchoredNavLink>
         <AnchoredNavLink to="/#contact">
