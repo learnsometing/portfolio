@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 // Material-UI
-import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
 import { ThemeProvider } from '@material-ui/core';
 import theme from '../../shared/MUITheme';
 
@@ -26,16 +26,7 @@ import {
   getSortingOrder,
 } from '../../state/portfolio/selectors';
 import { RootState } from '../../state/createStore';
-
-const PortfolioSection = styled(Container).attrs({
-  component: 'section',
-})`
-  padding-top: 1rem;
-
-  @media screen and (min-width: 1280px) {
-    padding-top: 4rem;
-  }
-`;
+import Section from '../../shared/Section';
 
 const MobileWrapper = styled.div`
   @media only screen and (min-width: 1280px) {
@@ -90,29 +81,31 @@ const PurePortfolio: React.FC<PurePortfolioProps> = ({
   return (
     <ThemeProvider theme={theme}>
       <Navigation />
-      <PortfolioSection maxWidth={'lg'} id="portfolio">
-        {/* */}
-        <MobileWrapper>
-          <AppliedFilters
-            appliedFilters={appliedFilters}
-            removeFilter={removeFilter}
-            clearFilters={clearFilters}
-          />
-        </MobileWrapper>
+      <Section id="portfolio">
+        <Container maxWidth={'lg'}>
+          {/* */}
+          <MobileWrapper>
+            <AppliedFilters
+              appliedFilters={appliedFilters}
+              removeFilter={removeFilter}
+              clearFilters={clearFilters}
+            />
+          </MobileWrapper>
 
-        {/* Projects */}
-        <Grid container justify={'center'}>
-          <FiltersSidebar
-            addFilter={addFilter}
-            allProjectTags={allProjectTags}
-            appliedFilters={appliedFilters}
-            removeFilter={removeFilter}
-            clearFilters={clearFilters}
-          />
-          <Projects projects={displayedProjects} order={order} />
-        </Grid>
+          {/* Projects */}
+          <Grid container justify={'center'}>
+            <FiltersSidebar
+              addFilter={addFilter}
+              allProjectTags={allProjectTags}
+              appliedFilters={appliedFilters}
+              removeFilter={removeFilter}
+              clearFilters={clearFilters}
+            />
+            <Projects projects={displayedProjects} order={order} />
+          </Grid>
+        </Container>
         <BottomNavigation allProjectTags={allProjectTags} />
-      </PortfolioSection>
+      </Section>
     </ThemeProvider>
   );
 };

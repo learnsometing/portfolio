@@ -60,6 +60,7 @@ const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
             </Typography>
           </MenuLink>
         </MenuItem>
+        <Divider component={'li'} />
         <MenuItem onClick={toggle}>
           <MenuLink to="/#portfolio">
             <Typography variant={'h3'} component="span">
@@ -67,7 +68,6 @@ const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
             </Typography>
           </MenuLink>
         </MenuItem>
-        <Divider component={'li'} />
         <Divider component={'li'} />
         <MenuItem onClick={toggle}>
           <MenuLink to="/#contact">
