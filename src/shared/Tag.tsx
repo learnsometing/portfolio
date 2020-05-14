@@ -81,7 +81,7 @@ const Tag: React.FC<Props> = ({
   clearFilters,
 }) => (
   <TagLink
-    to="/portfolio"
+    to="/#portfolio"
     color={textColor}
     onClick={(): void => {
       clearFilters();

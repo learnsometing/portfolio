@@ -4,13 +4,11 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 // Material-UI
-import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 import { ThemeProvider } from '@material-ui/core';
 import theme from '../../shared/MUITheme';
 
-import Layout from '../Layout/Layout';
 import Navigation from '../../shared/Navigation';
 import BottomNavigation from '../../shared/BottomNavigation/BottomNavigation';
 import Projects, { Frontmatter } from './Projects';
@@ -28,10 +26,7 @@ import {
   getSortingOrder,
 } from '../../state/portfolio/selectors';
 import { RootState } from '../../state/createStore';
-
-const SectionHeading = styled(Typography)`
-  margin-top: 0.35em;
-`;
+import Section from '../../shared/Section';
 
 const MobileWrapper = styled.div`
   @media only screen and (min-width: 1280px) {
@@ -86,12 +81,8 @@ const PurePortfolio: React.FC<PurePortfolioProps> = ({
   return (
     <ThemeProvider theme={theme}>
       <Navigation />
-      <Layout>
-        <Container maxWidth={'lg'} component={'section'} id="portfolio">
-          <SectionHeading variant={'h1'} gutterBottom align={'center'}>
-            Portfolio
-          </SectionHeading>
-
+      <Section id="portfolio">
+        <Container maxWidth={'lg'}>
           {/* */}
           <MobileWrapper>
             <AppliedFilters
@@ -114,7 +105,7 @@ const PurePortfolio: React.FC<PurePortfolioProps> = ({
           </Grid>
         </Container>
         <BottomNavigation allProjectTags={allProjectTags} />
-      </Layout>
+      </Section>
     </ThemeProvider>
   );
 };
