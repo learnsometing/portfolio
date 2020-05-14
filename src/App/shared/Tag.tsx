@@ -6,7 +6,7 @@ import { StyledGatsbyLink } from './Navigation';
 
 // Redux
 import { connect } from 'react-redux';
-import { clearFilters, applyFilters } from '../state/portfolio/actions';
+import { clearFilters, applyFilters } from '../../state/portfolio/actions';
 
 interface Props {
   text: string;

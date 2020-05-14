@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 
-import Section from '../../shared/Section';
+import Section from '../shared/Section';
 
 const AboutSection = styled(Section)`
   padding-top: 1rem;

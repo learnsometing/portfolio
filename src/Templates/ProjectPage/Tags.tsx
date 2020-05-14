@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
-import Tag from '../../shared/Tag';
+import Tag from '../../App/shared/Tag';
 
 interface Props {
   tags: string[];

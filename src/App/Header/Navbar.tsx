@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import Typography from '@material-ui/core/Typography';
 
-import { AnchoredNavLink } from '../../shared/Navigation';
+import { AnchoredNavLink } from '../shared/Navigation';
 
 const Nav = styled.nav`
   display: flex;
