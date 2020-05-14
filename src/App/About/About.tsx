@@ -87,9 +87,9 @@ const About: React.FC = () => {
         </Typography>
         <Typography variant={'body1'} gutterBottom>
           My interest in frontend development was ignited by JavaScript and
-          React when I built my first Gatsby site for a freelance client. Now I
-          spend my time developing React applications and designing and
-          implementing forward-facing features with user experience in mind.
+          React when I built my first freelance Gatsby app. Now I spend my time
+          developing React applications and designing and implementing
+          forward-facing features with user experience in mind.
         </Typography>
         <Typography variant={'body1'} gutterBottom>
           The rest of my free time is spent gardening, cooking, eating, and
