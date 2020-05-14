@@ -17,7 +17,7 @@ const Tags: React.FC<Props> = ({ tags }) => (
         Tags
       </Typography>
     </Grid>
-    <Grid item container spacing={1}>
+    <Grid item container spacing={3}>
       {tags.map((tag) => (
         <Grid key={tag} item>
           <Tag text={tag} highlightColor="#0d3b66" textColor={'#fdfde8'} />
