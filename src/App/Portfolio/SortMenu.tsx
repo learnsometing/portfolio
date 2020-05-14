@@ -14,6 +14,9 @@ import { changeSortingOrder } from '../../state/portfolio/actions';
 
 const SortContainer = styled(Grid)`
   margin: 1rem 0;
+  @media screen and (min-width: 1280px) {
+    margin: 0;
+  }
 `;
 
 const SortControl = styled(FormControl)`
