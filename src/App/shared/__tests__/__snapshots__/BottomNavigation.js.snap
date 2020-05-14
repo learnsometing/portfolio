@@ -28,7 +28,7 @@ exports[`BottomNavigation should match the snapshot 1`] = `
 }
 
 <div
-  className="MuiPaper-root BottomNavigation__Navbar-sc-1qy0eks-0 c0 MuiBottomNavigation-root MuiPaper-elevation2"
+  className="MuiPaper-root BottomNavigation__Navbar-sc-1b8in4y-0 c0 MuiBottomNavigation-root MuiPaper-elevation2"
 >
   <button
     className="MuiButtonBase-root MuiBottomNavigationAction-root"

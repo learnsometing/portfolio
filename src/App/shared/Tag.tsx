@@ -6,7 +6,7 @@ import { StyledGatsbyLink } from './Navigation';
 
 // Redux
 import { connect } from 'react-redux';
-import { clearFilters, applyFilters } from '../state/portfolio/actions';
+import { clearFilters, applyFilters } from '../../state/portfolio/actions';
 
 interface Props {
   text: string;
@@ -69,8 +69,7 @@ const TagText = styled(Typography).attrs({
   display: inline-block;
   position: relative;
   z-index: 1;
-  padding: 0.25rem;
-  padding-bottom: 0;
+  padding: 0.25rem 0.5rem;
 `;
 
 const Tag: React.FC<Props> = ({

@@ -16,7 +16,7 @@ import SwipeableViews from 'react-swipeable-views';
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from 'react-icons/md';
 
 // Interfaces
-import ChildImageSharp from '../../shared/ChildImageSharp';
+import ChildImageSharp from '../shared/ChildImageSharp';
 
 export interface Slide {
   src: ChildImageSharp;

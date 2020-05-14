@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
-import Tag from '../../shared/Tag';
+import Tag from '../../App/shared/Tag';
 
 interface Props {
   tags: string[];
@@ -17,7 +17,7 @@ const Tags: React.FC<Props> = ({ tags }) => (
         Tags
       </Typography>
     </Grid>
-    <Grid item container spacing={1}>
+    <Grid item container spacing={3}>
       {tags.map((tag) => (
         <Grid key={tag} item>
           <Tag text={tag} highlightColor="#0d3b66" textColor={'#fdfde8'} />

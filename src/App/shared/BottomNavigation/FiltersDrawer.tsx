@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import DrawerBase from './DrawerBase';
-import FiltersForm from '../../App/Portfolio/FiltersForm';
+import FiltersForm from '../../Portfolio/FiltersForm';
 
 import { CloseButton } from '../CloseButton';
 

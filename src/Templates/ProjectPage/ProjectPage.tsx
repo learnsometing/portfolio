@@ -10,7 +10,7 @@ import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { ThemeProvider } from '@material-ui/core';
-import theme from '../../shared/MUITheme';
+import theme from '../../App/shared/MUITheme';
 
 // Icons
 import { TiArrowForward } from 'react-icons/ti';
@@ -19,8 +19,8 @@ import { FaGithub } from 'react-icons/fa';
 // Components
 import Layout from '../../App/Layout/Layout';
 import SEO from '../../App/SEO/SEO';
-import Navigation from '../../shared/Navigation';
-import BottomNavigation from '../../shared/BottomNavigation/BottomNavigation';
+import Navigation from '../../App/shared/Navigation';
+import BottomNavigation from '../../App/shared/BottomNavigation/BottomNavigation';
 import Carousel from '../../App/Carousel/Carousel';
 import Description from './Description';
 import Tags from './Tags';

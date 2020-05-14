@@ -7,10 +7,10 @@ import PropTypes from 'prop-types';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import { ThemeProvider } from '@material-ui/core';
-import theme from '../../shared/MUITheme';
+import theme from '../shared/MUITheme';
 
-import Navigation from '../../shared/Navigation';
-import BottomNavigation from '../../shared/BottomNavigation/BottomNavigation';
+import Navigation from '../shared/Navigation';
+import BottomNavigation from '../shared/BottomNavigation/BottomNavigation';
 import Projects, { Frontmatter } from './Projects';
 import AppliedFilters from './AppliedFilters';
 import FiltersSidebar from './FiltersSidebar';
@@ -26,7 +26,7 @@ import {
   getSortingOrder,
 } from '../../state/portfolio/selectors';
 import { RootState } from '../../state/createStore';
-import Section from '../../shared/Section';
+import Section from '../shared/Section';
 
 const MobileWrapper = styled.div`
   @media only screen and (min-width: 1280px) {

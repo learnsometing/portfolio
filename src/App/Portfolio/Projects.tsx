@@ -19,6 +19,10 @@ const ProjectCards = styled(Grid)`
       margin-bottom: 1rem;
     }
   }
+
+  @media screen and (min-width: 1280px) {
+    padding: 1rem 0;
+  }
 `;
 
 export interface Frontmatter {

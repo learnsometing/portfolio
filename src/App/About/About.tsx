@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 
-import Section from '../../shared/Section';
+import Section from '../shared/Section';
 
 const AboutSection = styled(Section)`
   padding-top: 1rem;
@@ -83,13 +83,14 @@ const About: React.FC = () => {
           In January 2019 I left my career in the wine industry to pursue a more
           satisfying career in web development. In the past year, I&#39;ve
           immersed myself in web technologies and grown my appreciation for the
-          richness of the web and the complexities of the sites that connect us.
+          richness and complexities of the sites that connect us.
         </Typography>
         <Typography variant={'body1'} gutterBottom>
-          My interest in frontend development was ignited by JavaScript and
-          React when I built my first freelance Gatsby app. Now I spend my time
-          developing React applications and designing and implementing
-          forward-facing features with user experience in mind.
+          My interest in frontend development was ignited by the realization
+          that I had an opportunity to create things that could be used by
+          millions of people every day. Now driven by the desire to implement
+          elegant and effective websites, I spend my time developing React
+          applications and practicing design with a focus on user experience.
         </Typography>
         <Typography variant={'body1'} gutterBottom>
           The rest of my free time is spent gardening, cooking, eating, and
