@@ -9,18 +9,22 @@ import React, { ReactNode } from 'react';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 import './Layout.css';
+import { ThemeProvider as StyledComponentsThemeProvider } from 'styled-components';
+import scTheme from '../shared/SCTheme';
 
 interface Props {
   children: ReactNode;
 }
 
 const Layout: React.FC<Props> = ({ children }) => (
-  <main>
-    <Helmet>
-      <link rel="stylesheet" href="https://use.typekit.net/ari5qhg.css" />
-    </Helmet>
-    {children}
-  </main>
+  <StyledComponentsThemeProvider theme={scTheme}>
+    <main>
+      <Helmet>
+        <link rel="stylesheet" href="https://use.typekit.net/ari5qhg.css" />
+      </Helmet>
+      {children}
+    </main>
+  </StyledComponentsThemeProvider>
 );
 
 Layout.propTypes = {

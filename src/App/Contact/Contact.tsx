@@ -10,6 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import { IconContext } from 'react-icons';
 import { FaTwitterSquare, FaInstagramSquare } from 'react-icons/fa';
 
+import scTheme from '../shared/SCTheme';
+
 const Footer = styled.footer`
   padding: 1rem 0;
 
@@ -40,7 +42,7 @@ const ContactSectionHeading = styled(Typography).attrs({
   padding-bottom: 0;
 `;
 
-const iconStyles = { size: '48px', color: '#f95738' };
+const iconStyles = { size: '48px', color: scTheme.textEmphasis };
 
 interface IconProps {
   icon: ReactNode;

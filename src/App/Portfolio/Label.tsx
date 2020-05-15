@@ -11,10 +11,6 @@ const TagText = styled(Typography)`
   margin-right: 0.25rem;
 `;
 
-const CountText = styled(TagText)`
-  color: #74746a;
-`;
-
 interface FilterFieldProps {
   filter: string;
   count: number;
@@ -23,7 +19,7 @@ interface FilterFieldProps {
 const LabelText: React.FC<FilterFieldProps> = ({ filter, count }) => (
   <Grid container alignItems={'center'}>
     <TagText variant={'h6'}>{filter}</TagText>
-    <CountText variant={'body2'}>{` (${count})`}</CountText>
+    <Typography variant={'body2'}>{` (${count})`}</Typography>
   </Grid>
 );
 
