@@ -1,29 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 
-import Tag from '../../App/shared/Tag';
+import { SectionHeading } from './ProjectPage';
+import Tag from './Tag';
 
 interface Props {
   tags: string[];
 }
 
+const TagContainer = styled(Grid)`
+  @media screen and (min-width: 960px) {
+    justify-content: flex-start;
+  }
+`;
+
 const Tags: React.FC<Props> = ({ tags }) => (
   <>
     <Grid item>
-      <Typography variant={'h2'} gutterBottom>
-        Tags
-      </Typography>
+      <SectionHeading>Tags</SectionHeading>
     </Grid>
-    <Grid item container spacing={3}>
+    <TagContainer item container spacing={2} justify={'center'}>
       {tags.map((tag) => (
         <Grid key={tag} item>
-          <Tag text={tag} highlightColor="#0d3b66" textColor={'#fdfde8'} />
+          <Tag text={tag} />
         </Grid>
       ))}
-    </Grid>
+    </TagContainer>
   </>
 );
 

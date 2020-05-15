@@ -23,9 +23,10 @@ import SEO from '../../App/SEO/SEO';
 import Navigation from '../../App/shared/Navigation';
 import BottomNavigation from '../../App/shared/BottomNavigation/BottomNavigation';
 import Carousel from '../../App/Carousel/Carousel';
-import Description from './Description';
+import DescriptionContent from './Description';
 import Tags from './Tags';
 import Contact from '../../App/Contact/Contact';
+import Section from '../../App/shared/Section';
 
 // Interfaces
 import { Slide } from '../../App/Carousel/Carousel';
@@ -47,105 +48,126 @@ interface Props {
   data: Mdx;
 }
 
-const PageHeader = styled(Grid).attrs({
-  component: 'header',
+const ProjectTitle = styled(Typography).attrs({
+  variant: 'h1',
+  gutterBottom: true,
 })`
-  padding: 1.5rem;
-  color: #000;
-  background-color: #f49097;
+  text-align: center;
+
+  @media screen and (min-width: 1280px) {
+    text-align: start;
+  }
 `;
 
-const DescriptionSection = styled(Grid).attrs({
-  component: 'section',
+const ProjectLinks = styled(Grid)`
+  padding: 1rem 0;
+  justify-content: center;
+
+  @media screen and (min-width: 1280px) {
+    justify-content: flex-start;
+  }
+`;
+
+export const SectionHeading = styled(Typography).attrs({
+  variant: 'h2',
+  gutterBottom: true,
 })`
-  padding: 1.5rem;
-  color: #000;
-  background-color: #f49097;
+  text-align: center;
+
+  @media screen and (min-width: 1280px) {
+    text-align: start;
+  }
 `;
 
 const CarouselRoot = styled(Grid)`
-  padding: 1.5rem;
-  color: #fdfde8;
-  background-color: #0d3b66;
+  margin: 1rem 0;
+  background-color: ${(props): string => props.theme.secondary};
 `;
 
 const TechTags = styled(Grid).attrs({
   component: 'section',
 })`
-  background-color: #00916e;
+  background-color: ${(props): string => props.theme.tertiary};
   color: #fdfde8;
-  padding: 1.5rem;
+  margin: 1rem 0;
+  @media screen and (min-width: 1280px) {
+    padding: 0 2rem;
+  }
 `;
 
-const shortcodes = { Typography, Grid };
+const Description = styled.section`
+  padding-bottom: 1rem;
+  @media screen and (min-width: 1280px) {
+    padding-bottom: 4rem;
+  }
+`;
+
+const DescriptionParagraph = styled(Typography).attrs({
+  variant: 'body1',
+  gutterBottom: true,
+})`
+  text-align: center;
+
+  @media screen and (min-width: 1280px) {
+    text-align: start;
+  }
+`;
+
+const shortcodes = { DescriptionParagraph, Grid };
 
 const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
   const { frontmatter } = mdx;
 
   return (
     <ThemeProvider theme={theme}>
-      <Navigation />
       <Layout>
+        <Navigation />
         <SEO title={frontmatter.title} />
-        <Container maxWidth={'lg'} disableGutters>
+        <Container maxWidth={'lg'}>
+          <Section as={'header'}>
+            <ProjectTitle>{frontmatter.title}</ProjectTitle>
+            <ProjectLinks container spacing={2}>
+              <Grid item>
+                <Link
+                  href={frontmatter.websiteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button
+                    color={'primary'}
+                    variant={'contained'}
+                    endIcon={<TiArrowForward />}
+                  >
+                    Visit
+                  </Button>
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link
+                  href={frontmatter.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button
+                    color={'primary'}
+                    variant={'contained'}
+                    endIcon={<FaGithub />}
+                  >
+                    Github
+                  </Button>
+                </Link>
+              </Grid>
+            </ProjectLinks>
+          </Section>
           <Grid container justify={'center'}>
-            <PageHeader
-              container
-              justify={'space-between'}
-              alignItems={'center'}
-            >
-              <Grid item>
-                <Typography variant={'h1'}>{frontmatter.title}</Typography>
-              </Grid>
-              <Grid item>
-                <Grid container spacing={2}>
-                  <Grid item>
-                    <Link
-                      href={frontmatter.websiteUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Button color={'primary'} endIcon={<TiArrowForward />}>
-                        Visit
-                      </Button>
-                    </Link>
-                  </Grid>
-                  <Grid item>
-                    <Link
-                      href={frontmatter.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Button color={'primary'} endIcon={<FaGithub />}>
-                        Github
-                      </Button>
-                    </Link>
-                  </Grid>
-                </Grid>
-              </Grid>
-            </PageHeader>
-
-            <DescriptionSection
-              item
-              xs={12}
-              sm={12}
-              md={12}
-              lg={12}
-              xl={12}
-              container
-              direction={'column'}
-              justify={'center'}
-              alignItems={'flex-start'}
-            >
+            <Description>
               <MDXProvider components={shortcodes}>
-                <Description description={mdx.body} />
+                <DescriptionContent description={mdx.body} />
               </MDXProvider>
-            </DescriptionSection>
+            </Description>
 
             <CarouselRoot item xs={12} sm={12} md={8} lg={8} xl={8}>
-              <Typography variant={'h2'} gutterBottom>
-                Gallery
-              </Typography>
+              <SectionHeading>Gallery</SectionHeading>
               <Carousel slides={frontmatter.carouselPhotos} />
             </CarouselRoot>
 
