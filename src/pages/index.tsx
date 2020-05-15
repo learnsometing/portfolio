@@ -6,6 +6,7 @@ import { ThemeProvider } from '@material-ui/core';
 import theme from '../App/shared/MUITheme';
 import Portfolio from '../App/Portfolio/Portfolio';
 import About from '../App/About/About';
+import Contact from '../App/Contact/Contact';
 
 const IndexPage: React.FC = () => (
   <ThemeProvider theme={theme}>
@@ -14,6 +15,7 @@ const IndexPage: React.FC = () => (
       <Header />
       <About />
       <Portfolio />
+      <Contact />
     </Layout>
   </ThemeProvider>
 );

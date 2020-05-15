@@ -5,6 +5,7 @@ import { MDXProvider } from '@mdx-js/react';
 import styled from 'styled-components';
 
 // Material-UI Imports
+import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
@@ -24,6 +25,7 @@ import BottomNavigation from '../../App/shared/BottomNavigation/BottomNavigation
 import Carousel from '../../App/Carousel/Carousel';
 import Description from './Description';
 import Tags from './Tags';
+import Contact from '../../App/Contact/Contact';
 
 // Interfaces
 import { Slide } from '../../App/Carousel/Carousel';
@@ -85,67 +87,74 @@ const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
       <Navigation />
       <Layout>
         <SEO title={frontmatter.title} />
-        <Grid container justify={'center'}>
-          <PageHeader container justify={'space-between'} alignItems={'center'}>
-            <Grid item>
-              <Typography variant={'h1'}>{frontmatter.title}</Typography>
-            </Grid>
-            <Grid item>
-              <Grid container spacing={2}>
-                <Grid item>
-                  <Link
-                    href={frontmatter.websiteUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Button color={'primary'} endIcon={<TiArrowForward />}>
-                      Visit
-                    </Button>
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Link
-                    href={frontmatter.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Button color={'primary'} endIcon={<FaGithub />}>
-                      Github
-                    </Button>
-                  </Link>
+        <Container maxWidth={'lg'} disableGutters>
+          <Grid container justify={'center'}>
+            <PageHeader
+              container
+              justify={'space-between'}
+              alignItems={'center'}
+            >
+              <Grid item>
+                <Typography variant={'h1'}>{frontmatter.title}</Typography>
+              </Grid>
+              <Grid item>
+                <Grid container spacing={2}>
+                  <Grid item>
+                    <Link
+                      href={frontmatter.websiteUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button color={'primary'} endIcon={<TiArrowForward />}>
+                        Visit
+                      </Button>
+                    </Link>
+                  </Grid>
+                  <Grid item>
+                    <Link
+                      href={frontmatter.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button color={'primary'} endIcon={<FaGithub />}>
+                        Github
+                      </Button>
+                    </Link>
+                  </Grid>
                 </Grid>
               </Grid>
-            </Grid>
-          </PageHeader>
+            </PageHeader>
 
-          <DescriptionSection
-            item
-            xs={12}
-            sm={12}
-            md={12}
-            lg={12}
-            xl={12}
-            container
-            direction={'column'}
-            justify={'center'}
-            alignItems={'flex-start'}
-          >
-            <MDXProvider components={shortcodes}>
-              <Description description={mdx.body} />
-            </MDXProvider>
-          </DescriptionSection>
+            <DescriptionSection
+              item
+              xs={12}
+              sm={12}
+              md={12}
+              lg={12}
+              xl={12}
+              container
+              direction={'column'}
+              justify={'center'}
+              alignItems={'flex-start'}
+            >
+              <MDXProvider components={shortcodes}>
+                <Description description={mdx.body} />
+              </MDXProvider>
+            </DescriptionSection>
 
-          <CarouselRoot item xs={12} sm={12} md={8} lg={8} xl={8}>
-            <Typography variant={'h2'} gutterBottom>
-              Gallery
-            </Typography>
-            <Carousel slides={frontmatter.carouselPhotos} />
-          </CarouselRoot>
+            <CarouselRoot item xs={12} sm={12} md={8} lg={8} xl={8}>
+              <Typography variant={'h2'} gutterBottom>
+                Gallery
+              </Typography>
+              <Carousel slides={frontmatter.carouselPhotos} />
+            </CarouselRoot>
 
-          <TechTags item xs={12} sm={12} md={4} lg={4} xl={4}>
-            <Tags tags={frontmatter.tags} />
-          </TechTags>
-        </Grid>
+            <TechTags item xs={12} sm={12} md={4} lg={4} xl={4}>
+              <Tags tags={frontmatter.tags} />
+            </TechTags>
+          </Grid>
+          <Contact />
+        </Container>
         <BottomNavigation />
       </Layout>
     </ThemeProvider>
