@@ -8,6 +8,7 @@ const scLightTheme = {
 
 const scTheme = {
   bg: '#29335C',
+  bgLightened: '#3E476C',
   text: '#F8ECFF',
   textDarkened: '#7F6D8E',
   textEmphasis: '#F9E43B',

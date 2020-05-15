@@ -22,7 +22,6 @@ const Buttons = styled(Grid)`
   padding: 0.5rem 0;
   position: sticky;
   bottom: 0;
-  background-color: #fdfde8;
   border-top: 1px solid rgba(0, 0, 0, 0.12);
 `;
 

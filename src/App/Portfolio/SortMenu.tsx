@@ -25,6 +25,7 @@ const SortControl = styled(FormControl)`
 
 const Item = styled(MenuItem)`
   padding: 1rem;
+  color: rgba(0, 0, 0, 0.8);
 `;
 
 interface Props {

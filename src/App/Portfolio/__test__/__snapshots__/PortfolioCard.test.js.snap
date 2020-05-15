@@ -9,7 +9,7 @@ exports[`PortfolioCard should match the snapshot 1`] = `
     href="/cash-pawn-jewelry-website/"
   >
     <div
-      className="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"
+      className="MuiPaper-root MuiCard-root MuiPaper-elevation8 MuiPaper-rounded"
     >
       <button
         className="MuiButtonBase-root MuiCardActionArea-root"
@@ -118,11 +118,11 @@ exports[`PortfolioCard should match the snapshot 1`] = `
         <div
           className="MuiCardContent-root"
         >
-          <h2
+          <h3
             className="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
           >
             Cash Pawn & Jewelry Website
-          </h2>
+          </h3>
           <p
             className="MuiTypography-root MuiTypography-body1"
           >

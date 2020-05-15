@@ -105,7 +105,7 @@ const theme = createMuiTheme({
       color: scTheme.textEmphasis,
     },
     h6: {
-      fontSize: '1.125rem',
+      fontSize: '1.25rem',
       fontFamily: [
         'mr-eaves-xl-modern',
         '-apple-system',
@@ -128,6 +128,23 @@ const theme = createMuiTheme({
     },
     body2: {
       color: scTheme.textDarkened,
+    },
+  },
+  overrides: {
+    MuiCheckbox: {
+      root: {
+        color: scTheme.textDarkened,
+      },
+    },
+    MuiOutlinedInput: {
+      notchedOutline: {
+        borderColor: scTheme.textDarkened,
+      },
+    },
+    MuiCardContent: {
+      root: {
+        backgroundColor: scTheme.bgLightened,
+      },
     },
   },
 });

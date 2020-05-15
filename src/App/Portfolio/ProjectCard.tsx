@@ -43,14 +43,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ content }) => {
   return (
     <Grid item component={'article'} xl={6} lg={6} md={6} sm={6} xs={12}>
       <ProjectLink to={path}>
-        <Card>
+        <Card raised>
           <CardActionArea>
             <Img
               fluid={cardPhoto.src.childImageSharp.fluid}
               alt="First slide"
             />
             <CardContent>
-              <Typography gutterBottom variant={'h5'} component={'h2'}>
+              <Typography gutterBottom variant={'h5'} component={'h3'}>
                 {title}
               </Typography>
               <Typography variant={'body1'}>{cardText}</Typography>
