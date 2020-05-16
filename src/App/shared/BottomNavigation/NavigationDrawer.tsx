@@ -21,7 +21,7 @@ const MenuItem = styled(ListItem).attrs({
 const Menu = styled(List)`
   width: 100vw;
   padding: 0;
-  background-color: #fdfde8;
+  background-color: ${(props): string => props.theme.bgLightened};
 `;
 
 const MenuLink = styled(AnchoredNavLink)`
@@ -31,6 +31,13 @@ const MenuLink = styled(AnchoredNavLink)`
   padding: 0;
   justify-content: center;
   align-items: center;
+`;
+
+const MenuLinkText = styled(Typography).attrs({
+  variant: 'h3',
+  component: 'span',
+})`
+  color: ${(props): string => props.theme.textEmphasis};
 `;
 
 interface NavigationDrawerProps {
@@ -47,33 +54,25 @@ const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
       <Menu>
         <MenuItem onClick={toggle}>
           <MenuLink to="/#header">
-            <Typography variant={'h3'} component="span">
-              Home
-            </Typography>
+            <MenuLinkText>Home</MenuLinkText>
           </MenuLink>
         </MenuItem>
         <Divider component={'li'} />
         <MenuItem onClick={toggle}>
           <MenuLink to="/#about">
-            <Typography variant={'h3'} component="span">
-              About
-            </Typography>
+            <MenuLinkText>About</MenuLinkText>
           </MenuLink>
         </MenuItem>
         <Divider component={'li'} />
         <MenuItem onClick={toggle}>
           <MenuLink to="/#portfolio">
-            <Typography variant={'h3'} component="span">
-              Portfolio
-            </Typography>
+            <MenuLinkText>Portfolio</MenuLinkText>
           </MenuLink>
         </MenuItem>
         <Divider component={'li'} />
         <MenuItem onClick={toggle}>
           <MenuLink to="/#contact">
-            <Typography variant={'h3'} component="span">
-              Contact
-            </Typography>
+            <MenuLinkText>Contact</MenuLinkText>
           </MenuLink>
         </MenuItem>
         <Divider />

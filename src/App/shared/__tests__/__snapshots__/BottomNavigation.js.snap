@@ -9,16 +9,11 @@ exports[`BottomNavigation should match the snapshot 1`] = `
   height: 80px;
   width: 100%;
   z-index: 2;
-  background-color: #fdfde8;
   position: fixed;
   width: 80px;
   border-radius: 50%;
   bottom: 1rem;
   right: 1rem;
-}
-
-.c1 {
-  color: #f95738;
 }
 
 @media only screen and (min-width:1280px) {
@@ -58,7 +53,7 @@ exports[`BottomNavigation should match the snapshot 1`] = `
         strokeWidth="0"
         style={
           Object {
-            "color": "#f95738",
+            "color": "#F9E43B",
           }
         }
         viewBox="0 0 24 24"
@@ -73,7 +68,7 @@ exports[`BottomNavigation should match the snapshot 1`] = `
         className="MuiBottomNavigationAction-label"
       >
         <span
-          className="MuiTypography-root c1 MuiTypography-h6"
+          className="MuiTypography-root MuiTypography-h5"
         >
           Menu
         </span>

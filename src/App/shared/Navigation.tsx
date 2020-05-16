@@ -13,7 +13,7 @@ const Brand = styled(Typography).attrs({
   component: 'span',
 })`
   margin: 0 1rem;
-  color: #0d3b66;
+  color: ${(props): string => props.theme.azure};
 `;
 
 export const StyledGatsbyLink = styled(Link)`
@@ -22,28 +22,14 @@ export const StyledGatsbyLink = styled(Link)`
   text-decoration: none;
 `;
 
-const AnchorLinkWithFont = styled(AnchorLink)`
-  font-family: mr-eaves-xl-modern;
-  font-weight: bold;
+export const AnchoredNavLink = styled(AnchorLink)`
+  margin: auto 0;
+  padding: 0.5rem 0.5rem;
   text-decoration: none;
 `;
 
-export const AnchoredNavLink = styled(AnchorLinkWithFont)`
-  margin: auto 0;
-  padding: 0.5rem 0.5rem;
-  color: #f95738;
-
-  &:hover {
-    color: #1b065e;
-  }
-
-  &:active {
-    color: #1b065e;
-  }
-`;
-
 const Navbar = styled(Paper)`
-  background-color: #fdfde8;
+  background-color: ${(props): string => props.theme.bg};
   border-radius: 0;
   @media screen and (max-width: 1279px) {
     display: none;

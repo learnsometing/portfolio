@@ -14,7 +14,7 @@ const Header = styled(Grid)`
   padding: 0.5rem 1.5rem;
   position: sticky;
   top: 0;
-  background-color: #fdfde8;
+  background-color: ${(props): string => props.theme.bgLightened};
   z-index: 1;
 `;
 

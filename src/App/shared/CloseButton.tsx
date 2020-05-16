@@ -9,7 +9,7 @@ interface CloseButtonProps {
 }
 
 const CloseIcon: React.FC = () => (
-  <IconContext.Provider value={{ size: '3em', color: '#f95738' }}>
+  <IconContext.Provider value={{ size: '3em', color: '#F25F5C' }}>
     <MdClose />
   </IconContext.Provider>
 );
@@ -18,7 +18,7 @@ export const CloseButton = styled.button.attrs({
   children: <CloseIcon />,
 })<CloseButtonProps>`
   display: flex;
-  background-color: #fdfde8;
+  background-color: ${(props): string => props.theme.bgLightened};
   padding: 0;
   border: none;
   cursor: pointer;

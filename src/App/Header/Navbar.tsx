@@ -8,7 +8,7 @@ import { AnchoredNavLink } from '../shared/Navigation';
 const Nav = styled.nav`
   display: flex;
   flex-direction: column;
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 960px) {
     margin-right: 1rem;
     justify-content: flex-start;
     flex-direction: row-reverse;
@@ -19,21 +19,7 @@ const HeaderNavLink = styled(AnchoredNavLink)`
   padding: 0.5rem 0;
   margin: 0;
 
-  &:hover {
-    animation: indent 0.5s ease-in-out alternate infinite forwards;
-    &:after {
-      content: ' >';
-      font-size: 1.5rem;
-    }
-  }
-
-  @keyframes indent {
-    to {
-      transform: translateX(16px);
-    }
-  }
-
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 960px) {
     writing-mode: vertical-lr;
     margin: 0 0.5rem;
 

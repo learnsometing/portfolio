@@ -25,7 +25,7 @@ const Navbar = styled(Paper).attrs({
   height: 80px;
   width: 100%;
   z-index: 2;
-  background-color: #fdfde8;
+  background-color: ${(props): string => props.theme.bgLightened};
   @media only screen and (min-width: 1280px) {
     display: none;
   }
@@ -42,18 +42,11 @@ const CondensedNavbar = styled(Navbar).attrs({
   right: 1rem;
 `;
 
-export const ActionLabel = styled(Typography).attrs({
-  variant: 'h6',
-  component: 'span',
-})`
-  color: #f95738;
-`;
-
 interface Props {
   allProjectTags?: string[][];
 }
 
-const iconStyles = { size: '32px', color: '#f95738' };
+const iconStyles = { size: '32px', color: '#F9E43B' };
 
 const filterIcon = (
   <IconContext.Provider value={iconStyles}>
@@ -86,7 +79,11 @@ const BottomNavigationBar: React.FC<Props> = ({ allProjectTags }) => {
   return allProjectTags && allProjectTags.length ? (
     <BottomNavigation component={Navbar} showLabels>
       <BottomNavigationAction
-        label={<ActionLabel>Filter</ActionLabel>}
+        label={
+          <Typography variant={'h5'} component={'span'}>
+            Filter
+          </Typography>
+        }
         showLabel
         icon={filterIcon}
         onClick={openFiltersDrawer}
@@ -97,7 +94,11 @@ const BottomNavigationBar: React.FC<Props> = ({ allProjectTags }) => {
         allProjectTags={allProjectTags}
       />
       <BottomNavigationAction
-        label={<ActionLabel>Menu</ActionLabel>}
+        label={
+          <Typography variant={'h5'} component={'span'}>
+            Menu
+          </Typography>
+        }
         showLabel
         icon={menuIcon}
         onClick={toggleNavDrawer}
@@ -107,7 +108,11 @@ const BottomNavigationBar: React.FC<Props> = ({ allProjectTags }) => {
   ) : (
     <BottomNavigation component={CondensedNavbar} showLabels>
       <BottomNavigationAction
-        label={<ActionLabel>Menu</ActionLabel>}
+        label={
+          <Typography variant={'h5'} component={'span'}>
+            Menu
+          </Typography>
+        }
         showLabel
         icon={menuIcon}
         onClick={toggleNavDrawer}

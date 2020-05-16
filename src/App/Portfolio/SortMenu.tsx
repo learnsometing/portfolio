@@ -25,6 +25,13 @@ const SortControl = styled(FormControl)`
 
 const Item = styled(MenuItem)`
   padding: 1rem;
+  color: rgba(0, 0, 0, 0.8);
+`;
+
+const OutlinedInput = styled(Select)`
+  &:hover fieldset {
+    border-color: ${(props): string => props.theme.text} !important;
+  }
 `;
 
 interface Props {
@@ -57,7 +64,7 @@ const SortMenu: React.FC<Props> = ({ changeSortingOrder, projectCount }) => {
       </Typography>
       <SortControl variant="outlined">
         <InputLabel id="sort-order">Sort By</InputLabel>
-        <Select
+        <OutlinedInput
           autoWidth={true}
           labelId="sort-label"
           id="sort-order"
@@ -66,7 +73,7 @@ const SortMenu: React.FC<Props> = ({ changeSortingOrder, projectCount }) => {
         >
           <Item value={DESC}>Most Recent</Item>
           <Item value={ASC}>Most Dated</Item>
-        </Select>
+        </OutlinedInput>
       </SortControl>
     </SortContainer>
   );
