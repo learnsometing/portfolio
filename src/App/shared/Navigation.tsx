@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
 import { AnchorLink } from 'gatsby-plugin-anchor-links';
 
 // Material-ui
@@ -12,24 +11,20 @@ import Typography from '@material-ui/core/Typography';
 const Brand = styled(Typography).attrs({
   component: 'span',
 })`
-  margin: 0 1rem;
+  margin: 0 ${(props): string => props.theme.spacing(4)};
   color: ${(props): string => props.theme.azure};
 `;
 
-export const StyledGatsbyLink = styled(Link)`
-  font-family: mr-eaves-xl-modern;
-  font-weight: bold;
+export const AnchoredLink = styled(AnchorLink)`
   text-decoration: none;
 `;
 
-export const AnchoredNavLink = styled(AnchorLink)`
-  margin: auto 0;
-  padding: 0.5rem 0.5rem;
-  text-decoration: none;
+const NavbarLink = styled(AnchoredLink)`
+  margin: ${(props): string => props.theme.spacing(4)};
 `;
 
 const Navbar = styled(Paper)`
-  background-color: ${(props): string => props.theme.bg};
+  background-color: ${(props): string => props.theme.bgLightened};
   border-radius: 0;
   @media screen and (max-width: 1279px) {
     display: none;
@@ -41,33 +36,29 @@ const Navbar = styled(Paper)`
   }
 `;
 
-const Nav = styled(Grid).attrs(() => ({
-  component: 'nav',
-}))``;
-
 const Navigation: React.FC = () => (
   <Navbar elevation={2}>
     <Container maxWidth={'lg'}>
-      <Nav container>
-        <AnchoredNavLink to="/#header">
+      <Grid component={'nav'} container alignItems={'center'}>
+        <NavbarLink to="/#header">
           <Brand variant={'h2'}>BRIAN MONACCIO</Brand>
-        </AnchoredNavLink>
-        <AnchoredNavLink to="/#about">
+        </NavbarLink>
+        <NavbarLink to="/#about">
           <Typography variant={'h5'} component="span">
             About
           </Typography>
-        </AnchoredNavLink>
-        <AnchoredNavLink to="/#portfolio">
+        </NavbarLink>
+        <NavbarLink to="/#portfolio">
           <Typography variant={'h5'} component="span">
             Portfolio
           </Typography>
-        </AnchoredNavLink>
-        <AnchoredNavLink to="/#contact">
+        </NavbarLink>
+        <NavbarLink to="/#contact">
           <Typography variant={'h5'} component="span">
             Contact
           </Typography>
-        </AnchoredNavLink>
-      </Nav>
+        </NavbarLink>
+      </Grid>
     </Container>
   </Navbar>
 );

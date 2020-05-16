@@ -3,31 +3,24 @@ import styled from 'styled-components';
 
 import Typography from '@material-ui/core/Typography';
 
-import { AnchoredNavLink } from '../shared/Navigation';
+import { AnchoredLink } from '../shared/Navigation';
 
 const Nav = styled.nav`
   display: flex;
   flex-direction: column;
   @media only screen and (min-width: 960px) {
-    margin-right: 1rem;
+    margin-right: ${(props): string => props.theme.spacing(4)};
     justify-content: flex-start;
     flex-direction: row-reverse;
   }
 `;
 
-const HeaderNavLink = styled(AnchoredNavLink)`
-  padding: 0.5rem 0;
-  margin: 0;
+const HeaderNavLink = styled(AnchoredLink)`
+  margin: ${(props): string => props.theme.spacing(3)};
 
   @media only screen and (min-width: 960px) {
     writing-mode: vertical-lr;
-    margin: 0 0.5rem;
-
-    @keyframes indent {
-      to {
-        transform: translateY(16px);
-      }
-    }
+    margin: 0 ${(props): string => props.theme.spacing(2)};
   }
 `;
 

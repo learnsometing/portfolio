@@ -38,8 +38,8 @@ const CondensedNavbar = styled(Navbar).attrs({
   position: fixed;
   width: 80px;
   border-radius: 50%;
-  bottom: 1rem;
-  right: 1rem;
+  bottom: ${(props): string => props.theme.spacing(4)};
+  right: ${(props): string => props.theme.spacing(4)};
 `;
 
 interface Props {

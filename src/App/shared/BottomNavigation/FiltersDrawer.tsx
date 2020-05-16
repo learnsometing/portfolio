@@ -11,7 +11,8 @@ import { CloseButton } from '../CloseButton';
 
 const Header = styled(Grid)`
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-  padding: 0.5rem 1.5rem;
+  padding: ${(props): string =>
+    `${props.theme.spacing(2)} ${props.theme.spacing(4)}`};
   position: sticky;
   top: 0;
   background-color: ${(props): string => props.theme.bgLightened};

@@ -13,15 +13,18 @@ import Grid from '@material-ui/core/Grid';
 // helpers
 import { sortByDateASC, sortByDateDESC } from './helpers/sortProjectsByDate';
 
+const ProjectCardsWrapper = styled.div`
+  @media screen and (min-width: 1280px) {
+    padding: ${(props): string =>
+      `calc(${props.theme.spacing(4)} + 1px) ${props.theme.spacing(4)}`};
+  }
+`;
+
 const ProjectCards = styled(Grid)`
   @media screen and (max-width: 1279px) {
     &:last-child {
-      margin-bottom: 1rem;
+      margin-bottom: ${(props): string => props.theme.spacing(4)};
     }
-  }
-
-  @media screen and (min-width: 1280px) {
-    padding: 1rem 0;
   }
 `;
 
@@ -37,15 +40,17 @@ interface Props {
 const Projects: React.FC<Props> = ({ projects, order }) => (
   <Grid item xs={12} sm={12} md={12} lg={9}>
     <SortMenu projectCount={projects.length} />
-    <ProjectCards container spacing={3}>
-      {order == 'DESC'
-        ? projects
-            .sort((a, b) => sortByDateDESC(a.date, b.date))
-            .map((card) => <ProjectCard key={card.title} content={card} />)
-        : projects
-            .sort((a, b) => sortByDateASC(a.date, b.date))
-            .map((card) => <ProjectCard key={card.title} content={card} />)}
-    </ProjectCards>
+    <ProjectCardsWrapper>
+      <ProjectCards container spacing={4}>
+        {order == 'DESC'
+          ? projects
+              .sort((a, b) => sortByDateDESC(a.date, b.date))
+              .map((card) => <ProjectCard key={card.title} content={card} />)
+          : projects
+              .sort((a, b) => sortByDateASC(a.date, b.date))
+              .map((card) => <ProjectCard key={card.title} content={card} />)}
+      </ProjectCards>
+    </ProjectCardsWrapper>
   </Grid>
 );
 

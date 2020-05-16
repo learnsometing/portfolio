@@ -60,7 +60,7 @@ const ProjectTitle = styled(Typography).attrs({
 `;
 
 const ProjectLinks = styled(Grid)`
-  padding: 1rem 0;
+  padding: ${(props): string => props.theme.spacing(4)} 0;
   justify-content: center;
 
   @media screen and (min-width: 1280px) {
@@ -79,29 +79,6 @@ export const SectionHeading = styled(Typography).attrs({
   }
 `;
 
-const CarouselRoot = styled(Grid)`
-  margin: 1rem 0;
-  background-color: ${(props): string => props.theme.secondary};
-`;
-
-const TechTags = styled(Grid).attrs({
-  component: 'section',
-})`
-  background-color: ${(props): string => props.theme.tertiary};
-  color: #fdfde8;
-  margin: 1rem 0;
-  @media screen and (min-width: 1280px) {
-    padding: 0 2rem;
-  }
-`;
-
-const Description = styled.section`
-  padding-bottom: 1rem;
-  @media screen and (min-width: 1280px) {
-    padding-bottom: 4rem;
-  }
-`;
-
 const DescriptionParagraph = styled(Typography).attrs({
   variant: 'body1',
   gutterBottom: true,
@@ -110,6 +87,12 @@ const DescriptionParagraph = styled(Typography).attrs({
 
   @media screen and (min-width: 1280px) {
     text-align: start;
+  }
+`;
+
+const TechTags = styled(Section)`
+  @media screen and (min-width: 1280px) {
+    margin-left: ${(props): string => props.theme.spacing(6)};
   }
 `;
 
@@ -159,24 +142,28 @@ const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
               </Grid>
             </ProjectLinks>
           </Section>
+          <Section>
+            <MDXProvider components={shortcodes}>
+              <DescriptionContent description={mdx.body} />
+            </MDXProvider>
+          </Section>
+
           <Grid container justify={'center'}>
-            <Description>
-              <MDXProvider components={shortcodes}>
-                <DescriptionContent description={mdx.body} />
-              </MDXProvider>
-            </Description>
+            <Grid item xs={12} sm={12} md={8} lg={8} xl={8}>
+              <Section>
+                <SectionHeading>Gallery</SectionHeading>
+                <Carousel slides={frontmatter.carouselPhotos} />
+              </Section>
+            </Grid>
 
-            <CarouselRoot item xs={12} sm={12} md={8} lg={8} xl={8}>
-              <SectionHeading>Gallery</SectionHeading>
-              <Carousel slides={frontmatter.carouselPhotos} />
-            </CarouselRoot>
-
-            <TechTags item xs={12} sm={12} md={4} lg={4} xl={4}>
-              <Tags tags={frontmatter.tags} />
-            </TechTags>
+            <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
+              <TechTags>
+                <Tags tags={frontmatter.tags} />
+              </TechTags>
+            </Grid>
           </Grid>
-          <Contact />
         </Container>
+        <Contact />
         <BottomNavigation />
       </Layout>
     </ThemeProvider>

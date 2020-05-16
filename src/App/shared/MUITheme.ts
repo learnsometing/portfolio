@@ -129,6 +129,22 @@ const theme = createMuiTheme({
     body2: {
       color: scTheme.textDarkened,
     },
+    button: {
+      fontFamily: [
+        'mr-eaves-xl-modern',
+        '-apple-system',
+        'BlinkMacSystemFont',
+        'Segoe UI',
+        'Roboto',
+        'Oxygen',
+        'Ubuntu',
+        'Cantarell',
+        'Fira Sans',
+        'Droid Sans',
+        'Helvetica Neue',
+        'sans-serif',
+      ].join(','),
+    },
   },
   overrides: {
     MuiCheckbox: {
