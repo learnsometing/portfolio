@@ -136,9 +136,19 @@ const theme = createMuiTheme({
         color: scTheme.textDarkened,
       },
     },
+    MuiInputBase: {
+      root: {
+        color: scTheme.text,
+      },
+    },
     MuiOutlinedInput: {
       notchedOutline: {
         borderColor: scTheme.textDarkened,
+      },
+    },
+    MuiSelect: {
+      icon: {
+        color: scTheme.text,
       },
     },
     MuiCardContent: {

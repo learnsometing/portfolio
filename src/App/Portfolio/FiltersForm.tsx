@@ -23,6 +23,7 @@ const Buttons = styled(Grid)`
   position: sticky;
   bottom: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.12);
+  background-color: ${(props): string => props.theme.bgLightened};
 `;
 
 const StyledFormGroup = styled(FormGroup)`
