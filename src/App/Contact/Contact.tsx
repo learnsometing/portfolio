@@ -2,22 +2,22 @@ import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 
 import { IconContext } from 'react-icons';
+import { MdMail } from 'react-icons/md';
 import { FaTwitterSquare, FaInstagramSquare } from 'react-icons/fa';
 
+import Section from '../shared/Section';
 import scTheme from '../shared/SCTheme';
 
-const Footer = styled.footer`
-  padding: 1rem 0;
-
-  @media screen and (min-width: 1280px) {
-    padding: 4rem 0;
-  }
+const Footer = styled(Section).attrs({
+  as: 'footer',
+})`
+  background-color: ${(props): string => props.theme.bgLightened};
 `;
 
 const ContactSection = styled(Grid).attrs({
@@ -30,7 +30,7 @@ const ContactSection = styled(Grid).attrs({
   direction: 'column',
   alignItems: 'center',
 })`
-  padding: 1rem;
+  padding: ${(props): string => props.theme.spacing(4)};
 `;
 
 const ContactSectionHeading = styled(Typography).attrs({
@@ -38,8 +38,23 @@ const ContactSectionHeading = styled(Typography).attrs({
   component: 'h2',
   gutterBottom: true,
 })`
-  padding: 0.25rem 0.75rem;
+  padding: ${(props): string =>
+    `${props.theme.spacing(1)} ${props.theme.spacing(3)}`};
   padding-bottom: 0;
+`;
+
+const ContactButton = styled(Button).attrs({
+  component: 'a',
+  variant: 'outlined',
+  color: 'primary',
+  target: '_blank',
+  rel: 'noopener noreferrer',
+})`
+  margin: ${(props): string => props.theme.spacing(2)} 0;
+`;
+
+const CopyrightNotice = styled(Typography)`
+  margin-top: ${(props): string => props.theme.spacing(4)};
 `;
 
 const iconStyles = { size: '48px', color: scTheme.textEmphasis };
@@ -65,32 +80,22 @@ const Contact: React.FC = () => {
             <ContactSectionHeading>
               Let&#39;s get in touch
             </ContactSectionHeading>
-            <Link
+            <ContactButton
               href="mailto:brianmonaccio@protonmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ display: 'inline-block' }}
+              endIcon={<MdMail />}
             >
               Send me an email
-            </Link>
-            <Link
-              href="https://www.linkedin.com/in/brian-monaccio/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            </ContactButton>
+            <ContactButton href="https://www.linkedin.com/in/brian-monaccio/">
               Connect with me on Linkedin
-            </Link>
+            </ContactButton>
           </ContactSection>
 
           <ContactSection>
             <ContactSectionHeading>More Code</ContactSectionHeading>
-            <Link
-              href="https://github.com/learnsometing"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <ContactButton href="https://github.com/learnsometing">
               Visit my github profile
-            </Link>
+            </ContactButton>
           </ContactSection>
           <ContactSection>
             <ContactSectionHeading>Social</ContactSectionHeading>
@@ -117,13 +122,9 @@ const Contact: React.FC = () => {
           </ContactSection>
         </Grid>
 
-        <Typography
-          variant={'body2'}
-          align={'center'}
-          style={{ marginTop: '1rem' }}
-        >
+        <CopyrightNotice variant={'body2'} align={'center'}>
           &#169; {new Date().getFullYear()} Brian Monaccio
-        </Typography>
+        </CopyrightNotice>
       </Container>
     </Footer>
   );

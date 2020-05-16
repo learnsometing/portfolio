@@ -19,7 +19,7 @@ import { RootState } from '../../state/createStore';
 
 const Buttons = styled(Grid)`
   max-width: 100%;
-  padding: 0.5rem 0;
+  padding: ${(props): string => props.theme.spacing(3)} 0;
   position: sticky;
   bottom: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.12);
@@ -31,9 +31,10 @@ const StyledFormGroup = styled(FormGroup)`
 `;
 
 const FieldSet = styled.fieldset`
-  margin: 0.5rem 0;
+  margin: ${(props): string => props.theme.spacing(4)} 0;
   label {
-    margin: 0.5rem 1rem;
+    margin: ${(props): string =>
+      `${props.theme.spacing(2)} ${props.theme.spacing(4)}`};
   }
 `;
 

@@ -37,7 +37,7 @@ const CarouselHeader = styled(Paper)`
 `;
 
 const Screen = styled(Paper)`
-  padding: 1.5rem 1rem;
+  padding: ${(props): string => props.theme.spacing(4)};
   background-color: black;
   border: 1px solid silver;
   border-radius: 15px;
@@ -55,13 +55,13 @@ interface CircleProps {
 const Circle = styled.div<CircleProps>`
   width: 0.667rem;
   height: 0.667rem;
-  margin: auto 0.25rem;
+  margin: auto ${(props): string => props.theme.spacing(1)};
   border-radius: 50%;
   background-color: ${(props): string => props.backgroundColor || 'black'};
 `;
 
 const Caption = styled(Typography)`
-  margin-left: 0.5rem;
+  margin-left: ${(props): string => props.theme.spacing(2)};
 `;
 
 function SwipeableTextMobileStepper({ slides }: Props): ReactElement {

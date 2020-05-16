@@ -8,9 +8,6 @@ import Typography from '@material-ui/core/Typography';
 import Section from '../shared/Section';
 
 const AboutSection = styled(Section)`
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-
   h2,
   p {
     text-align: center;
@@ -23,11 +20,6 @@ const AboutSection = styled(Section)`
     }
   }
 
-  @media screen and (min-width: 1280px) {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-  }
-
   &:after {
     content: '.';
     visibility: hidden;
@@ -38,13 +30,12 @@ const AboutSection = styled(Section)`
 `;
 
 const Avatar = styled.img`
-  margin: 2rem 10%;
   border-radius: 50%;
-  background: #f4d35e;
+  margin: ${(props): string => props.theme.spacing(4)} 10%;
   max-width: 80%;
 
   @media screen and (min-width: 600px) {
-    margin: 1.5rem;
+    margin: ${(props): string => props.theme.spacing(5)};
     margin-bottom: 0;
     float: left;
     max-width: 40%;

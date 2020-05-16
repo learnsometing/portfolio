@@ -8,7 +8,7 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 
 import DrawerBase from './DrawerBase';
-import { AnchoredNavLink } from '../Navigation';
+import { AnchoredLink } from '../Navigation';
 import { MenuCloseButton } from '../CloseButton';
 
 const MenuItem = styled(ListItem).attrs({
@@ -24,7 +24,7 @@ const Menu = styled(List)`
   background-color: ${(props): string => props.theme.bgLightened};
 `;
 
-const MenuLink = styled(AnchoredNavLink)`
+const MenuLink = styled(AnchoredLink)`
   display: flex;
   width: 100%;
   height: 100%;

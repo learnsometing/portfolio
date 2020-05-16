@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 
 const TagText = styled(Typography)`
   display: inline-block;
-  margin-right: 0.25rem;
+  margin-right: ${(props): string => props.theme.spacing(1)};
 `;
 
 interface FilterFieldProps {

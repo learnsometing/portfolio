@@ -13,9 +13,11 @@ import { connect } from 'react-redux';
 import { changeSortingOrder } from '../../state/portfolio/actions';
 
 const SortContainer = styled(Grid)`
-  margin: 1rem 0;
+  padding: ${(props): string => props.theme.spacing(4)} 0;
+
   @media screen and (min-width: 1280px) {
-    margin: 0;
+    padding: ${(props): string =>
+      `${props.theme.spacing(2)} ${props.theme.spacing(4)}`};
   }
 `;
 
@@ -24,7 +26,7 @@ const SortControl = styled(FormControl)`
 `;
 
 const Item = styled(MenuItem)`
-  padding: 1rem;
+  padding: ${(props): string => props.theme.spacing(4)};
   color: rgba(0, 0, 0, 0.8);
 `;
 

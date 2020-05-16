@@ -23,24 +23,23 @@ const Sidebar = styled(Grid).attrs({
   }
   position: relative;
   top: 0;
-  padding: 1rem;
+  padding: ${(props): string => props.theme.spacing(2)};
 `;
 
 const SidebarHeading = styled(Typography)`
-  padding-bottom: 0.35em;
+  padding: ${(props): string => props.theme.spacing(1)} 0;
+  margin-bottom: ${(props): string => props.theme.spacing(2)};
 `;
 
 const SidebarContentWrapper = styled.div`
-  margin: 0 0.75rem;
+  margin: 0 ${(props): string => props.theme.spacing(3)};
 `;
 
 const StyledFormGroup = styled(FormGroup)`
   max-height: 100%;
   overflow-y: auto;
-`;
-
-const StyledFieldset = styled.fieldset`
-  padding-top: 1rem;
+  padding: ${(props): string => props.theme.spacing(4)} 0;
+  padding-left: ${(props): string => props.theme.spacing(3)};
 `;
 
 interface Props {
@@ -84,7 +83,7 @@ const FiltersSidebar: React.FC<Props> = ({
   return (
     <Sidebar justify={'flex-start'} item lg={3}>
       <SidebarContentWrapper>
-        <SidebarHeading variant={'h3'} align={'center'}>
+        <SidebarHeading variant={'h2'} align={'center'}>
           Filter
         </SidebarHeading>
         <AppliedFilters
@@ -93,26 +92,24 @@ const FiltersSidebar: React.FC<Props> = ({
           clearFilters={clearFilters}
         />
         <StyledFormGroup>
-          <FormControl component={StyledFieldset}>
-            <>
-              {Object.entries(currentTags).map(([filter, count]) => (
-                <FormControlLabel
-                  key={filter}
-                  onChange={handleChange}
-                  control={
-                    <Checkbox
-                      value={filter}
-                      checked={appliedFilters.includes(filter)}
-                      name={filter}
-                      color={'primary'}
-                    />
-                  }
-                  name="appliedFilters"
-                  label={<LabelText filter={filter} count={count} />}
-                  value={filter}
-                />
-              ))}
-            </>
+          <FormControl component={'fieldset'}>
+            {Object.entries(currentTags).map(([filter, count]) => (
+              <FormControlLabel
+                key={filter}
+                onChange={handleChange}
+                control={
+                  <Checkbox
+                    value={filter}
+                    checked={appliedFilters.includes(filter)}
+                    name={filter}
+                    color={'primary'}
+                  />
+                }
+                name="appliedFilters"
+                label={<LabelText filter={filter} count={count} />}
+                value={filter}
+              />
+            ))}
           </FormControl>
         </StyledFormGroup>
       </SidebarContentWrapper>

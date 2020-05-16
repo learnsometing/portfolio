@@ -14,12 +14,11 @@ const FiltersWrapper = styled.div`
 `;
 
 const Filters = styled.div`
-  padding-top: 1.5rem;
-  padding-bottom: 1rem;
+  padding: calc(${(props): string => props.theme.spacing(4)} - 1px) 0;
 `;
 
 const ClearButton = styled(Button)`
-  margin-top: 1rem;
+  margin-top: ${(props): string => props.theme.spacing(4)};
 `;
 
 interface Props {
