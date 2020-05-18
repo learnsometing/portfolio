@@ -10,6 +10,8 @@ import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
 
 import { connect } from 'react-redux';
+import { RootState } from '../../state/createStore';
+import { getSortingOrder } from '../../state/portfolio/selectors';
 import { changeSortingOrder } from '../../state/portfolio/actions';
 
 const SortContainer = styled(Grid)`
@@ -37,6 +39,7 @@ const OutlinedInput = styled(Select)`
 `;
 
 interface Props {
+  order: string;
   changeSortingOrder: (order: string) => void;
   projectCount: number;
 }
@@ -44,7 +47,11 @@ interface Props {
 const ASC = 'ASC';
 const DESC = 'DESC';
 
-const SortMenu: React.FC<Props> = ({ changeSortingOrder, projectCount }) => {
+const SortMenu: React.FC<Props> = ({
+  changeSortingOrder,
+  order,
+  projectCount,
+}) => {
   const handleChange: (event: any) => void = (event) =>
     event.target && event.target.value
       ? changeSortingOrder(event.target.value)
@@ -72,6 +79,7 @@ const SortMenu: React.FC<Props> = ({ changeSortingOrder, projectCount }) => {
           id="sort-order"
           onChange={handleChange}
           label="Sort By"
+          value={order}
         >
           <Item value={DESC}>Most Recent</Item>
           <Item value={ASC}>Most Dated</Item>
@@ -83,7 +91,13 @@ const SortMenu: React.FC<Props> = ({ changeSortingOrder, projectCount }) => {
 
 SortMenu.propTypes = {
   changeSortingOrder: PropTypes.func.isRequired,
+  order: PropTypes.string.isRequired,
   projectCount: PropTypes.number.isRequired,
 };
 
-export default connect(null, { changeSortingOrder })(SortMenu);
+export default connect(
+  (state: RootState) => ({
+    order: getSortingOrder(state),
+  }),
+  { changeSortingOrder }
+)(SortMenu);
