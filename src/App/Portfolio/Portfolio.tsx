@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -11,10 +10,12 @@ import Paper from '@material-ui/core/Paper';
 import { ThemeProvider } from '@material-ui/core';
 import theme from '../shared/MUITheme';
 
+// Components
 import Navigation from '../shared/Navigation';
 import MenuAction from '../shared/BottomNavigation/MenuAction';
-import FilterAction from '../shared/BottomNavigation/FilterAction';
-import Projects, { Frontmatter } from './Projects';
+import FilterAction from './FilterAction';
+import Projects from './Projects';
+import { Project } from './ProjectCard';
 import AppliedFilters from './AppliedFilters';
 import FiltersSidebar from './FiltersSidebar';
 import Section from '../shared/Section';
@@ -31,6 +32,7 @@ import {
   getSortingOrder,
 } from '../../state/portfolio/selectors';
 import { RootState } from '../../state/createStore';
+import { TagMap } from '../../helpers/getTagCounts';
 
 const MobileWrapper = styled.div`
   @media only screen and (min-width: 1280px) {
@@ -54,10 +56,10 @@ const Navbar = styled(Paper).attrs({
   }
 `;
 
-interface PurePortfolioProps {
-  data: {
-    nodes: Frontmatter[];
-  };
+interface Props {
+  allProjects: Project[];
+  allProjectTags: string[][];
+  tagCounts: TagMap;
   addFilter: (filter: string) => void;
   removeFilter: (filter: string) => void;
   clearFilters: () => void;
@@ -65,38 +67,24 @@ interface PurePortfolioProps {
   order: string;
 }
 
-const PurePortfolio: React.FC<PurePortfolioProps> = ({
-  data: { nodes },
+const Portfolio: React.FC<Props> = ({
+  allProjects,
+  allProjectTags,
+  tagCounts,
   addFilter,
   removeFilter,
   clearFilters,
   appliedFilters,
   order,
 }) => {
-  // Map out the frontmatter properties
-  const projectCards = nodes.map(
-    ({ frontmatter: { title, path, cardText, cardPhoto, tags, date } }) => ({
-      title,
-      path,
-      cardText,
-      cardPhoto,
-      tags,
-      date,
-    })
-  );
-
-  const [displayedProjects, setDisplayedProjectCards] = useState(projectCards);
-
+  const [displayedProjects, setDisplayedProjectCards] = useState(allProjects);
   useEffect(() => {
-    const filteredProjects = projectCards.filter((project) =>
+    const filteredProjects = allProjects.filter((project) =>
       appliedFilters.every((val) => project.tags.includes(val))
     );
 
     setDisplayedProjectCards(filteredProjects);
   }, [appliedFilters]);
-
-  // Count the number of projects associated with each tag
-  const allProjectTags = nodes.map(({ frontmatter }) => frontmatter.tags);
 
   return (
     <ThemeProvider theme={theme}>
@@ -125,7 +113,7 @@ const PurePortfolio: React.FC<PurePortfolioProps> = ({
           </Grid>
         </Container>
         <BottomNavigation component={Navbar} showLabels>
-          <FilterAction allProjectTags={allProjectTags} />
+          <FilterAction allProjectTags={allProjectTags} tagCounts={tagCounts} />
           <MenuAction />
         </BottomNavigation>
       </Section>
@@ -133,74 +121,12 @@ const PurePortfolio: React.FC<PurePortfolioProps> = ({
   );
 };
 
-PurePortfolio.propTypes = {
-  data: PropTypes.shape({
-    nodes: PropTypes.array.isRequired,
-  }).isRequired,
-  addFilter: PropTypes.func.isRequired,
-  removeFilter: PropTypes.func.isRequired,
-  clearFilters: PropTypes.func.isRequired,
-  appliedFilters: PropTypes.array.isRequired,
-  order: PropTypes.string.isRequired,
-};
-
-interface PortfolioProps {
-  addFilter: (filter: string) => void;
-  removeFilter: (filter: string) => void;
-  clearFilters: () => void;
-  appliedFilters: string[];
-  order: string;
-}
-
-const Portfolio: React.FC<PortfolioProps> = ({
-  addFilter,
-  removeFilter,
-  clearFilters,
-  appliedFilters,
-  order,
-}) => {
-  const { allProjects } = useStaticQuery(graphql`
-    query {
-      allProjects: allMdx(
-        filter: { fileAbsolutePath: { regex: "/projects/" } }
-        sort: { fields: frontmatter___date, order: DESC }
-      ) {
-        nodes {
-          frontmatter {
-            title
-            path
-            cardPhoto {
-              altText
-              src {
-                childImageSharp {
-                  fluid(maxWidth: 1920) {
-                    ...GatsbyImageSharpFluid
-                  }
-                }
-              }
-            }
-            cardText
-            tags
-            date
-          }
-        }
-      }
-    }
-  `);
-
-  return (
-    <PurePortfolio
-      data={allProjects}
-      addFilter={addFilter}
-      removeFilter={removeFilter}
-      clearFilters={clearFilters}
-      appliedFilters={appliedFilters}
-      order={order}
-    />
-  );
-};
-
 Portfolio.propTypes = {
+  allProjects: PropTypes.array.isRequired,
+  allProjectTags: PropTypes.arrayOf(
+    PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+  ).isRequired,
+  tagCounts: PropTypes.objectOf(PropTypes.number.isRequired).isRequired,
   addFilter: PropTypes.func.isRequired,
   removeFilter: PropTypes.func.isRequired,
   clearFilters: PropTypes.func.isRequired,
