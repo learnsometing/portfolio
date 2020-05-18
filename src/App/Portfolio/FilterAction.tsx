@@ -7,10 +7,13 @@ import PropTypes from 'prop-types';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import Typography from '@material-ui/core/Typography';
 
-import FiltersDrawer from './FiltersDrawer';
+import DrawerBase from '../shared/BottomNavigation/DrawerBase';
+import FiltersForm from './FiltersForm';
+import { TagMap } from '../../helpers/getTagCounts';
 
 interface Props {
   allProjectTags: string[][];
+  tagCounts: TagMap;
 }
 
 const FilterIcon = styled(MdFilterList)`
@@ -19,7 +22,7 @@ const FilterIcon = styled(MdFilterList)`
   color: ${(props): string => props.theme.textEmphasis};
 `;
 
-const FilterAction: React.FC<Props> = ({ allProjectTags }) => {
+const FilterAction: React.FC<Props> = ({ allProjectTags, tagCounts }) => {
   const [isFiltersDrawerOpen, setIsFiltersDrawerOpen] = useState(false);
   const openFiltersDrawer = (): void => {
     setIsFiltersDrawerOpen(true);
@@ -27,6 +30,13 @@ const FilterAction: React.FC<Props> = ({ allProjectTags }) => {
   const closeFiltersDrawer = (): void => {
     setIsFiltersDrawerOpen(false);
   };
+  const filtersForm = (
+    <FiltersForm
+      allProjectTags={allProjectTags}
+      tagCounts={tagCounts}
+      closeFiltersDrawer={closeFiltersDrawer}
+    />
+  );
 
   return (
     <>
@@ -40,11 +50,7 @@ const FilterAction: React.FC<Props> = ({ allProjectTags }) => {
         icon={<FilterIcon />}
         onClick={openFiltersDrawer}
       />
-      <FiltersDrawer
-        isOpen={isFiltersDrawerOpen}
-        closeFiltersDrawer={closeFiltersDrawer}
-        allProjectTags={allProjectTags}
-      />
+      <DrawerBase isOpen={isFiltersDrawerOpen}>{filtersForm}</DrawerBase>{' '}
     </>
   );
 };
@@ -53,6 +59,7 @@ FilterAction.propTypes = {
   allProjectTags: PropTypes.arrayOf(
     PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
   ).isRequired,
+  tagCounts: PropTypes.objectOf(PropTypes.number.isRequired).isRequired,
 };
 
 FilterAction.defaultProps = {
