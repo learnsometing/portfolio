@@ -8,6 +8,12 @@ import Grid from '@material-ui/core/Grid';
 
 import { MdClose } from 'react-icons/md';
 
+// Redux
+import { connect } from 'react-redux';
+import { RootState } from '../../state/createStore';
+import { getAppliedFilters } from '../../state/portfolio/selectors';
+import { removeFilter, clearFilters } from '../../state/portfolio/actions';
+
 const FiltersWrapper = styled.div`
   border-top: 1px solid ${(props): string => props.theme.textDarkened};
   border-bottom: 1px solid ${(props): string => props.theme.textDarkened};
@@ -70,4 +76,9 @@ AppliedFilters.propTypes = {
   clearFilters: PropTypes.func.isRequired,
 };
 
-export default AppliedFilters;
+export default connect(
+  (state: RootState) => ({
+    appliedFilters: getAppliedFilters(state),
+  }),
+  { removeFilter, clearFilters }
+)(AppliedFilters);
