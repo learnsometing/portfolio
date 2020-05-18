@@ -1,4 +1,4 @@
-interface TagMap {
+export interface TagMap {
   [key: string]: number;
 }
 
