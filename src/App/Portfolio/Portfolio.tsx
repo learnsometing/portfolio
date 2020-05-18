@@ -4,17 +4,22 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 // Material-UI
+import BottomNavigation from '@material-ui/core/BottomNavigation';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 import { ThemeProvider } from '@material-ui/core';
 import theme from '../shared/MUITheme';
 
 import Navigation from '../shared/Navigation';
-import BottomNavigation from '../shared/BottomNavigation/BottomNavigation';
+import MenuAction from '../shared/BottomNavigation/MenuAction';
+import FilterAction from '../shared/BottomNavigation/FilterAction';
 import Projects, { Frontmatter } from './Projects';
 import AppliedFilters from './AppliedFilters';
 import FiltersSidebar from './FiltersSidebar';
+import Section from '../shared/Section';
 
+// Redux
 import { connect } from 'react-redux';
 import {
   addFilter,
@@ -26,9 +31,24 @@ import {
   getSortingOrder,
 } from '../../state/portfolio/selectors';
 import { RootState } from '../../state/createStore';
-import Section from '../shared/Section';
 
 const MobileWrapper = styled.div`
+  @media only screen and (min-width: 1280px) {
+    display: none;
+  }
+`;
+
+const Navbar = styled(Paper).attrs({
+  elevation: 2,
+  square: true,
+})`
+  position: sticky;
+  bottom: 0;
+  right: 0;
+  height: 80px;
+  width: 100%;
+  z-index: 2;
+  background-color: ${(props): string => props.theme.bgLightened};
   @media only screen and (min-width: 1280px) {
     display: none;
   }
@@ -104,7 +124,10 @@ const PurePortfolio: React.FC<PurePortfolioProps> = ({
             <Projects projects={displayedProjects} order={order} />
           </Grid>
         </Container>
-        <BottomNavigation allProjectTags={allProjectTags} />
+        <BottomNavigation component={Navbar} showLabels>
+          <FilterAction allProjectTags={allProjectTags} />
+          <MenuAction />
+        </BottomNavigation>
       </Section>
     </ThemeProvider>
   );
