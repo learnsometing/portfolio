@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import {
@@ -20,13 +20,16 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { CheckboxWithLabel } from 'formik-material-ui';
 
-// Logic Helpers
-import getTagCounts, { TagMap } from '../../helpers/getTagCounts';
-import getFilteredTags from '../../helpers/getFilteredTags';
-
 // Custom Components
 import LabelText from './Label';
 import { CloseButton } from '../shared/CloseButton';
+
+// Interfaces
+import { TagMap } from '../../helpers/getTagCounts';
+
+// Hooks
+import useTagCounts from './useTagCounts';
+import useResultCount from './useResultCount';
 
 // Redux
 import { connect } from 'react-redux';
@@ -95,33 +98,20 @@ const FiltersForm: React.FC<FiltersFormProps> = ({
     touched: FormikTouched<CheckedFilters>;
     errors: FormikErrors<CheckedFilters>;
   } = useFormikContext();
-  const [currentTags, setCurrentTags] = useState(tagCounts);
-  const [resultCount, setResultCount] = useState(allProjectTags.length);
 
-  useEffect(() => {
-    if (values.checkedFilters && values.checkedFilters.length) {
-      const filteredTags = getFilteredTags(
-        values.checkedFilters,
-        allProjectTags
-      );
-      const filteredTagCounts = getTagCounts(filteredTags);
-      setCurrentTags(filteredTagCounts);
-      const newResultCount = allProjectTags.filter((tags) =>
-        values.checkedFilters.every((val: string) => tags.includes(val))
-      ).length;
-      setResultCount(newResultCount);
-    } else {
-      // defaults
-      setCurrentTags(tagCounts);
-      setResultCount(allProjectTags.length);
-    }
-  }, [values.checkedFilters]);
+  const currentTagCounts = useTagCounts(
+    tagCounts,
+    allProjectTags,
+    values.checkedFilters
+  );
+
+  const resultCount = useResultCount(allProjectTags, values.checkedFilters);
 
   return (
     <Form>
       <StyledFormGroup>
         <FormControl component={FieldSet}>
-          {Object.entries(currentTags).map(([filter, count]) => (
+          {Object.entries(currentTagCounts).map(([filter, count]) => (
             <Field
               key={filter}
               component={CheckboxWithLabel}

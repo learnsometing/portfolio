@@ -87,7 +87,10 @@ const Portfolio: React.FC<Props> = ({
 
           {/* Projects */}
           <Grid container justify={'center'}>
-            <FiltersSidebar allProjectTags={allProjectTags} />
+            <FiltersSidebar
+              allProjectTags={allProjectTags}
+              tagCounts={tagCounts}
+            />
             <Projects projects={displayedProjects} order={order} />
           </Grid>
         </Container>

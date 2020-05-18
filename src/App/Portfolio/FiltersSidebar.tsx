@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -13,8 +13,11 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
-import getTagCounts from '../../helpers/getTagCounts';
-import getFilteredTags from '../../helpers/getFilteredTags';
+// Interfaces
+import { TagMap } from '../../helpers/getTagCounts';
+
+// Hooks
+import useTagCounts from './useTagCounts';
 
 // Redux
 import { connect } from 'react-redux';
@@ -51,6 +54,7 @@ const StyledFormGroup = styled(FormGroup)`
 
 interface Props {
   allProjectTags: string[][];
+  tagCounts: TagMap;
   appliedFilters: string[];
   addFilter: (filter: string) => void;
   removeFilter: (filter: string) => void;
@@ -59,12 +63,10 @@ interface Props {
 const FiltersSidebar: React.FC<Props> = ({
   addFilter,
   allProjectTags,
+  tagCounts,
   appliedFilters,
   removeFilter,
 }) => {
-  const ogTagCounts = getTagCounts(allProjectTags);
-  const [currentTags, setCurrentTags] = useState(ogTagCounts);
-
   const handleChange = (event: any): void => {
     if (event.target && event.currentTarget.value) {
       if (appliedFilters.includes(event.currentTarget.value)) {
@@ -75,15 +77,11 @@ const FiltersSidebar: React.FC<Props> = ({
     }
   };
 
-  useEffect(() => {
-    if (appliedFilters && appliedFilters.length) {
-      const filteredTags = getFilteredTags(appliedFilters, allProjectTags);
-      const filteredTagCounts = getTagCounts(filteredTags);
-      setCurrentTags(filteredTagCounts);
-    } else {
-      setCurrentTags(ogTagCounts);
-    }
-  }, [appliedFilters]);
+  const currentTagCounts = useTagCounts(
+    tagCounts,
+    allProjectTags,
+    appliedFilters
+  );
 
   return (
     <Sidebar item lg={3}>
@@ -94,7 +92,7 @@ const FiltersSidebar: React.FC<Props> = ({
         <AppliedFilters />
         <StyledFormGroup>
           <FormControl component={'fieldset'}>
-            {Object.entries(currentTags).map(([filter, count]) => (
+            {Object.entries(currentTagCounts).map(([filter, count]) => (
               <FormControlLabel
                 key={filter}
                 onChange={handleChange}
@@ -123,6 +121,7 @@ FiltersSidebar.propTypes = {
   allProjectTags: PropTypes.arrayOf(
     PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
   ).isRequired,
+  tagCounts: PropTypes.objectOf(PropTypes.number.isRequired).isRequired,
   appliedFilters: PropTypes.array.isRequired,
   removeFilter: PropTypes.func.isRequired,
 };
