@@ -7,7 +7,8 @@ import { MdMenu } from 'react-icons/md';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import Typography from '@material-ui/core/Typography';
 
-import NavigationDrawer from './NavigationDrawer';
+import DrawerBase from './DrawerBase';
+import NavigationMenu from './NavigationMenu';
 
 const MenuIcon = styled(MdMenu)`
   height: ${(props): string => props.theme.bottomNavigationIconSize};
@@ -33,7 +34,9 @@ const MenuAction: React.FC = () => {
         icon={<MenuIcon />}
         onClick={toggleNavDrawer}
       />
-      <NavigationDrawer isOpen={isNavDrawerOpen} toggle={toggleNavDrawer} />
+      <DrawerBase isOpen={isNavDrawerOpen}>
+        <NavigationMenu toggle={toggleNavDrawer} />
+      </DrawerBase>
     </>
   );
 };
