@@ -11,7 +11,10 @@ import ProjectCard, { Project } from './ProjectCard';
 import Grid from '@material-ui/core/Grid';
 
 // helpers
-import { sortByDateASC, sortByDateDESC } from './helpers/sortProjectsByDate';
+import {
+  sortByDateASC,
+  sortByDateDESC,
+} from '../../helpers/sortProjectsByDate';
 
 const ProjectCardsWrapper = styled.div`
   @media screen and (min-width: 1280px) {
