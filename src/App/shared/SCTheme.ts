@@ -14,7 +14,7 @@ const scTheme = {
   textEmphasis: '#F9E43B',
   azure: '#3185FC',
   orangeRed: '#F25F5C',
-  malachite: '#04E762',
+  bottomNavigationIconSize: '32px',
   spacing: function(num: number): string {
     switch (num) {
       case 1:
