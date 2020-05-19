@@ -50,7 +50,7 @@ const FilterAction: React.FC<Props> = ({ allProjectTags, tagCounts }) => {
         icon={<FilterIcon />}
         onClick={openFiltersDrawer}
       />
-      <DrawerBase isOpen={isFiltersDrawerOpen}>{filtersForm}</DrawerBase>{' '}
+      <DrawerBase isOpen={isFiltersDrawerOpen}>{filtersForm}</DrawerBase>
     </>
   );
 };
