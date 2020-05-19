@@ -136,7 +136,7 @@ const FiltersForm: React.FC<FiltersFormProps> = ({
             type="reset"
             variant={'contained'}
             color={'primary'}
-            onClick={(): void => clearFilters()}
+            onClick={clearFilters}
           >
             Clear filters
           </Button>
@@ -159,21 +159,11 @@ FiltersForm.propTypes = {
   clearFilters: PropTypes.func.isRequired,
 };
 
-const validate = (values: FormikValues): FormikErrors<FormikValues> => {
-  const errors: FormikErrors<FormikValues> = {};
-
-  if (!values.checkedFilters.length) {
-    errors.checkedFilters = 'At least one filter must be selected.';
-  }
-
-  return errors;
-};
-
 const ConnectedFiltersForm: React.FC<ConnectedFiltersFormProps> = ({
   allProjectTags,
   tagCounts,
-  closeFiltersDrawer,
   appliedFilters,
+  closeFiltersDrawer,
   applyFilters,
   clearFilters,
 }) => (
@@ -186,15 +176,18 @@ const ConnectedFiltersForm: React.FC<ConnectedFiltersFormProps> = ({
       />
     </Header>
     <Formik
-      enableReinitialize={true}
       initialValues={{
         checkedFilters: appliedFilters,
       }}
-      validate={validate}
+      enableReinitialize={true}
+      validateOnChange={false}
+      validateOnBlur={false}
       onSubmit={(values, actions): void => {
-        applyFilters(values.checkedFilters);
-        actions.setSubmitting(false);
+        if (values.checkedFilters && values.checkedFilters.length) {
+          applyFilters(values.checkedFilters);
+        }
         closeFiltersDrawer();
+        actions.setSubmitting(false);
       }}
     >
       <FiltersForm

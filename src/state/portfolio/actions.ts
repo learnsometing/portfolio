@@ -15,17 +15,25 @@ export function addFilter(filter: string): FilterActionTypes {
   };
 }
 
-export function applyFilters(filters: string[]): FilterActionTypes {
-  return {
-    type: APPLY_FILTERS,
-    payload: filters,
+export function applyFilters(
+  filters: string[]
+): (dispatch: (action: FilterActionTypes) => void) => void {
+  return function(dispatch): void {
+    dispatch({
+      type: APPLY_FILTERS,
+      payload: filters,
+    });
   };
 }
 
-export function clearFilters(): FilterActionTypes {
-  return {
-    type: CLEAR_FILTERS,
-    payload: [],
+export function clearFilters(): (
+  dispatch: (action: FilterActionTypes) => void
+) => void {
+  return function(dispatch): void {
+    dispatch({
+      type: CLEAR_FILTERS,
+      payload: [],
+    });
   };
 }
 
