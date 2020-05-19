@@ -29,6 +29,8 @@ const scTheme = {
         return '1.5rem';
       case 6:
         return '2rem';
+      case 7:
+        return '6rem';
       default:
         return '1rem';
     }

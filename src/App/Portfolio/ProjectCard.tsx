@@ -12,6 +12,9 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import ChildImageSharp from '../shared/ChildImageSharp';
 
+// Hooks
+import useScrollAnimation from '../shared/useScrollAnimation';
+
 interface Image {
   src: ChildImageSharp;
   altText: string;
@@ -37,11 +40,26 @@ const ProjectLink = styled(Link)`
   text-decoration: none;
 `;
 
+const ProjectCardWrapper = styled(Grid).attrs({
+  component: 'article',
+})`
+  transform: translateY(100px);
+  opacity: 0;
+`;
+
 const ProjectCard: React.FC<ProjectCardProps> = ({ content }) => {
   const { title, path, cardText, cardPhoto } = content;
 
   return (
-    <Grid item component={'article'} xl={6} lg={6} md={6} sm={6} xs={12}>
+    <ProjectCardWrapper
+      item
+      xl={6}
+      lg={6}
+      md={6}
+      sm={6}
+      xs={12}
+      ref={useScrollAnimation(0)}
+    >
       <ProjectLink to={path}>
         <Card raised>
           <CardActionArea>
@@ -58,7 +76,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ content }) => {
           </CardActionArea>
         </Card>
       </ProjectLink>
-    </Grid>
+    </ProjectCardWrapper>
   );
 };
 
