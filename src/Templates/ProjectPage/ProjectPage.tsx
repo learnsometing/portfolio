@@ -5,9 +5,11 @@ import { MDXProvider } from '@mdx-js/react';
 import styled from 'styled-components';
 
 // Material-UI Imports
+import BottomNavigation from '@material-ui/core/BottomNavigation';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
+import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { ThemeProvider } from '@material-ui/core';
@@ -21,12 +23,12 @@ import { FaGithub } from 'react-icons/fa';
 import Layout from '../../App/Layout/Layout';
 import SEO from '../../App/SEO/SEO';
 import Navigation from '../../App/shared/Navigation';
-import BottomNavigation from '../../App/shared/BottomNavigation/BottomNavigation';
 import Carousel from '../../App/Carousel/Carousel';
 import DescriptionContent from './Description';
 import Tags from './Tags';
 import Contact from '../../App/Contact/Contact';
 import Section from '../../App/shared/Section';
+import MenuAction from '../../App/shared/BottomNavigation/MenuAction';
 
 // Interfaces
 import { Slide } from '../../App/Carousel/Carousel';
@@ -47,6 +49,23 @@ interface Mdx {
 interface Props {
   data: Mdx;
 }
+
+const CondensedNavbar = styled(Paper).attrs({
+  elevation: 2,
+  square: true,
+})`
+  position: fixed;
+  bottom: ${(props): string => props.theme.spacing(4)};
+  right: ${(props): string => props.theme.spacing(4)};
+  z-index: 2;
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  background-color: ${(props): string => props.theme.bgLightened};
+  @media only screen and (min-width: 1280px) {
+    display: none;
+  }
+`;
 
 const ProjectTitle = styled(Typography).attrs({
   variant: 'h1',
@@ -164,7 +183,9 @@ const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
           </Grid>
         </Container>
         <Contact />
-        <BottomNavigation />
+        <BottomNavigation component={CondensedNavbar} showLabels>
+          <MenuAction />
+        </BottomNavigation>
       </Layout>
     </ThemeProvider>
   );

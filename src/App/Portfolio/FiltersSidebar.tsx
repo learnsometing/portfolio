@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import AppliedFilters from './AppliedFilters';
 import LabelText from './Label';
 
+// Material-UI
 import Checkbox from '@material-ui/core/Checkbox';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControl from '@material-ui/core/FormControl';
@@ -12,8 +13,17 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
-import getTagCounts from './helpers/getTagCounts';
-import getFilteredTags from './helpers/getFilteredTags';
+// Interfaces
+import { TagMap } from '../../helpers/getTagCounts';
+
+// Hooks
+import useTagCounts from './useTagCounts';
+
+// Redux
+import { connect } from 'react-redux';
+import { RootState } from '../../state/createStore';
+import { getAppliedFilters } from '../../state/portfolio/selectors';
+import { addFilter, removeFilter } from '../../state/portfolio/actions';
 
 const Sidebar = styled(Grid).attrs({
   component: 'aside',
@@ -44,22 +54,19 @@ const StyledFormGroup = styled(FormGroup)`
 
 interface Props {
   allProjectTags: string[][];
+  tagCounts: TagMap;
   appliedFilters: string[];
   addFilter: (filter: string) => void;
   removeFilter: (filter: string) => void;
-  clearFilters: () => void;
 }
 
 const FiltersSidebar: React.FC<Props> = ({
   addFilter,
   allProjectTags,
+  tagCounts,
   appliedFilters,
   removeFilter,
-  clearFilters,
 }) => {
-  const ogTagCounts = getTagCounts(allProjectTags);
-  const [currentTags, setCurrentTags] = useState(ogTagCounts);
-
   const handleChange = (event: any): void => {
     if (event.target && event.currentTarget.value) {
       if (appliedFilters.includes(event.currentTarget.value)) {
@@ -70,30 +77,22 @@ const FiltersSidebar: React.FC<Props> = ({
     }
   };
 
-  useEffect(() => {
-    if (appliedFilters && appliedFilters.length) {
-      const filteredTags = getFilteredTags(appliedFilters, allProjectTags);
-      const filteredTagCounts = getTagCounts(filteredTags);
-      setCurrentTags(filteredTagCounts);
-    } else {
-      setCurrentTags(ogTagCounts);
-    }
-  }, [appliedFilters]);
+  const currentTagCounts = useTagCounts(
+    tagCounts,
+    allProjectTags,
+    appliedFilters
+  );
 
   return (
-    <Sidebar justify={'flex-start'} item lg={3}>
+    <Sidebar item lg={3}>
       <SidebarContentWrapper>
         <SidebarHeading variant={'h2'} align={'center'}>
           Filter
         </SidebarHeading>
-        <AppliedFilters
-          appliedFilters={appliedFilters}
-          removeFilter={removeFilter}
-          clearFilters={clearFilters}
-        />
+        <AppliedFilters />
         <StyledFormGroup>
           <FormControl component={'fieldset'}>
-            {Object.entries(currentTags).map(([filter, count]) => (
+            {Object.entries(currentTagCounts).map(([filter, count]) => (
               <FormControlLabel
                 key={filter}
                 onChange={handleChange}
@@ -122,9 +121,14 @@ FiltersSidebar.propTypes = {
   allProjectTags: PropTypes.arrayOf(
     PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
   ).isRequired,
+  tagCounts: PropTypes.objectOf(PropTypes.number.isRequired).isRequired,
   appliedFilters: PropTypes.array.isRequired,
   removeFilter: PropTypes.func.isRequired,
-  clearFilters: PropTypes.func.isRequired,
 };
 
-export default FiltersSidebar;
+export default connect(
+  (state: RootState) => ({
+    appliedFilters: getAppliedFilters(state),
+  }),
+  { addFilter, removeFilter }
+)(FiltersSidebar);
