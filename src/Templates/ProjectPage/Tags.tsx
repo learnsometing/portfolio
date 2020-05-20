@@ -12,7 +12,9 @@ interface Props {
 }
 
 const TagContainer = styled(Grid)`
-  @media screen and (min-width: 960px) {
+  padding-bottom: ${(props): string => props.theme.spacing(4)};
+  @media screen and (min-width: 1280px) {
+    padding: 0;
     justify-content: flex-start;
   }
 `;

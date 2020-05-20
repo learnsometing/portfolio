@@ -172,6 +172,11 @@ const theme = createMuiTheme({
         backgroundColor: scTheme.bgLightened,
       },
     },
+    MuiTypography: {
+      gutterBottom: {
+        marginBottom: '0.75em',
+      },
+    },
   },
 });
 

@@ -72,12 +72,9 @@ const CondensedNavbar = styled(Paper).attrs({
 
 const ProjectTitle = styled(Typography).attrs({
   variant: 'h1',
-  gutterBottom: true,
 })`
   text-align: center;
-  opacity: 0;
-  transform: translateY(100px);
-
+  margin-bottom: 0.45em;
   @media screen and (min-width: 1280px) {
     text-align: start;
   }
@@ -86,8 +83,6 @@ const ProjectTitle = styled(Typography).attrs({
 const ProjectLinks = styled(Grid)`
   padding: ${(props): string => props.theme.spacing(4)} 0;
   justify-content: center;
-  opacity: 0;
-  transform: translateY(100px);
 
   @media screen and (min-width: 1280px) {
     justify-content: flex-start;
@@ -99,7 +94,6 @@ export const SectionHeading = styled(Typography).attrs({
   gutterBottom: true,
 })`
   text-align: center;
-
   @media screen and (min-width: 1280px) {
     text-align: start;
   }
@@ -130,7 +124,7 @@ const TechTags = styled(Section)`
   transform: translateY(100px);
 `;
 
-const shortcodes = { DescriptionParagraph, Grid, useScrollAnimation };
+const shortcodes = { DescriptionParagraph, Grid };
 
 const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
   const { frontmatter } = mdx;
@@ -142,10 +136,8 @@ const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
         <SEO title={frontmatter.title} />
         <Container maxWidth={'lg'}>
           <Section as={'header'}>
-            <ProjectTitle ref={useScrollAnimation(0)}>
-              {frontmatter.title}
-            </ProjectTitle>
-            <ProjectLinks container spacing={2} ref={useScrollAnimation(0)}>
+            <ProjectTitle>{frontmatter.title}</ProjectTitle>
+            <ProjectLinks container spacing={2}>
               <Grid item>
                 <Link
                   href={frontmatter.websiteUrl}
