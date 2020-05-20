@@ -7,6 +7,7 @@ const useScrollAnimation = (threshold: number): any => {
   const intersection = useIntersection(ref, { threshold: threshold });
   if (intersection && intersection.intersectionRatio > threshold) {
     gsap.to(ref.current, {
+      delay: 0.1,
       duration: 1,
       opacity: 1,
       y: 0,

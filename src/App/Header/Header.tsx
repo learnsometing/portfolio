@@ -79,20 +79,21 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     gsap.from(name.current, {
+      delay: 0.5,
       duration: 1,
       opacity: 0,
-      x: -100,
-      ease: 'power3.out',
+      x: 100,
+      ease: 'power3.inOut',
     });
 
     gsap.from(title.current, {
       duration: 1,
-      delay: 0.5,
+      delay: 1,
       opacity: 0,
-      y: -90,
-      ease: 'power2.out',
+      y: -80,
+      ease: 'power3.inOut',
     });
-  }, []);
+  });
 
   return (
     <Wrapper id="header">
