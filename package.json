@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-ts-and-tests",
+  "name": "brian-monaccio-portfolio",
   "private": true,
-  "description": "A starter with established typescript development and jest/cypress testing environments.",
+  "description": "Brian Monaccio's frontend development portfolio.",
   "version": "0.1.0",
   "author": "Brian Monaccio <brianmonaccio@protonmail.com>",
   "dependencies": {
@@ -95,9 +95,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/learnsometing/gatsby-starter-ts-and-tests.git"
+    "url": "https://github.com/learnsometing/portfolio.git"
   },
   "bugs": {
-    "url": "https://github.com/learnsometing/gatsby-starter-ts-and-tests/issues"
+    "url": "https://github.com/learnsometing/portfolio/issues"
   }
 }
