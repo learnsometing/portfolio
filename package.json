@@ -37,7 +37,9 @@
     "react-use": "^15.1.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^5.1.0"
+    "styled-components": "^5.1.0",
+    "typeface-aleo": "0.0.69",
+    "typeface-roboto": "0.0.75"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.9.0",

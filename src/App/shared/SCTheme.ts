@@ -5,7 +5,7 @@ const scTheme = {
   textDarkened: '#989997',
   textEmphasis: '#FFD23F',
   azure: '#2AFC98',
-  orangeRed: '#5438DC',
+  orangeRed: '#FF785A',
   bottomNavigationIconSize: '32px',
   spacing: function(num: number): string {
     switch (num) {

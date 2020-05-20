@@ -1,21 +1,22 @@
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core';
+import 'typeface-roboto';
+import 'typeface-aleo';
 import scTheme from './SCTheme';
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: scTheme.textEmphasis,
+      main: '#F9E43B',
     },
   },
   typography: {
     h1: {
       fontSize: '3.5rem',
       fontFamily: [
-        'mr-eaves-xl-modern',
+        'Roboto',
         '-apple-system',
         'BlinkMacSystemFont',
         'Segoe UI',
-        'Roboto',
         'Oxygen',
         'Ubuntu',
         'Cantarell',
@@ -31,11 +32,10 @@ const theme = createMuiTheme({
     h2: {
       fontSize: '2.375rem',
       fontFamily: [
-        'mr-eaves-xl-modern',
+        'Roboto',
         '-apple-system',
         'BlinkMacSystemFont',
         'Segoe UI',
-        'Roboto',
         'Oxygen',
         'Ubuntu',
         'Cantarell',
@@ -50,11 +50,10 @@ const theme = createMuiTheme({
     h3: {
       fontSize: '2rem',
       fontFamily: [
-        'mr-eaves-xl-modern',
+        'Roboto',
         '-apple-system',
         'BlinkMacSystemFont',
         'Segoe UI',
-        'Roboto',
         'Oxygen',
         'Ubuntu',
         'Cantarell',
@@ -69,11 +68,10 @@ const theme = createMuiTheme({
     h4: {
       fontSize: '1.5625rem',
       fontFamily: [
-        'mr-eaves-xl-modern',
+        'Roboto',
         '-apple-system',
         'BlinkMacSystemFont',
         'Segoe UI',
-        'Roboto',
         'Oxygen',
         'Ubuntu',
         'Cantarell',
@@ -88,11 +86,10 @@ const theme = createMuiTheme({
     h5: {
       fontSize: '1.25rem',
       fontFamily: [
-        'mr-eaves-xl-modern',
+        'Roboto',
         '-apple-system',
         'BlinkMacSystemFont',
         'Segoe UI',
-        'Roboto',
         'Oxygen',
         'Ubuntu',
         'Cantarell',
@@ -107,11 +104,10 @@ const theme = createMuiTheme({
     h6: {
       fontSize: '1.25rem',
       fontFamily: [
-        'mr-eaves-xl-modern',
+        'Roboto',
         '-apple-system',
         'BlinkMacSystemFont',
         'Segoe UI',
-        'Roboto',
         'Oxygen',
         'Ubuntu',
         'Cantarell',
@@ -125,17 +121,42 @@ const theme = createMuiTheme({
     },
     body1: {
       color: scTheme.text,
-    },
-    body2: {
-      color: scTheme.textDarkened,
-    },
-    button: {
       fontFamily: [
-        'mr-eaves-xl-modern',
+        'aleo',
         '-apple-system',
         'BlinkMacSystemFont',
         'Segoe UI',
+        'Oxygen',
+        'Ubuntu',
+        'Cantarell',
+        'Fira Sans',
+        'Droid Sans',
+        'Helvetica Neue',
+        'sans-serif',
+      ].join(','),
+    },
+    body2: {
+      color: scTheme.textDarkened,
+      fontFamily: [
+        'aleo',
+        '-apple-system',
+        'BlinkMacSystemFont',
+        'Segoe UI',
+        'Oxygen',
+        'Ubuntu',
+        'Cantarell',
+        'Fira Sans',
+        'Droid Sans',
+        'Helvetica Neue',
+        'sans-serif',
+      ].join(','),
+    },
+    button: {
+      fontFamily: [
         'Roboto',
+        '-apple-system',
+        'BlinkMacSystemFont',
+        'Segoe UI',
         'Oxygen',
         'Ubuntu',
         'Cantarell',

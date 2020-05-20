@@ -244,8 +244,8 @@ export const query = graphql`
           altText
           src {
             childImageSharp {
-              fluid(maxWidth: 1920) {
-                ...GatsbyImageSharpFluid
+              fluid(maxWidth: 784) {
+                ...GatsbyImageSharpFluid_withWebp
               }
             }
           }

@@ -35,7 +35,13 @@ const Avatar: React.FC = () => {
     }
   `);
 
-  return <AvatarImage src={avatar.publicURL} ref={ref} />;
+  return (
+    <AvatarImage
+      src={avatar.publicURL}
+      ref={ref}
+      alt="A traced SVG graphic of Brian wearing a blue beanie and leaning against two river birches."
+    />
+  );
 };
 
 export default Avatar;

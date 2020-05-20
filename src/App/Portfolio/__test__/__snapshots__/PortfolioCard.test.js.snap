@@ -2,10 +2,10 @@
 
 exports[`PortfolioCard should match the snapshot 1`] = `
 <article
-  className="MuiGrid-root ProjectCard__ProjectCardWrapper-sc-1gbw476-1 bzTwHQ MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-6 MuiGrid-grid-lg-6 MuiGrid-grid-xl-6"
+  className="MuiGrid-root ProjectCard__ProjectCardWrapper-g4bmih-1 hKseNC MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-6 MuiGrid-grid-lg-6 MuiGrid-grid-xl-6"
 >
   <a
-    className="ProjectCard__ProjectLink-sc-1gbw476-0 bvhyJN"
+    className="ProjectCard__ProjectLink-g4bmih-0 iBQPdj"
     href="/cash-pawn-jewelry-website/"
   >
     <div
@@ -74,7 +74,7 @@ exports[`PortfolioCard should match the snapshot 1`] = `
 /static/56d0aba06cc4aae5197224cac0f73af4/4ee3c/cash-pawn_1.jpg 3554w"
             />
             <img
-              alt="First slide"
+              alt="Cash Pawn & Jewelry Website Home Page"
               loading="lazy"
               onLoad={[Function]}
               sizes="(max-width: 1920px) 100vw, 1920px"
@@ -110,7 +110,7 @@ exports[`PortfolioCard should match the snapshot 1`] = `
 /static/56d0aba06cc4aae5197224cac0f73af4/a6352/cash-pawn_1.jpg 960w,
 /static/56d0aba06cc4aae5197224cac0f73af4/d8255/cash-pawn_1.jpg 1920w,
 /static/56d0aba06cc4aae5197224cac0f73af4/af56c/cash-pawn_1.jpg 2880w,
-/static/56d0aba06cc4aae5197224cac0f73af4/4ee3c/cash-pawn_1.jpg 3554w\\" src=\\"/static/56d0aba06cc4aae5197224cac0f73af4/d8255/cash-pawn_1.jpg\\" alt=\\"First slide\\" style=\\"position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center\\"/></picture>",
+/static/56d0aba06cc4aae5197224cac0f73af4/4ee3c/cash-pawn_1.jpg 3554w\\" src=\\"/static/56d0aba06cc4aae5197224cac0f73af4/d8255/cash-pawn_1.jpg\\" alt=\\"Cash Pawn & Jewelry Website Home Page\\" style=\\"position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center\\"/></picture>",
               }
             }
           />

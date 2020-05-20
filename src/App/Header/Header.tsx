@@ -83,7 +83,6 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     gsap.to(name.current, {
-      delay: 0.5,
       duration: 1,
       opacity: 1,
       x: 0,
@@ -92,7 +91,7 @@ const Header: React.FC = () => {
 
     gsap.to(title.current, {
       duration: 1,
-      delay: 1,
+      delay: 0.5,
       opacity: 1,
       y: 0,
       ease: 'power3.inOut',

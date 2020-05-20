@@ -6,7 +6,6 @@
  */
 
 import React, { ReactNode } from 'react';
-import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 import './Layout.css';
 import { ThemeProvider as StyledComponentsThemeProvider } from 'styled-components';
@@ -18,12 +17,7 @@ interface Props {
 
 const Layout: React.FC<Props> = ({ children }) => (
   <StyledComponentsThemeProvider theme={scTheme}>
-    <main>
-      <Helmet>
-        <link rel="stylesheet" href="https://use.typekit.net/ari5qhg.css" />
-      </Helmet>
-      {children}
-    </main>
+    <main>{children}</main>
   </StyledComponentsThemeProvider>
 );
 

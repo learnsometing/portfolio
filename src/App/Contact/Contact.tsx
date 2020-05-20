@@ -110,6 +110,7 @@ const Contact: React.FC = () => {
                   href="https://www.instagram.com/learnsometing/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  title="link to Brian's instagram account"
                 >
                   <Icon icon={<FaInstagramSquare />} />
                 </a>
@@ -119,6 +120,7 @@ const Contact: React.FC = () => {
                   href="https://twitter.com/brianmonaccio"
                   target="_blank"
                   rel="noopener noreferrer"
+                  title="link to Brian's twitter account"
                 >
                   <Icon icon={<FaTwitterSquare />} />
                 </a>

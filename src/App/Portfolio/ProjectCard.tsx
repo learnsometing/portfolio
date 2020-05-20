@@ -65,7 +65,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ content }) => {
           <CardActionArea>
             <Img
               fluid={cardPhoto.src.childImageSharp.fluid}
-              alt="First slide"
+              alt={cardPhoto.altText}
             />
             <CardContent>
               <Typography gutterBottom variant={'h5'} component={'h3'}>

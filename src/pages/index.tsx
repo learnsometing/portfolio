@@ -47,7 +47,7 @@ const IndexPage: React.FC<Props> = ({ data: { allMdx } }) => {
   return (
     <ThemeProvider theme={theme}>
       <Layout>
-        <SEO title="Home" />
+        <SEO title="Portfolio" />
         <Header />
         <About />
         <Portfolio
@@ -85,8 +85,8 @@ export const data = graphql`
             altText
             src {
               childImageSharp {
-                fluid(maxWidth: 1920) {
-                  ...GatsbyImageSharpFluid
+                fluid(maxWidth: 428) {
+                  ...GatsbyImageSharpFluid_withWebp
                 }
               }
             }
