@@ -60,8 +60,6 @@ const ContactButton = styled(Button).attrs({
 
 const CopyrightNotice = styled(Typography)`
   margin-top: ${(props): string => props.theme.spacing(4)};
-  transform: translateY(100px);
-  opacity: 0;
 `;
 
 const iconStyles = { size: '48px', color: scTheme.textEmphasis };
@@ -129,11 +127,7 @@ const Contact: React.FC = () => {
           </ContactSection>
         </Grid>
 
-        <CopyrightNotice
-          variant={'body2'}
-          align={'center'}
-          ref={useScrollAnimation(0)}
-        >
+        <CopyrightNotice variant={'body2'} align={'center'}>
           &#169; {new Date().getFullYear()} Brian Monaccio
         </CopyrightNotice>
       </Container>
