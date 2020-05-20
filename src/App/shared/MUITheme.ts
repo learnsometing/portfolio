@@ -4,7 +4,7 @@ import scTheme from './SCTheme';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#F9E43B',
+      main: scTheme.textEmphasis,
     },
   },
   typography: {
