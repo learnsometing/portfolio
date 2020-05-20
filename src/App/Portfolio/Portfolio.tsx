@@ -11,7 +11,6 @@ import { ThemeProvider } from '@material-ui/core';
 import theme from '../shared/MUITheme';
 
 // Components
-import Navigation from '../shared/Navigation';
 import MenuAction from '../shared/BottomNavigation/MenuAction';
 import FilterAction from './FilterAction';
 import Projects from './Projects';
@@ -77,7 +76,6 @@ const Portfolio: React.FC<Props> = ({
 
   return (
     <ThemeProvider theme={theme}>
-      <Navigation />
       <Section id="portfolio">
         <Container maxWidth={'lg'}>
           {/* */}

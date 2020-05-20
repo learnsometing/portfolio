@@ -14,6 +14,9 @@ import { FaTwitterSquare, FaInstagramSquare } from 'react-icons/fa';
 import Section from '../shared/Section';
 import scTheme from '../shared/SCTheme';
 
+// Hooks
+import useScrollAnimation from '../shared/useScrollAnimation';
+
 const Footer = styled(Section).attrs({
   as: 'footer',
 })`
@@ -31,6 +34,8 @@ const ContactSection = styled(Grid).attrs({
   alignItems: 'center',
 })`
   padding: ${(props): string => props.theme.spacing(4)};
+  transform: translateY(100px);
+  opacity: 0;
 `;
 
 const ContactSectionHeading = styled(Typography).attrs({
@@ -76,7 +81,7 @@ const Contact: React.FC = () => {
     <Footer id="contact">
       <Container maxWidth={'lg'}>
         <Grid container>
-          <ContactSection>
+          <ContactSection ref={useScrollAnimation(0)}>
             <ContactSectionHeading>
               Let&#39;s get in touch
             </ContactSectionHeading>
@@ -91,13 +96,13 @@ const Contact: React.FC = () => {
             </ContactButton>
           </ContactSection>
 
-          <ContactSection>
+          <ContactSection ref={useScrollAnimation(0)}>
             <ContactSectionHeading>More Code</ContactSectionHeading>
             <ContactButton href="https://github.com/learnsometing">
               Visit my github profile
             </ContactButton>
           </ContactSection>
-          <ContactSection>
+          <ContactSection ref={useScrollAnimation(0)}>
             <ContactSectionHeading>Social</ContactSectionHeading>
             <Grid item container justify={'center'} spacing={1}>
               <Grid item>

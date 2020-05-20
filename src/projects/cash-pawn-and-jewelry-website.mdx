@@ -52,9 +52,10 @@ tags:
   - 'Unit Tests'
 date: '2020-02-25'
 ---
+import useScrollAnimation from '../App/shared/useScrollAnimation';
 
 <Grid item>
-  <DescriptionParagraph variant={'body1'} gutterBottom>
+  <DescriptionParagraph variant={'body1'} ref={useScrollAnimation(0)} gutterBottom>
     I developed veropawn.net independently for Cash Pawn & Jewelry, a pawn shop
     located in Vero Beach, FL. The website is a <strong>React</strong> app built with 
     <strong> Gatsby</strong>, a popular static site generator framework. The resulting 
@@ -62,7 +63,7 @@ date: '2020-02-25'
   </DescriptionParagraph>
 </Grid>
 <Grid item>
-  <DescriptionParagraph variant={'body1'} gutterBottom>
+  <DescriptionParagraph variant={'body1'} ref={useScrollAnimation(0)} gutterBottom>
     This app serves as an inventory catalog and features responsive and UX friendly designs.
     Its dynamically generated navigation and the thousands of programmatically created 
     shopping and product pages highlight the marriage of React and server-side rendering,
@@ -71,7 +72,7 @@ date: '2020-02-25'
   </DescriptionParagraph>
 </Grid>
 <Grid item>
-  <DescriptionParagraph variant={'body1'} gutterBottom>
+  <DescriptionParagraph variant={'body1'} ref={useScrollAnimation(0)} gutterBottom>
     Building this website at my level of experience was challenging, because I had 
     no prior <strong>React</strong> or <strong>Gatsby</strong> experience to start with.
     I learned both frameworks during development and learned about testing React applications

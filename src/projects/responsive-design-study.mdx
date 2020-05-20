@@ -22,16 +22,17 @@ tags:
   - 'Responsive Design'
 date: '2019-09-17'
 ---
+import useScrollAnimation from '../App/shared/useScrollAnimation';
 
 <Grid item>
-  <DescriptionParagraph variant={'body1'} gutterBottom>
+  <DescriptionParagraph variant={'body1'} ref={useScrollAnimation(0)} gutterBottom>
     It's necessary for all web developers to have a solid grasp on responsive design.
     To develop and apply my understanding of <strong>responsive design principles</strong>, I mocked
     the home page of The Next Web's website.
   </DescriptionParagraph>
 </Grid>
 <Grid item>
-  <DescriptionParagraph variant={'body1'} gutterBottom>
+  <DescriptionParagraph variant={'body1'} ref={useScrollAnimation(0)} gutterBottom>
     I constructed the webpage first using <strong>HTML</strong>,
     studied how The Next Web's website responded to changes in the viewport width, and
     finally used <strong>CSS media queries</strong> and <strong>flexbox</strong> to implement the responsive behaviors.

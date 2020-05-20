@@ -26,16 +26,17 @@ tags:
   - 'Unit Tests'
 date: '2020-01-07'
 ---
+import useScrollAnimation from '../App/shared/useScrollAnimation';
 
 <Grid item>
-  <DescriptionParagraph variant={'body1'} gutterBottom>
+  <DescriptionParagraph variant={'body1'} ref={useScrollAnimation(0)} gutterBottom>
     Data-driven applications rely on APIs to retrieve and mutate data in a convenient
     and efficient manner. Making asynchronous calls to <strong>third-party APIs</strong> can be tricky
     though.
   </DescriptionParagraph>
 </Grid>
 <Grid item>
-  <DescriptionParagraph variant={'body1'} gutterBottom>
+  <DescriptionParagraph variant={'body1'} ref={useScrollAnimation(0)} gutterBottom>
     I built this project to practice both <strong>asynchronous JavaScript</strong> and using
     <strong>fetch</strong> to make <strong>REST API calls</strong>. It displays the current forecast for the area
     the user chooses to search. I chose to build it using <strong>React</strong> instead of vanilla

@@ -4,7 +4,7 @@ import scTheme from './SCTheme';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#F9E43B',
+      main: scTheme.textEmphasis,
     },
   },
   typography: {
@@ -170,6 +170,11 @@ const theme = createMuiTheme({
     MuiCardContent: {
       root: {
         backgroundColor: scTheme.bgLightened,
+      },
+    },
+    MuiTypography: {
+      gutterBottom: {
+        marginBottom: '0.75em',
       },
     },
   },

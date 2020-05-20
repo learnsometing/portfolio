@@ -33,6 +33,9 @@ import MenuAction from '../../App/shared/BottomNavigation/MenuAction';
 // Interfaces
 import { Slide } from '../../App/Carousel/Carousel';
 
+// Hooks
+import useScrollAnimation from '../../App/shared/useScrollAnimation';
+
 interface Mdx {
   mdx: {
     frontmatter: {
@@ -69,10 +72,9 @@ const CondensedNavbar = styled(Paper).attrs({
 
 const ProjectTitle = styled(Typography).attrs({
   variant: 'h1',
-  gutterBottom: true,
 })`
   text-align: center;
-
+  margin-bottom: 0.45em;
   @media screen and (min-width: 1280px) {
     text-align: start;
   }
@@ -92,7 +94,6 @@ export const SectionHeading = styled(Typography).attrs({
   gutterBottom: true,
 })`
   text-align: center;
-
   @media screen and (min-width: 1280px) {
     text-align: start;
   }
@@ -103,16 +104,24 @@ const DescriptionParagraph = styled(Typography).attrs({
   gutterBottom: true,
 })`
   text-align: center;
-
+  opacity: 0;
+  transform: translateY(100px);
   @media screen and (min-width: 1280px) {
     text-align: start;
   }
+`;
+
+const Gallery = styled(Section)`
+  opacity: 0;
+  transform: translateY(100px);
 `;
 
 const TechTags = styled(Section)`
   @media screen and (min-width: 1280px) {
     margin-left: ${(props): string => props.theme.spacing(6)};
   }
+  opacity: 0;
+  transform: translateY(100px);
 `;
 
 const shortcodes = { DescriptionParagraph, Grid };
@@ -169,14 +178,14 @@ const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
 
           <Grid container justify={'center'}>
             <Grid item xs={12} sm={12} md={8} lg={8} xl={8}>
-              <Section>
+              <Gallery ref={useScrollAnimation(0)}>
                 <SectionHeading>Gallery</SectionHeading>
                 <Carousel slides={frontmatter.carouselPhotos} />
-              </Section>
+              </Gallery>
             </Grid>
 
             <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
-              <TechTags>
+              <TechTags ref={useScrollAnimation(0)}>
                 <Tags tags={frontmatter.tags} />
               </TechTags>
             </Grid>

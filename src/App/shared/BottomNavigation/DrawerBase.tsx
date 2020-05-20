@@ -13,6 +13,7 @@ const DrawerBG = styled(Paper)`
   overflow-y: auto;
   background-color: ${(props): string => props.theme.bgLightened};
   min-height: 100vh;
+  overflow-x: hidden;
 `;
 
 interface DrawerBaseProps {
