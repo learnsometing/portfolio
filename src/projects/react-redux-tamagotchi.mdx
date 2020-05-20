@@ -53,18 +53,18 @@ date: '2020-04-30'
 import Link from '@material-ui/core/Link';
 
 <Grid item>
-  <DescriptionParagraph variant={'body1'} gutterBottom>
+  <DescriptionParagraph variant={'body1'} ref={useScrollAnimation(0)} gutterBottom>
     <strong>NOSTALGIA ALERT!</strong>
   </DescriptionParagraph>
 </Grid>
 <Grid item>
-  <DescriptionParagraph variant={'body1'} gutterBottom>
+  <DescriptionParagraph variant={'body1'} ref={useScrollAnimation(0)} gutterBottom>
     Remember having a Tamagotchi? Now you 
     can relive those care-free days while playing my React adaptation of this beloved game.
   </DescriptionParagraph>
 </Grid>
 <Grid item>
-  <DescriptionParagraph variant={'body1'} gutterBottom>
+  <DescriptionParagraph variant={'body1'} ref={useScrollAnimation(0)} gutterBottom>
     I created this app after attending a workshop at Frontend Masters. During
     the workshop we implemented the Tamagotchi game state using JavaScript and the
     frontend using HTML and CSS. I decided to recreate the game using React and
@@ -72,13 +72,13 @@ import Link from '@material-ui/core/Link';
   </DescriptionParagraph>
 </Grid>
 <Grid item>
-  <DescriptionParagraph variant={'body1'} gutterBottom>
+  <DescriptionParagraph variant={'body1'} ref={useScrollAnimation(0)} gutterBottom>
     By using styled components, it was simple to encapsulate the elements
     of the game and update their styles by reading from the Redux store.
   </DescriptionParagraph>
 </Grid>
 <Grid item>
-  <DescriptionParagraph variant={'body1'} gutterBottom>
+  <DescriptionParagraph variant={'body1'} ref={useScrollAnimation(0)} gutterBottom>
     Illustrations by <Link href="https://www.pickledalice.com/" target="_blank" rel="noopenner noreferrer">Alice Brereton</Link>
   </DescriptionParagraph>
 </Grid>

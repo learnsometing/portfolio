@@ -33,6 +33,9 @@ import MenuAction from '../../App/shared/BottomNavigation/MenuAction';
 // Interfaces
 import { Slide } from '../../App/Carousel/Carousel';
 
+// Hooks
+import useScrollAnimation from '../../App/shared/useScrollAnimation';
+
 interface Mdx {
   mdx: {
     frontmatter: {
@@ -72,6 +75,8 @@ const ProjectTitle = styled(Typography).attrs({
   gutterBottom: true,
 })`
   text-align: center;
+  opacity: 0;
+  transform: translateY(100px);
 
   @media screen and (min-width: 1280px) {
     text-align: start;
@@ -81,6 +86,8 @@ const ProjectTitle = styled(Typography).attrs({
 const ProjectLinks = styled(Grid)`
   padding: ${(props): string => props.theme.spacing(4)} 0;
   justify-content: center;
+  opacity: 0;
+  transform: translateY(100px);
 
   @media screen and (min-width: 1280px) {
     justify-content: flex-start;
@@ -103,19 +110,27 @@ const DescriptionParagraph = styled(Typography).attrs({
   gutterBottom: true,
 })`
   text-align: center;
-
+  opacity: 0;
+  transform: translateY(100px);
   @media screen and (min-width: 1280px) {
     text-align: start;
   }
+`;
+
+const Gallery = styled(Section)`
+  opacity: 0;
+  transform: translateY(100px);
 `;
 
 const TechTags = styled(Section)`
   @media screen and (min-width: 1280px) {
     margin-left: ${(props): string => props.theme.spacing(6)};
   }
+  opacity: 0;
+  transform: translateY(100px);
 `;
 
-const shortcodes = { DescriptionParagraph, Grid };
+const shortcodes = { DescriptionParagraph, Grid, useScrollAnimation };
 
 const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
   const { frontmatter } = mdx;
@@ -127,8 +142,10 @@ const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
         <SEO title={frontmatter.title} />
         <Container maxWidth={'lg'}>
           <Section as={'header'}>
-            <ProjectTitle>{frontmatter.title}</ProjectTitle>
-            <ProjectLinks container spacing={2}>
+            <ProjectTitle ref={useScrollAnimation(0)}>
+              {frontmatter.title}
+            </ProjectTitle>
+            <ProjectLinks container spacing={2} ref={useScrollAnimation(0)}>
               <Grid item>
                 <Link
                   href={frontmatter.websiteUrl}
@@ -169,14 +186,14 @@ const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
 
           <Grid container justify={'center'}>
             <Grid item xs={12} sm={12} md={8} lg={8} xl={8}>
-              <Section>
+              <Gallery ref={useScrollAnimation(0)}>
                 <SectionHeading>Gallery</SectionHeading>
                 <Carousel slides={frontmatter.carouselPhotos} />
-              </Section>
+              </Gallery>
             </Grid>
 
             <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
-              <TechTags>
+              <TechTags ref={useScrollAnimation(0)}>
                 <Tags tags={frontmatter.tags} />
               </TechTags>
             </Grid>
