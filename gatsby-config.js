@@ -32,13 +32,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-ts-and-tests`,
-        short_name: `starter`,
+        name: `brian-monaccio-portfolio`,
+        short_name: `portfolio`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: '#0C082C',
+        theme_color: '#2AFC98',
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/personal-logo.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-typescript`,
@@ -54,8 +54,6 @@ module.exports = {
     `gatsby-transformer-json`,
     `gatsby-plugin-mdx`,
     `gatsby-plugin-anchor-links`,
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-netlify`,
   ],
 };
