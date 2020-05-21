@@ -51,10 +51,12 @@ const StyledFormGroup = styled(FormGroup)`
 `;
 
 const Header = styled(Grid)`
+  position: relative;
+  display: flex;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   padding: ${(props): string =>
     `${props.theme.spacing(2)} ${props.theme.spacing(4)}`};
-  position: sticky;
+  position: fixed;
   top: 0;
   background-color: ${(props): string => props.theme.bgLightened};
   z-index: 1;
@@ -125,7 +127,13 @@ const FiltersForm: React.FC<FiltersFormProps> = ({
         </FormControl>
       </StyledFormGroup>
 
-      <Buttons container direction={'row'} spacing={1} justify={'center'}>
+      <Buttons
+        container
+        direction={'row'}
+        spacing={1}
+        justify={'center'}
+        alignItems={'center'}
+      >
         {touched.checkedFilters && errors.checkedFilters ? (
           <Grid container item xs={12} sm={12} justify={'center'}>
             <FormHelperText error>{errors.checkedFilters}</FormHelperText>
