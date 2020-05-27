@@ -102,7 +102,7 @@ const theme = createMuiTheme({
       color: scTheme.textEmphasis,
     },
     h6: {
-      fontSize: '1.25rem',
+      fontSize: '1rem',
       fontFamily: [
         'Roboto',
         '-apple-system',
@@ -117,7 +117,7 @@ const theme = createMuiTheme({
         'sans-serif',
       ].join(','),
       fontWeight: 'bold',
-      color: scTheme.text,
+      color: scTheme.textEmphasis,
     },
     body1: {
       color: scTheme.text,

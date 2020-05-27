@@ -59,6 +59,12 @@ const StyledFormGroup = styled(FormGroup)`
   opacity: 0;
 `;
 
+const StyledFormControlLabel = styled(FormControlLabel)`
+  &:hover {
+    background-color: ${(props): string => props.theme.bgLightened};
+  }
+`;
+
 interface Props {
   allProjectTags: string[][];
   tagCounts: TagMap;
@@ -104,7 +110,7 @@ const FiltersSidebar: React.FC<Props> = ({
         <StyledFormGroup ref={useScrollAnimation(0)}>
           <FormControl component={'fieldset'}>
             {Object.entries(currentTagCounts).map(([filter, count]) => (
-              <FormControlLabel
+              <StyledFormControlLabel
                 key={filter}
                 onChange={handleChange}
                 control={
