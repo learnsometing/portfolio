@@ -34,7 +34,7 @@ import MenuAction from '../../App/shared/BottomNavigation/MenuAction';
 import { Slide } from '../../App/Carousel/Carousel';
 
 // Hooks
-import useScrollAnimation from '../../App/shared/useScrollAnimation';
+import { useSlideInAnimation } from '../../App/shared/animationHooks';
 
 interface Mdx {
   mdx: {
@@ -104,24 +104,15 @@ const DescriptionParagraph = styled(Typography).attrs({
   gutterBottom: true,
 })`
   text-align: center;
-  opacity: 0;
-  transform: translateY(100px);
   @media screen and (min-width: 1280px) {
     text-align: start;
   }
-`;
-
-const Gallery = styled(Section)`
-  opacity: 0;
-  transform: translateY(100px);
 `;
 
 const TechTags = styled(Section)`
   @media screen and (min-width: 1280px) {
     margin-left: ${(props): string => props.theme.spacing(6)};
   }
-  opacity: 0;
-  transform: translateY(100px);
 `;
 
 const shortcodes = { DescriptionParagraph, Grid };
@@ -135,10 +126,13 @@ const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
         <Navigation />
         <SEO title={frontmatter.title} />
         <Container maxWidth={'lg'}>
-          <Section as={'header'}>
+          <Section
+            as={'header'}
+            ref={useSlideInAnimation(0.1, '.header', true)}
+          >
             <ProjectTitle>{frontmatter.title}</ProjectTitle>
             <ProjectLinks container spacing={2}>
-              <Grid item>
+              <Grid item className="header scroll-in">
                 <Link
                   href={frontmatter.websiteUrl}
                   target="_blank"
@@ -153,7 +147,7 @@ const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
                   </Button>
                 </Link>
               </Grid>
-              <Grid item>
+              <Grid item className="header scroll-in">
                 <Link
                   href={frontmatter.githubUrl}
                   target="_blank"
@@ -170,7 +164,7 @@ const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
               </Grid>
             </ProjectLinks>
           </Section>
-          <Section>
+          <Section ref={useSlideInAnimation(0.1, '.description', true)}>
             <MDXProvider components={shortcodes}>
               <DescriptionContent description={mdx.body} />
             </MDXProvider>
@@ -178,14 +172,16 @@ const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
 
           <Grid container justify={'center'}>
             <Grid item xs={12} sm={12} md={8} lg={8} xl={8}>
-              <Gallery ref={useScrollAnimation(0)}>
-                <SectionHeading>Gallery</SectionHeading>
+              <Section ref={useSlideInAnimation(0.1, '.gallery', true)}>
+                <SectionHeading className="gallery scroll-in">
+                  Gallery
+                </SectionHeading>
                 <Carousel slides={frontmatter.carouselPhotos} />
-              </Gallery>
+              </Section>
             </Grid>
 
             <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
-              <TechTags ref={useScrollAnimation(0)}>
+              <TechTags ref={useSlideInAnimation(0.1, '.tags', true)}>
                 <Tags tags={frontmatter.tags} />
               </TechTags>
             </Grid>

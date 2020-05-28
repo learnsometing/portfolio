@@ -27,7 +27,7 @@ export const useFadeInAnimation = (
   element: string,
   hasAnimated: boolean
 ): any => {
-  const [ref, inView] = useInView({ threshold });
+  const [ref, inView] = useInView({ threshold, triggerOnce: true });
   let delay = 0.75;
 
   if (hasAnimated) delay = 0;

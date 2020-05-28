@@ -116,16 +116,15 @@ tags:
   ]
 date: '2019-08-16'
 ---
-import useScrollAnimation from '../App/shared/useScrollAnimation';
 
 <Grid item>
-  <DescriptionParagraph variant={'body1'} ref={useScrollAnimation(0)} gutterBottom>
+  <DescriptionParagraph variant={'body1'} className="description scroll-in" gutterBottom>
     Dev Communities is my final project in the Odin Project <strong>Ruby on Rails</strong> curriculum.
     It was inspired by Facebook, Meetup, and Stack Overflow.
   </DescriptionParagraph>
 </Grid>
 <Grid item>
-  <DescriptionParagraph variant={'body1'} ref={useScrollAnimation(0)} gutterBottom>
+  <DescriptionParagraph variant={'body1'} className="description scroll-in" gutterBottom>
     I wanted Dev Communities to enable developers to discover each other and form 
     communities they could engage in. In the end, I had to cut some of the features 
     to have the app in a working state in time for it to be presented to my local 
@@ -133,7 +132,7 @@ import useScrollAnimation from '../App/shared/useScrollAnimation';
   </DescriptionParagraph>
 </Grid>
 <Grid item>
-  <DescriptionParagraph variant={'body1'} ref={useScrollAnimation(0)} gutterBottom>
+  <DescriptionParagraph variant={'body1'} className="description scroll-in" gutterBottom>
     I struggled the most with developing
     a notifications system for the application, but I thouroughly enjoyed
     modeling the data relationships that power its main features.

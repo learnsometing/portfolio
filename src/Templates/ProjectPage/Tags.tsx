@@ -7,6 +7,8 @@ import Grid from '@material-ui/core/Grid';
 import { SectionHeading } from './ProjectPage';
 import Tag from './Tag';
 
+import { useFadeInAnimation } from '../../App/shared/animationHooks';
+
 interface Props {
   tags: string[];
 }
@@ -22,11 +24,17 @@ const TagContainer = styled(Grid)`
 const Tags: React.FC<Props> = ({ tags }) => (
   <>
     <Grid item>
-      <SectionHeading>Tags</SectionHeading>
+      <SectionHeading className="tags scroll-in">Tags</SectionHeading>
     </Grid>
-    <TagContainer item container spacing={2} justify={'center'}>
+    <TagContainer
+      item
+      container
+      spacing={2}
+      justify={'center'}
+      ref={useFadeInAnimation(0.1, '.tags', false)}
+    >
       {tags.map((tag) => (
-        <Grid key={tag} item>
+        <Grid key={tag} item className="tags fade-in">
           <Tag text={tag} />
         </Grid>
       ))}
