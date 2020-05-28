@@ -75,7 +75,7 @@ const Portfolio: React.FC<Props> = ({
   const [displayedProjects, setDisplayedProjectCards] = useState(allProjects);
 
   const [portfolioRef, portfolioInView] = useInView({
-    threshold: 0.1,
+    threshold: 0.3,
     triggerOnce: true,
   });
   const hasAnimated = useRef(false);
