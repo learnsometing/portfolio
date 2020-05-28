@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { useInView } from 'react-intersection-observer';
 
 import Grid from '@material-ui/core/Grid';
 
+import Section from '../../App/shared/Section';
 import { SectionHeading } from './ProjectPage';
 import Tag from './Tag';
 
-import { useFadeInAnimation } from '../../App/shared/animationHooks';
+// Animations
+import { slideUp, fadeIn } from '../../App/shared/animations';
 
 interface Props {
   tags: string[];
 }
+
+const TagsSection = styled(Section)`
+  min-height: 220px;
+  @media screen and (min-width: 1280px) {
+    margin-left: ${(props): string => props.theme.spacing(6)};
+  }
+`;
 
 const TagContainer = styled(Grid)`
   padding-bottom: ${(props): string => props.theme.spacing(4)};
@@ -21,26 +31,60 @@ const TagContainer = styled(Grid)`
   }
 `;
 
-const Tags: React.FC<Props> = ({ tags }) => (
-  <>
-    <Grid item>
-      <SectionHeading className="tags scroll-in">Tags</SectionHeading>
-    </Grid>
-    <TagContainer
-      item
-      container
-      spacing={2}
-      justify={'center'}
-      ref={useFadeInAnimation(0.4, '.tags', false)}
-    >
-      {tags.map((tag) => (
-        <Grid key={tag} item className="tags fade-in">
-          <Tag text={tag} />
-        </Grid>
-      ))}
-    </TagContainer>
-  </>
-);
+const Tags: React.FC<Props> = ({ tags }) => {
+  const [tagsRef, tagsInView] = useInView({
+    threshold: 0.5,
+    triggerOnce: true,
+  });
+
+  useEffect(() => {
+    if (tagsInView) {
+      slideUp('.tags', 0.2);
+    }
+  }, [tagsInView]);
+
+  const [tagContainerRef, tagContainerInView] = useInView({
+    threshold: 0.5,
+    triggerOnce: true,
+  });
+
+  const delay = 0;
+
+  useEffect(() => {
+    if (tagContainerInView) {
+      fadeIn('.tag', delay);
+    }
+  }, [tagContainerInView]);
+
+  return (
+    <TagsSection ref={tagsRef}>
+      {tagsInView ? (
+        <>
+          <SectionHeading className="tags scroll-in">Tags</SectionHeading>
+          <TagContainer
+            item
+            container
+            spacing={2}
+            justify={'center'}
+            ref={tagContainerRef}
+          >
+            {tagContainerInView ? (
+              tags.map((tag) => (
+                <Grid key={tag} item className="tag fade-in">
+                  <Tag text={tag} />
+                </Grid>
+              ))
+            ) : (
+              <></>
+            )}
+          </TagContainer>
+        </>
+      ) : (
+        <></>
+      )}
+    </TagsSection>
+  );
+};
 
 Tags.propTypes = {
   tags: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,

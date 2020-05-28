@@ -1,6 +1,4 @@
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core';
-import 'typeface-roboto';
-import 'typeface-aleo';
 import scTheme from './SCTheme';
 
 const theme = createMuiTheme({

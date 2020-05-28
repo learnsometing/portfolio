@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { useInView } from 'react-intersection-observer';
 
 // Material-UI
 import BottomNavigation from '@material-ui/core/BottomNavigation';
@@ -28,8 +29,7 @@ import {
 import { RootState } from '../../state/createStore';
 import { TagMap } from '../../helpers/getTagCounts';
 
-// Hooks
-import { useSlideInAnimation } from '../shared/animationHooks';
+import { slideUp } from '../shared/animations';
 
 const MobileWrapper = styled.div`
   @media only screen and (min-width: 1280px) {
@@ -53,6 +53,10 @@ const Navbar = styled(Paper).attrs({
   }
 `;
 
+const PortfolioSection = styled(Section)`
+  min-height: 100vh;
+`;
+
 interface Props {
   allProjects: Project[];
   allProjectTags: string[][];
@@ -69,6 +73,11 @@ const Portfolio: React.FC<Props> = ({
   order,
 }) => {
   const [displayedProjects, setDisplayedProjectCards] = useState(allProjects);
+
+  const [portfolioRef, portfolioInView] = useInView({
+    threshold: 0.3,
+    triggerOnce: true,
+  });
   const hasAnimated = useRef(false);
 
   useEffect(() => {
@@ -82,40 +91,42 @@ const Portfolio: React.FC<Props> = ({
     }
   }, [appliedFilters]);
 
+  useEffect(() => {
+    if (portfolioInView) {
+      slideUp('.projects', 0.2);
+    }
+  }, [portfolioInView]);
+
   return (
     <ThemeProvider theme={theme}>
-      <Section id="portfolio">
-        <Container
-          maxWidth={'lg'}
-          ref={useSlideInAnimation(0.1, '.projects', true)}
-        >
-          {/* Will be shown on mobile */}
-          <MobileWrapper>
-            <AppliedFilters />
-          </MobileWrapper>
-          {/*  */}
+      <PortfolioSection id="portfolio" ref={portfolioRef}>
+        {portfolioInView ? (
+          <Container maxWidth={'lg'}>
+            <MobileWrapper>
+              <AppliedFilters />
+            </MobileWrapper>
 
-          {/* Projects */}
-          <Grid container justify={'center'}>
-            {/* Will be hidden on mobile */}
-            <FiltersSidebar
-              allProjectTags={allProjectTags}
-              tagCounts={tagCounts}
-            />
-            {/*  */}
+            <Grid container justify={'center'}>
+              <FiltersSidebar
+                allProjectTags={allProjectTags}
+                tagCounts={tagCounts}
+              />
 
-            <Projects
-              hasAnimated={hasAnimated.current}
-              projects={displayedProjects}
-              order={order}
-            />
-          </Grid>
-        </Container>
+              <Projects
+                hasAnimated={hasAnimated.current}
+                projects={displayedProjects}
+                order={order}
+              />
+            </Grid>
+          </Container>
+        ) : (
+          <></>
+        )}
         <BottomNavigation component={Navbar} showLabels>
           <FilterAction allProjectTags={allProjectTags} tagCounts={tagCounts} />
           <MenuAction />
         </BottomNavigation>
-      </Section>
+      </PortfolioSection>
     </ThemeProvider>
   );
 };

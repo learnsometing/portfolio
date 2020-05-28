@@ -23,8 +23,8 @@ import { FaGithub } from 'react-icons/fa';
 import Layout from '../../App/Layout/Layout';
 import SEO from '../../App/SEO/SEO';
 import Navigation from '../../App/shared/Navigation';
-import Carousel from '../../App/Carousel/Carousel';
-import DescriptionContent from './Description';
+import Gallery from './Gallery';
+import Description from './Description';
 import Tags from './Tags';
 import Contact from '../../App/Contact/Contact';
 import Section from '../../App/shared/Section';
@@ -32,9 +32,6 @@ import MenuAction from '../../App/shared/BottomNavigation/MenuAction';
 
 // Interfaces
 import { Slide } from '../../App/Carousel/Carousel';
-
-// Hooks
-import { useSlideInAnimation } from '../../App/shared/animationHooks';
 
 interface Mdx {
   mdx: {
@@ -109,12 +106,6 @@ const DescriptionParagraph = styled(Typography).attrs({
   }
 `;
 
-const TechTags = styled(Section)`
-  @media screen and (min-width: 1280px) {
-    margin-left: ${(props): string => props.theme.spacing(6)};
-  }
-`;
-
 const shortcodes = { DescriptionParagraph, Grid };
 
 const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
@@ -161,26 +152,15 @@ const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
               </Grid>
             </ProjectLinks>
           </Section>
-          <Section ref={useSlideInAnimation(0.1, '.description', true)}>
-            <MDXProvider components={shortcodes}>
-              <DescriptionContent description={mdx.body} />
-            </MDXProvider>
-          </Section>
-
+          <MDXProvider components={shortcodes}>
+            <Description description={mdx.body} />
+          </MDXProvider>
           <Grid container justify={'center'}>
             <Grid item xs={12} sm={12} md={8} lg={8} xl={8}>
-              <Section ref={useSlideInAnimation(0.1, '.gallery', true)}>
-                <SectionHeading className="gallery scroll-in">
-                  Gallery
-                </SectionHeading>
-                <Carousel slides={frontmatter.carouselPhotos} />
-              </Section>
+              <Gallery slides={frontmatter.carouselPhotos} />
             </Grid>
-
             <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
-              <TechTags ref={useSlideInAnimation(0.1, '.tags', true)}>
-                <Tags tags={frontmatter.tags} />
-              </TechTags>
+              <Tags tags={frontmatter.tags} />
             </Grid>
           </Grid>
         </Container>
