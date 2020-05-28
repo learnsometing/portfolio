@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
+import { useInView } from 'react-intersection-observer';
 
 // Material-UI
 import Grid from '@material-ui/core/Grid';
@@ -12,8 +13,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import ChildImageSharp from '../shared/ChildImageSharp';
 
-// Hooks
-import { useFadeInAnimation } from '../shared/animationHooks';
+import { fadeIn } from '../shared/animations';
 
 interface Image {
   src: ChildImageSharp;
@@ -43,6 +43,21 @@ const ProjectLink = styled(Link)`
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ content, hasAnimated }) => {
   const { title, path, cardText, cardPhoto } = content;
+
+  const [projectCardRef, projectCardInView] = useInView({
+    threshold: 0.1,
+    triggerOnce: true,
+  });
+
+  let delay = 0.75;
+
+  useEffect(() => {
+    if (hasAnimated) delay = 0;
+    if (projectCardInView) {
+      fadeIn('.projectCards', delay);
+    }
+  }, [projectCardInView]);
+
   return (
     <Grid
       component="article"
@@ -52,7 +67,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ content, hasAnimated }) => {
       md={6}
       sm={6}
       xs={12}
-      ref={useFadeInAnimation(0.1, '.projectCards', hasAnimated)}
+      ref={projectCardRef}
       className="projectCards fade-in"
     >
       <ProjectLink to={path}>

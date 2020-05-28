@@ -19,7 +19,7 @@ export const useSlideInAnimation = (
     });
   }
 
-  return ref;
+  return [ref, inView];
 };
 
 export const useFadeInAnimation = (
