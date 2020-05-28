@@ -19,7 +19,7 @@ const Footer = styled(Section).attrs({
   as: 'footer',
 })`
   background-color: ${(props): string => props.theme.bgLightened};
-  min-height: 100px;
+  min-height: 370px;
 `;
 
 const ContactSection = styled(Grid).attrs({
@@ -75,7 +75,7 @@ Icon.propTypes = {
 
 const Contact: React.FC = () => {
   const [contactRef, contactInView] = useInView({
-    threshold: 0.5,
+    threshold: 0.25,
     triggerOnce: true,
   });
 

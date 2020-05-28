@@ -19,7 +19,7 @@ interface Props {
 
 const Gallery: React.FC<Props> = ({ slides }) => {
   const [galleryRef, galleryInView] = useInView({
-    threshold: 0.9,
+    threshold: 0.5,
     triggerOnce: true,
   });
 
