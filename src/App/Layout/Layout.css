@@ -610,3 +610,12 @@ pre tt:after {
     font-size: 100%;
   }
 }
+
+.scroll-in {
+  transform: translateY(100px);
+  opacity: 0;
+}
+
+.fade-in {
+  opacity: 0;
+}

@@ -14,13 +14,8 @@ import { RootState } from '../../state/createStore';
 import { getSortingOrder } from '../../state/portfolio/selectors';
 import { changeSortingOrder } from '../../state/portfolio/actions';
 
-// Hooks
-import useScrollAnimation from '../shared/useScrollAnimation';
-
 const SortContainer = styled(Grid)`
   padding: ${(props): string => props.theme.spacing(4)} 0;
-  transform: translateY(100px);
-  opacity: 0;
   @media screen and (min-width: 1280px) {
     padding: ${(props): string =>
       `${props.theme.spacing(2)} ${props.theme.spacing(4)}`};
@@ -67,7 +62,7 @@ const SortMenu: React.FC<Props> = ({
       justify={'space-between'}
       alignItems={'center'}
       item
-      ref={useScrollAnimation(0)}
+      className="projects scroll-in"
     >
       <Typography variant={'h2'} component={'h2'}>
         {projectCount

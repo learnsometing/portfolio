@@ -14,7 +14,9 @@ interface Props {
 const Description: React.FC<Props> = ({ description }) => (
   <>
     <Grid item>
-      <SectionHeading>Description</SectionHeading>
+      <SectionHeading className="description scroll-in">
+        Description
+      </SectionHeading>
     </Grid>
     <MDXRenderer>{description}</MDXRenderer>
   </>

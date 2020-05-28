@@ -15,7 +15,7 @@ import Section from '../shared/Section';
 import scTheme from '../shared/SCTheme';
 
 // Hooks
-import useScrollAnimation from '../shared/useScrollAnimation';
+import { useSlideInAnimation } from '../shared/animationHooks';
 
 const Footer = styled(Section).attrs({
   as: 'footer',
@@ -34,8 +34,6 @@ const ContactSection = styled(Grid).attrs({
   alignItems: 'center',
 })`
   padding: ${(props): string => props.theme.spacing(4)};
-  transform: translateY(100px);
-  opacity: 0;
 `;
 
 const ContactSectionHeading = styled(Typography).attrs({
@@ -79,9 +77,12 @@ Icon.propTypes = {
 const Contact: React.FC = () => {
   return (
     <Footer id="contact">
-      <Container maxWidth={'lg'}>
+      <Container
+        maxWidth={'lg'}
+        ref={useSlideInAnimation(0.2, '.contact', true)}
+      >
         <Grid container>
-          <ContactSection ref={useScrollAnimation(0)}>
+          <ContactSection className="contact scroll-in">
             <ContactSectionHeading>
               Let&#39;s get in touch
             </ContactSectionHeading>
@@ -96,13 +97,13 @@ const Contact: React.FC = () => {
             </ContactButton>
           </ContactSection>
 
-          <ContactSection ref={useScrollAnimation(0)}>
+          <ContactSection className="contact scroll-in">
             <ContactSectionHeading>More Code</ContactSectionHeading>
             <ContactButton href="https://github.com/learnsometing">
               Visit my github profile
             </ContactButton>
           </ContactSection>
-          <ContactSection ref={useScrollAnimation(0)}>
+          <ContactSection className="contact scroll-in">
             <ContactSectionHeading>Social</ContactSectionHeading>
             <Grid item container justify={'center'} spacing={1}>
               <Grid item>
@@ -129,7 +130,11 @@ const Contact: React.FC = () => {
           </ContactSection>
         </Grid>
 
-        <CopyrightNotice variant={'body2'} align={'center'}>
+        <CopyrightNotice
+          variant={'body2'}
+          align={'center'}
+          className="contact scroll-in"
+        >
           &#169; {new Date().getFullYear()} Brian Monaccio
         </CopyrightNotice>
       </Container>
