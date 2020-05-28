@@ -25,7 +25,7 @@ const Description: React.FC<Props> = ({ description }) => {
 
   useEffect(() => {
     if (descriptionInView) {
-      slideUp('.description');
+      slideUp('.description', 0.6);
     }
   }, [descriptionInView]);
 

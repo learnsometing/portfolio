@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { useInView } from 'react-intersection-observer';
 
@@ -8,24 +9,28 @@ import Carousel, { Slide } from '../../App/Carousel/Carousel';
 
 import { slideUp } from '../../App/shared/animations';
 
+const GallerySection = styled(Section)`
+  min-height: 420px;
+`;
+
 interface Props {
   slides: Slide[];
 }
 
 const Gallery: React.FC<Props> = ({ slides }) => {
   const [galleryRef, galleryInView] = useInView({
-    threshold: 0.5,
+    threshold: 0.9,
     triggerOnce: true,
   });
 
   useEffect(() => {
     if (galleryInView) {
-      slideUp('.gallery');
+      slideUp('.gallery', 0.2);
     }
   }, [galleryInView]);
 
   return (
-    <Section ref={galleryRef}>
+    <GallerySection ref={galleryRef}>
       {galleryInView ? (
         <>
           <SectionHeading className="gallery scroll-in">Gallery</SectionHeading>
@@ -34,7 +39,7 @@ const Gallery: React.FC<Props> = ({ slides }) => {
       ) : (
         <></>
       )}
-    </Section>
+    </GallerySection>
   );
 };
 

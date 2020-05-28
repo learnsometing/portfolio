@@ -93,7 +93,7 @@ const Portfolio: React.FC<Props> = ({
 
   useEffect(() => {
     if (portfolioInView) {
-      slideUp('.projects');
+      slideUp('.projects', 0.2);
     }
   }, [portfolioInView]);
 

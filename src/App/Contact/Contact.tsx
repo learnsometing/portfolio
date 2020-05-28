@@ -81,7 +81,7 @@ const Contact: React.FC = () => {
 
   useEffect(() => {
     if (contactInView) {
-      slideUp('.contact');
+      slideUp('.contact', 0.2);
     }
   }, [contactInView]);
 

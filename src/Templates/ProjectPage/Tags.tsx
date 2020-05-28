@@ -17,6 +17,7 @@ interface Props {
 }
 
 const TagsSection = styled(Section)`
+  min-height: 220px;
   @media screen and (min-width: 1280px) {
     margin-left: ${(props): string => props.theme.spacing(6)};
   }
@@ -38,7 +39,7 @@ const Tags: React.FC<Props> = ({ tags }) => {
 
   useEffect(() => {
     if (tagsInView) {
-      slideUp('.tags');
+      slideUp('.tags', 0.2);
     }
   }, [tagsInView]);
 
@@ -57,24 +58,30 @@ const Tags: React.FC<Props> = ({ tags }) => {
 
   return (
     <TagsSection ref={tagsRef}>
-      <SectionHeading className="tags scroll-in">Tags</SectionHeading>
-      <TagContainer
-        item
-        container
-        spacing={2}
-        justify={'center'}
-        ref={tagContainerRef}
-      >
-        {tagContainerInView ? (
-          tags.map((tag) => (
-            <Grid key={tag} item className="tag fade-in">
-              <Tag text={tag} />
-            </Grid>
-          ))
-        ) : (
-          <></>
-        )}
-      </TagContainer>
+      {tagsInView ? (
+        <>
+          <SectionHeading className="tags scroll-in">Tags</SectionHeading>
+          <TagContainer
+            item
+            container
+            spacing={2}
+            justify={'center'}
+            ref={tagContainerRef}
+          >
+            {tagContainerInView ? (
+              tags.map((tag) => (
+                <Grid key={tag} item className="tag fade-in">
+                  <Tag text={tag} />
+                </Grid>
+              ))
+            ) : (
+              <></>
+            )}
+          </TagContainer>
+        </>
+      ) : (
+        <></>
+      )}
     </TagsSection>
   );
 };

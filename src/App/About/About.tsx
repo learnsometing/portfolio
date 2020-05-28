@@ -41,7 +41,7 @@ const About: React.FC = () => {
 
   useEffect(() => {
     if (aboutInView) {
-      slideUp('.about');
+      slideUp('.about', 0.6);
     }
   }, [aboutInView]);
 

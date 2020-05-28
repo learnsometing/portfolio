@@ -1,13 +1,13 @@
 import gsap from 'gsap';
 
-export const slideUp = (element: string): void => {
+export const slideUp = (element: string, staggerAmount: number): void => {
   gsap.to(element, {
     duration: 0.5,
     opacity: 1,
     y: 0,
     ease: 'power2.out',
     stagger: {
-      amount: 0.6,
+      amount: staggerAmount,
     },
   });
 };
