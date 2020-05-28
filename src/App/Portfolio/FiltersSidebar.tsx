@@ -25,9 +25,6 @@ import { RootState } from '../../state/createStore';
 import { getAppliedFilters } from '../../state/portfolio/selectors';
 import { addFilter, removeFilter } from '../../state/portfolio/actions';
 
-// Hooks
-import useScrollAnimation from '../shared/useScrollAnimation';
-
 const Sidebar = styled(Grid).attrs({
   component: 'aside',
 })`
@@ -42,8 +39,6 @@ const Sidebar = styled(Grid).attrs({
 const SidebarHeading = styled(Typography)`
   padding: ${(props): string => props.theme.spacing(1)} 0;
   margin-bottom: ${(props): string => props.theme.spacing(2)};
-  transform: translateY(100px);
-  opacity: 0;
 `;
 
 const SidebarContentWrapper = styled.div`
@@ -55,8 +50,6 @@ const StyledFormGroup = styled(FormGroup)`
   overflow-y: auto;
   padding: ${(props): string => props.theme.spacing(4)} 0;
   padding-left: ${(props): string => props.theme.spacing(3)};
-  transform: translateY(100px);
-  opacity: 0;
 `;
 
 const StyledFormControlLabel = styled(FormControlLabel)`
@@ -102,12 +95,12 @@ const FiltersSidebar: React.FC<Props> = ({
         <SidebarHeading
           variant={'h2'}
           align={'center'}
-          ref={useScrollAnimation(0)}
+          className="projects scroll-in"
         >
           Filter
         </SidebarHeading>
         <AppliedFilters />
-        <StyledFormGroup ref={useScrollAnimation(0)}>
+        <StyledFormGroup className="projects scroll-in">
           <FormControl component={'fieldset'}>
             {Object.entries(currentTagCounts).map(([filter, count]) => (
               <StyledFormControlLabel

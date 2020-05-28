@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import useScrollAnimation from '../shared/useScrollAnimation';
+import { useSlideInAnimation } from '../shared/animationHooks';
 
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
@@ -29,66 +29,45 @@ const AboutSection = styled(Section)`
   }
 `;
 
-const AnimatedTypography = styled(Typography)`
-  transform: translateY(100px);
-  opacity: 0;
-`;
-
 const About: React.FC = () => {
   return (
-    <AboutSection id="about">
-      <Container maxWidth={'lg'}>
+    <Container maxWidth={'lg'} ref={useSlideInAnimation(0.5, '.about', true)}>
+      <AboutSection id="about">
         <Avatar />
-        <AnimatedTypography
-          variant={'h2'}
-          gutterBottom
-          ref={useScrollAnimation(0)}
-        >
+        <Typography variant={'h2'} gutterBottom className="about scroll-in">
           Hello 🖖
-        </AnimatedTypography>
-        <AnimatedTypography
+        </Typography>
+        <Typography
           variant={'h4'}
           component={'p'}
           gutterBottom
-          ref={useScrollAnimation(0)}
+          className="about scroll-in"
         >
           I’m Brian Monaccio, a self-taught frontend developer and JavaScript
           specialist.
-        </AnimatedTypography>
-        <AnimatedTypography
-          variant={'body1'}
-          gutterBottom
-          ref={useScrollAnimation(0)}
-        >
+        </Typography>
+        <Typography variant={'body1'} gutterBottom className="about scroll-in">
           In January 2019 I left my career in the wine industry to pursue a more
           satisfying career in web development. In the past year, I&#39;ve
           immersed myself in web technologies and grown my appreciation for the
           richness and complexities of the sites that connect us.
-        </AnimatedTypography>
-        <AnimatedTypography
-          variant={'body1'}
-          gutterBottom
-          ref={useScrollAnimation(0)}
-        >
+        </Typography>
+        <Typography variant={'body1'} gutterBottom className="about scroll-in">
           My interest in frontend development was ignited by the realization
           that I had an opportunity to create things that could be used by
           millions of people every day. Now driven by the desire to implement
           elegant and effective websites, I spend my time developing React
           applications and practicing design with a focus on user experience.
-        </AnimatedTypography>
-        <AnimatedTypography
-          variant={'body1'}
-          gutterBottom
-          ref={useScrollAnimation(0)}
-        >
+        </Typography>
+        <Typography variant={'body1'} gutterBottom className="about scroll-in">
           The rest of my free time is spent gardening, cooking, eating, and
           drinking with my partner Arden and our pets Herbie 🦜 and Skipper 🐕.
           We recently moved to Beacon, NY where (hopefully soon) we can be found
           in the community garden, or at one of the many coffee shops and
           breweries in town.
-        </AnimatedTypography>
-      </Container>
-    </AboutSection>
+        </Typography>
+      </AboutSection>
+    </Container>
   );
 };
 

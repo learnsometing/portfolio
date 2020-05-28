@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -27,6 +27,9 @@ import {
 } from '../../state/portfolio/selectors';
 import { RootState } from '../../state/createStore';
 import { TagMap } from '../../helpers/getTagCounts';
+
+// Hooks
+import { useSlideInAnimation } from '../shared/animationHooks';
 
 const MobileWrapper = styled.div`
   @media only screen and (min-width: 1280px) {
@@ -66,30 +69,46 @@ const Portfolio: React.FC<Props> = ({
   order,
 }) => {
   const [displayedProjects, setDisplayedProjectCards] = useState(allProjects);
+  const hasAnimated = useRef(false);
+
   useEffect(() => {
     const filteredProjects = allProjects.filter((project) =>
       appliedFilters.every((val) => project.tags.includes(val))
     );
-
     setDisplayedProjectCards(filteredProjects);
+
+    if (appliedFilters.length && !hasAnimated.current) {
+      hasAnimated.current = true;
+    }
   }, [appliedFilters]);
 
   return (
     <ThemeProvider theme={theme}>
       <Section id="portfolio">
-        <Container maxWidth={'lg'}>
-          {/* */}
+        <Container
+          maxWidth={'lg'}
+          ref={useSlideInAnimation(0.1, '.projects', true)}
+        >
+          {/* Will be shown on mobile */}
           <MobileWrapper>
             <AppliedFilters />
           </MobileWrapper>
+          {/*  */}
 
           {/* Projects */}
           <Grid container justify={'center'}>
+            {/* Will be hidden on mobile */}
             <FiltersSidebar
               allProjectTags={allProjectTags}
               tagCounts={tagCounts}
             />
-            <Projects projects={displayedProjects} order={order} />
+            {/*  */}
+
+            <Projects
+              hasAnimated={hasAnimated.current}
+              projects={displayedProjects}
+              order={order}
+            />
           </Grid>
         </Container>
         <BottomNavigation component={Navbar} showLabels>

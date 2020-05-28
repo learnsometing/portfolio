@@ -38,9 +38,10 @@ export interface Frontmatter {
 interface Props {
   projects: Project[];
   order: string;
+  hasAnimated: boolean;
 }
 
-const Projects: React.FC<Props> = ({ projects, order }) => (
+const Projects: React.FC<Props> = ({ projects, order, hasAnimated }) => (
   <Grid item xs={12} sm={12} md={12} lg={9}>
     <SortMenu projectCount={projects.length} />
     <ProjectCardsWrapper>
@@ -48,10 +49,22 @@ const Projects: React.FC<Props> = ({ projects, order }) => (
         {order == 'DESC'
           ? projects
               .sort((a, b) => sortByDateDESC(a.date, b.date))
-              .map((card) => <ProjectCard key={card.title} content={card} />)
+              .map((card) => (
+                <ProjectCard
+                  key={card.title}
+                  content={card}
+                  hasAnimated={hasAnimated}
+                />
+              ))
           : projects
               .sort((a, b) => sortByDateASC(a.date, b.date))
-              .map((card) => <ProjectCard key={card.title} content={card} />)}
+              .map((card) => (
+                <ProjectCard
+                  key={card.title}
+                  content={card}
+                  hasAnimated={hasAnimated}
+                />
+              ))}
       </ProjectCards>
     </ProjectCardsWrapper>
   </Grid>
@@ -60,6 +73,7 @@ const Projects: React.FC<Props> = ({ projects, order }) => (
 Projects.propTypes = {
   projects: PropTypes.array.isRequired,
   order: PropTypes.string.isRequired,
+  hasAnimated: PropTypes.bool.isRequired,
 };
 
 export default Projects;

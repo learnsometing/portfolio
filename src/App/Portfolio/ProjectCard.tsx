@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import ChildImageSharp from '../shared/ChildImageSharp';
 
 // Hooks
-import useScrollAnimation from '../shared/useScrollAnimation';
+import { useFadeInAnimation } from '../shared/animationHooks';
 
 interface Image {
   src: ChildImageSharp;
@@ -34,31 +34,26 @@ export interface Project extends ProjectCardContent {
 
 interface ProjectCardProps {
   content: ProjectCardContent;
+  hasAnimated: boolean;
 }
 
 const ProjectLink = styled(Link)`
   text-decoration: none;
 `;
 
-const ProjectCardWrapper = styled(Grid).attrs({
-  component: 'article',
-})`
-  transform: translateY(100px);
-  opacity: 0;
-`;
-
-const ProjectCard: React.FC<ProjectCardProps> = ({ content }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ content, hasAnimated }) => {
   const { title, path, cardText, cardPhoto } = content;
-
   return (
-    <ProjectCardWrapper
+    <Grid
+      component="article"
       item
       xl={6}
       lg={6}
       md={6}
       sm={6}
       xs={12}
-      ref={useScrollAnimation(0)}
+      ref={useFadeInAnimation(0.1, '.projectCards', hasAnimated)}
+      className="projectCards fade-in"
     >
       <ProjectLink to={path}>
         <Card raised>
@@ -76,7 +71,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ content }) => {
           </CardActionArea>
         </Card>
       </ProjectLink>
-    </ProjectCardWrapper>
+    </Grid>
   );
 };
 
@@ -102,6 +97,7 @@ ProjectCard.propTypes = {
       altText: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+  hasAnimated: PropTypes.bool.isRequired,
 };
 
 export default ProjectCard;

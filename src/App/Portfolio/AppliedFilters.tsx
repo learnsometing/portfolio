@@ -14,13 +14,9 @@ import { RootState } from '../../state/createStore';
 import { getAppliedFilters } from '../../state/portfolio/selectors';
 import { removeFilter, clearFilters } from '../../state/portfolio/actions';
 
-import useScrollAnimation from '../shared/useScrollAnimation';
-
 const FiltersWrapper = styled.div`
   border-top: 1px solid ${(props): string => props.theme.textDarkened};
   border-bottom: 1px solid ${(props): string => props.theme.textDarkened};
-  transform: translateY(100px);
-  opacity: 0;
 `;
 
 const Filters = styled.div`
@@ -42,7 +38,7 @@ const AppliedFilters: React.FC<Props> = ({
   removeFilter,
   clearFilters,
 }) => (
-  <FiltersWrapper ref={useScrollAnimation(0)}>
+  <FiltersWrapper className="projects scroll-in">
     {appliedFilters && appliedFilters.length ? (
       <Filters>
         <Grid container spacing={3}>
