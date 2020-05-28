@@ -126,13 +126,10 @@ const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
         <Navigation />
         <SEO title={frontmatter.title} />
         <Container maxWidth={'lg'}>
-          <Section
-            as={'header'}
-            ref={useSlideInAnimation(0.1, '.header', true)}
-          >
+          <Section as={'header'}>
             <ProjectTitle>{frontmatter.title}</ProjectTitle>
             <ProjectLinks container spacing={2}>
-              <Grid item className="header scroll-in">
+              <Grid item>
                 <Link
                   href={frontmatter.websiteUrl}
                   target="_blank"
@@ -147,7 +144,7 @@ const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
                   </Button>
                 </Link>
               </Grid>
-              <Grid item className="header scroll-in">
+              <Grid item>
                 <Link
                   href={frontmatter.githubUrl}
                   target="_blank"

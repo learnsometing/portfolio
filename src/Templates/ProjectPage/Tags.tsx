@@ -31,7 +31,7 @@ const Tags: React.FC<Props> = ({ tags }) => (
       container
       spacing={2}
       justify={'center'}
-      ref={useFadeInAnimation(0.1, '.tags', false)}
+      ref={useFadeInAnimation(0.4, '.tags', false)}
     >
       {tags.map((tag) => (
         <Grid key={tag} item className="tags fade-in">
