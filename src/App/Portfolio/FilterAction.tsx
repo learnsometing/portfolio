@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { MdFilterList } from 'react-icons/md';
+import { MdFilterList } from '@react-icons/all-files/md/MdFilterList';
 import PropTypes from 'prop-types';
 
 // Material-UI

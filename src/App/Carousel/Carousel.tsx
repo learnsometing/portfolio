@@ -13,7 +13,8 @@ import Button from '@material-ui/core/Button';
 import SwipeableViews from 'react-swipeable-views';
 
 //Icons
-import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from 'react-icons/md';
+import { MdKeyboardArrowRight } from '@react-icons/all-files/md/MdKeyboardArrowRight';
+import { MdKeyboardArrowLeft } from '@react-icons/all-files/md/MdKeyboardArrowLeft';
 
 // Interfaces
 import ChildImageSharp from '../shared/ChildImageSharp';

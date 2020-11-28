@@ -7,9 +7,10 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
-import { IconContext } from 'react-icons';
-import { MdMail } from 'react-icons/md';
-import { FaTwitterSquare, FaInstagramSquare } from 'react-icons/fa';
+import { IconContext } from '@react-icons/all-files';
+import { MdMail } from '@react-icons/all-files/md/MdMail';
+import { FaTwitterSquare} from '@react-icons/all-files/fa/FaTwitterSquare';
+import { FaInstagramSquare } from '@react-icons/all-files/fa/FaInstagramSquare';
 
 import Section from '../shared/Section';
 import scTheme from '../shared/SCTheme';
