@@ -611,12 +611,6 @@ pre tt:after {
   }
 }
 
-.scroll-in {
-  opacity: 0;
-  transform: translateY(100px);
-  will-change: opacity;
-}
-
 .fade-in {
   opacity: 0;
 }

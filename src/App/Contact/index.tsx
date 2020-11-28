@@ -1,7 +1,6 @@
-import React, { ReactNode, useEffect } from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { useInView } from 'react-intersection-observer';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
@@ -14,7 +13,6 @@ import { FaInstagramSquare } from '@react-icons/all-files/fa/FaInstagramSquare';
 
 import Section from '../shared/Section';
 import scTheme from '../shared/SCTheme';
-import { slideUp } from '../shared/animations';
 
 const Footer = styled(Section).attrs({
   as: 'footer',
@@ -75,81 +73,62 @@ Icon.propTypes = {
 };
 
 const Contact: React.FC = () => {
-  const [contactRef, contactInView] = useInView({
-    threshold: 0.25,
-    triggerOnce: true,
-  });
-
-  useEffect(() => {
-    if (contactInView) {
-      slideUp('.contact', 0.2);
-    }
-  }, [contactInView]);
-
   return (
-    <Footer id="contact" ref={contactRef}>
-      {contactInView ? (
-        <Container maxWidth={'lg'}>
-          <Grid container>
-            <ContactSection className="contact scroll-in">
-              <ContactSectionHeading>
-                Let&#39;s get in touch
-              </ContactSectionHeading>
-              <ContactButton
-                href="mailto:brianmonaccio@protonmail.com"
-                endIcon={<MdMail />}
-              >
-                Send me an email
-              </ContactButton>
-              <ContactButton href="https://www.linkedin.com/in/brian-monaccio/">
-                Connect with me on Linkedin
-              </ContactButton>
-            </ContactSection>
+    <Footer id="contact">
+      <Container maxWidth={'lg'}>
+        <Grid container>
+          <ContactSection>
+            <ContactSectionHeading>
+              Let&#39;s get in touch
+            </ContactSectionHeading>
+            <ContactButton
+              href="mailto:brianmonaccio@protonmail.com"
+              endIcon={<MdMail />}
+            >
+              Send me an email
+            </ContactButton>
+            <ContactButton href="https://www.linkedin.com/in/brian-monaccio/">
+              Connect with me on Linkedin
+            </ContactButton>
+          </ContactSection>
 
-            <ContactSection className="contact scroll-in">
-              <ContactSectionHeading>More Code</ContactSectionHeading>
-              <ContactButton href="https://github.com/learnsometing">
-                Visit my github profile
-              </ContactButton>
-            </ContactSection>
-            <ContactSection className="contact scroll-in">
-              <ContactSectionHeading>Social</ContactSectionHeading>
-              <Grid item container justify={'center'} spacing={1}>
-                <Grid item>
-                  <a
-                    href="https://www.instagram.com/learnsometing/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title="link to Brian's instagram account"
-                  >
-                    <Icon icon={<FaInstagramSquare />} />
-                  </a>
-                </Grid>
-                <Grid item>
-                  <a
-                    href="https://twitter.com/brianmonaccio"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title="link to Brian's twitter account"
-                  >
-                    <Icon icon={<FaTwitterSquare />} />
-                  </a>
-                </Grid>
+          <ContactSection>
+            <ContactSectionHeading>More Code</ContactSectionHeading>
+            <ContactButton href="https://github.com/learnsometing">
+              Visit my github profile
+            </ContactButton>
+          </ContactSection>
+          <ContactSection>
+            <ContactSectionHeading>Social</ContactSectionHeading>
+            <Grid item container justify={'center'} spacing={1}>
+              <Grid item>
+                <a
+                  href="https://www.instagram.com/learnsometing/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="link to Brian's instagram account"
+                >
+                  <Icon icon={<FaInstagramSquare />} />
+                </a>
               </Grid>
-            </ContactSection>
-          </Grid>
+              <Grid item>
+                <a
+                  href="https://twitter.com/brianmonaccio"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="link to Brian's twitter account"
+                >
+                  <Icon icon={<FaTwitterSquare />} />
+                </a>
+              </Grid>
+            </Grid>
+          </ContactSection>
+        </Grid>
 
-          <CopyrightNotice
-            variant={'body2'}
-            align={'center'}
-            className="contact scroll-in"
-          >
-            &#169; {new Date().getFullYear()} Brian Monaccio
-          </CopyrightNotice>
-        </Container>
-      ) : (
-        <> </>
-      )}
+        <CopyrightNotice variant={'body2'} align={'center'}>
+          &#169; {new Date().getFullYear()} Brian Monaccio
+        </CopyrightNotice>
+      </Container>
     </Footer>
   );
 };
