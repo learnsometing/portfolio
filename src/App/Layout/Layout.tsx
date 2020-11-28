@@ -11,6 +11,8 @@ import PropTypes from 'prop-types';
 import './Layout.css';
 import { ThemeProvider as StyledComponentsThemeProvider } from 'styled-components';
 import scTheme from '../shared/SCTheme';
+import { ThemeProvider } from '@material-ui/core';
+import theme from '../shared/MUITheme';
 
 // Components
 import Contact from '../Contact';
@@ -20,10 +22,12 @@ interface Props {
 }
 
 const Layout: React.FC<Props> = ({ children }) => (
-  <StyledComponentsThemeProvider theme={scTheme}>
-    <main>{children}</main>
-    <Contact />
-  </StyledComponentsThemeProvider>
+  <ThemeProvider theme={theme}>
+    <StyledComponentsThemeProvider theme={scTheme}>
+      <main>{children}</main>
+      <Contact />
+    </StyledComponentsThemeProvider>
+  </ThemeProvider>
 );
 
 Layout.propTypes = {

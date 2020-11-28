@@ -11,8 +11,6 @@ import getTagCounts from '../helpers/getTagCounts';
 // Components
 import Layout from '../App/Layout/Layout';
 import Portfolio from '../App/Portfolio';
-import { ThemeProvider } from '@material-ui/core';
-import theme from '../App/shared/MUITheme';
 
 interface Props {
   data: {
@@ -42,15 +40,13 @@ const PortfolioPage: React.FC<Props> = ({ data: { allMdx } }) => {
   const tagCounts = getTagCounts(allProjectTags);
 
   return (
-    <ThemeProvider theme={theme}>
-      <Layout>
-        <Portfolio
-          allProjects={allProjects}
-          allProjectTags={allProjectTags}
-          tagCounts={tagCounts}
-        />
-      </Layout>
-    </ThemeProvider>
+    <Layout>
+      <Portfolio
+        allProjects={allProjects}
+        allProjectTags={allProjectTags}
+        tagCounts={tagCounts}
+      />
+    </Layout>
   );
 };
 

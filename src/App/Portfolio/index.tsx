@@ -8,8 +8,6 @@ import BottomNavigation from '@material-ui/core/BottomNavigation';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import { ThemeProvider } from '@material-ui/core';
-import theme from '../shared/MUITheme';
 
 // Components
 import MenuAction from '../shared/BottomNavigation/MenuAction';
@@ -98,7 +96,7 @@ const Portfolio: React.FC<Props> = ({
   }, [portfolioInView]);
 
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <PortfolioSection id="portfolio" ref={portfolioRef}>
         {portfolioInView ? (
           <Container maxWidth={'lg'}>
@@ -127,7 +125,7 @@ const Portfolio: React.FC<Props> = ({
           <MenuAction />
         </BottomNavigation>
       </PortfolioSection>
-    </ThemeProvider>
+    </>
   );
 };
 

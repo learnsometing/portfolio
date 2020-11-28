@@ -12,8 +12,6 @@ import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { ThemeProvider } from '@material-ui/core';
-import theme from '../../App/shared/MUITheme';
 
 // Icons
 import { TiArrowForward } from '@react-icons/all-files/ti/TiArrowForward';
@@ -111,63 +109,61 @@ const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
   const { frontmatter } = mdx;
 
   return (
-    <ThemeProvider theme={theme}>
-      <Layout>
-        <Navigation />
-        <SEO title={frontmatter.title} />
-        <Container maxWidth={'lg'}>
-          <Section as={'header'}>
-            <ProjectTitle>{frontmatter.title}</ProjectTitle>
-            <ProjectLinks container spacing={2}>
-              <Grid item>
-                <Link
-                  href={frontmatter.websiteUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+    <Layout>
+      <Navigation />
+      <SEO title={frontmatter.title} />
+      <Container maxWidth={'lg'}>
+        <Section as={'header'}>
+          <ProjectTitle>{frontmatter.title}</ProjectTitle>
+          <ProjectLinks container spacing={2}>
+            <Grid item>
+              <Link
+                href={frontmatter.websiteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  color={'primary'}
+                  variant={'contained'}
+                  endIcon={<TiArrowForward />}
                 >
-                  <Button
-                    color={'primary'}
-                    variant={'contained'}
-                    endIcon={<TiArrowForward />}
-                  >
-                    Visit
-                  </Button>
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link
-                  href={frontmatter.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  Visit
+                </Button>
+              </Link>
+            </Grid>
+            <Grid item>
+              <Link
+                href={frontmatter.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  color={'primary'}
+                  variant={'contained'}
+                  endIcon={<FaGithub />}
                 >
-                  <Button
-                    color={'primary'}
-                    variant={'contained'}
-                    endIcon={<FaGithub />}
-                  >
-                    Github
-                  </Button>
-                </Link>
-              </Grid>
-            </ProjectLinks>
-          </Section>
-          <MDXProvider components={shortcodes}>
-            <Description description={mdx.body} />
-          </MDXProvider>
-          <Grid container justify={'center'}>
-            <Grid item xs={12} sm={12} md={8} lg={8} xl={8}>
-              <Gallery slides={frontmatter.carouselPhotos} />
+                  Github
+                </Button>
+              </Link>
             </Grid>
-            <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
-              <Tags tags={frontmatter.tags} />
-            </Grid>
+          </ProjectLinks>
+        </Section>
+        <MDXProvider components={shortcodes}>
+          <Description description={mdx.body} />
+        </MDXProvider>
+        <Grid container justify={'center'}>
+          <Grid item xs={12} sm={12} md={8} lg={8} xl={8}>
+            <Gallery slides={frontmatter.carouselPhotos} />
           </Grid>
-        </Container>
-        <BottomNavigation component={CondensedNavbar} showLabels>
-          <MenuAction />
-        </BottomNavigation>
-      </Layout>
-    </ThemeProvider>
+          <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
+            <Tags tags={frontmatter.tags} />
+          </Grid>
+        </Grid>
+      </Container>
+      <BottomNavigation component={CondensedNavbar} showLabels>
+        <MenuAction />
+      </BottomNavigation>
+    </Layout>
   );
 };
 
