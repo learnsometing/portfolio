@@ -4,19 +4,23 @@ import PropTypes from 'prop-types';
 import { useInView } from 'react-intersection-observer';
 
 // Material-UI
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
+import {
+  BottomNavigation,
+  Box,
+  Container,
+  Grid,
+  Paper,
+} from '@material-ui/core';
 
 // Components
-import MenuAction from '../shared/BottomNavigation/MenuAction';
+import AppliedFilters from './AppliedFilters';
 import FilterAction from './FilterAction';
+import FiltersSidebar from './FiltersSidebar';
 import Projects from './Projects';
 import { Project } from './ProjectCard';
-import AppliedFilters from './AppliedFilters';
-import FiltersSidebar from './FiltersSidebar';
+import MenuAction from '../shared/BottomNavigation/MenuAction';
 import Section from '../shared/Section';
+import SortMenu from './SortMenu';
 
 // Redux
 import { connect } from 'react-redux';
@@ -97,28 +101,32 @@ const Portfolio: React.FC<Props> = ({
 
   return (
     <PortfolioSection id="portfolio" ref={portfolioRef}>
-      {portfolioInView ? (
-        <Container maxWidth={'lg'}>
+      <Container maxWidth={'lg'}>
+        <Grid container justify={'center'}>
           <MobileWrapper>
             <AppliedFilters />
           </MobileWrapper>
 
-          <Grid container justify={'center'}>
-            <FiltersSidebar
-              allProjectTags={allProjectTags}
-              tagCounts={tagCounts}
-            />
-
-            <Projects
-              hasAnimated={hasAnimated.current}
-              projects={displayedProjects}
-              order={order}
-            />
+          <FiltersSidebar
+            allProjectTags={allProjectTags}
+            tagCounts={tagCounts}
+          />
+          <Grid item xs={12} sm={12} md={12} lg={9}>
+            <SortMenu projectCount={displayedProjects.length} />
+            {portfolioInView ? (
+              <>
+                <Projects
+                  hasAnimated={hasAnimated.current}
+                  projects={displayedProjects}
+                  order={order}
+                />
+              </>
+            ) : (
+              <Box height="100vh" />
+            )}
           </Grid>
-        </Container>
-      ) : (
-        <></>
-      )}
+        </Grid>
+      </Container>
       <BottomNavigation component={Navbar} showLabels>
         <FilterAction allProjectTags={allProjectTags} tagCounts={tagCounts} />
         <MenuAction />

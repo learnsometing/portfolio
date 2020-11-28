@@ -62,7 +62,6 @@ const SortMenu: React.FC<Props> = ({
       justify={'space-between'}
       alignItems={'center'}
       item
-      className="projects scroll-in"
     >
       <Typography variant={'h2'} component={'h2'}>
         {projectCount

@@ -14,6 +14,7 @@ import Navigation from '../shared/Navigation';
 interface Props {
   children: ReactNode;
 }
+
 const LayoutWithNavigation: React.FC<Props> = ({ children }) => (
   <Layout>
     <>
