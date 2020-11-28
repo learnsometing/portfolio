@@ -7,7 +7,7 @@ const scTheme = {
   azure: '#2AFC98',
   orangeRed: '#FF785A',
   bottomNavigationIconSize: '32px',
-  spacing: function(num: number): string {
+  spacing: function (num: number): string {
     switch (num) {
       case 1:
         return '0.25rem';

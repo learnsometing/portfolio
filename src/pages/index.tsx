@@ -8,7 +8,6 @@ import { ThemeProvider } from '@material-ui/core';
 import theme from '../App/shared/MUITheme';
 
 import About from '../App/About/About';
-import Contact from '../App/Contact/Contact';
 
 const IndexPage: React.FC = () => {
   return (
@@ -17,7 +16,6 @@ const IndexPage: React.FC = () => {
         <SEO title="Portfolio" />
         <Header />
         <About />
-        <Contact />
       </Layout>
     </ThemeProvider>
   );

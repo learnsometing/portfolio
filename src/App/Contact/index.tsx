@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 
 import { IconContext } from '@react-icons/all-files';
 import { MdMail } from '@react-icons/all-files/md/MdMail';
-import { FaTwitterSquare} from '@react-icons/all-files/fa/FaTwitterSquare';
+import { FaTwitterSquare } from '@react-icons/all-files/fa/FaTwitterSquare';
 import { FaInstagramSquare } from '@react-icons/all-files/fa/FaInstagramSquare';
 
 import Section from '../shared/Section';

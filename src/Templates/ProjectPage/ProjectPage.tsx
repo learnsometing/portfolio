@@ -26,7 +26,6 @@ import Navigation from '../../App/shared/Navigation';
 import Gallery from './Gallery';
 import Description from './Description';
 import Tags from './Tags';
-import Contact from '../../App/Contact/Contact';
 import Section from '../../App/shared/Section';
 import MenuAction from '../../App/shared/BottomNavigation/MenuAction';
 
@@ -164,7 +163,6 @@ const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
             </Grid>
           </Grid>
         </Container>
-        <Contact />
         <BottomNavigation component={CondensedNavbar} showLabels>
           <MenuAction />
         </BottomNavigation>
