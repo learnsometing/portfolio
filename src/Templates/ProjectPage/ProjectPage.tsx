@@ -18,9 +18,8 @@ import { TiArrowForward } from '@react-icons/all-files/ti/TiArrowForward';
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
 
 // Components
-import Layout from '../../App/Layout/Layout';
+import LayoutWithNavigation from '../../App/Layout/LayoutWithNavigation';
 import SEO from '../../App/SEO/SEO';
-import Navigation from '../../App/shared/Navigation';
 import Gallery from './Gallery';
 import Description from './Description';
 import Tags from './Tags';
@@ -109,8 +108,7 @@ const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
   const { frontmatter } = mdx;
 
   return (
-    <Layout>
-      <Navigation />
+    <LayoutWithNavigation>
       <SEO title={frontmatter.title} />
       <Container maxWidth={'lg'}>
         <Section as={'header'}>
@@ -163,7 +161,7 @@ const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
       <BottomNavigation component={CondensedNavbar} showLabels>
         <MenuAction />
       </BottomNavigation>
-    </Layout>
+    </LayoutWithNavigation>
   );
 };
 

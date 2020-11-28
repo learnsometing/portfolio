@@ -96,36 +96,34 @@ const Portfolio: React.FC<Props> = ({
   }, [portfolioInView]);
 
   return (
-    <>
-      <PortfolioSection id="portfolio" ref={portfolioRef}>
-        {portfolioInView ? (
-          <Container maxWidth={'lg'}>
-            <MobileWrapper>
-              <AppliedFilters />
-            </MobileWrapper>
+    <PortfolioSection id="portfolio" ref={portfolioRef}>
+      {portfolioInView ? (
+        <Container maxWidth={'lg'}>
+          <MobileWrapper>
+            <AppliedFilters />
+          </MobileWrapper>
 
-            <Grid container justify={'center'}>
-              <FiltersSidebar
-                allProjectTags={allProjectTags}
-                tagCounts={tagCounts}
-              />
+          <Grid container justify={'center'}>
+            <FiltersSidebar
+              allProjectTags={allProjectTags}
+              tagCounts={tagCounts}
+            />
 
-              <Projects
-                hasAnimated={hasAnimated.current}
-                projects={displayedProjects}
-                order={order}
-              />
-            </Grid>
-          </Container>
-        ) : (
-          <></>
-        )}
-        <BottomNavigation component={Navbar} showLabels>
-          <FilterAction allProjectTags={allProjectTags} tagCounts={tagCounts} />
-          <MenuAction />
-        </BottomNavigation>
-      </PortfolioSection>
-    </>
+            <Projects
+              hasAnimated={hasAnimated.current}
+              projects={displayedProjects}
+              order={order}
+            />
+          </Grid>
+        </Container>
+      ) : (
+        <></>
+      )}
+      <BottomNavigation component={Navbar} showLabels>
+        <FilterAction allProjectTags={allProjectTags} tagCounts={tagCounts} />
+        <MenuAction />
+      </BottomNavigation>
+    </PortfolioSection>
   );
 };
 
