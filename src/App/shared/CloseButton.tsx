@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { IconContext } from 'react-icons';
-import { MdClose } from 'react-icons/md';
+import { IconContext } from '@react-icons/all-files';
+import { MdClose } from '@react-icons/all-files/md/MdClose';
 
 interface CloseButtonProps {
   onClick: () => void;

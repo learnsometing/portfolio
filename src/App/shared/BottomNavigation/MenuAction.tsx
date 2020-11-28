@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { MdMenu } from 'react-icons/md';
+import { MdMenu } from '@react-icons/all-files/md/MdMenu';
 
 // Material-UI
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';

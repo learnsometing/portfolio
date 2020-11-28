@@ -16,8 +16,8 @@ import { ThemeProvider } from '@material-ui/core';
 import theme from '../../App/shared/MUITheme';
 
 // Icons
-import { TiArrowForward } from 'react-icons/ti';
-import { FaGithub } from 'react-icons/fa';
+import { TiArrowForward } from '@react-icons/all-files/ti/TiArrowForward';
+import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
 
 // Components
 import Layout from '../../App/Layout/Layout';

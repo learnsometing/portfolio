@@ -612,8 +612,9 @@ pre tt:after {
 }
 
 .scroll-in {
-  transform: translateY(100px);
   opacity: 0;
+  transform: translateY(100px);
+  will-change: opacity;
 }
 
 .fade-in {

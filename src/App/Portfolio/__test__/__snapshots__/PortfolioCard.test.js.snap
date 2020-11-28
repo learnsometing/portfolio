@@ -5,7 +5,7 @@ exports[`PortfolioCard should match the snapshot 1`] = `
   className="MuiGrid-root projectCards fade-in MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-6 MuiGrid-grid-lg-6 MuiGrid-grid-xl-6"
 >
   <a
-    className="ProjectCard__ProjectLink-g4bmih-0 iBQPdj"
+    className="ProjectCard__ProjectLink-g4bmih-0 gLIrYR"
     href="/cash-pawn-jewelry-website/"
   >
     <div
@@ -32,6 +32,8 @@ exports[`PortfolioCard should match the snapshot 1`] = `
           className=" gatsby-image-wrapper"
           style={
             Object {
+              "maxHeight": null,
+              "maxWidth": null,
               "overflow": "hidden",
               "position": "relative",
             }
@@ -131,6 +133,9 @@ exports[`PortfolioCard should match the snapshot 1`] = `
         </div>
         <span
           className="MuiCardActionArea-focusHighlight"
+        />
+        <span
+          className="MuiTouchRipple-root"
         />
       </button>
     </div>

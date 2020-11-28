@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
-import { MdClose } from 'react-icons/md';
+import { MdClose } from '@react-icons/all-files/md/MdClose';
 
 // Redux
 import { connect } from 'react-redux';
