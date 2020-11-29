@@ -6,11 +6,11 @@ import { useInView } from 'react-intersection-observer';
 import Grid from '@material-ui/core/Grid';
 
 import Section from '../../App/shared/Section';
-import { SectionHeading } from './ProjectPage';
 import Tag from './Tag';
 
 // Animations
 import { slideUp, fadeIn } from '../../App/shared/animations';
+import { Typography } from '@material-ui/core';
 
 interface Props {
   tags: string[];
@@ -60,7 +60,9 @@ const Tags: React.FC<Props> = ({ tags }) => {
     <TagsSection ref={tagsRef}>
       {tagsInView ? (
         <>
-          <SectionHeading className="tags scroll-in">Tags</SectionHeading>
+          <Typography variant="h2" gutterBottom className="tags scroll-in">
+            Tags
+          </Typography>
           <TagContainer
             item
             container

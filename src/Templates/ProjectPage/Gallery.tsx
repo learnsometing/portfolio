@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import { useInView } from 'react-intersection-observer';
 
 import Section from '../../App/shared/Section';
-import { SectionHeading } from './ProjectPage';
 import Carousel, { Slide } from '../../App/Carousel/Carousel';
 
 import { slideUp } from '../../App/shared/animations';
+import { Typography } from '@material-ui/core';
 
 const GallerySection = styled(Section)`
   min-height: 420px;
@@ -33,7 +33,9 @@ const Gallery: React.FC<Props> = ({ slides }) => {
     <GallerySection ref={galleryRef}>
       {galleryInView ? (
         <>
-          <SectionHeading className="gallery scroll-in">Gallery</SectionHeading>
+          <Typography variant="h2" gutterBottom className="gallery scroll-in">
+            Gallery
+          </Typography>
           <Carousel slides={slides} />
         </>
       ) : (

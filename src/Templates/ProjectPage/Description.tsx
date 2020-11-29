@@ -7,11 +7,11 @@ import { useInView } from 'react-intersection-observer';
 import Grid from '@material-ui/core/Grid';
 
 // Custom Components
-import { SectionHeading } from './ProjectPage';
 import Section from '../../App/shared/Section';
 
 // Animations
 import { slideUp } from '../../App/shared/animations';
+import { Typography } from '@material-ui/core';
 
 interface Props {
   description: string;
@@ -34,9 +34,13 @@ const Description: React.FC<Props> = ({ description }) => {
       {descriptionInView ? (
         <>
           <Grid item>
-            <SectionHeading className="description scroll-in">
+            <Typography
+              variant="h2"
+              gutterBottom
+              className="description scroll-in"
+            >
               Description
-            </SectionHeading>
+            </Typography>
           </Grid>
           <MDXRenderer>{description}</MDXRenderer>
         </>

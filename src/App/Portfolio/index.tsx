@@ -37,6 +37,7 @@ const MobileWrapper = styled.div`
   @media only screen and (min-width: 1280px) {
     display: none;
   }
+  width: 100%;
 `;
 
 const Navbar = styled(Paper).attrs({
@@ -102,7 +103,7 @@ const Portfolio: React.FC<Props> = ({
   return (
     <PortfolioSection id="portfolio" ref={portfolioRef}>
       <Container maxWidth={'lg'}>
-        <Grid container justify={'center'}>
+        <Grid container>
           <MobileWrapper>
             <AppliedFilters />
           </MobileWrapper>

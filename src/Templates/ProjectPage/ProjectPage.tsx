@@ -5,13 +5,15 @@ import { MDXProvider } from '@mdx-js/react';
 import styled from 'styled-components';
 
 // Material-UI Imports
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import Link from '@material-ui/core/Link';
-import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import {
+  BottomNavigation,
+  Button,
+  Container,
+  Grid,
+  Link,
+  Paper,
+  Typography,
+} from '@material-ui/core';
 
 // Icons
 import { TiArrowForward } from '@react-icons/all-files/ti/TiArrowForward';
@@ -63,46 +65,11 @@ const CondensedNavbar = styled(Paper).attrs({
   }
 `;
 
-const ProjectTitle = styled(Typography).attrs({
-  variant: 'h1',
-})`
-  text-align: center;
-  margin-bottom: 0.45em;
-  @media screen and (min-width: 1280px) {
-    text-align: start;
-  }
-`;
-
 const ProjectLinks = styled(Grid)`
   padding: ${(props): string => props.theme.spacing(4)} 0;
-  justify-content: center;
-
-  @media screen and (min-width: 1280px) {
-    justify-content: flex-start;
-  }
 `;
 
-export const SectionHeading = styled(Typography).attrs({
-  variant: 'h2',
-  gutterBottom: true,
-})`
-  text-align: center;
-  @media screen and (min-width: 1280px) {
-    text-align: start;
-  }
-`;
-
-const DescriptionParagraph = styled(Typography).attrs({
-  variant: 'body1',
-  gutterBottom: true,
-})`
-  text-align: center;
-  @media screen and (min-width: 1280px) {
-    text-align: start;
-  }
-`;
-
-const shortcodes = { DescriptionParagraph, Grid };
+const shortcodes = { Grid, Typography };
 
 const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
   const { frontmatter } = mdx;
@@ -112,7 +79,9 @@ const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
       <SEO title={frontmatter.title} />
       <Container maxWidth={'lg'}>
         <Section as={'header'}>
-          <ProjectTitle>{frontmatter.title}</ProjectTitle>
+          <Typography variant="h1" gutterBottom>
+            {frontmatter.title}
+          </Typography>
           <ProjectLinks container spacing={2}>
             <Grid item>
               <Link
