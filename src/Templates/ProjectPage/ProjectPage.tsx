@@ -19,7 +19,7 @@ import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
 
 // Components
 import LayoutWithNavigation from '../../App/Layout/LayoutWithNavigation';
-import SEO from '../../App/SEO/SEO';
+import SEO from '../../App/SEO';
 import Gallery from './Gallery';
 import Description from './Description';
 import Tags from './Tags';
