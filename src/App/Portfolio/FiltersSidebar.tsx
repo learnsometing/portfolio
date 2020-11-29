@@ -92,15 +92,11 @@ const FiltersSidebar: React.FC<Props> = ({
   return (
     <Sidebar item lg={3}>
       <SidebarContentWrapper>
-        <SidebarHeading
-          variant={'h2'}
-          align={'center'}
-          className="projects scroll-in"
-        >
+        <SidebarHeading variant={'h2'} align={'center'}>
           Filter
         </SidebarHeading>
         <AppliedFilters />
-        <StyledFormGroup className="projects scroll-in">
+        <StyledFormGroup>
           <FormControl component={'fieldset'}>
             {Object.entries(currentTagCounts).map(([filter, count]) => (
               <StyledFormControlLabel
