@@ -6,8 +6,8 @@ import { useInView } from 'react-intersection-observer';
 import Section from '../../App/shared/Section';
 import Carousel, { Slide } from '../../App/Carousel/Carousel';
 
-import { slideUp } from '../../App/shared/animations';
-import { Typography } from '@material-ui/core';
+import { fadeIn } from '../../App/shared/animations';
+import { Box, Typography } from '@material-ui/core';
 
 const GallerySection = styled(Section)`
   min-height: 420px;
@@ -19,13 +19,13 @@ interface Props {
 
 const Gallery: React.FC<Props> = ({ slides }) => {
   const [galleryRef, galleryInView] = useInView({
-    threshold: 0.8,
+    threshold: 0.4,
     triggerOnce: true,
   });
 
   useEffect(() => {
     if (galleryInView) {
-      slideUp('.gallery', 0.2);
+      fadeIn('.gallery', 0.1, 0.1);
     }
   }, [galleryInView]);
 
@@ -33,13 +33,15 @@ const Gallery: React.FC<Props> = ({ slides }) => {
     <GallerySection ref={galleryRef}>
       {galleryInView ? (
         <>
-          <Typography variant="h2" gutterBottom className="gallery scroll-in">
+          <Typography variant="h2" gutterBottom className="gallery fade-in">
             Gallery
           </Typography>
-          <Carousel slides={slides} />
+          <Box className="gallery fade-in">
+            <Carousel slides={slides} />
+          </Box>
         </>
       ) : (
-        <></>
+        <Box height="700px" />
       )}
     </GallerySection>
   );
