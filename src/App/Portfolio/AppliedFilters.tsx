@@ -15,8 +15,8 @@ import { getAppliedFilters } from '../../state/portfolio/selectors';
 import { removeFilter, clearFilters } from '../../state/portfolio/actions';
 
 const FiltersWrapper = styled.div`
-  border-top: 1px solid ${(props): string => props.theme.textDarkened};
-  border-bottom: 1px solid ${(props): string => props.theme.textDarkened};
+  border-top: 1px solid ${(props): string => props.theme.blueSapphire};
+  border-bottom: 1px solid ${(props): string => props.theme.blueSapphire};
 `;
 
 const Filters = styled.div`

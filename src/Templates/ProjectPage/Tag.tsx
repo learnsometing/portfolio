@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
-
+import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
 
 // Redux
@@ -14,8 +14,12 @@ interface Props {
   clearFilters: () => void;
 }
 
+const TagButton = styled(Button)`
+  color: ${(props): string => props.theme.mintCream};
+`;
+
 const Tag: React.FC<Props> = ({ text, applyFilters, clearFilters }) => (
-  <Button
+  <TagButton
     variant={'contained'}
     color={'primary'}
     component={Link}
@@ -26,7 +30,7 @@ const Tag: React.FC<Props> = ({ text, applyFilters, clearFilters }) => (
     }}
   >
     {text}
-  </Button>
+  </TagButton>
 );
 
 Tag.propTypes = {

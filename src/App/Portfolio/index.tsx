@@ -50,7 +50,7 @@ const Navbar = styled(Paper).attrs({
   height: 80px;
   width: 100%;
   z-index: 2;
-  background-color: ${(props): string => props.theme.bgLightened};
+  background-color: ${(props): string => props.theme.metallicSeaweed};
   @media only screen and (min-width: 1280px) {
     display: none;
   }

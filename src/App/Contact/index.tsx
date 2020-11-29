@@ -17,7 +17,7 @@ import scTheme from '../shared/SCTheme';
 const Footer = styled(Section).attrs({
   as: 'footer',
 })`
-  background-color: ${(props): string => props.theme.bgLightened};
+  background-color: ${(props): string => props.theme.metallicSeaweed};
   min-height: 370px;
 `;
 
@@ -39,6 +39,7 @@ const ContactSectionHeading = styled(Typography).attrs({
   component: 'h2',
   gutterBottom: true,
 })`
+  color: ${(props) => props.theme.mintCream};
   padding: ${(props): string =>
     `${props.theme.spacing(1)} ${props.theme.spacing(3)}`};
   padding-bottom: 0;
@@ -46,19 +47,23 @@ const ContactSectionHeading = styled(Typography).attrs({
 
 const ContactButton = styled(Button).attrs({
   component: 'a',
-  variant: 'outlined',
+  variant: 'contained',
   color: 'primary',
   target: '_blank',
   rel: 'noopener noreferrer',
 })`
   margin: ${(props): string => props.theme.spacing(2)} 0;
+  color: ${(props): string => props.theme.mintCream};
 `;
 
 const CopyrightNotice = styled(Typography)`
   margin-top: ${(props): string => props.theme.spacing(4)};
 `;
 
-const iconStyles = { size: '48px', color: scTheme.textEmphasis };
+const iconStyles = {
+  size: '48px',
+  color: scTheme.persianGreen,
+};
 
 interface IconProps {
   icon: ReactNode;

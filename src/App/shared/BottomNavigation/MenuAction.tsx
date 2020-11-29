@@ -13,7 +13,11 @@ import NavigationMenu from './NavigationMenu';
 const MenuIcon = styled(MdMenu)`
   height: ${(props): string => props.theme.bottomNavigationIconSize};
   width: ${(props): string => props.theme.bottomNavigationIconSize};
-  color: ${(props): string => props.theme.textEmphasis};
+  color: ${(props): string => props.theme.mintCream};
+`;
+
+const MenuLabel = styled(Typography).attrs(() => ({ component: 'span' }))`
+  color: ${(props) => props.theme.mintCream};
 `;
 
 const MenuAction: React.FC = () => {
@@ -25,11 +29,7 @@ const MenuAction: React.FC = () => {
   return (
     <>
       <BottomNavigationAction
-        label={
-          <Typography variant={'h5'} component={'span'}>
-            Menu
-          </Typography>
-        }
+        label={<MenuLabel variant={'h5'}>Menu</MenuLabel>}
         showLabel
         icon={<MenuIcon />}
         onClick={toggleNavDrawer}

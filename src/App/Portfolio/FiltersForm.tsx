@@ -42,12 +42,15 @@ const Buttons = styled(Grid)`
   padding: ${(props): string => props.theme.spacing(3)} 0;
   position: sticky;
   bottom: 0;
+  right: 0;
+  left: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.12);
-  background-color: ${(props): string => props.theme.bgLightened};
+  background-color: ${(props): string => props.theme.metallicSeaweed};
 `;
 
 const StyledFormGroup = styled(FormGroup)`
   min-height: 100vh;
+  padding-top: 65px;
 `;
 
 const Header = styled(Grid)`
@@ -58,7 +61,7 @@ const Header = styled(Grid)`
     `${props.theme.spacing(2)} ${props.theme.spacing(4)}`};
   position: fixed;
   top: 0;
-  background-color: ${(props): string => props.theme.bgLightened};
+  background-color: ${(props): string => props.theme.metallicSeaweed};
   z-index: 1;
 `;
 
@@ -167,6 +170,10 @@ FiltersForm.propTypes = {
   clearFilters: PropTypes.func.isRequired,
 };
 
+const FiltersFormHeaders = styled(Typography)`
+  color: ${(props) => props.theme.mintCream};
+`;
+
 const ConnectedFiltersForm: React.FC<ConnectedFiltersFormProps> = ({
   allProjectTags,
   tagCounts,
@@ -177,7 +184,7 @@ const ConnectedFiltersForm: React.FC<ConnectedFiltersFormProps> = ({
 }) => (
   <>
     <Header container justify={'space-between'} alignItems={'center'}>
-      <Typography variant={'h2'}>Filters</Typography>
+      <FiltersFormHeaders variant={'h2'}>Filters</FiltersFormHeaders>
       <CloseButton
         aria-label="Close Filter Drawer"
         onClick={closeFiltersDrawer}

@@ -54,7 +54,7 @@ const StyledFormGroup = styled(FormGroup)`
 
 const StyledFormControlLabel = styled(FormControlLabel)`
   &:hover {
-    background-color: ${(props): string => props.theme.bgLightened};
+    background-color: ${(props): string => props.theme.mintCream};
   }
 `;
 

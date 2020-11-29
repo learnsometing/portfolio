@@ -33,7 +33,7 @@ const Item = styled(MenuItem)`
 
 const OutlinedInput = styled(Select)`
   &:hover fieldset {
-    border-color: ${(props): string => props.theme.text} !important;
+    border-color: ${(props): string => props.theme.metallicSeaweed} !important;
   }
 `;
 

@@ -20,7 +20,7 @@ const MenuItem = styled(ListItem).attrs({
 const Menu = styled(List)`
   width: 100vw;
   padding: 0;
-  background-color: ${(props): string => props.theme.bgLightened};
+  background-color: ${(props): string => props.theme.metallicSeaweed};
 `;
 
 const MenuLink = styled(AnchoredLink)`
@@ -36,7 +36,7 @@ const MenuLinkText = styled(Typography).attrs({
   variant: 'h3',
   component: 'span',
 })`
-  color: ${(props): string => props.theme.textEmphasis};
+  color: ${(props): string => props.theme.mintCream};
 `;
 
 interface NavigationDrawerProps {

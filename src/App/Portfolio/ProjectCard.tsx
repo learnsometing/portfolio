@@ -41,6 +41,12 @@ const ProjectLink = styled(Link)`
   text-decoration: none;
 `;
 
+const CardHeader = styled(Typography).attrs(() => ({
+  component: 'h3',
+}))`
+  color: ${(props): string => props.theme.blueSapphire};
+`;
+
 const ProjectCard: React.FC<ProjectCardProps> = ({ content, hasAnimated }) => {
   const { title, path, cardText, cardPhoto } = content;
 
@@ -78,9 +84,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ content, hasAnimated }) => {
               alt={cardPhoto.altText}
             />
             <CardContent>
-              <Typography gutterBottom variant={'h5'} component={'h3'}>
+              <CardHeader gutterBottom variant={'h5'}>
                 {title}
-              </Typography>
+              </CardHeader>
               <Typography variant={'body1'}>{cardText}</Typography>
             </CardContent>
           </CardActionArea>

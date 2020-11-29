@@ -19,7 +19,7 @@ interface FilterFieldProps {
 const LabelText: React.FC<FilterFieldProps> = ({ filter, count }) => (
   <Grid container alignItems={'center'}>
     <TagText variant={'h6'}>{filter}</TagText>
-    <Typography variant={'body2'}>{` (${count})`}</Typography>
+    <Typography variant={'caption'}>{` (${count})`}</Typography>
   </Grid>
 );
 
