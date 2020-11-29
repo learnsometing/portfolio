@@ -6,11 +6,11 @@ import { useInView } from 'react-intersection-observer';
 import Grid from '@material-ui/core/Grid';
 
 import Section from '../../App/shared/Section';
-import { SectionHeading } from './ProjectPage';
 import Tag from './Tag';
 
 // Animations
 import { slideUp, fadeIn } from '../../App/shared/animations';
+import { Typography } from '@material-ui/core';
 
 interface Props {
   tags: string[];
@@ -18,7 +18,7 @@ interface Props {
 
 const TagsSection = styled(Section)`
   min-height: 220px;
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 960px) {
     margin-left: ${(props): string => props.theme.spacing(6)};
   }
 `;
@@ -27,7 +27,6 @@ const TagContainer = styled(Grid)`
   padding-bottom: ${(props): string => props.theme.spacing(4)};
   @media screen and (min-width: 1280px) {
     padding: 0;
-    justify-content: flex-start;
   }
 `;
 
@@ -39,44 +38,23 @@ const Tags: React.FC<Props> = ({ tags }) => {
 
   useEffect(() => {
     if (tagsInView) {
-      slideUp('.tags', 0.2);
+      fadeIn('.tags', 0.2, 0.3);
     }
   }, [tagsInView]);
-
-  const [tagContainerRef, tagContainerInView] = useInView({
-    threshold: 0.5,
-    triggerOnce: true,
-  });
-
-  const delay = 0;
-
-  useEffect(() => {
-    if (tagContainerInView) {
-      fadeIn('.tag', delay);
-    }
-  }, [tagContainerInView]);
 
   return (
     <TagsSection ref={tagsRef}>
       {tagsInView ? (
         <>
-          <SectionHeading className="tags scroll-in">Tags</SectionHeading>
-          <TagContainer
-            item
-            container
-            spacing={2}
-            justify={'center'}
-            ref={tagContainerRef}
-          >
-            {tagContainerInView ? (
-              tags.map((tag) => (
-                <Grid key={tag} item className="tag fade-in">
-                  <Tag text={tag} />
-                </Grid>
-              ))
-            ) : (
-              <></>
-            )}
+          <Typography variant="h2" gutterBottom className="tags fade-in">
+            Tags
+          </Typography>
+          <TagContainer item container spacing={2}>
+            {tags.map((tag) => (
+              <Grid key={tag} item className="tags fade-in">
+                <Tag text={tag} />
+              </Grid>
+            ))}
           </TagContainer>
         </>
       ) : (

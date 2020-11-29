@@ -19,7 +19,7 @@ const Tag: React.FC<Props> = ({ text, applyFilters, clearFilters }) => (
     variant={'contained'}
     color={'primary'}
     component={Link}
-    to="/#portfolio"
+    to="/portfolio"
     onClick={(): void => {
       clearFilters();
       applyFilters([text]);

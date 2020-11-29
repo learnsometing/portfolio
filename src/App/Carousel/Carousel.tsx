@@ -83,7 +83,7 @@ function SwipeableTextMobileStepper({ slides }: Props): ReactElement {
   };
 
   return (
-    <Screen elevation={10} className="gallery scroll-in">
+    <Screen elevation={10}>
       <ScreenInner>
         <CarouselHeader square elevation={0} theme={theme}>
           <Circle backgroundColor={'#ED626D'} />

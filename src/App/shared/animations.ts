@@ -12,14 +12,14 @@ export const slideUp = (element: string, staggerAmount: number): void => {
   });
 };
 
-export const fadeIn = (element: string, delay: number): void => {
+export const fadeIn = (element: string, delay: number, stagger = 0.6): void => {
   gsap.to(element, {
     delay,
     duration: 0.75,
     opacity: 1,
     ease: 'power2.out',
     stagger: {
-      amount: 0.6,
+      amount: stagger,
     },
   });
 };

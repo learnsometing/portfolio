@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import Typography from '@material-ui/core/Typography';
 
+import { Link } from 'gatsby';
 import { AnchoredLink } from '../shared/Navigation';
 
 const Nav = styled.nav`
@@ -15,7 +16,7 @@ const Nav = styled.nav`
   }
 `;
 
-const HeaderNavLink = styled(AnchoredLink)`
+const AnchoredNavLink = styled(AnchoredLink)`
   margin: ${(props): string => props.theme.spacing(3)};
 
   @media only screen and (min-width: 960px) {
@@ -24,23 +25,32 @@ const HeaderNavLink = styled(AnchoredLink)`
   }
 `;
 
+const NavLink = styled(Link)`
+  margin: ${(props): string => props.theme.spacing(3)};
+  text-decoration: none;
+  @media only screen and (min-width: 960px) {
+    writing-mode: vertical-lr;
+    margin: 0 ${(props): string => props.theme.spacing(2)};
+  }
+`;
+
 const Navbar: React.FC = () => (
   <Nav>
-    <HeaderNavLink to="/#about">
+    <AnchoredNavLink to="/#about" stripHash>
       <Typography variant={'h5'} component="span">
         About
       </Typography>
-    </HeaderNavLink>
-    <HeaderNavLink to="/#portfolio">
+    </AnchoredNavLink>
+    <NavLink to="/portfolio">
       <Typography variant={'h5'} component="span">
         Portfolio
       </Typography>
-    </HeaderNavLink>
-    <HeaderNavLink to="/#contact">
+    </NavLink>
+    <AnchoredNavLink to="/#contact" stripHash>
       <Typography variant={'h5'} component="span">
         Contact
       </Typography>
-    </HeaderNavLink>
+    </AnchoredNavLink>
   </Nav>
 );
 

@@ -2,27 +2,14 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useInView } from 'react-intersection-observer';
 
-import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
+import { Box, Container, Typography } from '@material-ui/core';
 import Section from '../shared/Section';
 import Avatar from './Avatar';
 
 import { slideUp } from '../shared/animations';
 
 const AboutSection = styled(Section)`
-  min-height: 568px;
-
-  h2,
-  p {
-    text-align: center;
-  }
-
-  @media screen and (min-width: 600px) {
-    h2,
-    p {
-      text-align: start;
-    }
-  }
+  min-height: 100vh;
 
   &:after {
     content: '.';
@@ -41,7 +28,7 @@ const About: React.FC = () => {
 
   useEffect(() => {
     if (aboutInView) {
-      slideUp('.about', 0.6);
+      slideUp('.about', 0.2);
     }
   }, [aboutInView]);
 
@@ -98,7 +85,9 @@ const About: React.FC = () => {
               shops and breweries in town.
             </Typography>
           </>
-        ) : null}
+        ) : (
+          <Box height="100vh" />
+        )}
       </AboutSection>
     </Container>
   );

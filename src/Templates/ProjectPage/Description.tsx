@@ -1,48 +1,34 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { useInView } from 'react-intersection-observer';
 
 // Material-UI
 import Grid from '@material-ui/core/Grid';
 
 // Custom Components
-import { SectionHeading } from './ProjectPage';
 import Section from '../../App/shared/Section';
 
 // Animations
-import { slideUp } from '../../App/shared/animations';
+import { fadeIn } from '../../App/shared/animations';
+import { Typography } from '@material-ui/core';
 
 interface Props {
   description: string;
 }
 
 const Description: React.FC<Props> = ({ description }) => {
-  const [descriptionRef, descriptionInView] = useInView({
-    threshold: 0.5,
-    triggerOnce: true,
-  });
-
   useEffect(() => {
-    if (descriptionInView) {
-      slideUp('.description', 0.6);
-    }
-  }, [descriptionInView]);
+    fadeIn('.description', 0.1, 0.1);
+  }, []);
 
   return (
-    <Section ref={descriptionRef}>
-      {descriptionInView ? (
-        <>
-          <Grid item>
-            <SectionHeading className="description scroll-in">
-              Description
-            </SectionHeading>
-          </Grid>
-          <MDXRenderer>{description}</MDXRenderer>
-        </>
-      ) : (
-        <></>
-      )}
+    <Section>
+      <Grid item>
+        <Typography variant="h2" gutterBottom className="description">
+          Description
+        </Typography>
+      </Grid>
+      <MDXRenderer>{description}</MDXRenderer>
     </Section>
   );
 };

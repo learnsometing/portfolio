@@ -2,8 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import SortMenu from './SortMenu';
-
 // interfaces
 import ProjectCard, { Project } from './ProjectCard';
 
@@ -17,6 +15,7 @@ import {
 } from '../../helpers/sortProjectsByDate';
 
 const ProjectCardsWrapper = styled.div`
+  min-height: 100vh;
   @media screen and (min-width: 1280px) {
     padding: ${(props): string =>
       `calc(${props.theme.spacing(4)} + 1px) ${props.theme.spacing(4)}`};
@@ -42,32 +41,29 @@ interface Props {
 }
 
 const Projects: React.FC<Props> = ({ projects, order, hasAnimated }) => (
-  <Grid item xs={12} sm={12} md={12} lg={9}>
-    <SortMenu projectCount={projects.length} />
-    <ProjectCardsWrapper>
-      <ProjectCards container spacing={4}>
-        {order == 'DESC'
-          ? projects
-              .sort((a, b) => sortByDateDESC(a.date, b.date))
-              .map((card) => (
-                <ProjectCard
-                  key={card.title}
-                  content={card}
-                  hasAnimated={hasAnimated}
-                />
-              ))
-          : projects
-              .sort((a, b) => sortByDateASC(a.date, b.date))
-              .map((card) => (
-                <ProjectCard
-                  key={card.title}
-                  content={card}
-                  hasAnimated={hasAnimated}
-                />
-              ))}
-      </ProjectCards>
-    </ProjectCardsWrapper>
-  </Grid>
+  <ProjectCardsWrapper>
+    <ProjectCards container spacing={4}>
+      {order == 'DESC'
+        ? projects
+            .sort((a, b) => sortByDateDESC(a.date, b.date))
+            .map((card) => (
+              <ProjectCard
+                key={card.title}
+                content={card}
+                hasAnimated={hasAnimated}
+              />
+            ))
+        : projects
+            .sort((a, b) => sortByDateASC(a.date, b.date))
+            .map((card) => (
+              <ProjectCard
+                key={card.title}
+                content={card}
+                hasAnimated={hasAnimated}
+              />
+            ))}
+    </ProjectCards>
+  </ProjectCardsWrapper>
 );
 
 Projects.propTypes = {

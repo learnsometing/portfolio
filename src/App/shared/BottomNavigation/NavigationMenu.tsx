@@ -59,13 +59,13 @@ const NavigationMenu: React.FC<NavigationDrawerProps> = ({ toggle }) => {
       </MenuItem>
       <Divider component={'li'} />
       <MenuItem onClick={toggle}>
-        <MenuLink to="/#portfolio">
+        <MenuLink to="/portfolio">
           <MenuLinkText>Portfolio</MenuLinkText>
         </MenuLink>
       </MenuItem>
       <Divider component={'li'} />
       <MenuItem onClick={toggle}>
-        <MenuLink to="/#contact">
+        <MenuLink to="#contact">
           <MenuLinkText>Contact</MenuLinkText>
         </MenuLink>
       </MenuItem>

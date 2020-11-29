@@ -4,21 +4,23 @@ import PropTypes from 'prop-types';
 import { useInView } from 'react-intersection-observer';
 
 // Material-UI
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import { ThemeProvider } from '@material-ui/core';
-import theme from '../shared/MUITheme';
+import {
+  BottomNavigation,
+  Box,
+  Container,
+  Grid,
+  Paper,
+} from '@material-ui/core';
 
 // Components
-import MenuAction from '../shared/BottomNavigation/MenuAction';
+import AppliedFilters from './AppliedFilters';
 import FilterAction from './FilterAction';
+import FiltersSidebar from './FiltersSidebar';
 import Projects from './Projects';
 import { Project } from './ProjectCard';
-import AppliedFilters from './AppliedFilters';
-import FiltersSidebar from './FiltersSidebar';
+import MenuAction from '../shared/BottomNavigation/MenuAction';
 import Section from '../shared/Section';
+import SortMenu from './SortMenu';
 
 // Redux
 import { connect } from 'react-redux';
@@ -35,6 +37,7 @@ const MobileWrapper = styled.div`
   @media only screen and (min-width: 1280px) {
     display: none;
   }
+  width: 100%;
 `;
 
 const Navbar = styled(Paper).attrs({
@@ -98,36 +101,38 @@ const Portfolio: React.FC<Props> = ({
   }, [portfolioInView]);
 
   return (
-    <ThemeProvider theme={theme}>
-      <PortfolioSection id="portfolio" ref={portfolioRef}>
-        {portfolioInView ? (
-          <Container maxWidth={'lg'}>
-            <MobileWrapper>
-              <AppliedFilters />
-            </MobileWrapper>
+    <PortfolioSection id="portfolio" ref={portfolioRef}>
+      <Container maxWidth={'lg'}>
+        <Grid container>
+          <MobileWrapper>
+            <AppliedFilters />
+          </MobileWrapper>
 
-            <Grid container justify={'center'}>
-              <FiltersSidebar
-                allProjectTags={allProjectTags}
-                tagCounts={tagCounts}
-              />
-
-              <Projects
-                hasAnimated={hasAnimated.current}
-                projects={displayedProjects}
-                order={order}
-              />
-            </Grid>
-          </Container>
-        ) : (
-          <></>
-        )}
-        <BottomNavigation component={Navbar} showLabels>
-          <FilterAction allProjectTags={allProjectTags} tagCounts={tagCounts} />
-          <MenuAction />
-        </BottomNavigation>
-      </PortfolioSection>
-    </ThemeProvider>
+          <FiltersSidebar
+            allProjectTags={allProjectTags}
+            tagCounts={tagCounts}
+          />
+          <Grid item xs={12} sm={12} md={12} lg={9}>
+            <SortMenu projectCount={displayedProjects.length} />
+            {portfolioInView ? (
+              <>
+                <Projects
+                  hasAnimated={hasAnimated.current}
+                  projects={displayedProjects}
+                  order={order}
+                />
+              </>
+            ) : (
+              <Box height="100vh" />
+            )}
+          </Grid>
+        </Grid>
+      </Container>
+      <BottomNavigation component={Navbar} showLabels>
+        <FilterAction allProjectTags={allProjectTags} tagCounts={tagCounts} />
+        <MenuAction />
+      </BottomNavigation>
+    </PortfolioSection>
   );
 };
 

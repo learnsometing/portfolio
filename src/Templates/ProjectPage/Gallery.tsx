@@ -4,13 +4,23 @@ import PropTypes from 'prop-types';
 import { useInView } from 'react-intersection-observer';
 
 import Section from '../../App/shared/Section';
-import { SectionHeading } from './ProjectPage';
 import Carousel, { Slide } from '../../App/Carousel/Carousel';
 
-import { slideUp } from '../../App/shared/animations';
+import { fadeIn } from '../../App/shared/animations';
+import { Box, Typography } from '@material-ui/core';
 
 const GallerySection = styled(Section)`
-  min-height: 420px;
+  min-height: 424px;
+
+  @media only screen and (min-width: 600px) {
+    min-height: 576px;
+  }
+  @media only screen and (min-width: 960px) {
+    min-height: 616px;
+  }
+  @media only screen and (min-width: 1280px) {
+    min-height: 773px;
+  }
 `;
 
 interface Props {
@@ -19,13 +29,13 @@ interface Props {
 
 const Gallery: React.FC<Props> = ({ slides }) => {
   const [galleryRef, galleryInView] = useInView({
-    threshold: 0.8,
+    threshold: 0.2,
     triggerOnce: true,
   });
 
   useEffect(() => {
     if (galleryInView) {
-      slideUp('.gallery', 0.2);
+      fadeIn('.gallery', 0, 0.1);
     }
   }, [galleryInView]);
 
@@ -33,8 +43,12 @@ const Gallery: React.FC<Props> = ({ slides }) => {
     <GallerySection ref={galleryRef}>
       {galleryInView ? (
         <>
-          <SectionHeading className="gallery scroll-in">Gallery</SectionHeading>
-          <Carousel slides={slides} />
+          <Typography variant="h2" gutterBottom className="gallery fade-in">
+            Gallery
+          </Typography>
+          <Box className="gallery fade-in">
+            <Carousel slides={slides} />
+          </Box>
         </>
       ) : (
         <></>

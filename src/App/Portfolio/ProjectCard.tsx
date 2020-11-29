@@ -49,7 +49,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ content, hasAnimated }) => {
     triggerOnce: true,
   });
 
-  let delay = 0.75;
+  let delay = 0;
 
   useEffect(() => {
     if (hasAnimated) delay = 0;

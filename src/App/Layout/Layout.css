@@ -611,12 +611,13 @@ pre tt:after {
   }
 }
 
+.fade-in {
+  opacity: 0;
+  will-change: opacity;
+}
+
 .scroll-in {
   opacity: 0;
   transform: translateY(100px);
   will-change: opacity;
-}
-
-.fade-in {
-  opacity: 0;
 }

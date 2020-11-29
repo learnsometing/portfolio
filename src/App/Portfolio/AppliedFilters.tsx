@@ -38,7 +38,7 @@ const AppliedFilters: React.FC<Props> = ({
   removeFilter,
   clearFilters,
 }) => (
-  <FiltersWrapper className="projects scroll-in">
+  <FiltersWrapper>
     {appliedFilters && appliedFilters.length ? (
       <Filters>
         <Grid container spacing={3}>
