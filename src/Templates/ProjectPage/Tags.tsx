@@ -18,7 +18,7 @@ interface Props {
 
 const TagsSection = styled(Section)`
   min-height: 220px;
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 960px) {
     margin-left: ${(props): string => props.theme.spacing(6)};
   }
 `;

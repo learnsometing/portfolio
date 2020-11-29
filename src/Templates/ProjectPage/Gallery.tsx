@@ -10,7 +10,17 @@ import { fadeIn } from '../../App/shared/animations';
 import { Box, Typography } from '@material-ui/core';
 
 const GallerySection = styled(Section)`
-  min-height: 420px;
+  min-height: 424px;
+
+  @media only screen and (min-width: 600px) {
+    min-height: 576px;
+  }
+  @media only screen and (min-width: 960px) {
+    min-height: 616px;
+  }
+  @media only screen and (min-width: 1280px) {
+    min-height: 773px;
+  }
 `;
 
 interface Props {
@@ -19,13 +29,13 @@ interface Props {
 
 const Gallery: React.FC<Props> = ({ slides }) => {
   const [galleryRef, galleryInView] = useInView({
-    threshold: 0.4,
+    threshold: 0.2,
     triggerOnce: true,
   });
 
   useEffect(() => {
     if (galleryInView) {
-      fadeIn('.gallery', 0.1, 0.1);
+      fadeIn('.gallery', 0, 0.1);
     }
   }, [galleryInView]);
 
@@ -41,7 +51,7 @@ const Gallery: React.FC<Props> = ({ slides }) => {
           </Box>
         </>
       ) : (
-        <Box height="700px" />
+        <></>
       )}
     </GallerySection>
   );
