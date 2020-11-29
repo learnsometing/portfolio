@@ -6,6 +6,8 @@ import { Box, Container, Typography } from '@material-ui/core';
 import Section from '../shared/Section';
 import Avatar from './Avatar';
 
+// Styles
+import styles from './styles.css';
 import { slideUp } from '../shared/animations';
 
 const AboutSection = styled(Section)`

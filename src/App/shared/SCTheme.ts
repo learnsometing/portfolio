@@ -1,11 +1,9 @@
 const scTheme = {
-  bg: '#0C082C',
-  bgLightened: '#262146',
-  text: '#E4E6E3',
-  textDarkened: '#989997',
-  textEmphasis: '#FFD23F',
-  azure: '#2AFC98',
-  orangeRed: '#FF785A',
+  white: 'hsla(0, 0%, 100%, 1)',
+  mintCream: 'hsla(161, 100%, 97%, 1)',
+  blueSapphire: 'hsla(197, 93%, 29%, 1)',
+  metallicSeaweed: 'hsla(187, 97%, 29%, 1)',
+  persianGreen: 'hsla(174, 100%, 33%, 1)',
   bottomNavigationIconSize: '32px',
   spacing: function (num: number): string {
     switch (num) {

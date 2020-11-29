@@ -11,7 +11,7 @@ const FullHeightDrawer = styled(Drawer)`
 
 const DrawerBG = styled(Paper)`
   overflow-y: auto;
-  background-color: ${(props): string => props.theme.bgLightened};
+  background-color: ${(props): string => props.theme.white};
   min-height: 100vh;
   overflow-x: hidden;
 `;

@@ -59,10 +59,14 @@ const CondensedNavbar = styled(Paper).attrs({
   height: 80px;
   width: 80px;
   border-radius: 50%;
-  background-color: ${(props): string => props.theme.bgLightened};
+  background-color: ${(props): string => props.theme.metallicSeaweed};
   @media only screen and (min-width: 1280px) {
     display: none;
   }
+`;
+
+const ProjectLink = styled(Button)`
+  color: ${(props) => props.theme.mintCream};
 `;
 
 const ProjectLinks = styled(Grid)`
@@ -89,13 +93,13 @@ const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button
-                  color={'primary'}
+                <ProjectLink
+                  color="primary"
                   variant={'contained'}
                   endIcon={<TiArrowForward />}
                 >
                   Visit
-                </Button>
+                </ProjectLink>
               </Link>
             </Grid>
             <Grid item>
@@ -104,13 +108,13 @@ const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button
+                <ProjectLink
                   color={'primary'}
                   variant={'contained'}
                   endIcon={<FaGithub />}
                 >
                   Github
-                </Button>
+                </ProjectLink>
               </Link>
             </Grid>
           </ProjectLinks>

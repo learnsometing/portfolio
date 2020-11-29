@@ -19,7 +19,11 @@ interface Props {
 const FilterIcon = styled(MdFilterList)`
   height: ${(props): string => props.theme.bottomNavigationIconSize};
   width: ${(props): string => props.theme.bottomNavigationIconSize};
-  color: ${(props): string => props.theme.textEmphasis};
+  color: ${(props): string => props.theme.mintCream};
+`;
+
+const FilterLabel = styled(Typography).attrs(() => ({ component: 'span' }))`
+  color: ${(props) => props.theme.mintCream};
 `;
 
 const FilterAction: React.FC<Props> = ({ allProjectTags, tagCounts }) => {
@@ -41,11 +45,7 @@ const FilterAction: React.FC<Props> = ({ allProjectTags, tagCounts }) => {
   return (
     <>
       <BottomNavigationAction
-        label={
-          <Typography variant={'h5'} component={'span'}>
-            Filter
-          </Typography>
-        }
+        label={<FilterLabel variant={'h5'}>Filter</FilterLabel>}
         showLabel
         icon={<FilterIcon />}
         onClick={openFiltersDrawer}

@@ -33,9 +33,8 @@ const Grid = styled.div`
 const Name = styled(Typography)`
   grid-row: 1/2;
   grid-column: 1/4;
-  color: ${(props): string => props.theme.azure};
-  border-bottom: 5px solid ${(props): string => props.theme.azure};
-  background-color: ${(props): string => props.theme.bg};
+  color: ${(props): string => props.theme.blueSapphire};
+  border-bottom: 5px solid ${(props): string => props.theme.blueSapphire};
   z-index: 2;
   opacity: 0;
   transform: translateX(-100px);
@@ -50,7 +49,7 @@ const TitleAndNavWrapper = styled.div`
   grid-column: 1/4;
   display: flex;
   flex-direction: column;
-  border-left: 5px solid ${(props): string => props.theme.orangeRed};
+  border-left: 5px solid ${(props): string => props.theme.metallicSeaweed};
   padding-left: ${(props): string => props.theme.spacing(4)};
   z-index: 1;
   opacity: 0;
@@ -67,12 +66,12 @@ const Title = styled(Typography).attrs({
   component: 'span',
   variant: 'h2',
 })`
-  color: ${(props): string => props.theme.orangeRed};
+  color: ${(props): string => props.theme.metallicSeaweed};
   margin-bottom: 0.35em;
 
   @media only screen and (min-width: 960px) {
     margin-bottom: 0;
-    border-left: 5px solid ${(props): string => props.theme.orangeRed};
+    border-left: 5px solid ${(props): string => props.theme.metallicSeaweed};
     writing-mode: vertical-lr;
   }
 `;
