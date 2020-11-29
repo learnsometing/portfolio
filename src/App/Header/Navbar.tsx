@@ -36,7 +36,7 @@ const NavLink = styled(Link)`
 
 const Navbar: React.FC = () => (
   <Nav>
-    <AnchoredNavLink to="/#about">
+    <AnchoredNavLink to="/#about" stripHash>
       <Typography variant={'h5'} component="span">
         About
       </Typography>
@@ -46,11 +46,11 @@ const Navbar: React.FC = () => (
         Portfolio
       </Typography>
     </NavLink>
-    <NavLink to="/#contact">
+    <AnchoredNavLink to="/#contact" stripHash>
       <Typography variant={'h5'} component="span">
         Contact
       </Typography>
-    </NavLink>
+    </AnchoredNavLink>
   </Nav>
 );
 

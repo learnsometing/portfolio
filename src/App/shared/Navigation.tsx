@@ -46,18 +46,18 @@ const Navigation: React.FC = () => (
         justify="space-between"
       >
         <Grid item>
-          <AnchoredLink to="/#header">
+          <AnchoredLink to="/#header" stripHash>
             <Brand variant={'h2'}>BRIAN MONACCIO</Brand>
           </AnchoredLink>
         </Grid>
         <Grid item>
           <Box>
-            <NavbarLink to="/#about">
+            <NavbarLink to="/#about" stripHash>
               <Typography variant={'h5'} component="span">
                 About
               </Typography>
             </NavbarLink>
-            <NavbarLink to="/portfolio">
+            <NavbarLink to="/portfolio" stripHash>
               <Typography variant={'h5'} component="span">
                 Portfolio
               </Typography>
