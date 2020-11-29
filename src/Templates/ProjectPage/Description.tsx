@@ -10,7 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import Section from '../../App/shared/Section';
 
 // Animations
-import { slideUp } from '../../App/shared/animations';
+import { fadeIn } from '../../App/shared/animations';
 import { Typography } from '@material-ui/core';
 
 interface Props {
@@ -25,7 +25,7 @@ const Description: React.FC<Props> = ({ description }) => {
 
   useEffect(() => {
     if (descriptionInView) {
-      slideUp('.description', 0.6);
+      fadeIn('.description', 0.1, 0.1);
     }
   }, [descriptionInView]);
 
@@ -34,11 +34,7 @@ const Description: React.FC<Props> = ({ description }) => {
       {descriptionInView ? (
         <>
           <Grid item>
-            <Typography
-              variant="h2"
-              gutterBottom
-              className="description scroll-in"
-            >
+            <Typography variant="h2" gutterBottom className="description">
               Description
             </Typography>
           </Grid>

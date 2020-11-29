@@ -613,6 +613,7 @@ pre tt:after {
 
 .fade-in {
   opacity: 0;
+  will-change: opacity;
 }
 
 .scroll-in {
