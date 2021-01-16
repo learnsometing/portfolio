@@ -1,11 +1,13 @@
-import React, { useRef, useEffect } from 'react';
-import styled from 'styled-components';
+import React, { useContext, useRef, useEffect } from 'react';
+import styled, { ThemeContext } from 'styled-components';
 import gsap from 'gsap';
 
 // Material-UI
-import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
+import { Container, Typography } from '@material-ui/core';
 
+// React Icons
+import { IconContext } from '@react-icons/all-files';
+import { FaChevronDown } from '@react-icons/all-files/fa/FaChevronDown';
 import Navbar from './Navbar';
 
 const Wrapper = styled(Container).attrs({
@@ -24,24 +26,17 @@ const Grid = styled.div`
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   gap: ${(props): string => props.theme.spacing(4)} 0;
-
-  @media only screen and (min-width: 960px) {
-    transform: rotate(-45deg);
-  }
 `;
 
 const Name = styled(Typography)`
   grid-row: 1/2;
   grid-column: 1/4;
   color: ${(props): string => props.theme.blueSapphire};
+  background-color: #fff;
   border-bottom: 5px solid ${(props): string => props.theme.blueSapphire};
   z-index: 2;
   opacity: 0;
   transform: translateX(-100px);
-  @media only screen and (min-width: 960px) {
-    text-align: end;
-    grid-column: 2/3;
-  }
 `;
 
 const TitleAndNavWrapper = styled.div`
@@ -54,12 +49,6 @@ const TitleAndNavWrapper = styled.div`
   z-index: 1;
   opacity: 0;
   transform: translateY(-70px);
-  @media only screen and (min-width: 960px) {
-    flex-direction: row-reverse;
-    justify-content: flex-start;
-    grid-column: 2/3;
-    border-left: 0;
-  }
 `;
 
 const Title = styled(Typography).attrs({
@@ -68,12 +57,6 @@ const Title = styled(Typography).attrs({
 })`
   color: ${(props): string => props.theme.metallicSeaweed};
   margin-bottom: 0.35em;
-
-  @media only screen and (min-width: 960px) {
-    margin-bottom: 0;
-    border-left: 5px solid ${(props): string => props.theme.metallicSeaweed};
-    writing-mode: vertical-lr;
-  }
 `;
 
 const Header: React.FC = () => {
@@ -104,11 +87,61 @@ const Header: React.FC = () => {
           BRIAN MONACCIO
         </Name>
         <TitleAndNavWrapper ref={title}>
-          <Title>FRONTEND DEVELOPER</Title>
+          <Title>SOFTWARE DEVELOPER</Title>
           <Navbar />
         </TitleAndNavWrapper>
       </Grid>
+      <ContinueScrollingIcon />
     </Wrapper>
   );
 };
 export default Header;
+
+const ContinueScrollingIconWrapper = styled.div`
+  align-items: center;
+  bottom: 50px;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  position: absolute;
+`;
+
+function ContinueScrollingIcon() {
+  const name = useRef(null);
+  const theme = useContext(ThemeContext);
+
+  useEffect(() => {
+    gsap.fromTo(
+      name.current,
+      {
+        opacity: 0,
+      },
+      {
+        delay: 1.25,
+        opacity: 1,
+        ease: 'power3.inOut',
+      }
+    );
+
+    gsap.to(name.current, {
+      delay: 1.25,
+      duration: 0.85,
+      repeat: -1,
+      y: 50,
+      yoyo: true,
+      ease: 'power3.inOut',
+    });
+  });
+
+  return (
+    <ContinueScrollingIconWrapper ref={name}>
+      <IconContext.Provider
+        value={{
+          style: { color: theme.blueSapphire, fontSize: '2rem' },
+        }}
+      >
+        <FaChevronDown />
+      </IconContext.Provider>
+    </ContinueScrollingIconWrapper>
+  );
+}
