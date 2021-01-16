@@ -102,6 +102,7 @@ const ContinueScrollingIconWrapper = styled.div`
   bottom: 50px;
   display: flex;
   justify-content: center;
+  opacity: 0;
   padding: 2rem;
   position: absolute;
 `;
