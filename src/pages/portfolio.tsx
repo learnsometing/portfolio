@@ -9,7 +9,7 @@ import { Frontmatter } from '../App/Portfolio/Projects';
 import getTagCounts from '../helpers/getTagCounts';
 
 // Components
-import LayoutWithNavigation from '../App/Layout/LayoutWithNavigation';
+import Layout from '../App/Layout';
 import Portfolio from '../App/Portfolio';
 
 interface Props {
@@ -40,13 +40,13 @@ const PortfolioPage: React.FC<Props> = ({ data: { allMdx } }) => {
   const tagCounts = getTagCounts(allProjectTags);
 
   return (
-    <LayoutWithNavigation>
+    <Layout>
       <Portfolio
         allProjects={allProjects}
         allProjectTags={allProjectTags}
         tagCounts={tagCounts}
       />
-    </LayoutWithNavigation>
+    </Layout>
   );
 };
 
