@@ -1,12 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
-import { AnchorLink } from 'gatsby-plugin-anchor-links';
+import { Link } from 'gatsby';
+
+// Social Icons
+import { EmailIcon, GithubIcon, LinkedinIcon } from '../SocialIcons';
 
 // Hooks
 import { useMediaQuery } from 'react-responsive';
 
 // Material-ui
-import { Container, Grid, Paper, Typography } from '@material-ui/core';
+import {
+  Box,
+  Container,
+  Divider,
+  Grid,
+  Paper,
+  Typography,
+} from '@material-ui/core';
 
 const Brand = styled(Typography).attrs({
   component: 'span',
@@ -14,13 +24,11 @@ const Brand = styled(Typography).attrs({
   color: ${(props): string => props.theme.mintCream};
 `;
 
-export const AnchoredLink = styled(AnchorLink)`
-  text-decoration: none;
-`;
-
-const NavbarLink = styled(AnchoredLink)`
-  margin: ${(props): string => `0 ${props.theme.spacing(4)}`};
+const NavbarLink = styled(Link)`
   color: ${(props): string => props.theme.mintCream};
+  display: inline-block;
+  margin: ${(props): string => `0 ${props.theme.spacing(2)}`};
+  text-decoration: none;
 `;
 
 const Navbar = styled(Paper)`
@@ -33,6 +41,11 @@ const Navbar = styled(Paper)`
 
 const NavbarContainer = styled(Container)`
   padding: ${(props): string => props.theme.spacing(4)};
+`;
+
+const StyledDivider = styled(Divider)`
+  background-color: ${(props) => props.theme.mintCream};
+  margin: 0 0.5rem;
 `;
 
 const Navigation: React.FC = () => {
@@ -48,20 +61,20 @@ const Navigation: React.FC = () => {
           justify="space-between"
         >
           <Grid item>
-            <AnchoredLink to="/#header" stripHash>
-              <Brand variant={'h4'} component="span">
-                BRIAN MONACCIO
-              </Brand>
-            </AnchoredLink>
+            <Box display="flex" alignItems="center">
+              <NavbarLink to="/" style={{ marginRight: 0 }}>
+                <Brand variant={'h4'} component="span">
+                  BRIAN MONACCIO
+                </Brand>
+              </NavbarLink>
+              <StyledDivider orientation="vertical" flexItem />
+              <SocialIconList />
+            </Box>
           </Grid>
           <Grid item>
             <>
-              <NavbarLink to="/#about" stripHash>
-                About
-              </NavbarLink>
-              <NavbarLink to="/portfolio" stripHash>
-                Portfolio
-              </NavbarLink>
+              <NavbarLink to="/#about">About</NavbarLink>
+              <NavbarLink to="/portfolio">Portfolio</NavbarLink>
               <NavbarLink to="#contact">Contact</NavbarLink>
             </>
           </Grid>
@@ -80,3 +93,48 @@ const Header: React.FC = () => {
 };
 
 export default Header;
+
+const SocialIconList: React.FC = () => (
+  <Box display="flex" alignItems="center">
+    <GithubNavLink />
+    <LinkedinNavLink />
+    <EmailNavLink />
+  </Box>
+);
+
+const StyledAnchor = styled.a`
+  margin-right: 0.5rem;
+`;
+
+const EmailNavLink: React.FC = () => (
+  <StyledAnchor
+    href="mailto: brianmonaccio@protonmail.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    title="link to Brian's github account"
+  >
+    <EmailIcon />
+  </StyledAnchor>
+);
+
+const GithubNavLink: React.FC = () => (
+  <StyledAnchor
+    href="https://github.com/learnsometing"
+    target="_blank"
+    rel="noopener noreferrer"
+    title="link to Brian's github account"
+  >
+    <GithubIcon />
+  </StyledAnchor>
+);
+
+const LinkedinNavLink: React.FC = () => (
+  <StyledAnchor
+    href="https://www.linkedin.com/in/brian-monaccio/"
+    target="_blank"
+    rel="noopener noreferrer"
+    title="link to Brian's LinkedIn account"
+  >
+    <LinkedinIcon />
+  </StyledAnchor>
+);
