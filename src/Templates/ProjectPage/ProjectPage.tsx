@@ -5,28 +5,19 @@ import { MDXProvider } from '@mdx-js/react';
 import styled from 'styled-components';
 
 // Material-UI Imports
-import {
-  BottomNavigation,
-  Button,
-  Container,
-  Grid,
-  Link,
-  Paper,
-  Typography,
-} from '@material-ui/core';
+import { Button, Container, Grid, Link, Typography } from '@material-ui/core';
 
 // Icons
 import { TiArrowForward } from '@react-icons/all-files/ti/TiArrowForward';
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
 
 // Components
-import LayoutWithNavigation from '../../App/Layout/LayoutWithNavigation';
+import Layout from '../../App/Layout';
 import SEO from '../../App/SEO';
 import Gallery from './Gallery';
 import Description from './Description';
 import Tags from './Tags';
 import Section from '../../App/shared/Section';
-import MenuAction from '../../App/shared/BottomNavigation/MenuAction';
 
 // Interfaces
 import { Slide } from '../../App/Carousel/Carousel';
@@ -48,23 +39,6 @@ interface Props {
   data: Mdx;
 }
 
-const CondensedNavbar = styled(Paper).attrs({
-  elevation: 2,
-  square: true,
-})`
-  position: fixed;
-  bottom: ${(props): string => props.theme.spacing(4)};
-  right: ${(props): string => props.theme.spacing(4)};
-  z-index: 2;
-  height: 80px;
-  width: 80px;
-  border-radius: 50%;
-  background-color: ${(props): string => props.theme.metallicSeaweed};
-  @media only screen and (min-width: 1280px) {
-    display: none;
-  }
-`;
-
 const ProjectLink = styled(Button)`
   color: ${(props) => props.theme.mintCream};
 `;
@@ -79,7 +53,7 @@ const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
   const { frontmatter } = mdx;
 
   return (
-    <LayoutWithNavigation>
+    <Layout>
       <SEO title={frontmatter.title} />
       <Container maxWidth={'lg'}>
         <Section as={'header'}>
@@ -131,10 +105,7 @@ const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
           </Grid>
         </Grid>
       </Container>
-      <BottomNavigation component={CondensedNavbar} showLabels>
-        <MenuAction />
-      </BottomNavigation>
-    </LayoutWithNavigation>
+    </Layout>
   );
 };
 

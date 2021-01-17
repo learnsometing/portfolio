@@ -134,7 +134,7 @@ const theme = createMuiTheme({
       ].join(','),
     },
     body2: {
-      color: scTheme.metallicSeaweed,
+      color: scTheme.mintCream,
       fontFamily: [
         'aleo',
         '-apple-system',

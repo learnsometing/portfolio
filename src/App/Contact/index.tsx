@@ -15,7 +15,6 @@ const Footer = styled(Section).attrs({
   as: 'footer',
 })`
   background-color: ${(props): string => props.theme.metallicSeaweed};
-  min-height: 370px;
 `;
 
 const ContactSection = styled(Grid).attrs({
@@ -28,7 +27,7 @@ const ContactSection = styled(Grid).attrs({
   direction: 'column',
   alignItems: 'center',
 })`
-  padding: ${(props): string => props.theme.spacing(4)};
+  padding: ${(props): string => props.theme.spacing(2)};
 `;
 
 const ContactSectionHeading = styled(Typography).attrs({

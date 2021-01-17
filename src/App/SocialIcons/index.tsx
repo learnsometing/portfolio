@@ -17,20 +17,23 @@ import scTheme from '../shared/SCTheme';
 import styled from 'styled-components';
 
 const IconWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 5px;
-  height: 48px;
+  height: 2.5rem;
   position: relative;
-  width: 48px;
+  width: 2.5rem;
 `;
 
 const IconBackground = styled.div`
   background-color: ${(props) => props.theme.mintCream};
   border-radius: 5px;
-  height: 42px;
+  height: 2.2rem;
   left: 3px;
   position: absolute;
   top: 3px;
-  width: 42px;
+  width: 2.2rem;
 `;
 
 const iconStyles = {
@@ -56,13 +59,21 @@ SocialIcon.propTypes = {
 
 const EmailIconWrapper = styled.div`
   align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 2.35rem;
+  width: 2.35rem;
+`;
+
+const EmailIconBG = styled.div`
+  align-items: center;
   background-color: ${(props) => props.theme.persianGreen};
   display: flex;
   border-radius: 5px;
-  height: 42px;
+  height: 100%;
   justify-content: center;
   position: relative;
-  width: 42px;
+  width: 100%;
 `;
 
 const emailIconStyles = {
@@ -73,9 +84,11 @@ const emailIconStyles = {
 
 export const EmailIcon: React.FC = () => (
   <EmailIconWrapper>
-    <IconContext.Provider value={emailIconStyles}>
-      <MdMail />
-    </IconContext.Provider>
+    <EmailIconBG>
+      <IconContext.Provider value={emailIconStyles}>
+        <MdMail />
+      </IconContext.Provider>
+    </EmailIconBG>
   </EmailIconWrapper>
 );
 

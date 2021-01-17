@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import Typography from '@material-ui/core/Typography';
 
-import DrawerBase from '../shared/BottomNavigation/DrawerBase';
+import DrawerBase from '../DrawerBase';
 import FiltersForm from './FiltersForm';
 import { TagMap } from '../../helpers/getTagCounts';
 
