@@ -10,9 +10,10 @@ import Avatar from './Avatar';
 import { slideUp } from '../shared/animations';
 
 const AboutSection = styled(Section)`
-  padding-top: 2rem;
+  padding: 2rem 0;
+
   @media only screen and (min-width: 1280px) {
-    padding: 6rem 0;
+    padding: 4rem 0;
   }
 `;
 
@@ -95,9 +96,9 @@ const Name = styled.span`
   background-color: rgb(0, 168, 151);
   background-image: linear-gradient(
     145deg,
-    rgba(5, 104, 143, 1) 0%,
+    rgba(0, 168, 151, 1) 0%,
     rgba(2, 129, 146, 1) 50%,
-    rgba(0, 168, 151, 1) 75%
+    rgba(5, 104, 143, 1) 75%
   );
 
   background-size: 100%;
@@ -148,15 +149,35 @@ function AboutMe() {
 
         <Grid item>
           <AboutDetails>
-            I’m a self-taught Software Developer and JavaScript specialist.
+            <span>I’m a self-taught Software Developer </span>
+            <br />
+            <span>and JavaScript specialist.</span>
           </AboutDetails>
           <ExperienceDescription>
-            I work at The Wally Shop, a sustainability-focused e-commerce
-            startup company. I manage development efforts, as well as the
-            technical needs of each of our departments. I&#39;m responsible for
-            each aspect of the development lifecycle, from gathering
-            requirements from product owners to releasing new and exciting
-            features.
+            I work at The Wally Shop, an e-commerce startup company that offers
+            a unique, closed-loop shopping experience. All Wally Shop products
+            are purchased in bulk and packaged into resuable containers for
+            purchase. Once finished with their goods, our customers send the
+            empty packaging back to us to be cleaned, re-packed, and purchased
+            again.
+          </ExperienceDescription>
+          <ExperienceDescription>
+            I lead our development efforts and I&#39;m responsible for each
+            stage of the product development lifecyle. I collaborate with
+            product owners to gather business requirements, translate
+            requirements into tangible designs, and write, ship, and maintain
+            code. I also manage the technical needs of our marketing,
+            operations, and retail departments.
+          </ExperienceDescription>
+          <ExperienceDescription>
+            My professional development experience ranges from data modeling to
+            UI/UX design and development, but my favorite type of work lies
+            somewhere in the middle. I enjoy modeling data and developing APIs
+            and UI components that will consume data. In the immediate future,
+            I&#39;d like to have more opportunities to be involved with backend
+            development, systems design, and scalable architechture. Later in my
+            career, I&#39;d like to progress to a senior development or lead
+            position.
           </ExperienceDescription>
         </Grid>
       </Grid>
