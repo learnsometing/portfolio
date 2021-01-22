@@ -10,6 +10,7 @@ import Avatar from './Avatar';
 import { slideUp } from '../shared/animations';
 
 const AboutSection = styled(Section)`
+  min-height: 100vh;
   padding: 2rem 0;
 
   @media only screen and (min-width: 1280px) {
