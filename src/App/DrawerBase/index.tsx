@@ -5,10 +5,6 @@ import styled from 'styled-components';
 import Drawer from '@material-ui/core/Drawer';
 import Paper from '@material-ui/core/Paper';
 
-const FullHeightDrawer = styled(Drawer)`
-  height: 100vh;
-`;
-
 const DrawerBG = styled(Paper)`
   overflow-y: auto;
   background-color: ${(props): string => props.theme.white};
@@ -23,7 +19,7 @@ interface DrawerBaseProps {
 
 const DrawerBase: React.FC<DrawerBaseProps> = ({ isOpen, children }) => {
   return (
-    <FullHeightDrawer
+    <Drawer
       anchor={'top'}
       open={isOpen}
       elevation={2}
@@ -32,7 +28,7 @@ const DrawerBase: React.FC<DrawerBaseProps> = ({ isOpen, children }) => {
       variant={'persistent'}
     >
       {children}
-    </FullHeightDrawer>
+    </Drawer>
   );
 };
 

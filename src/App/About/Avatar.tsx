@@ -1,24 +1,21 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
+import { Box, Container } from '@material-ui/core';
 import styled from 'styled-components';
 
 const AvatarImage = styled.img`
   border-radius: 50%;
-  margin: ${(props): string => props.theme.spacing(4)} 10%;
-  max-width: 80%;
-  @media screen and (min-width: 600px) {
-    margin: ${(props): string => props.theme.spacing(5)};
-    margin-bottom: 0;
-    float: left;
-    max-width: 40%;
+  width: 65%;
+  margin: 1rem;
+
+  @media only screen and (min-width: 960px) {
+    width: 70%;
   }
 
-  @media screen and (min-width: 960px) {
-    max-width: 30%;
-  }
+  /* major third  */
 
-  @media screen and (min-width: 1280px) {
-    max-width: 25%;
+  @media only screen and (min-width: 1280px) {
+    width: 80%;
   }
 `;
 
@@ -32,11 +29,14 @@ const Avatar: React.FC = () => {
   `);
 
   return (
-    <AvatarImage
-      src={avatar.publicURL}
-      alt="A traced SVG graphic of Brian wearing a blue beanie and leaning against two river birches."
-      className="about scroll-in"
-    />
+    <Container disableGutters maxWidth="xs">
+      <Box display="flex" justifyContent="center">
+        <AvatarImage
+          src={avatar.publicURL}
+          alt="A traced SVG graphic of Brian wearing a blue beanie and leaning against two river birches."
+        />
+      </Box>
+    </Container>
   );
 };
 

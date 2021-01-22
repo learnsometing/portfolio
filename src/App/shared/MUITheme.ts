@@ -9,7 +9,7 @@ const theme = createMuiTheme({
   },
   typography: {
     h1: {
-      fontSize: '3.5rem',
+      fontSize: '3.052rem',
       fontFamily: [
         'Roboto',
         '-apple-system',
@@ -28,7 +28,7 @@ const theme = createMuiTheme({
       color: scTheme.blueSapphire,
     },
     h2: {
-      fontSize: '2.375rem',
+      fontSize: '2.441rem',
       fontFamily: [
         'Roboto',
         '-apple-system',
@@ -46,7 +46,7 @@ const theme = createMuiTheme({
       color: scTheme.blueSapphire,
     },
     h3: {
-      fontSize: '2rem',
+      fontSize: '1.953rem',
       fontFamily: [
         'Roboto',
         '-apple-system',
@@ -64,7 +64,7 @@ const theme = createMuiTheme({
       color: scTheme.blueSapphire,
     },
     h4: {
-      fontSize: '1.5625rem',
+      fontSize: '1.563rem',
       fontFamily: [
         'Roboto',
         '-apple-system',
@@ -82,7 +82,7 @@ const theme = createMuiTheme({
       color: scTheme.blueSapphire,
     },
     h5: {
-      fontSize: '1.25rem',
+      fontSize: '1.125rem',
       fontFamily: [
         'Roboto',
         '-apple-system',
@@ -134,7 +134,7 @@ const theme = createMuiTheme({
       ].join(','),
     },
     body2: {
-      color: scTheme.metallicSeaweed,
+      color: scTheme.mintCream,
       fontFamily: [
         'aleo',
         '-apple-system',

@@ -18,7 +18,6 @@ import FilterAction from './FilterAction';
 import FiltersSidebar from './FiltersSidebar';
 import Projects from './Projects';
 import { Project } from './ProjectCard';
-import MenuAction from '../shared/BottomNavigation/MenuAction';
 import Section from '../shared/Section';
 import SortMenu from './SortMenu';
 
@@ -130,7 +129,6 @@ const Portfolio: React.FC<Props> = ({
       </Container>
       <BottomNavigation component={Navbar} showLabels>
         <FilterAction allProjectTags={allProjectTags} tagCounts={tagCounts} />
-        <MenuAction />
       </BottomNavigation>
     </PortfolioSection>
   );

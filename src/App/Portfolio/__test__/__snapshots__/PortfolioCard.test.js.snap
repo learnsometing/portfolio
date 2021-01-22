@@ -121,7 +121,7 @@ exports[`PortfolioCard should match the snapshot 1`] = `
           className="MuiCardContent-root"
         >
           <h3
-            className="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+            className="MuiTypography-root ProjectCard__CardHeader-g4bmih-1 imEqLw MuiTypography-h5 MuiTypography-gutterBottom"
           >
             Cash Pawn & Jewelry Website
           </h3>

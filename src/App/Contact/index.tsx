@@ -1,24 +1,20 @@
-import React, { ReactNode } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import styled from 'styled-components';
-import Button from '@material-ui/core/Button';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 
-import { IconContext } from '@react-icons/all-files';
-import { MdMail } from '@react-icons/all-files/md/MdMail';
-import { FaTwitterSquare } from '@react-icons/all-files/fa/FaTwitterSquare';
-import { FaInstagramSquare } from '@react-icons/all-files/fa/FaInstagramSquare';
-
+// Custom Components
 import Section from '../shared/Section';
-import scTheme from '../shared/SCTheme';
+import { InstagramIcon, TwitterIcon } from '../SocialIcons';
+
+// Icons
+import { MdMail } from '@react-icons/all-files/md/MdMail';
+
+// Material UI
+import { Button, Container, Grid, Typography } from '@material-ui/core';
 
 const Footer = styled(Section).attrs({
   as: 'footer',
 })`
   background-color: ${(props): string => props.theme.metallicSeaweed};
-  min-height: 370px;
 `;
 
 const ContactSection = styled(Grid).attrs({
@@ -31,7 +27,7 @@ const ContactSection = styled(Grid).attrs({
   direction: 'column',
   alignItems: 'center',
 })`
-  padding: ${(props): string => props.theme.spacing(4)};
+  padding: ${(props): string => props.theme.spacing(2)};
 `;
 
 const ContactSectionHeading = styled(Typography).attrs({
@@ -59,23 +55,6 @@ const ContactButton = styled(Button).attrs({
 const CopyrightNotice = styled(Typography)`
   margin-top: ${(props): string => props.theme.spacing(4)};
 `;
-
-const iconStyles = {
-  size: '48px',
-  color: scTheme.persianGreen,
-};
-
-interface IconProps {
-  icon: ReactNode;
-}
-
-const Icon: React.FC<IconProps> = ({ icon }) => (
-  <IconContext.Provider value={iconStyles}>{icon}</IconContext.Provider>
-);
-
-Icon.propTypes = {
-  icon: PropTypes.node.isRequired,
-};
 
 const Contact: React.FC = () => {
   return (
@@ -113,7 +92,7 @@ const Contact: React.FC = () => {
                   rel="noopener noreferrer"
                   title="link to Brian's instagram account"
                 >
-                  <Icon icon={<FaInstagramSquare />} />
+                  <InstagramIcon />
                 </a>
               </Grid>
               <Grid item>
@@ -123,7 +102,7 @@ const Contact: React.FC = () => {
                   rel="noopener noreferrer"
                   title="link to Brian's twitter account"
                 >
-                  <Icon icon={<FaTwitterSquare />} />
+                  <TwitterIcon />
                 </a>
               </Grid>
             </Grid>

@@ -16,7 +16,7 @@ import theme from '../shared/MUITheme';
 
 // Components
 import Contact from '../Contact';
-
+import Header from '../Header';
 interface Props {
   children: ReactNode;
 }
@@ -24,6 +24,7 @@ interface Props {
 const Layout: React.FC<Props> = ({ children }) => (
   <ThemeProvider theme={theme}>
     <StyledComponentsThemeProvider theme={scTheme}>
+      <Header />
       <main>{children}</main>
       <Contact />
     </StyledComponentsThemeProvider>
