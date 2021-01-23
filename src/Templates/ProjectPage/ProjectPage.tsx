@@ -60,38 +60,44 @@ const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
           <Typography variant="h1" gutterBottom>
             {frontmatter.title}
           </Typography>
-          <ProjectLinks container spacing={2}>
-            <Grid item>
-              <Link
-                href={frontmatter.websiteUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <ProjectLink
-                  color="primary"
-                  variant={'contained'}
-                  endIcon={<TiArrowForward />}
-                >
-                  Visit
-                </ProjectLink>
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link
-                href={frontmatter.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <ProjectLink
-                  color={'primary'}
-                  variant={'contained'}
-                  endIcon={<FaGithub />}
-                >
-                  Github
-                </ProjectLink>
-              </Link>
-            </Grid>
-          </ProjectLinks>
+          {frontmatter.websiteUrl || frontmatter.githubUrl ? (
+            <ProjectLinks container spacing={2}>
+              {frontmatter.websiteUrl && (
+                <Grid item>
+                  <Link
+                    href={frontmatter.websiteUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <ProjectLink
+                      color="primary"
+                      variant={'contained'}
+                      endIcon={<TiArrowForward />}
+                    >
+                      Visit
+                    </ProjectLink>
+                  </Link>
+                </Grid>
+              )}
+              {frontmatter.githubUrl && (
+                <Grid item>
+                  <Link
+                    href={frontmatter.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <ProjectLink
+                      color={'primary'}
+                      variant={'contained'}
+                      endIcon={<FaGithub />}
+                    >
+                      Github
+                    </ProjectLink>
+                  </Link>
+                </Grid>
+              )}
+            </ProjectLinks>
+          ) : null}
         </Section>
         <MDXProvider components={shortcodes}>
           <Description description={mdx.body} />

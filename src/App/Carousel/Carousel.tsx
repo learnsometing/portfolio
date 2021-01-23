@@ -98,7 +98,10 @@ function SwipeableTextMobileStepper({ slides }: Props): ReactElement {
           enableMouseEvents
         >
           {slides.map((slide, index) => (
-            <div key={slide.caption}>
+            <div
+              key={slide.caption}
+              style={{ maxHeight: '448px', overflowY: 'auto' }}
+            >
               {Math.abs(activeStep - index) <= 2 ? (
                 <Img
                   fluid={slide.src.childImageSharp.fluid}
