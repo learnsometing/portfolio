@@ -54,7 +54,7 @@ exports.createPages = async ({graphql, actions }) => {
     const slug = node.frontmatter.path;
     createPage({
       path: slug,
-      component: path.resolve(`./src/Templates/ProjectPage/ProjectPage.tsx`),
+      component: path.resolve(`./src/Templates/ProjectPage/index.tsx`),
       context: {
         // Data passed to context is available in page queries as GraphQL variables.
         slug

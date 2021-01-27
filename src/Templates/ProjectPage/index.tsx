@@ -28,6 +28,8 @@ interface Mdx {
       title: string;
       websiteUrl: string;
       githubUrl: string;
+      mobileCarouselPhotos: Slide[];
+      tabletCarouselPhotos: Slide[];
       carouselPhotos: Slide[];
       tags: string[];
     };
@@ -51,7 +53,7 @@ const shortcodes = { Grid, Typography };
 
 const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
   const { frontmatter } = mdx;
-
+  console.log(frontmatter);
   return (
     <Layout>
       <SEO title={frontmatter.title} />
@@ -122,6 +124,40 @@ ProjectPage.propTypes = {
         title: PropTypes.string.isRequired,
         websiteUrl: PropTypes.string.isRequired,
         githubUrl: PropTypes.string.isRequired,
+        mobileCarouselPhotos: PropTypes.arrayOf(
+          PropTypes.shape({
+            src: PropTypes.shape({
+              childImageSharp: PropTypes.shape({
+                fluid: PropTypes.shape({
+                  base64: PropTypes.string.isRequired,
+                  aspectRatio: PropTypes.number.isRequired,
+                  src: PropTypes.string.isRequired,
+                  srcSet: PropTypes.string.isRequired,
+                  sizes: PropTypes.string.isRequired,
+                }).isRequired,
+              }).isRequired,
+            }).isRequired,
+            altText: PropTypes.string.isRequired,
+            caption: PropTypes.string,
+          }).isRequired
+        ).isRequired,
+        tabletCarouselPhotos: PropTypes.arrayOf(
+          PropTypes.shape({
+            src: PropTypes.shape({
+              childImageSharp: PropTypes.shape({
+                fluid: PropTypes.shape({
+                  base64: PropTypes.string.isRequired,
+                  aspectRatio: PropTypes.number.isRequired,
+                  src: PropTypes.string.isRequired,
+                  srcSet: PropTypes.string.isRequired,
+                  sizes: PropTypes.string.isRequired,
+                }).isRequired,
+              }).isRequired,
+            }).isRequired,
+            altText: PropTypes.string.isRequired,
+            caption: PropTypes.string,
+          }).isRequired
+        ).isRequired,
         carouselPhotos: PropTypes.arrayOf(
           PropTypes.shape({
             src: PropTypes.shape({
@@ -155,6 +191,28 @@ export const query = graphql`
         title
         githubUrl
         websiteUrl
+        mobileCarouselPhotos {
+          altText
+          src {
+            childImageSharp {
+              fluid(maxWidth: 784) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+          caption
+        }
+        tabletCarouselPhotos {
+          altText
+          src {
+            childImageSharp {
+              fluid(maxWidth: 784) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+          caption
+        }
         carouselPhotos {
           altText
           src {
