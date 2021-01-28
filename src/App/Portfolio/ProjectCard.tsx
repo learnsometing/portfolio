@@ -70,7 +70,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ content, hasAnimated }) => {
       item
       xl={6}
       lg={6}
-      md={6}
+      md={4}
       sm={6}
       xs={12}
       ref={projectCardRef}
@@ -82,6 +82,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ content, hasAnimated }) => {
             <Img
               fluid={cardPhoto.src.childImageSharp.fluid}
               alt={cardPhoto.altText}
+              style={{ maxHeight: '244px' }}
             />
             <CardContent>
               <CardHeader gutterBottom variant={'h5'}>

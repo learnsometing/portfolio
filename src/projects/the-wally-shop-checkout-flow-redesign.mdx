@@ -1,0 +1,162 @@
+---
+title: 'The Wally Shop Checkout Flow Redesigned'
+path: /portfolio/the-wally-shop-checkout-flow-redesign
+websiteUrl: 'https://thewallyshop.co'
+cardPhoto:
+  {
+    src: '../images/tws-checkout-flow-overhaul/card-photo.jpg',
+    altText: 'The Wally Shop checkout page after being redesigned.',
+  }
+cardText: "A UX focused redesign of The Wally Shop's checkout flow."
+mobileCarouselPhotos:
+  [
+    {
+      src: '../images/tws-checkout-flow-overhaul/mobile/impulse-products.png',
+      altText: 'The Wally Shop impulse buys page.',
+      caption: 'The impulse buys page prior to redesign.',
+    },
+    {
+      src: '../images/tws-checkout-flow-overhaul/mobile/checkout-before.png',
+      altText: 'The Wally Shop Checkout page prior to redesign.',
+      caption: 'The checkout page prior to redesign.',
+    },
+    {
+      src: '../images/tws-checkout-flow-overhaul/mobile/cart-review.png',
+      altText: 'The Wally Shop impulse buys page, redesigned to feature cart review.',
+      caption: 'The redesigned impulse buys page.',
+    },
+    {
+      src: '../images/tws-checkout-flow-overhaul/mobile/shipping.png',
+      altText: 'The Wally Shop shipping step of the checkout flow.',
+      caption: 'The redesigned shipping step of the checkout flow.',
+    },
+    {
+      src: '../images/tws-checkout-flow-overhaul/mobile/payment.png',
+      altText: 'The Wally Shop payment step of the checkout flow.',
+      caption: 'The redesigned payment step of the checkout flow.',
+    },
+    {
+      src: '../images/tws-checkout-flow-overhaul/mobile/checkout-after.png',
+      altText: 'The Wally Shop checkout page after being redesigned.',
+      caption: 'The checkout page after redesign.',
+    },
+  ]
+tabletCarouselPhotos:
+  [
+    {
+      src: '../images/tws-checkout-flow-overhaul/tablet/impulse-products.png',
+      altText: 'The Wally Shop impulse buys page.',
+      caption: 'The impulse buys page prior to redesign.',
+    },
+    {
+      src: '../images/tws-checkout-flow-overhaul/tablet/checkout-before.png',
+      altText: 'The Wally Shop Checkout page prior to redesign.',
+      caption: 'The checkout page prior to redesign.',
+    },
+    {
+      src: '../images/tws-checkout-flow-overhaul/tablet/cart-review.png',
+      altText: 'The Wally Shop impulse buys page, redesigned to feature cart review.',
+      caption: 'The redesigned impulse buys page.',
+    },
+    {
+      src: '../images/tws-checkout-flow-overhaul/tablet/shipping.png',
+      altText: 'The Wally Shop shipping step of the checkout flow.',
+      caption: 'The redesigned shipping step of the checkout flow.',
+    },
+    {
+      src: '../images/tws-checkout-flow-overhaul/tablet/payment.png',
+      altText: 'The Wally Shop payment step of the checkout flow.',
+      caption: 'The redesigned payment step of the checkout flow.',
+    },
+    {
+      src: '../images/tws-checkout-flow-overhaul/tablet/checkout-after.png',
+      altText: 'The Wally Shop checkout page after being redesigned.',
+      caption: 'The checkout page after redesign.',
+    },
+  ]
+carouselPhotos:
+  [
+    {
+      src: '../images/tws-checkout-flow-overhaul/desktop/impulse-products.jpg',
+      altText: 'The Wally Shop impulse buys page.',
+      caption: 'The impulse buys page prior to redesign.',
+    },
+    {
+      src: '../images/tws-checkout-flow-overhaul/desktop/checkout-before.png',
+      altText: 'The Wally Shop Checkout page prior to redesign.',
+      caption: 'The checkout page prior to redesign.',
+    },
+    {
+      src: '../images/tws-checkout-flow-overhaul/desktop/cart-review.png',
+      altText: 'The Wally Shop impulse buys page, redesigned to feature cart review.',
+      caption: 'The redesigned impulse buys page.',
+    },
+    {
+      src: '../images/tws-checkout-flow-overhaul/desktop/shipping.png',
+      altText: 'The Wally Shop shipping step of the checkout flow.',
+      caption: 'The redesigned shipping step of the checkout flow.',
+    },
+    {
+      src: '../images/tws-checkout-flow-overhaul/desktop/payment.png',
+      altText: 'The Wally Shop payment step of the checkout flow.',
+      caption: 'The redesigned payment step of the checkout flow.',
+    },
+    {
+      src: '../images/tws-checkout-flow-overhaul/desktop/checkout-after.png',
+      altText: 'The Wally Shop checkout page after being redesigned.',
+      caption: 'The checkout page after redesign.',
+    },
+  ]
+tags:
+  - 'CSS'
+  - 'styled-components'
+  - 'Express.js'
+  - 'React'
+  - 'Responsive Design'
+  - 'REST APIs'
+date: '2020-12-17'
+---
+
+<Grid item>
+  <Typography className="description fade-in" gutterBottom>
+    While preparing to secure more orders on a monthly basis, the store's
+    checkout flow was identified as a barrier to conversion and order
+    processing. The first page in the process was dedicated to selling
+    additional products, but was overwhelming to use. The checkout page lacked
+    useful error handling, so our customers weren't being given any reasons why
+    their orders wouldn't go through. Lastly, our team felt that condensing all
+    of the checkout steps on one page was overwhelming to our customers. It was
+    also unsightly, due to layout shift caused by interacting with features on
+    the page.
+  </Typography>
+  <Typography className="description fade-in" gutterBottom>
+    To make the first page of the checkout flow less overwhelming, the number of
+    additional products shown to the user was limited to a maximum of twelve.
+    The products were also reorganized into a carousel to make room to show the
+    customer's cart below. A call to action with a helpful tone was used to
+    remind the customer to check for any forgotten or previously unviewed items.
+    Lastly, Google Analytics event tracking was added to each product in the
+    carousel to measure conversion when added to the cart. These changes reduced
+    the likelihood of overwhelming our customers when they decide to add
+    additional items to their cart and gave them another opportunity to review
+    their cart before checking out.
+  </Typography>
+  <Typography className="description fade-in" gutterBottom>
+    To reduce the complexity and the layout shift on the checkout page, it was
+    split into three separate pages. The first two pages were dedicated to
+    shipping and payment, and the last page was dedicated to order review. A
+    single column on each page allowed collapsible elements to continue to be
+    used while reducing the awkwardness of the resulting layout shift. To
+    further reduce layout shift and bundle size, shipping and payment forms were
+    made into modals that could be lazy-loaded with React's Suspense package.
+    Cookies were also leveraged to save customer-selected preferences to prevent
+    completed parts of the checkout process from being reset.
+  </Typography>
+  <Typography className="description fade-in" gutterBottom>
+    Error handling was improved throughout the process by enforcing form-level
+    and API-level data validation and sanitization on address, payment, and
+    order submission forms. This change prevented erroneous data from ever
+    reaching our database and also allowed us to display helpful messages to
+    guide the customer through error resolution.
+  </Typography>
+</Grid>

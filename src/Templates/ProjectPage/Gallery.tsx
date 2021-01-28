@@ -4,10 +4,21 @@ import PropTypes from 'prop-types';
 import { useInView } from 'react-intersection-observer';
 
 import Section from '../../App/shared/Section';
-import Carousel, { Slide } from '../../App/Carousel/Carousel';
+import {
+  Carousel,
+  MobileCarousel,
+  SlideInterface,
+  TabletCarousel,
+} from '../../App/Carousel';
 
 import { fadeIn } from '../../App/shared/animations';
 import { Box, Typography } from '@material-ui/core';
+
+// Media Queries
+import { EXTRA_SMALL, SMALL } from '../../media-queries';
+
+// React Responsive
+import { useMediaQuery } from 'react-responsive';
 
 const GallerySection = styled(Section)`
   min-height: 424px;
@@ -24,7 +35,7 @@ const GallerySection = styled(Section)`
 `;
 
 interface Props {
-  slides: Slide[];
+  slides: SlideInterface[];
 }
 
 const Gallery: React.FC<Props> = ({ slides }) => {
@@ -39,6 +50,11 @@ const Gallery: React.FC<Props> = ({ slides }) => {
     }
   }, [galleryInView]);
 
+  const isXs = useMediaQuery({ query: EXTRA_SMALL });
+  const isSm = useMediaQuery({ query: SMALL });
+
+  const { carouselPhotos, mobileCarouselPhotos, tabletCarouselPhotos } = slides;
+
   return (
     <GallerySection ref={galleryRef}>
       {galleryInView ? (
@@ -47,7 +63,20 @@ const Gallery: React.FC<Props> = ({ slides }) => {
             Gallery
           </Typography>
           <Box className="gallery fade-in">
-            <Carousel slides={slides} />
+            {isXs && mobileCarouselPhotos && mobileCarouselPhotos.length ? (
+              <MobileCarousel slides={mobileCarouselPhotos} />
+            ) : null}
+            {isSm && tabletCarouselPhotos && tabletCarouselPhotos.length ? (
+              <TabletCarousel slides={tabletCarouselPhotos} />
+            ) : null}
+            {((!isXs && !isSm) ||
+              (isXs && !mobileCarouselPhotos) ||
+              (isXs && !tabletCarouselPhotos) ||
+              (isSm && !tabletCarouselPhotos)) &&
+            carouselPhotos &&
+            carouselPhotos.length ? (
+              <Carousel slides={carouselPhotos} />
+            ) : null}
           </Box>
         </>
       ) : (
