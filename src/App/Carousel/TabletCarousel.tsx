@@ -24,11 +24,12 @@ export interface Slide {
   altText: string;
   caption?: string;
 }
-export interface Props {
+
+interface Props {
   slides: Slide[];
 }
 
-export const CarouselHeader = styled(Paper)`
+const CarouselHeader = styled(Paper)`
   display: flex;
   align-items: center;
   height: 50px;
@@ -36,14 +37,14 @@ export const CarouselHeader = styled(Paper)`
   background-color: ${({ theme }): string => theme.palette.background.default};
 `;
 
-export const Screen = styled(Paper)`
+const Screen = styled(Paper)`
   padding: ${(props): string => props.theme.spacing(4)};
   background-color: black;
   border: 1px solid silver;
   border-radius: 15px;
 `;
 
-export const ScreenInner = styled.div`
+const ScreenInner = styled.div`
   height: 100%;
   background-color: #fafafa;
 `;
@@ -52,7 +53,7 @@ interface CircleProps {
   backgroundColor: string;
 }
 
-export const Circle = styled.div<CircleProps>`
+const Circle = styled.div<CircleProps>`
   width: 0.667rem;
   height: 0.667rem;
   margin: auto ${(props): string => props.theme.spacing(1)};
@@ -60,7 +61,7 @@ export const Circle = styled.div<CircleProps>`
   background-color: ${(props): string => props.backgroundColor || 'black'};
 `;
 
-export const Caption = styled(Typography)`
+const Caption = styled(Typography)`
   margin-left: ${(props): string => props.theme.spacing(2)};
 `;
 
@@ -99,7 +100,7 @@ function SwipeableTextMobileStepper({ slides }: Props): ReactElement {
           {slides.map((slide, index) => (
             <div
               key={slide.caption}
-              style={{ maxHeight: '672px', overflowY: 'auto' }}
+              style={{ maxHeight: '768px', overflowY: 'auto' }}
             >
               {Math.abs(activeStep - index) <= 2 ? (
                 <Img

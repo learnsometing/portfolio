@@ -16,53 +16,15 @@ import SwipeableViews from 'react-swipeable-views';
 import { MdKeyboardArrowRight } from '@react-icons/all-files/md/MdKeyboardArrowRight';
 import { MdKeyboardArrowLeft } from '@react-icons/all-files/md/MdKeyboardArrowLeft';
 
-// Interfaces
-import ChildImageSharp from '../shared/ChildImageSharp';
-
-export interface Slide {
-  src: ChildImageSharp;
-  altText: string;
-  caption?: string;
-}
-export interface Props {
-  slides: Slide[];
-}
-
-export const CarouselHeader = styled(Paper)`
-  display: flex;
-  align-items: center;
-  height: 50px;
-  padding-left: ${({ theme }): string => theme.spacing(1)}px;
-  background-color: ${({ theme }): string => theme.palette.background.default};
-`;
-
-export const Screen = styled(Paper)`
-  padding: ${(props): string => props.theme.spacing(4)};
-  background-color: black;
-  border: 1px solid silver;
-  border-radius: 15px;
-`;
-
-export const ScreenInner = styled.div`
-  height: 100%;
-  background-color: #fafafa;
-`;
-
-interface CircleProps {
-  backgroundColor: string;
-}
-
-export const Circle = styled.div<CircleProps>`
-  width: 0.667rem;
-  height: 0.667rem;
-  margin: auto ${(props): string => props.theme.spacing(1)};
-  border-radius: 50%;
-  background-color: ${(props): string => props.backgroundColor || 'black'};
-`;
-
-export const Caption = styled(Typography)`
-  margin-left: ${(props): string => props.theme.spacing(2)};
-`;
+// Carousel
+import {
+  Props,
+  Caption,
+  CarouselHeader,
+  Circle,
+  Screen,
+  ScreenInner,
+} from './Carousel';
 
 function SwipeableTextMobileStepper({ slides }: Props): ReactElement {
   const theme = useTheme();
@@ -99,7 +61,7 @@ function SwipeableTextMobileStepper({ slides }: Props): ReactElement {
           {slides.map((slide, index) => (
             <div
               key={slide.caption}
-              style={{ maxHeight: '672px', overflowY: 'auto' }}
+              style={{ maxHeight: '448px', overflowY: 'auto' }}
             >
               {Math.abs(activeStep - index) <= 2 ? (
                 <Img

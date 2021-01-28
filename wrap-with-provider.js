@@ -2,7 +2,6 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import store from './src/state/createStore';
 
-// eslint-disable-next-line react/display-name,react/prop-types
 const ReduxWrapper = ({ element }) => (
   // Instantiating store in `wrapRootElement` handler ensures:
   //  - there is fresh store for each SSR page

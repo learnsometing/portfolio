@@ -1,5 +1,5 @@
 ---
-title: 'The Wally Shop Checkout Flow Redesign'
+title: 'The Wally Shop Checkout Flow Redesigned'
 path: /portfolio/the-wally-shop-checkout-flow-redesign
 websiteUrl: 'https://thewallyshop.co'
 cardPhoto:
@@ -121,43 +121,42 @@ date: '2020-12-17'
   <Typography className="description fade-in" gutterBottom>
     While preparing to secure more orders on a monthly basis, the store's
     checkout flow was identified as a barrier to conversion and order
-    processing. The first page in the process was solely dedicated to selling
-    the customers additional products but in a pushy and overwhelming way. The
-    checkout page lacked useful error handling, so our customers weren't being
-    given any reasons why their orders wouldn't go through. Lastly, our team
-    felt that condensing all of the checkout steps on one page was overwhelming
-    to our customers. It was also unsightly, due to layout shift caused by
-    interacting with features on the page.
+    processing. The first page in the process was dedicated to selling
+    additional products, but was overwhelming to use. The checkout page lacked
+    useful error handling, so our customers weren't being given any reasons why
+    their orders wouldn't go through. Lastly, our team felt that condensing all
+    of the checkout steps on one page was overwhelming to our customers. It was
+    also unsightly, due to layout shift caused by interacting with features on
+    the page.
   </Typography>
   <Typography className="description fade-in" gutterBottom>
-    To remedy the issue on the first step of the checkout flow, I decided to
-    change the tone of the page from pushy to helpful. I still wanted the page
-    to sell additional products, but I also wanted to allow our customers to use
-    this page to review their cart one last time. In order to accomplish this,
-    the number of additional products shown to the user was reduced by 50% to
-    avoid displaying an overwhelming amount of options. The 'impulse buys' the
-    section was reorganized into a carousel to allow the customer's cart to be
-    shown below and a call to action was added above it to act as a reminder to
-    check for any potentially forgotten items. Google Analytics event tracking
-    was also added to each product in the carousel to measure conversion when
-    added to the cart.
+    To make the first page of the checkout flow less overwhelming, the number of
+    additional products shown to the user was limited to a maximum of twelve.
+    The products were also reorganized into a carousel to make room to show the
+    customer's cart below. A call to action with a helpful tone was used to
+    remind the customer to check for any forgotten or previously unviewed items.
+    Lastly, Google Analytics event tracking was added to each product in the
+    carousel to measure conversion when added to the cart. These changes reduced
+    the likelihood of overwhelming our customers when they decide to add
+    additional items to their cart and gave them another opportunity to review
+    their cart before checking out.
   </Typography>
   <Typography className="description fade-in" gutterBottom>
     To reduce the complexity and the layout shift on the checkout page, it was
     split into three separate pages. The first two pages were dedicated to
-    shipping and payment, and the last page was dedicated to reviewing. A single
-    column on each page allowed collapsible elements to continue to be used
-    while reducing the awkwardness of the resulting layout shift. To further
-    reduce layout shift and bundle size, shipping and payment forms were made
-    into pop-ups that could be lazy-loaded with React's Suspense package.
+    shipping and payment, and the last page was dedicated to order review. A
+    single column on each page allowed collapsible elements to continue to be
+    used while reducing the awkwardness of the resulting layout shift. To
+    further reduce layout shift and bundle size, shipping and payment forms were
+    made into modals that could be lazy-loaded with React's Suspense package.
     Cookies were also leveraged to save customer-selected preferences to prevent
     completed parts of the checkout process from being reset.
   </Typography>
   <Typography className="description fade-in" gutterBottom>
     Error handling was improved throughout the process by enforcing form-level
-    data validation and API level data validation and sanitization on address,
-    payment, and order submission forms. This change prevented erroneous data
-    from ever reaching our database and also allowed us to display helpful
-    messages to guide the customer through error resolution.
+    and API-level data validation and sanitization on address, payment, and
+    order submission forms. This change prevented erroneous data from ever
+    reaching our database and also allowed us to display helpful messages to
+    guide the customer through error resolution.
   </Typography>
 </Grid>

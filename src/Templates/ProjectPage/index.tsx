@@ -3,14 +3,6 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import { MDXProvider } from '@mdx-js/react';
 import styled from 'styled-components';
-
-// Material-UI Imports
-import { Button, Container, Grid, Link, Typography } from '@material-ui/core';
-
-// Icons
-import { TiArrowForward } from '@react-icons/all-files/ti/TiArrowForward';
-import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
-
 // Components
 import Layout from '../../App/Layout';
 import SEO from '../../App/SEO';
@@ -19,8 +11,15 @@ import Description from './Description';
 import Tags from './Tags';
 import Section from '../../App/shared/Section';
 
+// Icons
+import { TiArrowForward } from '@react-icons/all-files/ti/TiArrowForward';
+import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
+
 // Interfaces
-import { Slide } from '../../App/Carousel/Carousel';
+import { SlideInterface } from '../../App/Carousel';
+
+// Material-UI Imports
+import { Button, Container, Grid, Link, Typography } from '@material-ui/core';
 
 interface Mdx {
   mdx: {
@@ -28,9 +27,9 @@ interface Mdx {
       title: string;
       websiteUrl: string;
       githubUrl: string;
-      mobileCarouselPhotos: Slide[];
-      tabletCarouselPhotos: Slide[];
-      carouselPhotos: Slide[];
+      mobileCarouselPhotos: SlideInterface[];
+      tabletCarouselPhotos: SlideInterface[];
+      carouselPhotos: SlideInterface[];
       tags: string[];
     };
     body: string;
@@ -53,15 +52,19 @@ const shortcodes = { Grid, Typography };
 
 const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
   const { frontmatter } = mdx;
-  console.log(frontmatter);
+  const {
+    carouselPhotos,
+    mobileCarouselPhotos,
+    tabletCarouselPhotos,
+  } = frontmatter;
+  const slides = { carouselPhotos, mobileCarouselPhotos, tabletCarouselPhotos };
+
   return (
     <Layout>
       <SEO title={frontmatter.title} />
       <Container maxWidth={'lg'}>
         <Section as={'header'}>
-          <Typography variant="h1" gutterBottom>
-            {frontmatter.title}
-          </Typography>
+          <Typography variant="h1">{frontmatter.title}</Typography>
           {frontmatter.websiteUrl || frontmatter.githubUrl ? (
             <ProjectLinks container spacing={2}>
               {frontmatter.websiteUrl && (
@@ -105,10 +108,10 @@ const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
           <Description description={mdx.body} />
         </MDXProvider>
         <Grid container justify={'center'}>
-          <Grid item xs={12} sm={12} md={8} lg={8} xl={8}>
-            <Gallery slides={frontmatter.carouselPhotos} />
+          <Grid item xs={12}>
+            <Gallery slides={slides} />
           </Grid>
-          <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
+          <Grid item xs={12}>
             <Tags tags={frontmatter.tags} />
           </Grid>
         </Grid>
@@ -140,7 +143,7 @@ ProjectPage.propTypes = {
             altText: PropTypes.string.isRequired,
             caption: PropTypes.string,
           }).isRequired
-        ).isRequired,
+        ),
         tabletCarouselPhotos: PropTypes.arrayOf(
           PropTypes.shape({
             src: PropTypes.shape({
@@ -157,7 +160,7 @@ ProjectPage.propTypes = {
             altText: PropTypes.string.isRequired,
             caption: PropTypes.string,
           }).isRequired
-        ).isRequired,
+        ),
         carouselPhotos: PropTypes.arrayOf(
           PropTypes.shape({
             src: PropTypes.shape({
@@ -195,7 +198,7 @@ export const query = graphql`
           altText
           src {
             childImageSharp {
-              fluid(maxWidth: 784) {
+              fluid(maxWidth: 492) {
                 ...GatsbyImageSharpFluid_withWebp
               }
             }
@@ -206,7 +209,7 @@ export const query = graphql`
           altText
           src {
             childImageSharp {
-              fluid(maxWidth: 784) {
+              fluid(maxWidth: 836) {
                 ...GatsbyImageSharpFluid_withWebp
               }
             }
@@ -217,7 +220,7 @@ export const query = graphql`
           altText
           src {
             childImageSharp {
-              fluid(maxWidth: 784) {
+              fluid(maxWidth: 1179) {
                 ...GatsbyImageSharpFluid_withWebp
               }
             }
