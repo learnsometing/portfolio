@@ -37,7 +37,8 @@ const MenuItem = styled(ListItem).attrs({
 })`
   height: calc(
     (
-        100vh - ${(props) => (props.shouldShowSocialLinks ? '6px' : '5px')} -
+        100vh - 64px -
+          ${(props) => (props.shouldShowSocialLinks ? '6px' : '5px')} -
           (3rem + 4vh)
       ) / ${(props) => (props.shouldShowSocialLinks ? 5 : 4)}
   );
@@ -62,7 +63,7 @@ const MenuLinkText = styled(Typography).attrs({
 `;
 
 const Menu = styled(List)`
-  height: 100vh;
+  height: calc(100vh - 64px);
   padding: 0;
   background-color: ${(props): string => props.theme.metallicSeaweed};
 `;

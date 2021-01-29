@@ -46,7 +46,7 @@ const Navbar = styled(Paper).attrs({
   position: sticky;
   bottom: 0;
   right: 0;
-  height: 80px;
+  height: 64px;
   width: 100%;
   z-index: 2;
   background-color: ${(props): string => props.theme.metallicSeaweed};
