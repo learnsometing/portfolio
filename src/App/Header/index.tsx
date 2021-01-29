@@ -51,7 +51,7 @@ const Navigation: React.FC = () => {
     query: '(min-width: 800px)',
   });
   const shouldCondenseSocialLinks = useMediaQuery({
-    query: '(min-width: 600px)',
+    query: '(min-width: 633px)',
   });
 
   return (
@@ -63,7 +63,7 @@ const Navigation: React.FC = () => {
           alignItems={'center'}
           justify="space-between"
         >
-          <Grid item>
+          <Grid item xs={10} sm={8} md={6}>
             {shouldCondenseSocialLinks ? (
               <Box display="flex" alignItems="center">
                 <HomeLink />
@@ -108,7 +108,7 @@ const Brand = styled(Typography).attrs({
 `;
 
 const HomeLink: React.FC = () => (
-  <NavbarLink to="/" style={{ marginRight: 0 }}>
+  <NavbarLink to="/" style={{ display: 'inline', marginRight: 0 }}>
     <Brand variant={'h4'} component="span">
       BRIAN MONACCIO
     </Brand>
