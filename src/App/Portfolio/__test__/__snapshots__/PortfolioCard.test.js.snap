@@ -2,7 +2,7 @@
 
 exports[`PortfolioCard should match the snapshot 1`] = `
 <article
-  className="MuiGrid-root projectCards fade-in MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-6 MuiGrid-grid-lg-6 MuiGrid-grid-xl-6"
+  className="MuiGrid-root projectCards fade-in MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-4 MuiGrid-grid-lg-6 MuiGrid-grid-xl-6"
 >
   <a
     className="ProjectCard__ProjectLink-g4bmih-0 gLIrYR"
@@ -32,7 +32,7 @@ exports[`PortfolioCard should match the snapshot 1`] = `
           className=" gatsby-image-wrapper"
           style={
             Object {
-              "maxHeight": null,
+              "maxHeight": "244px",
               "maxWidth": null,
               "overflow": "hidden",
               "position": "relative",

@@ -105,6 +105,7 @@ const Name = styled.span`
   background-size: 100%;
   background-repeat: repeat;
   background-clip: text;
+  -webkit-background-clip: text;
   /* Use the text as a mask for the background. */
   /* This will show the gradient as a text color rather than element bg. */
   -webkit-text-fill-color: transparent;

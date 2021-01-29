@@ -68,7 +68,7 @@ const Menu = styled(List)`
 `;
 
 const NavigationMenu: React.FC = () => {
-  const shouldShowSocialLinks = useMediaQuery({ query: '(max-width: 599px)' });
+  const shouldShowSocialLinks = useMediaQuery({ query: '(max-width: 633px)' });
   const [isNavDrawerOpen, setIsNavDrawerOpen] = useState(false);
 
   const toggleNavDrawer = (): void => {

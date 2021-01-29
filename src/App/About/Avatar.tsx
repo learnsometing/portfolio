@@ -5,17 +5,25 @@ import styled from 'styled-components';
 
 const AvatarImage = styled.img`
   border-radius: 50%;
-  width: 65%;
+  width: 200px;
+  height: 200px;
   margin: 1rem;
 
+  @media only screen and (min-width: 600px) {
+    height: 250px;
+    width: 250px;
+  }
+
   @media only screen and (min-width: 960px) {
-    width: 70%;
+    height: 300px;
+    width: 300px;
   }
 
   /* major third  */
 
   @media only screen and (min-width: 1280px) {
-    width: 80%;
+    width: 355px;
+    height: 355px;
   }
 `;
 
