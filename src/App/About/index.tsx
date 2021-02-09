@@ -47,24 +47,24 @@ const AboutGreeting = styled.h1`
   color: ${(props) => props.theme.blueSapphire};
   /* minor third  */
 
-  font-size: 2.49rem;
+  font-size: 2.25rem;
 
   @media only screen and (min-width: 600px) {
-    font-size: 2.99rem;
+    font-size: 2.7rem;
   }
 
   @media only screen and (min-width: 960px) {
-    font-size: 3.58rem;
+    font-size: 3.04rem;
   }
 
   /* major third  */
 
   @media only screen and (min-width: 1280px) {
-    font-size: 4.77rem;
+    font-size: 3.79rem;
   }
 
   @media only screen and (min-width: 1920px) {
-    font-size: 5.96rem;
+    font-size: 4.75rem;
   }
 `;
 
@@ -76,20 +76,24 @@ const AboutDetails = styled.p`
 
   /* minor third  */
 
-  font-size: 1.2rem;
+  font-size: 1.125rem;
+
+  @media only screen and (min-width: 600px) {
+    font-size: 1.27rem;
+  }
 
   @media only screen and (min-width: 960px) {
-    font-size: 1.44rem;
+    font-size: 1.42rem;
   }
 
   /* major third  */
 
   @media only screen and (min-width: 1280px) {
-    font-size: 1.95rem;
+    font-size: 1.8rem;
   }
 
   @media only screen and (min-width: 1920px) {
-    font-size: 2.441rem;
+    font-size: 2.25rem;
   }
 `;
 
