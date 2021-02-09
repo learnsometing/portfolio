@@ -61,15 +61,15 @@ const EmailIconWrapper = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
-  height: 2.35rem;
-  width: 2.35rem;
+  height: 42px;
+  width: 42px;
 `;
 
 const EmailIconBG = styled.div`
   align-items: center;
   background-color: ${(props) => props.theme.persianGreen};
   display: flex;
-  border-radius: 5px;
+  border-radius: 3px;
   height: 100%;
   justify-content: center;
   position: relative;

@@ -62,7 +62,7 @@ const Gallery: React.FC<Props> = ({ slides }) => {
           <Typography variant="h2" gutterBottom className="gallery fade-in">
             Gallery
           </Typography>
-          <Box className="gallery fade-in">
+          <Box className="gallery fade-in" padding={'0 1rem'}>
             {isXs && mobileCarouselPhotos && mobileCarouselPhotos.length ? (
               <MobileCarousel slides={mobileCarouselPhotos} />
             ) : null}

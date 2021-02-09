@@ -1,12 +1,9 @@
 import React, { ReactElement } from 'react';
 import Img from 'gatsby-image';
-import styled from 'styled-components';
 
 // Material-UI
 import { useTheme } from '@material-ui/core/styles';
 import MobileStepper from '@material-ui/core/MobileStepper';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
 // SwipeableViews
@@ -61,7 +58,7 @@ function SwipeableTextMobileStepper({ slides }: Props): ReactElement {
           {slides.map((slide, index) => (
             <div
               key={slide.caption}
-              style={{ maxHeight: '448px', overflowY: 'auto' }}
+              style={{ maxHeight: '422px', overflowY: 'auto' }}
             >
               {Math.abs(activeStep - index) <= 2 ? (
                 <Img
