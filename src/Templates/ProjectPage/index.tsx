@@ -19,7 +19,15 @@ import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
 import { SlideInterface } from '../../App/Carousel';
 
 // Material-UI Imports
-import { Button, Container, Grid, Link, Typography } from '@material-ui/core';
+import {
+  Button,
+  Container,
+  Grid,
+  Link,
+  List,
+  ListItem,
+  Typography,
+} from '@material-ui/core';
 
 interface Mdx {
   mdx: {
@@ -48,7 +56,7 @@ const ProjectLinks = styled(Grid)`
   padding: ${(props): string => props.theme.spacing(4)} 0;
 `;
 
-const shortcodes = { Grid, Typography };
+const shortcodes = { Grid, List, ListItem, Typography };
 
 const ProjectPage: React.FC<Props> = ({ data: { mdx } }) => {
   const { frontmatter } = mdx;
